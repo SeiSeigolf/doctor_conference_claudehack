@@ -46,8 +46,6 @@ yarn-error.log*
 *.swp
 *.swo
 
-# Logs (keep structure, ignore content)
-/logs/sessions/*
-!/logs/sessions/.gitkeep
+# Logs (keep .md session/narrative logs; ignore raw line API logs)
 /logs/line/*
 !/logs/line/.gitkeep

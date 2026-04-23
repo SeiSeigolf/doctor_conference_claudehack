@@ -40,15 +40,6 @@ risk, and generates handoff packages for downstream care providers.
 > critical handoff details. ROUNDS.ai cuts prep time to 5 minutes while
 > catching what human teams overlook — because AI works when humans can't.
 
-### The Meta-Claim (Self-Proof)
-
-This entire system was built by Claude Code agents during a week when the
-developer was unavailable due to other commitments. The developer intervened
-only via LINE notifications — three 5-minute checkpoints per day. If AI can
-build a discharge planning system while the developer is absent, it can help
-run discharge planning when clinicians are absent. The development process
-itself is the proof of concept.
-
 ---
 
 ## 2. Success Criteria
@@ -60,15 +51,9 @@ itself is the proof of concept.
    - Robert Jackson (stroke, value conflict)
    - Sarah Williams (DKA + pregnancy, life-saving catch)
 
-2. **Complete development log proving "absent developer" narrative**
-   - All Claude Code sessions logged to `/logs/sessions/`
-   - All LINE notifications archived to `/logs/line/`
-   - All human interventions timestamped in `/logs/interventions.md`
-   - GitHub commit history must show developer intervention <30 min/day
+2. **Pitch video (5 min) following narrative in Section 10**
 
-3. **Pitch video (5 min) following narrative in Section 10**
-
-4. **GitHub repository public and clean**
+3. **GitHub repository public and clean**
    - Clear README
    - Reproducible setup
    - All agent prompts documented
@@ -94,12 +79,12 @@ itself is the proof of concept.
 
 ### Timeline
 
-- **Day 0 (April 22, today)**: Infrastructure and planning (HUMAN-LED)
-- **Day 1 (April 23)**: Research and design finalization (AI-LED)
-- **Day 2 (April 24)**: Data preparation and agent prompts (AI-LED)
-- **Day 3–4 (April 25–26)**: MVP implementation (AI-LED)
-- **Day 5 (April 27)**: UI, integration, validation (AI-LED)
-- **Day 6 (April 28)**: Demo, pitch video, submission (AI-LED + HUMAN final check)
+- **Apr 22 (today, from 13:00 JST)**: Infrastructure complete + start agent prep (HUMAN + AI)
+- **Apr 23**: Core agent implementation + Orchestrator + LACE scoring (AI-LED)
+- **Apr 24**: UI + integration + Vercel preview (AI-LED)
+- **Apr 25**: Polish, demo prep, pitch script (AI-LED)
+- **Apr 26**: Pitch video recording, final README, submission prep (AI-LED)
+- **Apr 27 09:00 JST**: DEADLINE — developer submits to Cerebral Valley (HUMAN, 5 min)
 
 ### Scope Tiers
 
@@ -192,44 +177,35 @@ files in `/state/` and logs in `/logs/`.
 - Does NOT make up clinical data; only evaluates reasoning quality.
 - Output: `/logs/validation_day_N.md`.
 
-### NARRATOR (Sonnet 4.6) — CRITICAL FOR PITCH
-- Runs once per day at end-of-day.
-- Reads the day's logs, commits, LINE notifications.
-- Produces a story-format summary: "What the agents built while the developer slept."
-- Output: `/logs/narrative_day_N.md`.
-- These narratives become the basis of the pitch video.
-
 ---
 
 ## 6. Human Intervention Protocol
 
-The developer (Seishiro) is generally absent during this hackathon.
-Human intervention is limited to:
+The developer (Seishiro) works in active Claude Code sessions during the hackathon.
+Sessions run 2–6 hours. Agents respond to developer direction in-session.
 
-### Scheduled Checkpoints (3x daily, ~5 min each)
+### Session Structure
 
-- **Morning (09:00 JST)**: Review overnight progress via LINE summary.
-  Approve or redirect the day's plan.
-- **Midday (13:00 JST)**: Review morning progress. Resolve flagged decisions.
-- **Evening (21:00 JST)**: Review day's work. GO/NO-GO for next day.
+- Developer opens a Claude Code session and reviews prior work.
+- Directs agents via prompts in-session.
+- Approves all outputs before commit.
+- Commits with co-author attribution.
 
-### Emergency Pings (unscheduled)
+### Emergency Pings (LINE — when session is inactive)
 
 Agents may ping the developer via LINE ONLY when:
 - Patient safety concern arises in demo cases
-- Budget threshold hit (see Section 11)
+- Budget hard limit hit (see Section 11)
 - Agent loop detected (same action >3 times)
 - Any action would violate this CLAUDE.md
-- Irreconcilable conflict between two agents
 
-### What Humans Do NOT Do
+### What the Developer Does
 
-- Write code (BUILDER does)
-- Make clinical judgments (VALIDATOR does role-play)
-- Run searches (RESEARCHER does)
-- Make architectural decisions without ARCHITECT's analysis
+- Reviews and approves all agent outputs
+- Makes all final architectural decisions
+- Handles all external submissions (Cerebral Valley, Vercel, YouTube)
 
-The human's job is: **say yes, say no, or say "redirect toward X"**.
+The developer is actively present and directing. AI agents handle implementation.
 
 ---
 
@@ -336,43 +312,41 @@ Full case JSON files in `/cases/` must be generated on Day 1 by RESEARCHER worki
 
 ## 10. Pitch Narrative (Immutable Core)
 
-The 5-minute pitch video must contain these elements in this order:
+Full script in `/pitch/narrative.md`. Summary of required structure:
 
-1. **Open (30 sec)**: "I am not here. I have not been here for a week."
-   Cut to clock showing developer's physical absence.
+1. **Opening (45 sec)**: Five professionals meet to plan discharge. They each prepare alone.
+   They each miss something. Medicare penalizes hospitals $26 billion annually.
 
-2. **Problem (60 sec)**: US hospitals lose billions on preventable readmissions.
-   Discharge rounds take 30+ minutes and still miss critical items.
-   Clinicians are burned out. When they can't be present, patients suffer.
+2. **Solution (60 sec)**: Five AI agents thinking like five specialists. Orchestrator on
+   Claude Opus 4.7 synthesizes, surfaces conflicts, calculates LACE-based 30-day risk.
 
-3. **Demo (150 sec)**: Show all 3 patient cases end-to-end.
-   Emphasize: Case 3 "life-saving catch" as the emotional peak.
+3. **Demo (150 sec)**: All 3 patient cases end-to-end.
+   - Case 1 (Chen): baseline coordination
+   - Case 2 (Jackson): value conflict navigation
+   - Case 3 (Williams): life-saving catch — teratogenic drug order (emotional peak)
 
-4. **The Build (60 sec)**: Show GitHub log. Show LINE notifications.
-   "I intervened 21 times over 7 days. Each intervention was 5 minutes.
-   Claude Code agents did everything else."
+4. **Technical (30 sec)**: Opus 4.7 orchestrator, Sonnet 4.6 agents, direct Anthropic SDK,
+   Python + Next.js, Vercel.
 
-5. **Close (30 sec)**: "This is what the future of medicine looks like.
-   Not AI replacing clinicians. AI working when clinicians cannot.
-   Built with Opus 4.7. Built while I was away."
+5. **Closing (15 sec)**: "I'm a second-year medical student. I built this because I've
+   watched discharge rounds fail. ROUNDS.ai doesn't replace clinicians.
+   It lets them finally see each other."
 
-The pitch must not stray from this structure. Other good ideas go to `/pitch/bonus_ideas.md`.
+Total: 5 minutes. Do not deviate. Other ideas → `/pitch/bonus_ideas.md`.
 
 ---
 
 ## 11. Budget Enforcement
 
-Daily soft limits ($500 total / 7 days):
+Daily soft limits ($500 total / 5 days):
 
-| Day | Soft Limit | Hard Limit |
-|-----|-----------|------------|
-| 0   | $10       | $20        |
-| 1   | $50       | $75        |
-| 2   | $80       | $100       |
-| 3   | $130      | $160       |
-| 4   | $130      | $160       |
-| 5   | $80       | $100       |
-| 6   | $50       | $75        |
+| Date | Soft Limit | Hard Limit |
+|------|-----------|------------|
+| Apr 22 (remaining) | $30 | $50 |
+| Apr 23 | $110 | $140 |
+| Apr 24 | $140 | $170 |
+| Apr 25 | $110 | $140 |
+| Apr 26 | $80 | $110 |
 | Reserve | — | $30 |
 
 If hard limit hit: ping developer via LINE, halt all non-essential agents until GO received.
@@ -392,8 +366,6 @@ No agent, no human, under any circumstance, may:
 5. Claim the system is HIPAA-compliant, FDA-cleared, or production-ready.
 6. Add scope listed in Tier 3 (Section 3).
 7. Continue past a hard budget limit without human approval.
-8. Present the absent-developer narrative dishonestly. Every minute of
-   human intervention must be logged and acknowledged in the pitch.
 
 ---
 
@@ -402,6 +374,35 @@ No agent, no human, under any circumstance, may:
 All modifications to this CLAUDE.md must be logged here with justification.
 
 - **2026-04-22**: Initial constitution. (Seishiro + Claude)
+- **2026-04-22 13:00 JST**: Timeline compressed to 5 days; budget redistributed; added Section 14 submission checklist. (Seishiro + Claude)
+- **2026-04-23 16:00 JST**: Major pivot. Withdrew absent-developer narrative. Competing on product quality alone. Simplified meta-agent structure (removed NARRATOR). Rewrote Sections 1, 2, 6, 10, 12. New positioning: multi-agent medicine for discharge planning. (Seishiro + Claude)
+
+---
+
+## 14. Hackathon Submission Checklist
+
+Four deliverables required for a complete submission. Track status here.
+
+1. **Public GitHub repository** (this repo)
+   - All source code, agent prompts, case data, logs, and pitch materials
+   - Must be public before deadline
+
+2. **Demo video on YouTube** (5–7 min)
+   - Follows CLAUDE.md Section 10 pitch narrative exactly
+   - Upload unlisted or public before 2026-04-27 08:00 JST
+   - Link must appear at top of README.md
+
+3. **Live deployment on Vercel**
+   - Next.js UI deployed to Vercel free tier
+   - Must be publicly accessible
+   - Link must appear at top of README.md
+
+4. **Cerebral Valley submission form** ← HUMAN ACTION REQUIRED
+   - Project name: "ROUNDS.ai"
+   - Description: 1–2 sentences
+   - GitHub URL, YouTube URL, Vercel URL
+   - Agents prepare ready-to-paste text in `/pitch/submission.md`
+   - Developer submits manually before 2026-04-27 09:00 JST
 
 ---
 
