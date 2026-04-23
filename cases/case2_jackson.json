@@ -1,0 +1,277 @@
+{
+  "_synthetic_notice": "SYNTHETIC — fabricated for demonstration only. No real patient data.",
+  "case_id": "CASE-002",
+  "patient": {
+    "name": "Robert Jackson",
+    "age": 65,
+    "sex": "M",
+    "dob": "1961-09-03",
+    "mrn": "MRN-502847",
+    "race_ethnicity": "Black / African-American",
+    "zip": "02119",
+    "language": "English",
+    "health_literacy": "high"
+  },
+  "admission": {
+    "date": "2026-04-15",
+    "primary_dx": "Acute ischemic stroke, right middle cerebral artery territory",
+    "primary_icd10": "I63.411",
+    "secondary_dx": [
+      "Left hemiparesis, mild (G81.04)",
+      "Hypertension, uncontrolled (I10)",
+      "Type 2 diabetes mellitus, without complications (E11.9)",
+      "Hyperlipidemia (E78.5)",
+      "Obesity, BMI 32.4 (E66.09)",
+      "Patent foramen ovale, incidental finding (Q21.10)"
+    ],
+    "los_days": 8,
+    "admission_type": "Emergency",
+    "admitting_unit": "Neurology / Stroke Unit"
+  },
+  "vitals_trajectory": {
+    "admission": {
+      "bp": "196/108",
+      "hr": 94,
+      "hr_rhythm": "Normal sinus",
+      "rr": 16,
+      "spo2_pct": 98,
+      "spo2_supplement": "Room air",
+      "temp_c": 37.0,
+      "weight_kg": 96.2
+    },
+    "day_2": {
+      "bp": "172/98",
+      "hr": 86,
+      "rr": 16,
+      "spo2_pct": 98,
+      "spo2_supplement": "Room air",
+      "temp_c": 36.9,
+      "weight_kg": 95.8
+    },
+    "day_4": {
+      "bp": "154/90",
+      "hr": 80,
+      "rr": 16,
+      "spo2_pct": 98,
+      "spo2_supplement": "Room air",
+      "temp_c": 37.0,
+      "weight_kg": 95.5
+    },
+    "current": {
+      "bp": "138/82",
+      "hr": 76,
+      "rr": 14,
+      "spo2_pct": 99,
+      "spo2_supplement": "Room air",
+      "temp_c": 36.8,
+      "weight_kg": 95.3,
+      "note": "BP well controlled on new antihypertensive regimen. Neurologically stable."
+    }
+  },
+  "medications": [
+    {
+      "name": "Aspirin",
+      "dose": "81 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Secondary stroke prevention — dual antiplatelet therapy",
+      "start_date": "2026-04-15",
+      "flag": "Continue indefinitely. Part of DAPT regimen."
+    },
+    {
+      "name": "Clopidogrel",
+      "dose": "75 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Secondary stroke prevention — dual antiplatelet (DAPT, 21-day course)",
+      "start_date": "2026-04-15",
+      "end_date": "2026-05-06",
+      "flag": "21-day DAPT course per POINT trial protocol. Transition to aspirin monotherapy on 2026-05-06. Must ensure patient and PCP are aware of stop date."
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "80 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Secondary stroke prevention — high-intensity statin",
+      "start_date": "2026-04-15",
+      "home_dose": "Not previously on statin",
+      "flag": "NEW — high-intensity statin started for stroke secondary prevention. LDL 142 on admission."
+    },
+    {
+      "name": "Amlodipine",
+      "dose": "10 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Hypertension",
+      "start_date": "2026-04-16",
+      "home_dose": "Not previously prescribed",
+      "flag": "NEW. Added for BP control. BP at goal 138/82 currently."
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "20 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Hypertension, DM nephroprotection",
+      "start_date": "2026-04-16",
+      "home_dose": "10 mg daily",
+      "flag": "DOSE DOUBLED from 10mg to 20mg. Monitor renal function and K+."
+    },
+    {
+      "name": "Metformin",
+      "dose": "1000 mg",
+      "route": "PO",
+      "frequency": "BID",
+      "indication": "Type 2 diabetes mellitus",
+      "start_date": "2026-04-21",
+      "home_dose": "1000 mg BID",
+      "flag": "HELD during acute phase (contrast, hemodynamic instability). Restarted Day 6. Confirm eGFR adequate."
+    }
+  ],
+  "labs": {
+    "bmp": {
+      "date": "2026-04-22",
+      "sodium": {"value": 140, "unit": "mEq/L", "ref": "136–145", "flag": null},
+      "potassium": {"value": 4.3, "unit": "mEq/L", "ref": "3.5–5.0", "flag": null},
+      "creatinine": {"value": 1.0, "unit": "mg/dL", "ref": "0.7–1.3", "flag": null},
+      "egfr": {"value": 78, "unit": "mL/min/1.73m²", "ref": ">60", "flag": null},
+      "glucose": {"value": 138, "unit": "mg/dL", "ref": "70–100", "flag": "H"}
+    },
+    "lipids": {
+      "date": "2026-04-15",
+      "ldl": {"value": 142, "unit": "mg/dL", "ref": "<70 (secondary prevention goal)", "flag": "H — high-intensity statin started"},
+      "hdl": {"value": 38, "unit": "mg/dL", "ref": ">40", "flag": "L"},
+      "triglycerides": {"value": 198, "unit": "mg/dL", "ref": "<150", "flag": "H"}
+    },
+    "hba1c": {
+      "value": 8.1,
+      "unit": "%",
+      "ref": "<7.0 (diabetic goal)",
+      "date": "2026-04-15",
+      "flag": "H — above target, DM management optimization needed at follow-up"
+    },
+    "neuro_imaging": {
+      "date": "2026-04-15",
+      "mri_brain": "Right MCA territory ischemic infarct, cortical and subcortical, no hemorrhagic transformation. Estimated volume 18 mL.",
+      "echo": "EF 58%, no LV thrombus, no significant valvular disease. Patent foramen ovale identified (small, no right-to-left shunting at rest).",
+      "carotid_doppler": "No significant stenosis bilaterally (<50% on right, <40% on left)"
+    },
+    "nihss": {
+      "admission": 6,
+      "day_4": 4,
+      "current": 2,
+      "interpretation": "Significant improvement. Mild residual left arm weakness and mild dysmetria."
+    }
+  },
+  "social": {
+    "living_situation": "Home with wife (Patricia Jackson, 62, retired). Single-story ranch house. No stairs to navigate.",
+    "primary_support": "Wife — retired, committed caregiver, present at all family meetings",
+    "employment": "Retired (former firefighter, 35 years). Pension income.",
+    "insurance_type": "Medicare Advantage HMO (retired municipal worker plan)",
+    "insurance_details": {
+      "inpatient_rehab": "Covered up to 20 days following 3-day qualifying hospital stay (qualified).",
+      "skilled_pt_outpatient": "20 visits per calendar year total (PT + OT combined).",
+      "note": "If inpatient rehab used, outpatient PT visits still count against annual limit."
+    },
+    "language": "English",
+    "health_literacy": "High — engaged, asks clarifying questions, researched stroke recovery online"
+  },
+  "functional_status": {
+    "adl_independence": {
+      "feeding": "Independent",
+      "grooming": "Partially assists — left hand limited",
+      "bathing": "Requires standby assist",
+      "dressing_upper": "Independent",
+      "dressing_lower": "Requires assist (left leg)",
+      "toileting": "Independent"
+    },
+    "motor": {
+      "left_arm_strength": "3/5 (grip 3/5, deltoid 4/5)",
+      "left_leg_strength": "4/5 (hip flexion 4/5, ankle dorsiflexion 4-/5)",
+      "right_side": "Full strength 5/5 bilaterally",
+      "spasticity": "Mild left arm spasticity emerging"
+    },
+    "ambulation": {
+      "current": "Ambulates 50 feet with single-point cane (SPC), unsteady on uneven surfaces",
+      "baseline_prior_admission": "Full independence — walked 2 miles daily",
+      "assistive_device": "Single-point cane (new this admission)"
+    },
+    "fall_risk": {
+      "score": "MODERATE-HIGH",
+      "note": "Gait asymmetry, reduced left leg proprioception on exam"
+    },
+    "dysphagia": {
+      "screen": "PASSED — Bedside swallow evaluation normal. Regular diet, thin liquids."
+    },
+    "cognitive": {
+      "nihss_cognitive": "Intact — oriented x4, follows complex commands",
+      "note": "No aphasia. Mild emotional lability (post-stroke affect), improving."
+    }
+  },
+  "sdoh_flags": {
+    "transportation": {
+      "status": "ADEQUATE",
+      "detail": "Wife drives. Car accessible. Home 3.2 miles from hospital."
+    },
+    "food_security": {
+      "status": "ADEQUATE",
+      "detail": "No concerns. Couple cooks at home."
+    },
+    "housing_stability": {
+      "status": "FAVORABLE",
+      "detail": "Single-story ranch — no stairs to navigate. Owned outright. No housing barriers."
+    },
+    "medication_affordability": {
+      "status": "MANAGED",
+      "detail": "Medicare Advantage covers most costs. Atorvastatin 80mg is generic, low cost. Clopidogrel may have copay — verify."
+    }
+  },
+  "value_conflict": {
+    "summary": "Three-way conflict between clinical recommendation, patient autonomy, and insurance coverage.",
+    "positions": {
+      "PT_recommendation": "Acute inpatient rehabilitation facility (IRF) — patient meets criteria (3+ hours therapy/day tolerated, sufficient cognition, motivated). IRF outcomes for MCA stroke at this severity are significantly better than home PT.",
+      "patient_preference": "Home immediately. Patient refuses any inpatient facility. States: 'I am not going to a nursing home.' Wife supports patient's decision.",
+      "insurance_constraint": "Medicare Advantage covers IRF (20 days) — qualifying stay met. However, outpatient PT is capped at 20 visits/year. If patient goes home, 20 visits of outpatient PT is the only rehabilitation available for the rest of 2026."
+    },
+    "clinical_stakes": "Without adequate rehabilitation, patient at significant risk of permanent functional deficit in left arm. 20 outpatient PT visits may be insufficient for MCA stroke recovery. Re-injury and fall risk elevated at home with current functional status.",
+    "unresolved": true
+  },
+  "discharge_target": {
+    "clinically_ready": true,
+    "destination_preferred_by_team": "Acute Inpatient Rehabilitation Facility (IRF)",
+    "destination_preferred_by_patient": "Home",
+    "current_plan": "PENDING — goals of care conversation with patient and wife required",
+    "barriers": [
+      "Patient refusing inpatient rehabilitation despite clinical recommendation",
+      "If home: only 20 outpatient PT visits available for calendar year 2026",
+      "Left arm motor recovery trajectory uncertain without intensive rehab",
+      "Clopidogrel DAPT stop date (2026-05-06) — must be communicated to PCP clearly"
+    ],
+    "pending_decisions": [
+      "Goals of care conversation: patient/wife must understand functional consequences of refusing IRF",
+      "If home: PFO management — cardiology/neurology follow-up for closure discussion",
+      "HbA1c 8.1% — endocrinology or PCP to optimize DM management",
+      "Driving — patient is retired firefighter who drives. Must not drive until cleared by neurology (typically 3–6 months post-stroke in MA)."
+    ],
+    "follow_up": {
+      "neurology": "2 weeks",
+      "cardiology": "4 weeks (PFO discussion)",
+      "pcp": "1 week",
+      "pt_ot": "As soon as possible — every day without therapy is functional decline"
+    }
+  },
+  "lace_inputs": {
+    "L_los_days": 8,
+    "L_score": 5,
+    "A_emergency_admission": true,
+    "A_score": 3,
+    "C_charlson_comorbidities": ["Hypertension (0 on Charlson)", "DM without complications (1)"],
+    "C_charlson_score": 1,
+    "C_score": 1,
+    "E_ed_visits_prior_6_months": 1,
+    "E_score": 1,
+    "total_lace_score": 10,
+    "risk_category": "MODERATE-HIGH — 30-day readmission risk approximately 18–22%"
+  }
+}

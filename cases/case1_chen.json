@@ -1,0 +1,280 @@
+{
+  "_synthetic_notice": "SYNTHETIC — fabricated for demonstration only. No real patient data.",
+  "case_id": "CASE-001",
+  "patient": {
+    "name": "Margaret Chen",
+    "age": 78,
+    "sex": "F",
+    "dob": "1948-02-14",
+    "mrn": "MRN-748291",
+    "race_ethnicity": "Asian / Chinese-American",
+    "zip": "02134",
+    "language": "English",
+    "health_literacy": "moderate"
+  },
+  "admission": {
+    "date": "2026-04-19",
+    "primary_dx": "Acute-on-chronic systolic heart failure exacerbation",
+    "primary_icd10": "I50.23",
+    "secondary_dx": [
+      "Community-acquired pneumonia, right lower lobe (J18.9)",
+      "Type 2 diabetes mellitus without complications (E11.9)",
+      "Atrial fibrillation, chronic (I48.91)",
+      "Chronic kidney disease, stage 3a (N18.31)",
+      "Hypertension (I10)"
+    ],
+    "los_days": 4,
+    "admission_type": "Emergency",
+    "admitting_unit": "Cardiology / Step-Down"
+  },
+  "vitals_trajectory": {
+    "admission": {
+      "bp": "178/96",
+      "hr": 112,
+      "hr_rhythm": "Atrial fibrillation",
+      "rr": 24,
+      "spo2_pct": 88,
+      "spo2_supplement": "Room air",
+      "temp_c": 38.4,
+      "weight_kg": 74.2
+    },
+    "day_2": {
+      "bp": "152/84",
+      "hr": 98,
+      "rr": 20,
+      "spo2_pct": 93,
+      "spo2_supplement": "2L nasal cannula",
+      "temp_c": 37.8,
+      "weight_kg": 72.1,
+      "note": "Net negative 2.1 kg after IV furosemide"
+    },
+    "day_3": {
+      "bp": "138/78",
+      "hr": 88,
+      "rr": 18,
+      "spo2_pct": 95,
+      "spo2_supplement": "2L nasal cannula",
+      "temp_c": 37.2,
+      "weight_kg": 70.8
+    },
+    "current": {
+      "bp": "132/76",
+      "hr": 84,
+      "rr": 16,
+      "spo2_pct": 97,
+      "spo2_supplement": "Room air",
+      "temp_c": 36.8,
+      "weight_kg": 70.2,
+      "note": "Clinically euvolemic. SpO2 back to baseline on room air."
+    }
+  },
+  "medications": [
+    {
+      "name": "Furosemide",
+      "dose": "40 mg",
+      "route": "PO",
+      "frequency": "BID",
+      "indication": "CHF — diuresis",
+      "start_date": "2026-04-19",
+      "home_dose": "20 mg daily",
+      "flag": "INCREASED from home dose. Discharge dose TBD — requires outpatient follow-up to titrate."
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "CHF — ACE inhibitor, hypertension",
+      "start_date": "2026-04-19",
+      "home_dose": "10 mg daily",
+      "flag": "TRIPLE THERAPY RISK: concurrent with furosemide and spironolactone. Monitor K+ and renal function closely."
+    },
+    {
+      "name": "Spironolactone",
+      "dose": "25 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "CHF — aldosterone antagonist",
+      "start_date": "2026-04-20",
+      "home_dose": "Not previously prescribed — NEW",
+      "flag": "NEW medication. Hyperkalemia risk compounded with lisinopril. K+ currently 3.8 mEq/L on supplementation."
+    },
+    {
+      "name": "Metoprolol succinate",
+      "dose": "50 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "CHF — rate control in Afib",
+      "start_date": "2026-04-19",
+      "home_dose": "50 mg daily",
+      "flag": null
+    },
+    {
+      "name": "Aspirin",
+      "dose": "81 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Cardioprotection",
+      "start_date": "2026-04-19",
+      "home_dose": "81 mg daily",
+      "flag": null
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "40 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Dyslipidemia, cardioprotection",
+      "start_date": "2026-04-19",
+      "home_dose": "40 mg daily",
+      "flag": null
+    },
+    {
+      "name": "Insulin glargine",
+      "dose": "20 units",
+      "route": "SC",
+      "frequency": "QHS",
+      "indication": "Type 2 diabetes mellitus",
+      "start_date": "2026-04-19",
+      "home_dose": "20 units QHS",
+      "flag": null
+    },
+    {
+      "name": "Amoxicillin-clavulanate",
+      "dose": "875/125 mg",
+      "route": "PO",
+      "frequency": "BID",
+      "indication": "Community-acquired pneumonia",
+      "start_date": "2026-04-19",
+      "end_date": "2026-04-24",
+      "flag": "Complete 5-day course. Day 1 of 5 started on admission. Verify adherence at discharge."
+    },
+    {
+      "name": "Potassium chloride",
+      "dose": "20 mEq",
+      "route": "PO",
+      "frequency": "BID",
+      "indication": "Hypokalemia prevention with furosemide",
+      "start_date": "2026-04-20",
+      "flag": "Recheck BMP at discharge or day before. Adjust dose with furosemide titration."
+    }
+  ],
+  "labs": {
+    "bmp": {
+      "date": "2026-04-22",
+      "sodium": {"value": 138, "unit": "mEq/L", "ref": "136–145", "flag": null},
+      "potassium": {"value": 3.8, "unit": "mEq/L", "ref": "3.5–5.0", "flag": "LOW-NORMAL — monitor with triple diuretic therapy"},
+      "chloride": {"value": 102, "unit": "mEq/L", "ref": "98–106", "flag": null},
+      "bicarbonate": {"value": 26, "unit": "mEq/L", "ref": "22–29", "flag": null},
+      "bun": {"value": 28, "unit": "mg/dL", "ref": "7–20", "flag": "H — CKD baseline, up from 22 on last outpatient check"},
+      "creatinine": {"value": 1.3, "unit": "mg/dL", "ref": "0.6–1.1", "flag": "H — baseline 1.1 (CKD 3a). Mild worsening, likely pre-renal."},
+      "glucose": {"value": 156, "unit": "mg/dL", "ref": "70–100", "flag": "H"}
+    },
+    "cbc": {
+      "date": "2026-04-22",
+      "wbc": {"value": 11.2, "unit": "K/uL", "ref": "4.5–11.0", "flag": "H — trending down from 14.8 on admission (pneumonia improving)"},
+      "hemoglobin": {"value": 10.8, "unit": "g/dL", "ref": "12.0–16.0", "flag": "L — normocytic anemia, chronic"},
+      "platelets": {"value": 234, "unit": "K/uL", "ref": "150–400", "flag": null}
+    },
+    "cardiac": {
+      "date": "2026-04-22",
+      "bnp": {"value": 892, "unit": "pg/mL", "ref": "<100", "flag": "H — significantly improved from 2,340 on admission"},
+      "troponin_i": {"value": 0.04, "unit": "ng/mL", "ref": "<0.04", "flag": "Borderline — stable x2 draws, no ACS"}
+    },
+    "infectious": {
+      "date": "2026-04-19",
+      "procalcitonin_admission": {"value": 2.4, "unit": "ng/mL", "ref": "<0.25", "flag": "H — consistent with bacterial infection"},
+      "procalcitonin_current": {"value": 0.9, "unit": "ng/mL", "ref": "<0.25", "flag": "H — improving"}
+    },
+    "hba1c": {"value": 7.8, "unit": "%", "ref": "<7.0 (diabetic goal)", "date": "2026-04-19", "flag": "Above target — diabetes management to address at follow-up"}
+  },
+  "social": {
+    "living_situation": "Alone. Third-floor apartment. No elevator in building.",
+    "primary_support": "Daughter (Alice Chen), lives 45 min away, works full-time Mon-Fri",
+    "employment": "Retired (former accountant)",
+    "insurance_type": "Medicare Part A + Part B with Medigap supplement",
+    "language": "English (primary). Cantonese (conversational at home).",
+    "health_literacy": "Moderate — manages own medications with pill organizer, reads instructions independently"
+  },
+  "functional_status": {
+    "adl_independence": {
+      "bathing": "Requires assist (new decline this admission)",
+      "dressing_upper": "Independent",
+      "dressing_lower": "Requires assist (new decline)",
+      "toileting": "Independent with grab bar",
+      "transferring": "Independent with effort",
+      "feeding": "Independent"
+    },
+    "ambulation": {
+      "current": "15 feet with walker before rest stop required",
+      "baseline_prior_admission": "Ambulated independently within apartment, used cane outdoors",
+      "assistive_device": "Standard walker (new this admission)"
+    },
+    "fall_risk": {
+      "score": "HIGH",
+      "tool": "Morse Fall Scale",
+      "value": 65,
+      "note": "Falls x1 at home 6 weeks ago (no injury). Functional decline this admission."
+    },
+    "cognitive_screen": {
+      "tool": "MoCA",
+      "score": 24,
+      "max": 30,
+      "date": "2026-04-20",
+      "interpretation": "Mild cognitive impairment — at baseline per daughter"
+    }
+  },
+  "sdoh_flags": {
+    "transportation": {
+      "status": "LIMITED",
+      "detail": "Daughter can drive 2x/week. No personal vehicle. Would need medical transport or daughter for appointments."
+    },
+    "food_security": {
+      "status": "SUPPORTED",
+      "detail": "Receives Meals on Wheels (ongoing). No food insecurity concern."
+    },
+    "housing_stability": {
+      "status": "BARRIER",
+      "detail": "Third-floor walkup, no elevator. Unable to safely navigate stairs with current functional status. Critical discharge barrier."
+    },
+    "medication_affordability": {
+      "status": "MANAGED",
+      "detail": "Medigap covers most costs. Spironolactone is new — confirm formulary and copay."
+    }
+  },
+  "discharge_target": {
+    "clinically_ready": true,
+    "destination_preferred": "Home with Home Health services",
+    "destination_alternative": "Short-term SNF if daughter unavailable for stair assessment and teaching",
+    "barriers": [
+      "Third-floor walkup — patient currently unable to safely climb stairs",
+      "Daughter must be present for discharge teaching (medication complexity)",
+      "BMP recheck needed to confirm K+ stability on new triple-therapy regimen",
+      "Antibiotic course not complete until 2026-04-24 (2 days post-discharge)"
+    ],
+    "pending_decisions": [
+      "Can patient safely climb 3 flights of stairs? PT assessment required before discharge.",
+      "Discharge furosemide dose — 20mg daily (home) vs 40mg BID (inpatient)?",
+      "Potassium supplementation dose at discharge — pending BMP recheck.",
+      "Home Health referral: PT (stair training), nursing (medication reconciliation, weight monitoring, wound check)"
+    ],
+    "follow_up": {
+      "cardiology": "1 week",
+      "pcp": "3 days post-discharge",
+      "lab": "BMP 2–3 days post-discharge"
+    }
+  },
+  "lace_inputs": {
+    "L_los_days": 4,
+    "L_score": 4,
+    "A_emergency_admission": true,
+    "A_score": 3,
+    "C_charlson_comorbidities": ["CHF (1)", "DM without complications (1)", "Renal disease (1)"],
+    "C_charlson_score": 3,
+    "C_score": 3,
+    "E_ed_visits_prior_6_months": 2,
+    "E_score": 2,
+    "total_lace_score": 12,
+    "risk_category": "HIGH — 30-day readmission risk approximately 25–30%"
+  }
+}

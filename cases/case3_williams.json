@@ -1,0 +1,312 @@
+{
+  "_synthetic_notice": "SYNTHETIC — fabricated for demonstration only. No real patient data.",
+  "case_id": "CASE-003",
+  "patient": {
+    "name": "Sarah Williams",
+    "age": 42,
+    "sex": "F",
+    "dob": "1984-07-22",
+    "mrn": "MRN-619403",
+    "race_ethnicity": "White / Non-Hispanic",
+    "zip": "02118",
+    "language": "English",
+    "health_literacy": "moderate-high"
+  },
+  "admission": {
+    "date": "2026-04-18",
+    "primary_dx": "Diabetic ketoacidosis, type 1 diabetes mellitus",
+    "primary_icd10": "E10.10",
+    "secondary_dx": [
+      "Pregnancy, 7 weeks gestation — newly confirmed this admission (Z34.01)",
+      "Type 1 diabetes mellitus with ketoacidosis (E10.10)",
+      "Hypertension, essential (I10)",
+      "Obesity, BMI 31.8 (E66.09)"
+    ],
+    "los_days": 5,
+    "admission_type": "Emergency",
+    "admitting_unit": "Medicine / ICU Step-Down (admitted via ED)"
+  },
+  "pregnancy_context": {
+    "gestational_age_weeks": 7,
+    "confirmed_by": "Serum hCG 28,450 mIU/mL on admission (2026-04-18)",
+    "patient_aware_at_admission": false,
+    "patient_aware_current": true,
+    "ob_established": false,
+    "ob_referral_placed": false,
+    "prenatal_ultrasound": "ORDERED — not yet completed",
+    "note": "Patient was unaware of pregnancy at the time of admission. Informed on Day 2 after serum hCG resulted. Patient expressed shock and distress; social work consulted."
+  },
+  "vitals_trajectory": {
+    "admission": {
+      "bp": "108/72",
+      "hr": 128,
+      "hr_rhythm": "Sinus tachycardia",
+      "rr": 26,
+      "rr_note": "Kussmaul respiration",
+      "spo2_pct": 99,
+      "spo2_supplement": "Room air",
+      "temp_c": 37.1,
+      "weight_kg": 68.4
+    },
+    "day_2": {
+      "bp": "114/74",
+      "hr": 96,
+      "rr": 18,
+      "spo2_pct": 99,
+      "spo2_supplement": "Room air",
+      "temp_c": 37.0,
+      "weight_kg": 67.8,
+      "note": "DKA resolving on insulin drip. Anion gap closing."
+    },
+    "day_3": {
+      "bp": "118/76",
+      "hr": 84,
+      "rr": 16,
+      "spo2_pct": 99,
+      "spo2_supplement": "Room air",
+      "temp_c": 36.9,
+      "weight_kg": 67.5,
+      "note": "Transitioned to subcutaneous insulin regimen. Tolerating diet."
+    },
+    "current": {
+      "bp": "122/78",
+      "hr": 80,
+      "rr": 14,
+      "spo2_pct": 99,
+      "spo2_supplement": "Room air",
+      "temp_c": 36.8,
+      "weight_kg": 67.2,
+      "note": "DKA fully resolved. Glucose 112 on current SQ insulin regimen. Clinically ready for discharge pending medication and follow-up issues."
+    }
+  },
+  "medications": [
+    {
+      "name": "Insulin glargine",
+      "dose": "22 units",
+      "route": "SC",
+      "frequency": "QHS",
+      "indication": "Type 1 DM — basal insulin",
+      "start_date": "2026-04-20",
+      "home_dose": "18 units QHS (per patient report)",
+      "flag": "ADJUSTED dose — increased for pregnancy insulin resistance. Requires close outpatient titration."
+    },
+    {
+      "name": "Insulin aspart",
+      "dose": "Per sliding scale",
+      "route": "SC",
+      "frequency": "AC meals + correction",
+      "indication": "Type 1 DM — prandial insulin",
+      "start_date": "2026-04-20",
+      "flag": "Sliding scale adjusted for pregnancy. Patient requires education on meal-time dosing."
+    },
+    {
+      "name": "Lisinopril",
+      "dose": "10 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Hypertension",
+      "start_date": "Home medication — continued on admission",
+      "home_dose": "10 mg daily",
+      "flag": "*** CRITICAL — TERATOGENIC IN PREGNANCY *** ACE inhibitors are Pregnancy Category D/X. Associated with fetal renal agenesis, oligohydramnios, and neonatal death in second and third trimester. ORDER IS STILL ACTIVE. MUST BE DISCONTINUED BEFORE DISCHARGE. Must be replaced with pregnancy-safe antihypertensive (methyldopa, labetalol, or nifedipine)."
+    },
+    {
+      "name": "Atorvastatin",
+      "dose": "20 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Hyperlipidemia (prior to pregnancy confirmation)",
+      "start_date": "Home medication — continued on admission",
+      "home_dose": "20 mg daily",
+      "flag": "*** TERATOGENIC IN PREGNANCY *** Statins are Pregnancy Category X. Contraindicated throughout pregnancy. ORDER IS STILL ACTIVE. MUST BE DISCONTINUED BEFORE DISCHARGE."
+    },
+    {
+      "name": "Prenatal vitamins",
+      "dose": "1 tablet",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Pregnancy supplementation",
+      "start_date": "2026-04-20",
+      "flag": null
+    },
+    {
+      "name": "Folic acid",
+      "dose": "4 mg",
+      "route": "PO",
+      "frequency": "Daily",
+      "indication": "Neural tube defect prevention — high-dose for T1DM pregnancy",
+      "start_date": "2026-04-20",
+      "flag": "High-dose (4mg vs standard 0.4–0.8mg) appropriate for diabetes in pregnancy. Continue throughout first trimester."
+    }
+  ],
+  "labs": {
+    "abg_admission": {
+      "date": "2026-04-18",
+      "ph": {"value": 7.14, "ref": "7.35–7.45", "flag": "CRITICAL — severe acidosis"},
+      "pco2": {"value": 22, "unit": "mmHg", "ref": "35–45", "flag": "L — compensatory hyperventilation"},
+      "bicarbonate": {"value": 8, "unit": "mEq/L", "ref": "22–29", "flag": "CRITICAL — severe"},
+      "anion_gap": {"value": 28, "unit": "mEq/L", "ref": "8–12", "flag": "CRITICAL"}
+    },
+    "abg_current": {
+      "date": "2026-04-22",
+      "ph": {"value": 7.39, "ref": "7.35–7.45", "flag": null},
+      "pco2": {"value": 38, "unit": "mmHg", "flag": null},
+      "bicarbonate": {"value": 23, "unit": "mEq/L", "flag": null},
+      "anion_gap": {"value": 12, "unit": "mEq/L", "flag": null},
+      "note": "DKA fully resolved"
+    },
+    "bmp_current": {
+      "date": "2026-04-22",
+      "sodium": {"value": 136, "unit": "mEq/L", "ref": "136–145", "flag": null},
+      "potassium": {"value": 4.2, "unit": "mEq/L", "ref": "3.5–5.0", "flag": null},
+      "chloride": {"value": 103, "unit": "mEq/L", "flag": null},
+      "bicarbonate": {"value": 23, "unit": "mEq/L", "flag": null},
+      "bun": {"value": 14, "unit": "mg/dL", "flag": null},
+      "creatinine": {"value": 0.8, "unit": "mg/dL", "flag": null},
+      "glucose": {"value": 112, "unit": "mg/dL", "flag": null}
+    },
+    "hba1c": {
+      "value": 11.4,
+      "unit": "%",
+      "ref": "<7.0 general goal; <6.5 preferred in pregnancy",
+      "date": "2026-04-18",
+      "flag": "CRITICAL — severely uncontrolled DM. Very high risk of first-trimester complications and fetal malformation at this HbA1c level."
+    },
+    "hcg_serum": {
+      "value": 28450,
+      "unit": "mIU/mL",
+      "date": "2026-04-18",
+      "interpretation": "Consistent with approximately 7 weeks gestation"
+    },
+    "urine_ketones": {
+      "admission": "4+ (large)",
+      "current": "Trace",
+      "date": "2026-04-22"
+    },
+    "tsh": {
+      "value": 2.1,
+      "unit": "mIU/L",
+      "ref": "0.5–4.0 (0.1–2.5 preferred in pregnancy T1)",
+      "date": "2026-04-19",
+      "flag": "Low-normal for pregnancy — recheck at OB appointment"
+    }
+  },
+  "social": {
+    "living_situation": "Alone. Studio apartment, ground floor. Month-to-month lease.",
+    "primary_support": "Mother (Diane Williams), lives 2 hours away, limited availability due to own health issues",
+    "partner_status": "Separated 3 months ago. Former partner held employer health insurance.",
+    "employment": "Gig work — food delivery platform (bicycle courier). Irregular income. No employer benefits.",
+    "insurance_type": "UNINSURED — lost coverage on partner's employer plan after separation. Medicaid application submitted 6 weeks ago, status pending.",
+    "language": "English",
+    "health_literacy": "Moderate-high — has managed T1DM since age 14, understands disease well, but not familiar with pregnancy implications"
+  },
+  "functional_status": {
+    "adl_independence": {
+      "all_adls": "Fully independent",
+      "note": "No functional limitations"
+    },
+    "ambulation": {
+      "current": "Fully ambulatory, independent",
+      "baseline": "Fully active — bicycle courier"
+    },
+    "fall_risk": {
+      "score": "LOW"
+    },
+    "cognitive": {
+      "screen": "Intact. Alert and oriented x4. Appropriate insight into medical situation."
+    }
+  },
+  "sdoh_flags": {
+    "transportation": {
+      "status": "BARRIER",
+      "detail": "No car. Rides bicycle for work and transportation. Cannot reliably travel to prenatal appointments via bicycle (weather, distance). Public transit available but complex route to OB clinic."
+    },
+    "food_security": {
+      "status": "INSECURE",
+      "detail": "Relies on food bank 2x/month. Dietary consistency critical for DM management but financially constrained. Cannot consistently afford low-glycemic foods."
+    },
+    "housing_stability": {
+      "status": "UNSTABLE",
+      "detail": "Month-to-month lease, behind 6 weeks on rent. Studio apartment. No lease security. Adding a newborn in 32 weeks to an unstable housing situation."
+    },
+    "medication_affordability": {
+      "status": "CRITICAL",
+      "detail": "UNINSURED. Insulin glargine (Lantus/Basaglar): $289–$389/vial without insurance. Insulin aspart: $285–$320/vial. Requires 1–2 vials/month each. Monthly insulin cost ~$500–$700 without coverage. Medicaid pending but not yet active. ReliOn over-the-counter insulin at Walmart ($25) is available but is NPH/Regular formulation — different pharmacokinetics, would require full re-education and regimen change."
+    },
+    "prenatal_care": {
+      "status": "NONE ESTABLISHED",
+      "detail": "No OB provider. No prenatal care. 7 weeks pregnant with T1DM (high-risk pregnancy requiring MFM specialist, not standard OB). HbA1c 11.4% — significantly elevated first-trimester risk for fetal malformations."
+    }
+  },
+  "critical_flags": [
+    {
+      "priority": "CRITICAL",
+      "flag": "TERATOGENIC MEDICATION ACTIVE — LISINOPRIL 10MG",
+      "detail": "ACE inhibitor contraindicated in pregnancy. Active order not yet discontinued. Must be replaced with methyldopa 250mg BID or labetalol 100mg BID (both pregnancy-safe) before discharge. Failure to discontinue before second trimester onset significantly increases fetal renal dysgenesis risk.",
+      "action_required": "Physician must discontinue lisinopril and prescribe pregnancy-safe antihypertensive TODAY."
+    },
+    {
+      "priority": "CRITICAL",
+      "flag": "TERATOGENIC MEDICATION ACTIVE — ATORVASTATIN 20MG",
+      "detail": "Statin (Category X) contraindicated throughout pregnancy. Active order not yet discontinued. Hyperlipidemia management to be deferred until postpartum.",
+      "action_required": "Physician must discontinue atorvastatin TODAY."
+    },
+    {
+      "priority": "HIGH",
+      "flag": "HbA1c 11.4% IN FIRST-TRIMESTER PREGNANCY",
+      "detail": "Severely uncontrolled DM in pregnancy significantly increases risk of spontaneous abortion, major congenital malformations, macrosomia, stillbirth. Requires MFM (Maternal-Fetal Medicine) specialist — not standard OB. Target HbA1c <6.5% in pregnancy (from 11.4% — major management challenge).",
+      "action_required": "MFM referral urgent — must be placed before discharge. Standard OB clinic alone is insufficient."
+    },
+    {
+      "priority": "HIGH",
+      "flag": "NO INSULIN COVERAGE POST-DISCHARGE",
+      "detail": "Patient is uninsured. Requires insulin glargine + insulin aspart (~$600–700/month). Medicaid pending but not active. Without insulin, DKA recurrence highly likely within days of discharge.",
+      "action_required": "Social work must identify insulin bridge program before discharge. Options: Eli Lilly Insulin Value Program ($35/month cap), Novo Nordisk Patient Assistance, hospital charity care for 30-day supply, or formulary conversion to ReliOn (requires education)."
+    },
+    {
+      "priority": "HIGH",
+      "flag": "NO OB OR MFM ESTABLISHED",
+      "detail": "High-risk pregnancy (T1DM, uncontrolled, newly discovered). No prenatal care. No provider. Requires urgent MFM referral — standard obstetric care inadequate for this risk level.",
+      "action_required": "MSW or care coordinator to place MFM referral before discharge, ideally with appointment confirmed."
+    }
+  ],
+  "discharge_target": {
+    "clinically_ready": true,
+    "destination": "Home",
+    "destination_barriers": [
+      "Teratogenic medications (lisinopril, atorvastatin) still in active orders — MUST resolve before discharge",
+      "No insulin coverage post-discharge — MUST resolve before discharge",
+      "No OB/MFM established — MUST refer before discharge",
+      "No primary care — lost with insurance",
+      "Housing instability — social work follow-up needed",
+      "Food insecurity — nutrition counseling + community referral needed"
+    ],
+    "pending_decisions": [
+      "Discontinue lisinopril + atorvastatin. Start methyldopa or labetalol for BP.",
+      "Insulin bridge program: identify source for 30-day supply before patient leaves.",
+      "MFM referral placed with appointment date confirmed.",
+      "Medicaid enrollment status — expedite if possible given pregnancy.",
+      "Prenatal ultrasound completion before discharge or as outpatient in 48 hours.",
+      "Driving: patient is a bicycle courier — no restriction on cycling. Discuss hypoglycemia risk while working."
+    ],
+    "follow_up": {
+      "mfm_ob": "Within 1 week — URGENT",
+      "endocrinology": "Within 2 weeks (DM in pregnancy management)",
+      "pcp": "Within 1 week (new PCP needed — connect via community health center)",
+      "pharmacy": "Same day — resolve insulin coverage before discharge"
+    }
+  },
+  "lace_inputs": {
+    "L_los_days": 5,
+    "L_score": 4,
+    "A_emergency_admission": true,
+    "A_score": 3,
+    "C_charlson_comorbidities": ["Diabetes with complications/DKA (2)", "Hypertension (0)"],
+    "C_charlson_score": 2,
+    "C_score": 2,
+    "E_ed_visits_prior_6_months": 4,
+    "E_score": 4,
+    "total_lace_score": 13,
+    "risk_category": "HIGHEST — 30-day readmission risk approximately 35–40%. Prior 4 ED visits for DKA in 6 months reflects systemic barriers (insurance gaps, food insecurity, medication access) not patient non-adherence.",
+    "note": "High E score reflects systemic SDOH barriers, not personal non-compliance. Addressing insulin access and SDOH is the single highest-yield intervention for preventing readmission."
+  }
+}
