@@ -107,7 +107,7 @@
       "indication": "Hypertension",
       "start_date": "Home medication — continued on admission",
       "home_dose": "10 mg daily",
-      "flag": "*** CRITICAL — TERATOGENIC IN PREGNANCY *** ACE inhibitors are Pregnancy Category D/X. Associated with fetal renal agenesis, oligohydramnios, and neonatal death in second and third trimester. ORDER IS STILL ACTIVE. MUST BE DISCONTINUED BEFORE DISCHARGE. Must be replaced with pregnancy-safe antihypertensive (methyldopa, labetalol, or nifedipine)."
+      "flag": "*** CRITICAL — TERATOGENIC IN PREGNANCY *** ACE inhibitors are contraindicated in pregnancy. ACOG recommends immediate discontinuation upon pregnancy confirmation. Associated with fetal renal agenesis, oligohydramnios, and neonatal death. ORDER IS STILL ACTIVE. MUST BE DISCONTINUED BEFORE DISCHARGE. Must be replaced with pregnancy-safe antihypertensive (methyldopa, labetalol, or nifedipine)."
     },
     {
       "name": "Atorvastatin",
@@ -117,7 +117,7 @@
       "indication": "Hyperlipidemia (prior to pregnancy confirmation)",
       "start_date": "Home medication — continued on admission",
       "home_dose": "20 mg daily",
-      "flag": "*** TERATOGENIC IN PREGNANCY *** Statins are Pregnancy Category X. Contraindicated throughout pregnancy. ORDER IS STILL ACTIVE. MUST BE DISCONTINUED BEFORE DISCHARGE."
+      "flag": "*** TERATOGENIC IN PREGNANCY *** Atorvastatin is teratogenic in pregnancy (historically Category X) — contraindicated throughout pregnancy, discontinue immediately. ORDER IS STILL ACTIVE. MUST BE DISCONTINUED BEFORE DISCHARGE. Hyperlipidemia management deferred until postpartum."
     },
     {
       "name": "Prenatal vitamins",
