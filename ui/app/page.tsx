@@ -54,70 +54,66 @@ export default function HomePage() {
         </Link>
       </div>
 
-      {/* Static example cases */}
-      <div className="space-y-2 mb-8">
+      {/* Epic-style patient list table */}
+      <div className="bg-panel border border-border-subtle rounded-sm overflow-hidden mb-8">
+        {/* Column headers */}
+        <div className="grid grid-cols-[1fr_80px_100px_60px_60px_80px_120px_28px] gap-x-4 px-4 py-2 border-b border-[#1e3a5f] bg-[#0d1b2a]">
+          {["Patient / Diagnosis", "Location", "Admission", "LOS", "LACE", "30-Day", "Status", ""].map((h) => (
+            <span key={h} className="text-2xs font-mono uppercase tracking-widest text-[#4a6b8a]">{h}</span>
+          ))}
+        </div>
+
         {cases.map(({ id, meta, data }) => {
           const criticalCount = data.prioritized_actions.filter((a) => a.priority === "CRITICAL").length;
           const risk30d = (data as unknown as Record<string, unknown> & { readmission_risk_30d?: { score_pct?: number } }).readmission_risk_30d;
 
           return (
             <Link href={`/case/${id}`} key={id} className="block group">
-              <div className="bg-panel border border-border-subtle hover:border-border-hover rounded-sm transition-colors">
-                <div className="flex items-center gap-4 px-4 py-3 flex-wrap">
-                  {/* ID + Example tag */}
-                  <div className="flex items-center gap-2 flex-shrink-0 w-36">
-                    <span className="font-mono text-2xs text-text-tertiary">{data.patient_id}</span>
-                    <span className="text-2xs font-mono px-1.5 py-0.5 rounded-sm border border-border-subtle text-text-tertiary bg-white/5">
+              <div className="grid grid-cols-[1fr_80px_100px_60px_60px_80px_120px_28px] gap-x-4 px-4 py-3 border-b border-border-subtle/50 last:border-0 hover:bg-[#0d1b2a] transition-colors items-center">
+                {/* Patient name + diagnosis */}
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-sm font-semibold text-text-primary truncate">{data.patient_name}</span>
+                    <span className="text-2xs font-mono px-1.5 py-0.5 rounded border border-border-subtle text-text-tertiary bg-white/5 flex-shrink-0">
                       EXAMPLE
                     </span>
-                  </div>
-
-                  {/* Patient name + diagnosis */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-sm font-semibold text-text-primary">{data.patient_name}</span>
-                      <span className="text-xs text-text-secondary">{meta.diagnosis}</span>
-                    </div>
-                    <div className="text-2xs text-text-tertiary mt-0.5">{meta.teaches}</div>
-                  </div>
-
-                  {/* Stats */}
-                  <div className="flex items-center gap-6 flex-shrink-0 flex-wrap">
-                    {risk30d?.score_pct !== undefined && (
-                      <div className="text-right">
-                        <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">30-DAY RISK</div>
-                        <div className={`font-mono text-base font-semibold tabular-nums ${
-                          risk30d.score_pct > 25 ? "text-critical-text" :
-                          risk30d.score_pct > 15 ? "text-warning-text" : "text-ok-text"
-                        }`}>{risk30d.score_pct}%</div>
-                      </div>
+                    {criticalCount > 0 && (
+                      <span className="text-2xs font-mono px-1.5 py-0.5 rounded border border-critical-border text-critical-text bg-critical-bg flex-shrink-0">
+                        {criticalCount} CRIT
+                      </span>
                     )}
-
-                    <div className="text-right">
-                      <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">LACE</div>
-                      <div className={`font-mono text-2xl font-semibold tabular-nums ${laceCls(data.lace_score.tier)}`}>
-                        {data.lace_score.total}
-                      </div>
-                    </div>
-
-                    <div className="text-right">
-                      <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">CRITICAL</div>
-                      <div className="font-mono text-2xl font-semibold tabular-nums text-critical-text">{criticalCount}</div>
-                    </div>
-
-                    {/* Readiness pill */}
-                    <span className={`text-2xs font-mono uppercase tracking-widest px-2 py-1 rounded-sm border ${readinessBadgeCls(data.discharge_readiness)}`}>
-                      {readinessLabel(data.discharge_readiness)}
-                    </span>
-
-                    <span className="text-text-tertiary text-xs font-mono group-hover:text-text-secondary transition-colors">→</span>
                   </div>
+                  <div className="text-2xs text-text-tertiary mt-0.5 truncate">{meta.diagnosis} · {meta.teaches}</div>
                 </div>
 
-                {/* Rationale preview */}
-                <div className="px-4 pb-2.5 border-t border-border-subtle/50 pt-2">
-                  <p className="text-2xs text-text-tertiary line-clamp-1">{data.discharge_readiness_rationale}</p>
-                </div>
+                {/* Location */}
+                <span className="text-xs font-mono text-text-secondary truncate">{data.patient_id}</span>
+
+                {/* Admission date */}
+                <span className="text-xs font-mono text-text-secondary">—</span>
+
+                {/* LOS */}
+                <span className="text-xs font-mono text-text-secondary tabular-nums">—</span>
+
+                {/* LACE */}
+                <span className={`font-mono text-lg font-bold tabular-nums ${laceCls(data.lace_score.tier)}`}>
+                  {data.lace_score.total}
+                </span>
+
+                {/* 30-day risk */}
+                <span className={`font-mono text-sm font-semibold tabular-nums ${
+                  (risk30d?.score_pct ?? 0) > 25 ? "text-critical-text" :
+                  (risk30d?.score_pct ?? 0) > 15 ? "text-warning-text" : "text-ok-text"
+                }`}>
+                  {risk30d?.score_pct !== undefined ? `${risk30d.score_pct}%` : "—"}
+                </span>
+
+                {/* Readiness badge */}
+                <span className={`text-2xs font-mono px-2 py-1 rounded-sm border text-center ${readinessBadgeCls(data.discharge_readiness)}`}>
+                  {readinessLabel(data.discharge_readiness)}
+                </span>
+
+                <span className="text-text-tertiary text-xs font-mono group-hover:text-text-secondary transition-colors">→</span>
               </div>
             </Link>
           );
