@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "ROUNDS.ai",
@@ -12,26 +22,50 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-gray-50 min-h-screen`}>
-        <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center gap-6 sticky top-0 z-10">
-          <Link href="/" className="text-base font-bold text-gray-900 tracking-tight">
-            ROUNDS.ai
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <body className="font-sans bg-base min-h-screen text-text-primary">
+        {/* Terminal-style nav bar */}
+        <nav className="bg-panel border-b border-border-subtle px-6 py-0 flex items-stretch gap-0 sticky top-0 z-20 h-11">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex items-center pr-6 mr-2 border-r border-border-subtle font-mono text-sm font-semibold text-text-primary tracking-tight hover:text-white transition-colors"
+          >
+            ROUNDS<span className="text-accent-text">.ai</span>
           </Link>
-          <Link href="/rounds" className="text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors">
+
+          {/* Nav links */}
+          <Link
+            href="/rounds"
+            className="flex items-center px-4 text-xs font-semibold uppercase tracking-wider text-info-text hover:text-white hover:bg-info-bg transition-colors"
+          >
             Live Rounds
           </Link>
-          <Link href="/" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
-            Demo Cases
+          <Link
+            href="/"
+            className="flex items-center px-4 text-xs font-semibold uppercase tracking-wider text-text-secondary hover:text-white hover:bg-white/5 transition-colors"
+          >
+            Cases
           </Link>
-          <Link href="/summary" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+          <Link
+            href="/summary"
+            className="flex items-center px-4 text-xs font-semibold uppercase tracking-wider text-text-secondary hover:text-white hover:bg-white/5 transition-colors"
+          >
             Summary
           </Link>
-          <span className="ml-auto text-xs text-amber-700 bg-amber-50 border border-amber-200 px-2 py-1 rounded font-medium">
-            SYNTHETIC DATA — Demo Only
-          </span>
+
+          {/* Right: synthetic data badge */}
+          <div className="ml-auto flex items-center">
+            <span className="text-2xs font-mono uppercase tracking-widest text-warning-text bg-warning-bg border border-warning-border px-2 py-1 rounded-sm">
+              SYNTHETIC DATA — DEMO ONLY
+            </span>
+          </div>
         </nav>
-        <main className="max-w-5xl mx-auto px-6 py-8">{children}</main>
+
+        {/* Main content — full width up to 1400px */}
+        <main className="max-w-[1400px] mx-auto px-6 py-6">
+          {children}
+        </main>
       </body>
     </html>
   );
