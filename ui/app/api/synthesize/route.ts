@@ -76,12 +76,34 @@ async function runAgent(
   return extractJSON(text, role);
 }
 
+const CACHED_OUTPUT_FILES: Record<number, string> = {
+  1: "case1_output.json",
+  2: "case2_output.json",
+  3: "case3_output.json",
+};
+
 export async function POST(req: NextRequest) {
-  const { caseId } = (await req.json()) as { caseId: number };
+  const body = (await req.json()) as { caseId: number; fresh?: boolean };
+  const { caseId, fresh = false } = body;
 
   const caseFile = CASE_FILES[caseId];
   if (!caseFile) {
     return NextResponse.json({ error: "Case not found" }, { status: 404 });
+  }
+
+  // Return pre-computed output unless caller explicitly requests a fresh synthesis.
+  // Fresh synthesis via live API takes 5+ minutes and exceeds Vercel's 300s limit.
+  if (!fresh) {
+    const cachedFile = CACHED_OUTPUT_FILES[caseId];
+    if (cachedFile) {
+      const cachePath = path.join(resolveProjectDir("outputs"), cachedFile);
+      if (fs.existsSync(cachePath)) {
+        const cached = JSON.parse(fs.readFileSync(cachePath, "utf-8"));
+        cached.synthesis_timestamp = new Date().toISOString();
+        cached._cached = true;
+        return NextResponse.json(cached);
+      }
+    }
   }
 
   // Simulate EHR pull: read synthetic case JSON
