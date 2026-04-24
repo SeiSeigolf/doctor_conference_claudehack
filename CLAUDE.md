@@ -366,6 +366,7 @@ No agent, no human, under any circumstance, may:
 5. Claim the system is HIPAA-compliant, FDA-cleared, or production-ready.
 6. Add scope listed in Tier 3 (Section 3).
 7. Continue past a hard budget limit without human approval.
+8. Echo, print, or log API keys, tokens, secrets, or credentials in terminal output, command arguments, commit messages, file contents committed to git, or any medium the developer could inadvertently share. Always use interactive prompts or stdin redirection from files.
 
 ---
 
@@ -376,6 +377,7 @@ All modifications to this CLAUDE.md must be logged here with justification.
 - **2026-04-22**: Initial constitution. (Seishiro + Claude)
 - **2026-04-22 13:00 JST**: Timeline compressed to 5 days; budget redistributed; added Section 14 submission checklist. (Seishiro + Claude)
 - **2026-04-23 16:00 JST**: Major pivot. Withdrew absent-developer narrative. Competing on product quality alone. Simplified meta-agent structure (removed NARRATOR). Rewrote Sections 1, 2, 6, 10, 12. New positioning: multi-agent medicine for discharge planning. (Seishiro + Claude)
+- **2026-04-24**: Rotated leaked API key; added Section 12 item 8 — credential handling policy prohibiting logging/echoing secrets. (Seishiro + Claude)
 
 ---
 
