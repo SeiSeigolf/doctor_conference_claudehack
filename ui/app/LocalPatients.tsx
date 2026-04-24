@@ -2,17 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
-interface LocalPatientRecord {
-  id: string;
-  createdAt: string;
-  basic: {
-    name: string;
-    age: string;
-    sex: string;
-    chiefComplaint: string;
-  };
-}
+import { getAllPatientIds, getPatient, deletePatient, PatientRecord, ROLE_ABBREV, ROLE_KEYS } from "./lib/patientStore";
 
 interface SynthesisMeta {
   discharge_readiness?: string;
@@ -33,12 +23,18 @@ function readinessLabel(r?: string) {
 }
 
 export default function LocalPatients() {
-  const [patients, setPatients] = useState<LocalPatientRecord[]>([]);
+  const [patients, setPatients] = useState<PatientRecord[]>([]);
 
   useEffect(() => {
-    const raw = localStorage.getItem("rounds_patients");
-    if (raw) setPatients(JSON.parse(raw));
+    const ids = getAllPatientIds();
+    const records = ids.map((id) => getPatient(id)).filter(Boolean) as PatientRecord[];
+    setPatients(records);
   }, []);
+
+  function handleClearAll() {
+    patients.forEach((p) => deletePatient(p.id));
+    setPatients([]);
+  }
 
   if (patients.length === 0) return null;
 
@@ -49,11 +45,7 @@ export default function LocalPatients() {
           ENTERED PATIENTS — {patients.length} record{patients.length !== 1 ? "s" : ""}
         </div>
         <button
-          onClick={() => {
-            localStorage.removeItem("rounds_patients");
-            patients.forEach((p) => localStorage.removeItem(`rounds_synthesis_${p.id}`));
-            setPatients([]);
-          }}
+          onClick={handleClearAll}
           className="text-2xs font-mono text-text-tertiary hover:text-critical-text transition-colors"
         >
           Clear all
@@ -67,8 +59,11 @@ export default function LocalPatients() {
             return raw ? (JSON.parse(raw) as SynthesisMeta) : null;
           })();
 
+          const completedRoles = ROLE_KEYS.filter((k) => p[k] !== null);
+          const href = synth ? `/patient/${p.id}` : `/intake/${p.id}`;
+
           return (
-            <Link href={`/patient/${p.id}`} key={p.id} className="block group">
+            <Link href={href} key={p.id} className="block group">
               <div className="bg-panel border border-border-subtle hover:border-border-hover rounded-sm transition-colors">
                 <div className="flex items-center gap-4 px-4 py-3 flex-wrap">
                   {/* ID */}
@@ -92,6 +87,25 @@ export default function LocalPatients() {
                         ? p.basic.chiefComplaint.slice(0, 80)
                         : "No complaint entered"}
                     </div>
+                  </div>
+
+                  {/* Role completion badges */}
+                  <div className="flex items-center gap-1 flex-shrink-0">
+                    {ROLE_KEYS.map((role) => {
+                      const done = completedRoles.includes(role);
+                      return (
+                        <span
+                          key={role}
+                          className={`text-2xs font-mono px-1.5 py-0.5 rounded-sm border ${
+                            done
+                              ? "border-ok-border text-ok-text bg-ok-bg"
+                              : "border-border-subtle text-text-tertiary"
+                          }`}
+                        >
+                          {ROLE_ABBREV[role]}
+                        </span>
+                      );
+                    })}
                   </div>
 
                   {/* Synthesis results if available */}
@@ -119,7 +133,7 @@ export default function LocalPatients() {
                     </div>
                   ) : (
                     <span className="text-2xs font-mono text-text-tertiary border border-border-subtle px-2 py-1 rounded-sm">
-                      SYNTHESIS PENDING
+                      {completedRoles.length === 0 ? "INTAKE PENDING" : `${completedRoles.length}/5 ROLES · ADD MORE`}
                     </span>
                   )}
 
