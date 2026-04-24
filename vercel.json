@@ -4,7 +4,7 @@
   "installCommand": "cd ui && npm install",
   "framework": "nextjs",
   "functions": {
-    "ui/app/api/synthesize/route.ts": {
+    "app/api/synthesize/route.ts": {
       "maxDuration": 300
     }
   }
