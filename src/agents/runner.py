@@ -19,7 +19,7 @@ _PROJECT_ROOT = Path(__file__).parent.parent.parent
 # Clinical agents run on Sonnet per CLAUDE.md budget rules.
 CLINICAL_MODEL = "claude-sonnet-4-6"
 CLINICAL_ROLES = ["physician", "nurse", "pharmacist", "msw", "pt"]
-MAX_TOKENS = 4096
+MAX_TOKENS = 8192
 
 
 def _load_system_prompt(role: str) -> str:

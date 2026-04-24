@@ -1,0 +1,1534 @@
+{
+  "patient_id": "CASE-003",
+  "patient_name": "Sarah Williams",
+  "synthesis_timestamp": "2026-04-23T09:15:00Z",
+  "discharge_readiness": "not_ready",
+  "discharge_readiness_rationale": "Physician agent has marked discharge_ready: false due to two teratogenic medications (lisinopril, atorvastatin) remaining on active orders, no secured insulin access for an uninsured patient, and no MFM referral placed for a high-risk first-trimester pregnancy with HbA1c 11.4%.",
+  "lace_score": {
+    "total": 13,
+    "tier": "VERY_HIGH",
+    "implication": "LACE 13 indicates approximately 35-40% 30-day readmission risk. This score reflects 4 prior ED DKA visits in 6 months driven by systemic barriers (insurance loss, medication affordability), not patient non-adherence. Do not discharge without all bridge supports in place: insulin access confirmed, MFM appointment scheduled, Medicaid expedited, and SDOH interventions initiated. Home health consideration appropriate given isolation and complexity."
+  },
+  "conflicts": [
+    {
+      "conflict_id": "C1",
+      "summary": "Teratogenic medications remain on active orders 3 days after pregnancy confirmation — clinical action required but not yet taken",
+      "positions": [
+        {
+          "holder": "Patient Case Data",
+          "position": "Lisinopril and atorvastatin are documented as still active on Day 5 despite pregnancy confirmed Day 2"
+        },
+        {
+          "holder": "Physician Agent",
+          "position": "Both medications must be discontinued immediately; discharge cannot proceed with these orders active"
+        },
+        {
+          "holder": "Pharmacist Agent",
+          "position": "Both medications are absolute contraindications in pregnancy; pharmacist will not dispense; orders must be cancelled"
+        },
+        {
+          "holder": "Nurse Agent",
+          "position": "Patient cannot be educated on discharge medications until teratogenic medications are discontinued and replacement antihypertensive is ordered"
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "Attending physician discontinues both medications and orders pregnancy-safe antihypertensive (methyldopa, labetalol, or nifedipine) TODAY",
+          "trade_off": "None — this is the only acceptable resolution; delay increases fetal exposure during critical organogenesis window"
+        }
+      ],
+      "requires_physician_decision": true,
+      "urgency": "before_discharge"
+    },
+    {
+      "conflict_id": "C2",
+      "summary": "Insulin access gap — patient requires ~$600-700/month insulin but is uninsured with Medicaid pending",
+      "positions": [
+        {
+          "holder": "Patient Financial Reality",
+          "position": "Cannot afford insulin on gig income; has demonstrated insulin rationing pattern (4 DKA admissions in 6 months)"
+        },
+        {
+          "holder": "Pharmacist Agent",
+          "position": "Multiple bridge programs available (Lilly Value Program $35/month, Novo PAP, hospital charity care); enrollment must be confirmed before discharge"
+        },
+        {
+          "holder": "MSW Agent",
+          "position": "Insulin access is single highest-priority actionable item; physical dispensing must be confirmed, not just program enrollment"
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "Enroll in Eli Lilly Insulin Value Program ($35/month cap for Basaglar) + Novo Nordisk My$99Insulin (NovoLog) same-day with pharmacy confirmation",
+          "trade_off": "Requires real-time enrollment; patient leaves with confirmed access"
+        },
+        {
+          "option": "Hospital charity care 30-day emergency supply dispensed from hospital pharmacy before discharge",
+          "trade_off": "Immediate bridge; requires internal authorization; buys time for manufacturer program enrollment"
+        },
+        {
+          "option": "Formulary conversion to ReliOn NPH/Regular ($25 OTC)",
+          "trade_off": "Last resort only — completely different pharmacokinetics; requires full regimen re-education; pregnancy glycemic management is more complex; clinical team must explicitly approve this approach"
+        }
+      ],
+      "requires_physician_decision": false,
+      "urgency": "before_discharge"
+    },
+    {
+      "conflict_id": "C3",
+      "summary": "MFM vs standard OB referral — patient has high-risk T1DM pregnancy requiring specialist care not yet established",
+      "positions": [
+        {
+          "holder": "Patient Case Data",
+          "position": "No OB or MFM established; OB referral not placed; prenatal ultrasound ordered but not completed"
+        },
+        {
+          "holder": "Physician Agent",
+          "position": "MFM specialist required given T1DM + HbA1c 11.4%; standard OB alone is insufficient"
+        },
+        {
+          "holder": "MSW Agent",
+          "position": "Referral must be placed with confirmed appointment date within 7 days — not merely submitted to queue; transportation to appointment must also be addressed"
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "Place MFM referral with confirmed appointment within 7 days before discharge; provide written appointment details to patient",
+          "trade_off": "Requires care coordination to obtain confirmed appointment slot, not just referral submission"
+        },
+        {
+          "option": "If MFM appointment cannot be confirmed within 7 days, consider OB triage visit as bridge assessment within 48-72 hours",
+          "trade_off": "Suboptimal for risk level but provides some coverage; MFM must still be scheduled"
+        }
+      ],
+      "requires_physician_decision": true,
+      "urgency": "before_discharge"
+    },
+    {
+      "conflict_id": "C4",
+      "summary": "Patient occupation (bicycle courier) conflicts with hypoglycemia safety on adjusted insulin regimen",
+      "positions": [
+        {
+          "holder": "Patient Livelihood",
+          "position": "Bicycle courier work is patient's sole income source; she must return to work"
+        },
+        {
+          "holder": "PT Agent",
+          "position": "Exercise-induced hypoglycemia during cycling is a safety risk; patient needs pre-exercise glucose targets and fast-acting glucose access"
+        },
+        {
+          "holder": "Nurse Agent",
+          "position": "Hypoglycemia while cycling poses injury risk; education needed on when NOT to work"
+        },
+        {
+          "holder": "Pharmacist Agent",
+          "position": "Sliding scale calibrated for inpatient conditions may need rapid outpatient adjustment for variable activity"
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "Comprehensive hypoglycemia safety education with work-specific parameters: check glucose before shifts, carry glucose tabs, parameters for when not to ride",
+          "trade_off": "Education addresses risk but does not eliminate it; patient may prioritize income over safety thresholds"
+        },
+        {
+          "option": "Discuss with endocrinology whether activity-day insulin dose reduction is appropriate",
+          "trade_off": "Clinical decision for outpatient team; cannot be resolved at discharge without endocrinology input"
+        }
+      ],
+      "requires_physician_decision": false,
+      "urgency": "before_discharge"
+    }
+  ],
+  "gaps": [
+    {
+      "gap_id": "G1",
+      "summary": "No glucagon kit identified in discharge medications — patient lives alone with T1DM on dual insulin therapy",
+      "source": "Nurse agent explicitly flags: 'No glucagon kit identified in discharge medications'; MSW agent notes patient lives alone with no reliable in-person support",
+      "action_required": "Verify whether glucagon kit (injectable or nasal Baqsimi) has been ordered for discharge; if not, physician must order; assess affordability given uninsured status and pursue charity care provision or manufacturer program if needed",
+      "owner": "Physician / Pharmacist / MSW",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G2",
+      "summary": "Glucose monitoring supply status unverified — CGM strongly indicated for T1DM in pregnancy but not ordered or discussed",
+      "source": "Pharmacist agent flags 'Glucose monitoring supply status unverified' as HIGH priority; no documentation of glucometer, strips, or CGM availability at home",
+      "action_required": "Confirm patient has functioning glucometer and adequate test strips before discharge; initiate CGM patient assistance application (Dexcom or Abbott FreeStyle Libre) given T1DM + pregnancy indication; document monitoring plan",
+      "owner": "Nurse / Pharmacist / Diabetes Educator",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G3",
+      "summary": "Domestic safety (IPV) not formally assessed — recent separation with partner who held insurance, circumstances unknown",
+      "source": "MSW agent explicitly flags: 'Domestic safety not formally assessed in available documentation'; patient's situation warrants IPV screening",
+      "action_required": "Conduct validated IPV screening before discharge (e.g., HITS tool); document result or patient declination",
+      "owner": "MSW",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G4",
+      "summary": "No teach-back documented for any critical education topic — education readiness cannot be verified",
+      "source": "Nurse agent states: 'No documentation of teach-back completion found — education status across all critical topics is unknown'",
+      "action_required": "Complete and document teach-back for: new insulin regimen, teratogenic medication discontinuation (patient must not take home supply), DKA warning signs in pregnancy, hypoglycemia management, and ED return criteria",
+      "owner": "Nurse / Diabetes Educator",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G5",
+      "summary": "New antihypertensive not yet ordered — lisinopril must be replaced but no pregnancy-safe alternative has been prescribed",
+      "source": "Pharmacist agent: 'No replacement antihypertensive has been ordered. A pregnancy-safe antihypertensive is required to replace lisinopril'; Nurse agent: 'Cannot educate patient on medication that does not exist yet'",
+      "action_required": "Physician must prescribe pregnancy-safe antihypertensive (methyldopa, labetalol, or nifedipine) before discharge; nursing must then complete medication education",
+      "owner": "Physician",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G6",
+      "summary": "Prenatal ultrasound ordered but not completed — fetal viability and dating not yet confirmed",
+      "source": "Patient case data: 'prenatal_ultrasound: ORDERED — not yet completed'; Physician agent lists as pending workup with HIGH impact on discharge",
+      "action_required": "Confirm whether ultrasound will be completed inpatient before discharge or scheduled as urgent outpatient within 48 hours; if outpatient, patient must have appointment date in hand and transportation plan",
+      "owner": "Physician / Care Coordinator",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G7",
+      "summary": "No follow-up psychosocial assessment documented after pregnancy disclosure distress on Day 2",
+      "source": "MSW agent: 'Distress documented Day 2 with no follow-up assessment noted'; Nurse agent: 'Emotional distress documented at pregnancy disclosure — ongoing psychological support needed'",
+      "action_required": "Complete psychosocial assessment including mood, coping, and pregnancy intention before discharge; provide warm referral to counseling resource; screen for perinatal depression/anxiety",
+      "owner": "MSW",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G8",
+      "summary": "Patient may not understand she must NOT take home supply of lisinopril and atorvastatin after discharge",
+      "source": "Nurse agent: 'Patient must be educated that lisinopril is being discontinued due to pregnancy teratogenicity — active order not yet stopped; patient may still believe this is a medication she should take at home'",
+      "action_required": "Explicitly counsel patient to NOT take any remaining home supply of lisinopril or atorvastatin after discharge; document this counseling",
+      "owner": "Nurse / Pharmacist",
+      "urgency": "before_discharge"
+    }
+  ],
+  "prioritized_actions": [
+    {
+      "rank": 1,
+      "priority": "CRITICAL",
+      "action": "Discontinue lisinopril 10mg immediately — active teratogenic medication in confirmed pregnancy at 7 weeks",
+      "owner": "Physician",
+      "urgency": "before discharge",
+      "rationale": "ACE inhibitor exposure during organogenesis causes fetal renal agenesis, oligohydramnios, and neonatal death; 3 days of continued exposure post-pregnancy confirmation is an unacceptable patient safety event"
+    },
+    {
+      "rank": 2,
+      "priority": "CRITICAL",
+      "action": "Discontinue atorvastatin 20mg immediately — active teratogenic medication in confirmed pregnancy at 7 weeks",
+      "owner": "Physician",
+      "urgency": "before discharge",
+      "rationale": "Statin exposure during first trimester organogenesis carries risk of CNS and other fetal malformations; no lipid-lowering therapy indicated during pregnancy"
+    },
+    {
+      "rank": 3,
+      "priority": "CRITICAL",
+      "action": "Order pregnancy-safe antihypertensive (methyldopa 250mg BID, labetalol 100mg BID, or nifedipine ER) to replace lisinopril",
+      "owner": "Physician",
+      "urgency": "before discharge",
+      "rationale": "Patient has essential hypertension requiring treatment; untreated hypertension in pregnancy increases preeclampsia risk; cannot discharge without BP coverage"
+    },
+    {
+      "rank": 4,
+      "priority": "CRITICAL",
+      "action": "Confirm insulin access with verified dispensing plan — Eli Lilly Insulin Value Program for Basaglar ($35/month) + Novo Nordisk program for NovoLog, OR hospital charity care 30-day supply dispensed from pharmacy",
+      "owner": "MSW / Pharmacist",
+      "urgency": "before discharge",
+      "rationale": "Patient is uninsured with 4 prior DKA admissions in 6 months due to insulin rationing; without confirmed insulin in hand or same-day pharmacy access, DKA recurrence is expected within days"
+    },
+    {
+      "rank": 5,
+      "priority": "CRITICAL",
+      "action": "Place MFM (Maternal-Fetal Medicine) referral with confirmed appointment within 7 days — not referral submission alone",
+      "owner": "Care Coordinator / MSW",
+      "urgency": "before discharge",
+      "rationale": "T1DM pregnancy with HbA1c 11.4% is a high-risk obstetric condition requiring MFM specialist; standard OB alone is insufficient; first trimester is critical window for glycemic impact on fetal development"
+    },
+    {
+      "rank": 6,
+      "priority": "HIGH",
+      "action": "Order glucagon kit (injectable or nasal Baqsimi) for discharge — patient lives alone with dual insulin therapy",
+      "owner": "Physician / Pharmacist",
+      "urgency": "before discharge",
+      "rationale": "Severe hypoglycemia while alone is a life-threatening scenario; no one present to assist or call 911; glucagon is the safety net"
+    },
+    {
+      "rank": 7,
+      "priority": "HIGH",
+      "action": "Verify glucose monitoring supplies — confirm patient has functioning glucometer, adequate test strips, and lancets; initiate CGM patient assistance application (Dexcom or Abbott)",
+      "owner": "Nurse / Pharmacist / Diabetes Educator",
+      "urgency": "before discharge",
+      "rationale": "Insulin-dependent T1DM patient with HbA1c 11.4% in pregnancy requires multiple daily glucose checks minimum; CGM is standard of care for T1DM pregnancy"
+    },
+    {
+      "rank": 8,
+      "priority": "HIGH",
+      "action": "Complete teach-back documentation for all critical education topics: new insulin regimen, teratogenic medication discontinuation (do NOT take home supply), DKA warning signs, hypoglycemia management, ED return criteria",
+      "owner": "Nurse / Diabetes Educator",
+      "urgency": "before discharge",
+      "rationale": "Education readiness cannot be verified without documented teach-back; patient has moderate-high health literacy and intact cognition — teach-back is achievable but undocumented"
+    },
+    {
+      "rank": 9,
+      "priority": "HIGH",
+      "action": "Conduct IPV (domestic violence) screening using validated tool — circumstances of recent separation unknown",
+      "owner": "MSW",
+      "urgency": "before discharge",
+      "rationale": "Recent separation from partner who held insurance, unplanned pregnancy news, financial dependence history — these factors warrant safety screening; cannot assume safety based on absence of documentation"
+    },
+    {
+      "rank": 10,
+      "priority": "HIGH",
+      "action": "Complete follow-up psychosocial assessment and provide warm referral to perinatal counseling resource",
+      "owner": "MSW",
+      "urgency": "before discharge",
+      "rationale": "Patient expressed shock and distress at pregnancy disclosure on Day 2; no follow-up documented; perinatal mental health is a patient safety domain given psychosocial stressor cluster"
+    },
+    {
+      "rank": 11,
+      "priority": "HIGH",
+      "action": "Confirm prenatal ultrasound completion or schedule as urgent outpatient within 48 hours with confirmed appointment and transportation plan",
+      "owner": "Physician / Care Coordinator",
+      "urgency": "before discharge",
+      "rationale": "Confirms gestational age, fetal viability, excludes ectopic pregnancy; with severely uncontrolled T1DM, result directly informs urgency of MFM management"
+    },
+    {
+      "rank": 12,
+      "priority": "HIGH",
+      "action": "Contact MassHealth to check Medicaid application status and request expedited pregnancy category enrollment",
+      "owner": "MSW",
+      "urgency": "before discharge",
+      "rationale": "Pregnancy may qualify for presumptive eligibility that activates faster than standard adult Medicaid; Medicaid activation unlocks medication coverage, specialist access, and NEMT transportation"
+    },
+    {
+      "rank": 13,
+      "priority": "HIGH",
+      "action": "Initiate emergency rental assistance referral (Boston RAFT or equivalent) — 6 weeks rent arrearage with eviction risk",
+      "owner": "MSW",
+      "urgency": "before discharge",
+      "rationale": "Housing instability is a direct readmission driver; eviction in early high-risk pregnancy would precipitate cascade of health and safety crises"
+    },
+    {
+      "rank": 14,
+      "priority": "HIGH",
+      "action": "Enroll in WIC program — patient is 7 weeks pregnant and income-eligible; provides food vouchers and prenatal vitamins",
+      "owner": "MSW",
+      "urgency": "same day post-discharge",
+      "rationale": "Food insecurity directly contributes to glycemic instability; WIC provides pregnancy-specific food vouchers relevant to diabetic dietary management"
+    },
+    {
+      "rank": 15,
+      "priority": "HIGH",
+      "action": "Provide hypoglycemia safety education specific to bicycle courier work: pre-exercise glucose targets (>100 mg/dL), carry fast-acting glucose, parameters for when NOT to ride",
+      "owner": "Nurse / Diabetes Educator",
+      "urgency": "before discharge",
+      "rationale": "Insulin regimen adjusted for pregnancy; sustained aerobic physical activity significantly lowers glucose; hypoglycemia while cycling poses direct injury risk"
+    },
+    {
+      "rank": 16,
+      "priority": "MODERATE",
+      "action": "Schedule endocrinology follow-up within 1-2 weeks — diabetes in pregnancy management",
+      "owner": "Care Coordinator",
+      "urgency": "before discharge",
+      "rationale": "HbA1c 11.4% requires aggressive outpatient titration toward <6.5% target; insulin requirements will change throughout pregnancy"
+    },
+    {
+      "rank": 17,
+      "priority": "MODERATE",
+      "action": "Refer to FQHC/Community Health Center for PCP establishment — patient lost PCP with insurance loss",
+      "owner": "MSW / Care Coordinator",
+      "urgency": "before discharge",
+      "rationale": "Federally Qualified Health Centers provide sliding-scale care regardless of ability to pay; critical anchor for primary care coordination"
+    },
+    {
+      "rank": 18,
+      "priority": "MODERATE",
+      "action": "Verify folic acid/prenatal vitamin total daily folate dose given overlap; document in chart",
+      "owner": "Pharmacist",
+      "urgency": "before discharge",
+      "rationale": "High-dose folic acid 4mg + prenatal vitamin may result in cumulative folate above intended dose; low toxicity risk but warrants documentation"
+    },
+    {
+      "rank": 19,
+      "priority": "MODERATE",
+      "action": "Educate mother (Diane Williams) by phone on DKA recognition, severe hypoglycemia, and glucagon use if available",
+      "owner": "Nurse",
+      "urgency": "before discharge",
+      "rationale": "Mother is only identified support person; even phone-based education enhances patient safety; she may be emergency contact"
+    },
+    {
+      "rank": 20,
+      "priority": "LOW",
+      "action": "Schedule TSH recheck at first MFM/OB appointment — low-normal for pregnancy",
+      "owner": "Physician / Care Coordinator",
+      "urgency": "within 1 week",
+      "rationale": "TSH 2.1 mIU/L is within range but above preferred first-trimester target <2.5; hypothyroidism in pregnancy has fetal neurodevelopmental risk"
+    },
+    {
+      "rank": 21,
+      "priority": "LOW",
+      "action": "Initiate MassHealth NEMT enrollment once Medicaid is active for upcoming appointment schedule",
+      "owner": "MSW",
+      "urgency": "within 48 hours",
+      "rationale": "Free medical transportation for prenatal appointments; bicycle transport insufficient for high-risk prenatal patient in variable weather"
+    }
+  ],
+  "handoff_packages": {
+    "pcp_summary": "Dear Primary Care Provider,\n\nSarah Williams, a 42-year-old woman with Type 1 diabetes mellitus since age 14, was admitted emergently on 2026-04-18 with severe diabetic ketoacidosis (pH 7.14, bicarbonate 8 mEq/L, anion gap 28) and was incidentally found to be 7 weeks pregnant — a diagnosis unknown to her at admission. Her HbA1c is 11.4%, significantly above the pregnancy target of <6.5%.\n\nHospital course: DKA resolved fully on insulin drip followed by transition to subcutaneous regimen. Current labs demonstrate complete metabolic recovery (pH 7.39, bicarbonate 23, anion gap 12, glucose 112 mg/dL, urine ketones trace). Vitals are stable: BP 122/78, HR 80, RR 14, SpO2 99% on room air.\n\nCRITICAL MEDICATION CHANGES: Lisinopril 10mg and atorvastatin 20mg were discontinued due to absolute contraindication in pregnancy. A pregnancy-safe antihypertensive [methyldopa/labetalol/nifedipine — confirm which was prescribed] was initiated. Insulin glargine was increased from 18 to 22 units QHS for pregnancy insulin resistance. Insulin aspart sliding scale was adjusted for pregnancy. High-dose folic acid 4mg daily and prenatal vitamins were added.\n\nDischarge medications: Insulin glargine 22 units SQ QHS, Insulin aspart per sliding scale AC + correction, [replacement antihypertensive — confirm], Folic acid 4mg daily, Prenatal vitamins daily.\n\nKey labs: HbA1c 11.4% (2026-04-18), hCG 28,450 mIU/mL (consistent with 7 weeks), TSH 2.1 mIU/L (recheck recommended), Cr 0.8 mg/dL.\n\nActive problems requiring follow-up: (1) High-risk T1DM pregnancy with severely uncontrolled glycemia — MFM referral placed, appointment within 7 days; (2) Hypertension on new pregnancy-safe medication — monitor BP at first visit; (3) Thyroid function borderline for pregnancy — TSH recheck indicated; (4) Food insecurity and housing instability affecting glycemic control; (5) Uninsured with pending Medicaid — confirm insurance activation.\n\nLACE Score: 13 (VERY HIGH risk tier, ~35-40% 30-day readmission risk). Prior 4 ED DKA visits in 6 months reflect systemic insulin access barriers, not patient non-adherence.\n\nUnresolved at discharge: Prenatal ultrasound ordered but pending completion. Medicaid pending activation. Housing 6 weeks in arrears with eviction risk.\n\nRecommended follow-up: MFM within 7 days (confirmed appointment), Endocrinology within 1-2 weeks, PCP within 1 week. Please coordinate with MFM regarding shared glycemic management.\n\nPlease contact hospital care coordination at [number] with questions about this transition.",
+    "home_health_orders": {
+      "visit_frequency": "Skilled nursing visit within 48-72 hours of discharge, then weekly x 2 weeks, reassess based on glycemic stability and patient self-management capacity",
+      "vital_monitoring": "Blood pressure at each visit; blood glucose review (patient self-monitoring log); weight",
+      "escalation_thresholds": [
+        "Blood pressure >140/90 mmHg on repeat measurement — contact PCP/MFM same day",
+        "Blood pressure >160/110 mmHg — direct patient to ED immediately",
+        "Blood glucose consistently >180 mg/dL postprandial or >140 mg/dL fasting x 2 days — contact endocrinology",
+        "Blood glucose <70 mg/dL with symptoms or <54 mg/dL any time — assess hypoglycemia response, confirm glucagon availability",
+        "Any nausea/vomiting preventing oral intake or insulin administration — contact MFM, consider ED",
+        "Urine ketones moderate or large (2+) — contact MFM/endocrinology or direct to ED if symptomatic"
+      ],
+      "medication_monitoring": [
+        "Verify patient has insulin glargine and insulin aspart supply — confirm refill plan",
+        "Review insulin injection technique and site rotation",
+        "Confirm patient is NOT taking lisinopril or atorvastatin (discontinued due to pregnancy)",
+        "Confirm patient understands new antihypertensive medication",
+        "Verify glucagon kit is present in home and patient/mother knows location and use"
+      ],
+      "fall_precautions": "Low fall risk at baseline; counsel on hypoglycemia recognition during physical activity; patient is a bicycle courier — assess for hypoglycemia episodes during work",
+      "functional_status_at_discharge": "Fully independent in all ADLs; ambulatory without assistive device; high baseline activity level as bicycle courier",
+      "goals_first_visit": [
+        "Confirm all discharge medications are in patient's possession and she understands regimen",
+        "Review blood glucose log and assess glycemic pattern",
+        "Verify MFM and endocrinology appointments are scheduled and patient has transportation plan",
+        "Assess food security and WIC enrollment status",
+        "Confirm glucagon kit in home and review emergency hypoglycemia protocol",
+        "Psychosocial check-in: assess coping with new pregnancy diagnosis and multiple stressors"
+      ]
+    },
+    "pharmacy_counseling": {
+      "complete_medication_list": [
+        "Insulin glargine 22 units SQ QHS — basal insulin; dose increased from home 18 units for pregnancy",
+        "Insulin aspart per sliding scale AC meals + correction — prandial insulin; adjusted for pregnancy",
+        "Methyldopa 250mg BID OR Labetalol 100mg BID OR Nifedipine ER [confirm which prescribed] — pregnancy-safe antihypertensive replacing lisinopril",
+        "Folic acid 4mg PO daily — high-dose for neural tube defect prevention in diabetes pregnancy",
+        "Prenatal vitamins 1 tablet PO daily",
+        "Glucagon kit [confirm ordered] — emergency hypoglycemia treatment"
+      ],
+      "interactions_flagged": [
+        "CONTRAINDICATED — DISCONTINUED: Lisinopril (ACE inhibitor) in pregnancy — fetal renal agenesis, oligohydramnios risk. Patient must NOT take any home supply.",
+        "CONTRAINDICATED — DISCONTINUED: Atorvastatin (statin) in pregnancy — teratogenic during organogenesis. Patient must NOT take any home supply.",
+        "Minor: Insulin glargine + insulin aspart — additive hypoglycemia risk; expected and therapeutic but requires monitoring, especially with variable physical activity"
+      ],
+      "new_medications_requiring_counseling": [
+        "Pregnancy-safe antihypertensive [methyldopa/labetalol/nifedipine]: mechanism — controls blood pressure without fetal harm; side effects — orthostatic hypotension (methyldopa), fatigue (labetalol); take as prescribed even if feeling well; do not stop without physician guidance",
+        "Folic acid 4mg: higher dose than standard prenatal vitamins for women with diabetes; prevents neural tube defects; take daily throughout first trimester minimum",
+        "Insulin glargine dose increase: dose increased from 18 to 22 units for pregnancy — this is intentional, do not revert to prior dose; requirements will continue to change",
+        "Insulin aspart sliding scale: requires pre-meal glucose check; explain correction factor; reinforce meal-time dosing consistency"
+      ],
+      "cost_and_access_issues": [
+        "CRITICAL: Patient is uninsured; insulin glargine + aspart cost ~$600-700/month without coverage",
+        "Bridge access confirmed via: [document specific program — Lilly Value Program, Novo PAP, hospital charity care]",
+        "Verify patient has program enrollment confirmation and knows how to refill",
+        "Glucagon kit affordability: assess cost and pursue manufacturer assistance if needed",
+        "All other medications are low-cost generics (<$15/month) available via GoodRx"
+      ],
+      "adherence_risk_factors": [
+        "Uninsured with medication cost barrier — primary adherence risk is financial access, not intent",
+        "4 prior DKA admissions in 6 months consistent with insulin rationing",
+        "Food insecurity creates inconsistent meal timing, complicating sliding scale accuracy",
+        "Lives alone — no one to prompt medication adherence or recognize problems",
+        "Gig work schedule creates variable activity levels affecting insulin needs",
+        "Emotional distress from recent pregnancy diagnosis may affect self-management capacity"
+      ],
+      "counseling_priorities": [
+        "1. Do NOT take home supply of lisinopril or atorvastatin — these are harmful to your pregnancy",
+        "2. Insulin is essential — never skip doses; call for help before running out",
+        "3. Hypoglycemia recognition and 15-15 rule — treat with fast-acting glucose, recheck in 15 minutes",
+        "4. Keep glucose tabs with you at all times, especially during bicycle courier work",
+        "5. Check blood glucose before meals and before physical activity",
+        "6. New blood pressure medication: what it is, why it's different from lisinopril, how to take it"
+      ]
+    },
+    "patient_instructions": "Welcome home, Sarah. Here is what you need to know:\n\n**Why you were in the hospital:** Your diabetes went out of control (called DKA), and we also found out you are pregnant — about 7 weeks along.\n\n**Important medicine changes:**\n- STOP taking lisinopril (blood pressure pill) and atorvastatin (cholesterol pill). These can harm your baby. Do not take any pills you have at home.\n- START a new blood pressure medicine called [methyldopa/labetalol/nifedipine]. Take it as directed.\n- Your insulin dose has changed. Take 22 units of the long-acting insulin at bedtime (this went up from 18).\n- Take your fast-acting insulin before meals as taught.\n- Take the big folic acid pill (4mg) every day — this protects your baby's development.\n\n**Warning signs — go to the ER if:**\n- You feel very sick with nausea, vomiting, belly pain, or fruity-smelling breath (signs DKA is coming back)\n- Your blood sugar is over 300\n- You have a severe headache, vision changes, or sudden swelling\n- Any vaginal bleeding\n\n**Warning signs — call your doctor if:**\n- Blood sugar is often over 180 or under 70\n- You feel dizzy, shaky, or confused (low blood sugar) — eat glucose tabs and call\n- Blood pressure is over 140/90\n\n**Your appointments:**\n- Pregnancy specialist (MFM): [date and time] — this is your most important appointment\n- Diabetes doctor: within 2 weeks\n- Regular doctor (new PCP at health center): within 1 week\n\n**Who to call:**\n- MFM office: [phone number]\n- If you can't get your insulin: [pharmacy assistance line or MSW contact]\n- Emergency: 911 or go to the ER\n\nYou are doing something hard. Please keep all your appointments. We are here to help you."
+  },
+  "conference_agenda": [
+    {
+      "order": 1,
+      "time_minutes": 2,
+      "presenting_role": "Physician",
+      "agenda_item": "Teratogenic medication status — lisinopril and atorvastatin discontinuation",
+      "key_question": "Have both medications been discontinued and is the replacement antihypertensive ordered? Confirm order numbers."
+    },
+    {
+      "order": 2,
+      "time_minutes": 3,
+      "presenting_role": "Pharmacist / MSW",
+      "agenda_item": "Insulin access — verified dispensing plan for uninsured patient",
+      "key_question": "Is there a confirmed insulin supply source with physical medication in hand or same-day pharmacy access? Which program and what is the backup?"
+    },
+    {
+      "order": 3,
+      "time_minutes": 2,
+      "presenting_role": "Care Coordinator / MSW",
+      "agenda_item": "MFM referral status and prenatal ultrasound",
+      "key_question": "Is the MFM appointment confirmed with a date within 7 days? Is prenatal ultrasound completed or scheduled within 48 hours with transportation plan?"
+    },
+    {
+      "order": 4,
+      "time_minutes": 2,
+      "presenting_role": "Physician / Pharmacist",
+      "agenda_item": "Glucagon kit and glucose monitoring supplies",
+      "key_question": "Has glucagon been ordered? Does patient have a functioning glucometer and adequate strips? Is CGM application initiated?"
+    },
+    {
+      "order": 5,
+      "time_minutes": 2,
+      "presenting_role": "Nurse",
+      "agenda_item": "Education completion and teach-back documentation",
+      "key_question": "Has teach-back been completed and documented for insulin regimen, teratogenic medication discontinuation, hypoglycemia, and DKA warning signs?"
+    },
+    {
+      "order": 6,
+      "time_minutes": 2,
+      "presenting_role": "MSW",
+      "agenda_item": "Medicaid status and SDOH interventions",
+      "key_question": "What is the Medicaid application status? Has pregnancy expedited enrollment been requested? Are WIC and emergency rental assistance referrals initiated?"
+    },
+    {
+      "order": 7,
+      "time_minutes": 1,
+      "presenting_role": "MSW",
+      "agenda_item": "Domestic safety screening and psychosocial assessment",
+      "key_question": "Has IPV screening been completed? Has follow-up psychosocial assessment been done since Day 2 distress? Is counseling referral in place?"
+    },
+    {
+      "order": 8,
+      "time_minutes": 1,
+      "presenting_role": "All",
+      "agenda_item": "Discharge readiness determination",
+      "key_question": "Are all CRITICAL actions resolved? Can we confirm discharge today, or what specific items require extended stay or next-day completion?"
+    }
+  ],
+  "meta": {
+    "agents_providing_output": [
+      "Physician",
+      "Nurse",
+      "Pharmacist",
+      "MSW",
+      "PT"
+    ],
+    "agents_missing_output": [],
+    "synthesis_confidence": "high",
+    "confidence_notes": "All five specialist agents provided comprehensive outputs with high internal consistency. Multiple agents independently identified the same critical safety issues (teratogenic medications, insulin access, MFM referral), providing triangulation. Gaps identified in synthesis (glucagon kit, IPV screening, teach-back documentation, glucose monitoring supplies) represent true documentation gaps in the source data that agents appropriately flagged but could not resolve. Patient data is detailed with explicit SDOH characterization, supporting high-confidence social risk assessment. One area of residual uncertainty: the specific replacement antihypertensive and exact insulin dispensing program have not yet been selected by the clinical team — these decisions are pending but clearly flagged as prerequisites for discharge.",
+    "model": "claude-sonnet-4-20250514",
+    "reasoning_effort": "high"
+  },
+  "_agent_outputs": {
+    "pt": {
+      "agent": "pt",
+      "case_id": "CASE-003",
+      "functional_mobility": {
+        "ambulation_distance": "Unlimited — no documented ambulation restriction. Patient is a bicycle courier by occupation, indicating sustained aerobic capacity and functional endurance well above average for age.",
+        "assistive_device": "none",
+        "gait_quality": "Presumed normal — no gait deviations documented. No nursing or physician notes indicate any gait abnormality during 5-day admission. Patient ambulatory and independent throughout hospitalization.",
+        "stair_negotiation": "independent",
+        "endurance": "High at baseline — occupational bicycle courier. Admission functional decline limited to acute DKA illness phase (Days 1–2); current vitals (HR 80, RR 14, SpO2 99% RA) consistent with full physiologic recovery from acute episode.",
+        "baseline_prior_admission": "Fully active, no assistive device, no mobility limitations. Employed as bicycle courier — physically demanding, cardiovascular-dependent occupation."
+      },
+      "fall_risk": {
+        "level": "low",
+        "contributing_factors": [
+          "Hypoglycemia risk — insulin-dependent T1DM with HbA1c 11.4% and recently adjusted insulin regimen; hypoglycemia mid-activity (including cycling for work) poses fall/accident risk",
+          "Pregnancy (7 weeks gestation) — minor balance and postural change risk in later trimesters, not yet clinically significant at 7 weeks",
+          "Early pregnancy fatigue and nausea may transiently affect functional tolerance"
+        ],
+        "score": "Low — documented in functional status record. No formal standardized tool score (e.g., Morse) recorded in chart.",
+        "mitigation_recommendations": [
+          "Educate patient on hypoglycemia recognition and response protocol specific to active work (cycling) context",
+          "Counsel patient to carry fast-acting glucose (glucose tabs, juice) at all times during courier shifts",
+          "Advise patient that DKA recovery may cause transient fatigue and weakness — recommend gradual return to full courier workload over 3–5 days",
+          "Reassess fall/balance risk as pregnancy progresses beyond first trimester — particularly relevant for bicycle safety in second and third trimesters"
+        ]
+      },
+      "rehab_recommendation": {
+        "recommended_level": "none",
+        "justification": "Patient is 42 years old with no functional limitations, no mobility deficits, no ADL dependencies, and a high-demand active occupation prior to this admission. The acute DKA episode caused physiologic derangement (acidosis, tachycardia, Kussmaul respirations) but not a functional mobility impairment requiring rehabilitation. Current vitals and functional status are consistent with full recovery. No PT intervention is clinically indicated for mobility or functional restoration. The appropriate post-discharge intervention is diabetes and pregnancy self-management education — which falls within nursing and diabetes education scope, not PT.",
+        "patient_meets_irF_criteria": false,
+        "frequency_per_week": null,
+        "estimated_duration_weeks": null
+      },
+      "home_environment": {
+        "known_hazards": [
+          "Studio apartment — no structural PT hazards identified at this functional level",
+          "Ground floor unit — no stair negotiation required for home entry (functionally favorable)",
+          "No car — bicycle is primary transport; hypoglycemia while cycling is an injury risk, not a home environment hazard per se, but flags for safety counseling",
+          "Housing instability (month-to-month, behind on rent) — not a PT hazard currently but relevant if patient faces displacement; new environment assessment would be needed"
+        ],
+        "assessment_needed": false,
+        "assessment_type": null,
+        "safe_for_discharge_as_is": true
+      },
+      "dme_recommendations": [
+        {
+          "item": "No DME indicated at this time",
+          "necessity": "optional",
+          "status": "needed"
+        },
+        {
+          "item": "Glucose monitoring supplies (CGM or SMBG meter, lancets, strips) — NOTE: outside PT scope to order but flagged as functionally critical safety equipment for return to courier activity",
+          "necessity": "required",
+          "status": "needed"
+        }
+      ],
+      "insurance_access_conflict": {
+        "conflict_exists": false,
+        "detail": "No PT services are being recommended; therefore, no insurance-PT coverage conflict exists. However, flagging for team awareness: patient is currently UNINSURED with Medicaid pending. If any PT services were indicated in the future (e.g., pelvic floor PT later in pregnancy, which is clinically appropriate for high-risk obstetric patients), Medicaid coverage for PT would need to be confirmed at time of referral.",
+        "clinical_need": "No current PT clinical need.",
+        "coverage_limit": "Uninsured — Medicaid pending. Future PT coverage unknown.",
+        "resolution_options": [
+          "No current action required for PT services",
+          "If pelvic floor PT or pregnancy-related PT becomes indicated in second/third trimester, confirm Medicaid PT benefits at that time",
+          "Community health centers in 02118 zip may offer sliding-scale PT if needed in future"
+        ]
+      },
+      "flags": [
+        {
+          "flag": "HYPOGLYCEMIA SAFETY RISK DURING OCCUPATIONAL CYCLING — No formal PT barrier to returning to courier work, but insulin regimen was adjusted upward during admission and patient will resume high-intensity physical activity (cycling). Exercise significantly lowers blood glucose in T1DM. Risk of hypoglycemic event while operating bicycle in traffic is a patient safety concern requiring pre-discharge counseling.",
+          "priority": "high",
+          "action": "Before discharge: ensure patient has received counseling (nursing, diabetes educator, or PT) on exercise-induced hypoglycemia management specific to cycling occupation. Patient should carry glucose tabs on every shift. Recommend checking glucose before and during long courier shifts. Physician should review whether insulin dose reduction on active work days is appropriate — this is a clinical management decision, not PT scope, but PT flags it for team."
+        },
+        {
+          "flag": "NO FORMAL PT EVALUATION DOCUMENTED — Functional status assessment is based on nursing and physician mobility documentation, not a formal PT evaluation. For this patient, this is appropriate — functional status is unambiguously intact. Note for medical record completeness only.",
+          "priority": "low",
+          "action": "No PT evaluation order needed. Document PT assessment based on available functional data. No functional gap identified."
+        },
+        {
+          "flag": "BICYCLE SAFETY IN ADVANCING PREGNANCY — Patient's occupation as bicycle courier will become a safety question in second and third trimesters as center of gravity shifts and fall risk increases. Not a current issue at 7 weeks.",
+          "priority": "low",
+          "action": "Flag for MFM or OB provider to counsel patient at future prenatal visits regarding bicycle courier work safety as pregnancy progresses. PT or OB can provide guidance when appropriate gestational age is reached."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "No formal bedside PT evaluation is documented in the chart. Functional status assessment is derived from nursing ADL documentation, physician notes, and the patient's occupational history as a bicycle courier. These sources consistently indicate intact mobility and independence with no functional impairment. Confidence would be upgraded to HIGH if a formal PT evaluation were on record. For this case, given the primary diagnosis (DKA — metabolic, not orthopedic or neurologic), the absence of formal PT evaluation is clinically appropriate and does not represent a documentation gap requiring correction."
+    },
+    "physician": {
+      "agent": "physician",
+      "case_id": "CASE-003",
+      "discharge_ready": false,
+      "discharge_hold_reason": "CRITICAL: Two teratogenic medications (lisinopril, atorvastatin) remain on active order and must be discontinued and replaced (lisinopril → pregnancy-safe antihypertensive) before discharge. Additionally: no insulin coverage secured post-discharge (uninsured patient with ~$600–700/month insulin requirement; DKA recurrence likely within days without bridge); no MFM referral placed for high-risk T1DM pregnancy at 7 weeks with HbA1c 11.4%; prenatal ultrasound ordered but not yet completed.",
+      "clinical_summary": "Sarah Williams is a 42-year-old woman with Type 1 diabetes mellitus (HbA1c 11.4%) admitted emergently with severe DKA (pH 7.14, bicarbonate 8, anion gap 28) and found incidentally to be 7 weeks pregnant — a diagnosis unknown to her at admission. DKA has fully resolved on subcutaneous insulin regimen (current pH 7.39, bicarb 23, anion gap 12, glucose 112, urine ketones trace); vitals are stable and she is clinically ready for discharge from a metabolic standpoint. However, two teratogenic medications (lisinopril, atorvastatin) remain active on her medication list and have not been discontinued despite pregnancy confirmation on Day 2. Compounding the clinical risk, the patient is uninsured with no secured insulin supply post-discharge, no obstetric or MFM care established, and significant SDOH barriers including food insecurity, housing instability, and loss of insurance coverage. LACE score 13 (highest risk tier) reflects 4 prior ED DKA visits in 6 months, primarily driven by systemic barriers. Discharge cannot proceed until critical medication safety and access issues are resolved.",
+      "acute_issues_resolved": [
+        {
+          "issue": "Diabetic ketoacidosis",
+          "status": "resolved",
+          "evidence": "ABG Day 5: pH 7.39, bicarbonate 23 mEq/L, anion gap 12 mEq/L (admission: pH 7.14, bicarb 8, AG 28). Glucose 112 mg/dL on SQ insulin regimen. Urine ketones trace. Tolerating oral diet. Vitals normalized: HR 80, RR 14."
+        },
+        {
+          "issue": "Sinus tachycardia / Kussmaul respiration",
+          "status": "resolved",
+          "evidence": "HR normalized from 128 → 80; RR normalized from 26 → 14. No supplemental oxygen required."
+        },
+        {
+          "issue": "Electrolyte derangements associated with DKA",
+          "status": "resolved",
+          "evidence": "BMP Day 5: Na 136, K 4.2, Cl 103, bicarb 23, BUN 14, Cr 0.8 — all within normal limits."
+        },
+        {
+          "issue": "Teratogenic medication exposure (lisinopril, atorvastatin)",
+          "status": "unresolved",
+          "evidence": "Both medications remain on active order as of data capture. Pregnancy confirmed Day 2 (hCG 28,450 mIU/mL). Neither has been discontinued. Lisinopril replacement with pregnancy-safe antihypertensive has not been ordered."
+        },
+        {
+          "issue": "Newly diagnosed pregnancy (7 weeks gestation) with uncontrolled T1DM",
+          "status": "unresolved",
+          "evidence": "HbA1c 11.4% — severely above pregnancy target (<6.5%). No MFM referral placed. No OB established. Prenatal ultrasound ordered but not resulted. Patient emotionally distressed; social work consulted but ongoing needs unresolved."
+        }
+      ],
+      "pending_workup": [
+        {
+          "test": "Prenatal ultrasound (first trimester)",
+          "ordered": true,
+          "result_available": false,
+          "impact_on_discharge": "HIGH — confirms gestational age, fetal viability, and excludes ectopic pregnancy. At 7 weeks with severely uncontrolled T1DM, result directly informs urgency and nature of MFM referral. Can be completed outpatient within 48 hours if clinical team confirms fetal viability is not in immediate question and patient has confirmed follow-up, but ideally completed prior to or concurrent with discharge."
+        },
+        {
+          "test": "Medicaid application status",
+          "ordered": false,
+          "result_available": false,
+          "impact_on_discharge": "HIGH — determines whether insulin and prenatal care can be accessed without bridge programs. Expedited Medicaid processing may be available given active pregnancy; care coordination should pursue this urgently."
+        },
+        {
+          "test": "TSH recheck (thyroid function in pregnancy)",
+          "ordered": false,
+          "result_available": false,
+          "impact_on_discharge": "LOW for immediate discharge, but clinically important: TSH 2.1 mIU/L is low-normal for first-trimester pregnancy (preferred <2.5 mIU/L). Does not hold discharge but must be rechecked at first MFM/OB visit. Flag for outpatient follow-up."
+        }
+      ],
+      "medication_flags": [
+        {
+          "medication": "Lisinopril 10 mg daily",
+          "flag_type": "teratogenic",
+          "detail": "ACE inhibitor — contraindicated in all trimesters of pregnancy. Associated with fetal renal agenesis, oligohydramnios sequence, renal tubular dysplasia, and neonatal death. ACOG mandates immediate discontinuation upon pregnancy confirmation. Active order remains in place on Day 5 despite pregnancy confirmed Day 2. Three days of continued exposure post-confirmation is an unacceptable patient safety event.",
+          "action_required": "DISCONTINUE IMMEDIATELY. Replace with a pregnancy-safe antihypertensive (methyldopa, labetalol, or nifedipine are first-line per ACOG). Attending physician must sign discontinuation and replacement orders before discharge. Do not discharge with this medication active."
+        },
+        {
+          "medication": "Atorvastatin 20 mg daily",
+          "flag_type": "teratogenic",
+          "detail": "Statin — historically FDA Category X; contraindicated throughout pregnancy due to risk of fetal malformation. Active order remains in place despite pregnancy confirmed Day 2. Hyperlipidemia management must be deferred to postpartum period.",
+          "action_required": "DISCONTINUE IMMEDIATELY. No replacement needed during pregnancy. Attending physician must sign discontinuation order before discharge. Do not discharge with this medication active."
+        },
+        {
+          "medication": "Insulin glargine 22 units QHS",
+          "flag_type": "dose_change",
+          "detail": "Dose increased from home dose of 18 units QHS to 22 units QHS to account for pregnancy-related insulin resistance. Appropriate clinical adjustment. However, insulin requirements in T1DM pregnancy are dynamic — will continue to change across trimesters. Close outpatient titration is essential.",
+          "action_required": "Confirm discharge dose documented. Ensure patient and MFM/endocrinology are aligned on titration protocol. Provide written self-adjustment parameters if within scope of outpatient plan."
+        },
+        {
+          "medication": "Insulin aspart (sliding scale, AC + correction)",
+          "flag_type": "dose_change",
+          "detail": "Sliding scale adjusted for pregnancy. Patient has managed T1DM since age 14 and has baseline competency, but pregnancy-specific dosing adjustments and hypoglycemia risk during physical work (bicycle courier) require explicit re-education.",
+          "action_required": "Confirm diabetes educator or nursing has provided pregnancy-specific insulin management education before discharge, including hypoglycemia recognition and management while performing active gig work."
+        },
+        {
+          "medication": "Insulin glargine + Insulin aspart (combined)",
+          "flag_type": "other",
+          "detail": "Patient is uninsured. Combined monthly insulin cost estimated $500–700/month without coverage. Medicaid not yet active. Risk of DKA recurrence within days of discharge if patient cannot obtain insulin. This is the single highest-yield readmission prevention intervention for this case.",
+          "action_required": "Social work and/or care coordinator must secure a verified insulin supply source before discharge — minimum 30-day bridge. Options: Eli Lilly Insulin Value Program ($35/month cap), Novo Nordisk Patient Assistance Program, hospital pharmacy charity dispensing, or formulary conversion to ReliOn OTC (requires full pharmacokinetic re-education and structured regimen change). Do not discharge without confirmed access."
+        },
+        {
+          "medication": "Folic acid 4 mg daily",
+          "flag_type": "other",
+          "detail": "High-dose folic acid (4 mg vs standard 0.4–0.8 mg) is appropriate and guideline-concordant for women with diabetes in pregnancy given elevated neural tube defect risk. Continue through at least end of first trimester, ideally throughout pregnancy per MFM guidance.",
+          "action_required": "No action required. Confirm included in discharge prescription and patient counseled on indication."
+        },
+        {
+          "medication": "Prenatal vitamins 1 tablet daily",
+          "flag_type": "other",
+          "detail": "Appropriate. No safety concerns.",
+          "action_required": "Confirm prescription provided and patient able to afford. Include in insulin bridge/affordability discussion."
+        }
+      ],
+      "discharge_diagnosis": {
+        "primary": "Diabetic ketoacidosis, type 1 diabetes mellitus — E10.10",
+        "secondary": [
+          "Pregnancy, first trimester, 7 weeks gestation — Z34.01",
+          "Type 1 diabetes mellitus with ketoacidosis — E10.10 (same code — confirm with coding that DKA as manifestation of T1DM is captured correctly under single code vs. combination coding)",
+          "Essential hypertension — I10",
+          "Obesity, BMI 31.8 — E66.09",
+          "Long-term (current) use of insulin — Z79.4",
+          "Encounter for supervision of high-risk pregnancy — O09.819 (or appropriate O-code for supervision of pregnancy with pre-existing diabetes — O24.012)"
+        ],
+        "drg_note": "Primary DRG likely DRG 640 (Miscellaneous Disorders of Nutrition, Metabolism, Fluids/Electrolytes) or DRG 638/639 (Diabetes) — confirm with coding. Pregnancy with pre-existing T1DM complicates coding: O24.012 (Pre-existing type 1 diabetes mellitus, in pregnancy, first trimester) may be more appropriate as a principal or major secondary diagnosis given the clinical context and impact on management. ICD-10-CM guidelines require specific obstetric codes when pregnancy complicates or is complicated by a condition — coding team must review for DRG and payer accuracy. High-dose folic acid, prenatal vitamins, and insulin adjustments all document pregnancy-complexity. Document MFM referral in the record to support medical necessity and risk stratification. LACE 13 / 4 prior ED visits should be documented to support transition of care coding and care management billing."
+      },
+      "follow_up_plan": [
+        {
+          "specialty": "Maternal-Fetal Medicine (MFM)",
+          "timeframe": "Within 1 week — appointment must be confirmed before discharge",
+          "urgency": "critical"
+        },
+        {
+          "specialty": "Endocrinology (diabetes in pregnancy)",
+          "timeframe": "Within 1–2 weeks — coordinate with MFM; ideally co-located or same visit system",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Primary Care (new PCP — patient lost PCP with insurance loss)",
+          "timeframe": "Within 1 week — community health center referral preferred given uninsured status; federally qualified health centers (FQHCs) provide sliding-scale care",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Pharmacy / Insulin Access",
+          "timeframe": "Same day as discharge — bridge supply must be secured before patient leaves",
+          "urgency": "critical"
+        },
+        {
+          "specialty": "Social Work — Medicaid expedite, housing, food security",
+          "timeframe": "Before discharge and ongoing",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Diabetes Education (pregnancy-specific)",
+          "timeframe": "Before discharge (inpatient) and reinforced at first MFM/endocrinology visit",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Prenatal Ultrasound (first trimester)",
+          "timeframe": "Within 48 hours of discharge if not completed inpatient",
+          "urgency": "urgent"
+        }
+      ],
+      "safety_flags": [
+        {
+          "flag": "ACTIVE TERATOGENIC MEDICATION — LISINOPRIL 10 MG: ACE inhibitor contraindicated in pregnancy; active order not discontinued despite pregnancy confirmed 3 days ago. Ongoing fetal exposure to ACE inhibitor during critical organogenesis window.",
+          "priority": "critical",
+          "action": "Attending physician must discontinue lisinopril and replace with pregnancy-safe antihypertensive (methyldopa, labetalol, or nifedipine) TODAY. Do not discharge patient with this order active under any circumstances."
+        },
+        {
+          "flag": "ACTIVE TERATOGENIC MEDICATION — ATORVASTATIN 20 MG: Statin contraindicated throughout pregnancy; active order not discontinued despite pregnancy confirmed 3 days ago.",
+          "priority": "critical",
+          "action": "Attending physician must discontinue atorvastatin TODAY. No replacement needed. Do not discharge patient with this order active."
+        },
+        {
+          "flag": "NO SECURED INSULIN ACCESS POST-DISCHARGE: Patient is uninsured; estimated insulin cost $500–700/month. Without a verified bridge supply, DKA recurrence is expected within days. Patient has had 4 ED DKA visits in 6 months — access failure is the demonstrated mechanism.",
+          "priority": "critical",
+          "action": "Social work or care coordinator must confirm a specific insulin source (manufacturer assistance program, hospital charity, or formulary conversion with education) with verified access before patient physically leaves the building."
+        },
+        {
+          "flag": "HbA1c 11.4% IN FIRST-TRIMESTER PREGNANCY: Severely uncontrolled glycemia during organogenesis (weeks 5–10) significantly elevates risk of spontaneous abortion and major congenital malformations (cardiac, neural tube, skeletal). HbA1c reflects prior 3-month average; fetal exposure to hyperglycemia has been ongoing.",
+          "priority": "high",
+          "action": "Urgent MFM referral with appointment confirmed before discharge. Patient requires intensive outpatient glycemic management. Document fetal risk counseling in chart. Ensure patient understands urgency without inducing counterproductive distress — coordinate with social work given patient's expressed shock and emotional state."
+        },
+        {
+          "flag": "NO MFM OR OB ESTABLISHED: 7-week high-risk pregnancy with T1DM, uncontrolled glycemia, newly identified. Standard OB clinic is insufficient — MFM specialist required. Zero prenatal care to date.",
+          "priority": "high",
+          "action": "MFM referral must be placed with confirmed appointment (not just referral submitted) before discharge. If MFM appointment cannot be confirmed within 1 week, discuss whether patient should remain inpatient or be seen in OB triage for bridging assessment."
+        },
+        {
+          "flag": "HYPOGLYCEMIA RISK DURING ACTIVE PHYSICAL WORK: Patient is a bicycle courier — sustained aerobic physical activity significantly lowers glucose and increases hypoglycemia risk, especially on adjusted insulin regimen. Hypoglycemia while cycling poses direct injury risk to patient and potential fetal risk.",
+          "priority": "high",
+          "action": "Explicit discharge counseling: glucose monitoring before and during shifts, carbohydrate access during rides, parameters for when not to work. Document counseling. Discuss with endocrinology at follow-up."
+        },
+        {
+          "flag": "UNINSURED WITH PENDING MEDICAID: Loss of insurance is the proximate driver of prior DKA admissions (LACE E-score 4 from 4 ED visits in 6 months). Medicaid application submitted 6 weeks prior — pregnancy may qualify patient for expedited emergency Medicaid enrollment.",
+          "priority": "medium",
+          "action": "Social work to contact state Medicaid office to flag pregnancy and request expedited review. Pregnancy-related Medicaid (CHIP perinatal or state-equivalent) may activate faster than standard Medicaid. Document urgency."
+        },
+        {
+          "flag": "FOOD INSECURITY WITH DIABETES: Dietary consistency is a cornerstone of glycemic management. Patient relies on food bank 2x/month and cannot consistently afford low-glycemic foods. This is a direct readmission driver.",
+          "priority": "medium",
+          "action": "Nutritionist/dietitian consultation before discharge. Refer to WIC (patient will qualify once Medicaid/pregnancy documentation is in place). Identify local food resources compatible with diabetic diet. Document in discharge plan."
+        },
+        {
+          "flag": "HOUSING INSTABILITY: Month-to-month lease, 6 weeks behind on rent, solo living. Stress of eviction and housing instability adversely affects glycemic control. Adding a newborn in 32 weeks to this situation requires proactive social work engagement.",
+          "priority": "medium",
+          "action": "Social work to initiate referral to housing assistance programs. Document in discharge plan. Not a hold on discharge but requires active case management engagement."
+        }
+      ],
+      "confidence_level": "high",
+      "confidence_note": "Data is detailed and internally consistent across vitals, labs, medications, and social context. Clinical findings are unambiguous. Two medication safety issues (lisinopril, atorvastatin) are objectively confirmed as active orders post-pregnancy confirmation — no inference required. Confidence would be higher for obstetric risk stratification if prenatal ultrasound results were available; that gap is noted in pending workup. No data elements were fabricated or inferred beyond what is explicitly documented in the case record."
+    },
+    "nurse": {
+      "agent": "nurse",
+      "case_id": "CASE-003",
+      "education_readiness": {
+        "overall": "conditional",
+        "barriers": [
+          "CRITICAL: Patient must be educated that lisinopril is being discontinued due to pregnancy teratogenicity — active order not yet stopped; patient may still believe this is a medication she should take at home",
+          "CRITICAL: Patient must be educated that atorvastatin is being discontinued due to pregnancy teratogenicity — same risk as lisinopril if patient self-administers home supply",
+          "Pregnancy diagnosis confirmed only on Day 2 of admission — patient expressed shock and distress at time of disclosure; emotional readiness for complex self-management education may be limited",
+          "Insulin regimen has been changed from home doses (glargine 18u → 22u QHS) and sliding scale adjusted for pregnancy — patient requires re-education on new regimen, not just reinforcement of prior knowledge",
+          "Patient has no prior experience managing T1DM in pregnancy; familiar with her disease but not familiar with pregnancy-specific implications (stated in chart)",
+          "Prenatal care and high-risk pregnancy implications (HbA1c 11.4%, fetal malformation risk) require dedicated counseling — not yet documented as delivered",
+          "Insulin affordability crisis: patient must understand her options (manufacturer programs, ReliOn as contingency) before discharge or she may ration/skip doses with DKA recurrence risk",
+          "No documentation of teach-back completion found — education status across all critical topics is unknown"
+        ],
+        "teach_back_topics_required": [
+          "New insulin regimen: glargine 22u QHS (increased from home 18u) — why it changed, how to draw and inject",
+          "Insulin aspart sliding scale: how to match dose to pre-meal blood glucose and carbohydrate intake",
+          "Blood glucose targets in pregnancy: tighter targets than non-pregnant state — patient must verbalize numerical goals",
+          "Ketone monitoring at home: when and how to check, what values require action",
+          "DKA warning signs: nausea, vomiting, abdominal pain, fruity breath, polyuria, polydipsia — call vs. go to ED thresholds",
+          "Why lisinopril and atorvastatin are being stopped: patient must understand she should NOT take remaining home supply",
+          "New antihypertensive (once prescribed): name, dose, timing, side effects, what to do if BP is high at home",
+          "Sick day rules for T1DM: never stop insulin when ill, increase monitoring frequency, when to seek care",
+          "Hypoglycemia recognition and treatment: critical given pregnancy and active gig work as bicycle courier",
+          "When NOT to exercise or cycle to work: hypoglycemia risk while physically active with prandial insulin on board",
+          "High-risk pregnancy: what HbA1c 11.4% means for this pregnancy, why MFM specialist is needed, importance of attending every appointment",
+          "How to access MFM appointment once referral is placed — transportation planning needed",
+          "How to use manufacturer insulin assistance programs if Medicaid is not active at time of first refill",
+          "Prenatal vitamins and folic acid 4mg daily: purpose, how to take, why higher dose than standard",
+          "When to call OB/MFM vs. when to call endocrinology vs. when to go to ED"
+        ]
+      },
+      "medication_administration": {
+        "complexity_rating": "very_high",
+        "specific_concerns": [
+          "Dual insulin regimen (basal + prandial sliding scale) with doses adjusted specifically for pregnancy — regimen is more complex than her prior home regimen",
+          "Glargine dose increased from 18u to 22u for pregnancy insulin resistance — patient must understand this is intentional and not revert to prior dose",
+          "Insulin aspart dosing requires pre-meal glucose check, carbohydrate estimation, and correction factor application — high cognitive and behavioral burden",
+          "Patient is currently UNINSURED with no active insulin coverage — if she cannot obtain insulin at discharge, she cannot execute the regimen at all regardless of education",
+          "Lisinopril and atorvastatin are still on active orders at time of case review — risk of patient taking home supply of these teratogenic medications if not explicitly told to stop and why",
+          "New antihypertensive not yet prescribed (pending physician action) — patient cannot be educated on a medication that has not yet been ordered",
+          "High-dose folic acid 4mg daily is non-standard and may differ from OTC prenatal vitamins already in patient's possession — clarify she should not substitute lower-dose OTC folic acid",
+          "TSH 2.1 is low-normal for first trimester; if thyroid supplementation is added at OB visit, regimen complexity will increase further — note for outpatient team",
+          "Patient lives alone — no one at home to assist with injections or recognize hypoglycemia",
+          "Active physical job (bicycle courier) creates variable glucose demand — sliding scale calibrated for inpatient conditions may need rapid outpatient adjustment"
+        ],
+        "injection_required": true,
+        "injection_education_complete": false
+      },
+      "vital_sign_thresholds": {
+        "call_pcp_if": [
+          "Blood glucose consistently above 140 mg/dL fasting or above 180 mg/dL 2 hours after meals on 2 or more consecutive readings",
+          "Blood glucose below 70 mg/dL on any reading (hypoglycemia — especially critical in pregnancy)",
+          "Urine ketones moderate (2+) with glucose in range — may indicate dietary or insulin timing issue",
+          "Blood pressure above 140/90 mmHg on repeat reading at home (critical in pregnancy — call same day)",
+          "Any nausea or vomiting preventing oral intake or insulin administration",
+          "New headache, visual changes, or right upper quadrant pain (preeclampsia warning signs — call immediately given HTN history)",
+          "TSH recheck result outside 0.1–2.5 mIU/L range when obtained at OB visit"
+        ],
+        "go_to_ed_if": [
+          "Blood glucose above 250 mg/dL with urine ketones moderate or large (2+ or greater)",
+          "Blood glucose above 300 mg/dL regardless of symptoms",
+          "Symptoms of DKA: persistent nausea/vomiting, abdominal pain, fruity-smelling breath, deep/rapid breathing, altered mental status",
+          "Inability to keep fluids down for more than 4–6 hours (hyperemesis or illness-triggered DKA risk in pregnancy is markedly elevated)",
+          "Blood glucose below 54 mg/dL or any hypoglycemia with confusion, loss of consciousness, or inability to self-treat",
+          "Severe headache, sudden vision changes, facial swelling, or severe right upper quadrant/epigastric pain (possible preeclampsia — 911 if BP unattainable)",
+          "Vaginal bleeding in any amount",
+          "Blood pressure above 160/110 mmHg on any single reading (hypertensive urgency in pregnancy)",
+          "Reduced or absent fetal movement (relevant later in pregnancy — educate now so patient knows threshold when applicable)"
+        ]
+      },
+      "wound_device_care": {
+        "required": true,
+        "items": [
+          "Subcutaneous insulin injection sites: education on site rotation (abdomen, thighs, upper arms), avoiding same site repeatedly, monitoring for lipohypertrophy",
+          "Insulin pen or syringe technique: confirm patient can demonstrate correct draw-up, air bubble removal, injection depth, and needle disposal into sharps container",
+          "Blood glucose meter: confirm patient has functioning meter, adequate test strips, and can demonstrate correct fingerstick technique — supply availability is a cost concern given uninsured status",
+          "Urine ketone testing: confirm patient has ketone test strips at home or has a plan to obtain them before discharge",
+          "No surgical wounds, drains, or IV sites requiring outpatient care identified in this case"
+        ]
+      },
+      "adl_assessment": {
+        "safe_for_discharge_setting": true,
+        "concerns": [
+          "Patient lives alone — no one present to recognize hypoglycemia, call for help, or administer glucagon if patient becomes incapacitated",
+          "Glucagon kit (or nasal glucagon) not mentioned in discharge medication list — must verify this is addressed before discharge",
+          "Bicycle courier work involves variable exertion, skipped or delayed meals, and unpredictable glucose fluctuation — hypoglycemia risk during rides is significant",
+          "Patient must carry fast-acting glucose (juice, glucose tabs) at all times while working; education on pre-exercise glucose targets needed",
+          "Food insecurity documented — consistent carbohydrate intake required for sliding scale insulin safety; inconsistent meal timing will destabilize glucose control",
+          "Housing instability (month-to-month, behind on rent) — stress and potential displacement would directly destabilize DM management",
+          "Nearest ED and OB/MFM access via public transit described as complex route — in a DKA emergency, transport delay is a patient safety risk; 911 is appropriate for symptoms listed above",
+          "No functional limitations identified; patient is fully independent for all ADLs at time of discharge — these concerns are safety-related, not capacity-related"
+        ]
+      },
+      "caregiver": {
+        "identified": true,
+        "name": "Diane Williams (mother)",
+        "availability": "Lives 2 hours away. Has her own health issues limiting availability. Cannot provide consistent daily support. May be reachable by phone for emotional support but is not a reliable in-person caregiver for daily insulin management or emergency response.",
+        "education_status": "not_started"
+      },
+      "warning_signs_education": {
+        "topics_covered": [
+          "Chart documents social work consultation for emotional distress related to pregnancy disclosure — distress acknowledged",
+          "DKA history — patient has managed T1DM since age 14 and has baseline familiarity with DKA symptoms from prior episodes (4 ED visits in 6 months; however, systemic barriers were the driver per LACE note)"
+        ],
+        "topics_pending": [
+          "DKA warning signs specific to pregnancy context: nausea/vomiting in pregnancy can mask or mimic early DKA — patient must know to check ketones with any vomiting episode",
+          "Hypoglycemia unawareness risk: prolonged poor control (HbA1c 11.4%) may have blunted hypoglycemia symptoms — patient needs specific education on checking glucose proactively rather than waiting for symptoms",
+          "Preeclampsia warning signs: headache, visual changes, epigastric pain, facial/hand edema — new content for this patient given no prior pregnancy",
+          "Signs of miscarriage/early pregnancy loss: vaginal bleeding, severe cramping — when to call vs. go to ED",
+          "Sick day rules specific to pregnancy: hyperemesis gravidarum risk layered on T1DM is a high-acuity scenario; patient must know this combination requires early ED evaluation",
+          "Teratogenic medication warning: patient must be told explicitly not to take remaining home supply of lisinopril or atorvastatin after discharge",
+          "Blood pressure monitoring at home: whether patient has a cuff, how to take a reading, what values to report",
+          "Signs of insulin shortage/rationing: patient should be educated to call for help before skipping doses — rationing insulin in pregnancy is a critical safety failure point given uninsured status"
+        ]
+      },
+      "flags": [
+        {
+          "flag": "TERATOGENIC MEDICATION — LISINOPRIL 10MG STILL ON ACTIVE ORDER AT TIME OF CASE REVIEW",
+          "priority": "critical",
+          "action": "Escalate to physician immediately. Lisinopril must be discontinued and a pregnancy-safe antihypertensive (methyldopa, labetalol, or nifedipine) must be ordered and patient educated on the new medication before discharge. Patient must also be instructed not to take any remaining home supply of lisinopril. Do not discharge until this is resolved."
+        },
+        {
+          "flag": "TERATOGENIC MEDICATION — ATORVASTATIN 20MG STILL ON ACTIVE ORDER AT TIME OF CASE REVIEW",
+          "priority": "critical",
+          "action": "Escalate to physician immediately. Atorvastatin must be discontinued before discharge. Patient must be explicitly counseled to discard home supply and not resume until instructed by a physician postpartum. Do not discharge until this is resolved."
+        },
+        {
+          "flag": "NO INSULIN COVERAGE POST-DISCHARGE — PATIENT IS UNINSURED",
+          "priority": "critical",
+          "action": "Social work must resolve insulin access before patient leaves the building. Options to exhaust in order: (1) hospital pharmacy charity care or 30-day sample supply; (2) Eli Lilly Insulin Value Program ($35/month cap); (3) Novo Nordisk Patient Assistance Program; (4) if Medicaid activation is imminent, confirm date and bridge until then. If ReliOn NPH/Regular is the only option, full pharmacokinetic re-education is required — this is a regimen change, not a substitution. Do not discharge without confirmed insulin in hand or confirmed same-day pharmacy access plan."
+        },
+        {
+          "flag": "TEACH-BACK NOT DOCUMENTED FOR ANY CRITICAL TOPIC",
+          "priority": "critical",
+          "action": "Confirm with bedside nurse and document teach-back status for: new insulin regimen, medication changes (lisinopril/atorvastatin discontinuation), DKA warning signs in pregnancy, hypoglycemia management, and when to go to ED. If teach-back has not been performed, allocate dedicated education time before discharge is initiated. Patient is cognitively intact and has moderate-high health literacy — teach-back is achievable but has not been documented."
+        },
+        {
+          "flag": "NO OB OR MFM REFERRAL PLACED — HIGH-RISK PREGNANCY AT 7 WEEKS WITH HbA1c 11.4%",
+          "priority": "high",
+          "action": "OB referral alone is insufficient for T1DM in pregnancy at this HbA1c. MFM (Maternal-Fetal Medicine) specialist referral must be placed before discharge, with an appointment date confirmed and given to patient in writing. Standard community OB clinic should not be the sole point of contact. Coordinate with social work on transportation to appointment given documented transit barrier."
+        },
+        {
+          "flag": "PATIENT LIVES ALONE — NO GLUCAGON KIT IDENTIFIED IN DISCHARGE MEDICATIONS",
+          "priority": "high",
+          "action": "Verify whether glucagon kit (injectable or nasal) has been ordered for discharge. Patient lives alone, is on dual insulin therapy with tighter pregnancy targets, and performs physical labor — hypoglycemia incapacitation without a glucagon kit available is a serious safety gap. If not ordered, flag to physician. Also educate patient on when and how to use it, and confirm mother (Diane Williams) knows where it is kept and how to use it if she visits."
+        },
+        {
+          "flag": "PRENATAL ULTRASOUND ORDERED BUT NOT COMPLETED — DISCHARGE PENDING",
+          "priority": "high",
+          "action": "Confirm with team whether ultrasound will be completed inpatient before discharge or scheduled as urgent outpatient within 48 hours. If outpatient, patient must have the appointment date in hand, understand its importance (viability confirmation, dating, early anomaly screen), and have a transportation plan. Do not assume patient can self-schedule given transit barriers."
+        },
+        {
+          "flag": "HbA1c 11.4% — PATIENT MAY NOT FULLY UNDERSTAND FIRST-TRIMESTER FETAL RISK AT THIS LEVEL",
+          "priority": "high",
+          "action": "Ensure patient has received counseling (physician or CNS) on the relationship between HbA1c 11.4% and first-trimester miscarriage and fetal malformation risk. This is emotionally difficult information for a patient who just learned she is pregnant, was distressed at disclosure, and is now facing a high-complexity pregnancy. Confirm social work follow-up is in place. Education must be delivered with sensitivity but cannot be omitted — she needs this information to understand the urgency of tight glucose control and MFM follow-up."
+        },
+        {
+          "flag": "FOOD INSECURITY — DIETARY CONSISTENCY CRITICAL FOR SLIDING SCALE INSULIN SAFETY",
+          "priority": "high",
+          "action": "Refer to inpatient dietitian before discharge for counseling on consistent carbohydrate intake with limited food budget. Connect patient with community resources: local WIC (pregnancy qualifies immediately), food bank linkage, SNAP application if not already enrolled. Food insecurity directly drives glucose variability and DKA recurrence — this is a clinical safety issue, not only a social one."
+        },
+        {
+          "flag": "BICYCLE COURIER WORK — HYPOGLYCEMIA RISK DURING PHYSICAL EXERTION WITH PRANDIAL INSULIN",
+          "priority": "medium",
+          "action": "Educate patient on pre-exercise blood glucose targets (typically >100 mg/dL before exertion), carrying fast-acting glucose (glucose tabs, juice) during all delivery shifts, and not riding if blood glucose is below threshold. Discuss with endocrinology team at follow-up for exercise-specific insulin adjustment guidance. This is a daily occupational risk that is not addressed elsewhere in the chart."
+        },
+        {
+          "flag": "EMOTIONAL DISTRESS DOCUMENTED AT PREGNANCY DISCLOSURE — ONGOING PSYCHOLOGICAL SUPPORT NEEDED",
+          "priority": "medium",
+          "action": "Confirm social work has provided or scheduled ongoing counseling support. Patient is 42 years old, separated from partner (who held her insurance), living alone, facing an unplanned high-risk pregnancy with severe diabetes, housing instability, and no insurance. Coping capacity will directly affect her ability to follow through on medical management. Warm handoff to community mental health or social services is appropriate — not a referral slip alone."
+        },
+        {
+          "flag": "NEW ANTIHYPERTENSIVE NOT YET ORDERED — CANNOT EDUCATE PATIENT ON MEDICATION THAT DOES NOT EXIST YET",
+          "priority": "medium",
+          "action": "Once physician orders the replacement antihypertensive (methyldopa, labetalol, or nifedipine), nursing must complete medication education including name, dose, timing, common side effects (especially orthostatic hypotension with methyldopa), and what to do if BP is elevated or she misses a dose. Do not discharge until this education is completed."
+        },
+        {
+          "flag": "CAREGIVER (MOTHER) NOT EDUCATED — PATIENT LIVES ALONE WITH DISTANT SUPPORT ONLY",
+          "priority": "medium",
+          "action": "If mother Diane Williams can be reached by phone during hospitalization, provide phone-based education on: how to recognize DKA, how to recognize severe hypoglycemia, glucagon kit use, and when to call 911 for patient. Document education attempt in chart. Acknowledge that mother has her own health limitations and cannot be relied upon as primary caregiver."
+        },
+        {
+          "flag": "MEDICAID PENDING — INSURANCE GAP AFFECTS ACCESS TO ALL OUTPATIENT CARE",
+          "priority": "medium",
+          "action": "Confirm social work is actively following up on Medicaid application status. Pregnancy may qualify patient for expedited Medicaid enrollment (presumptive eligibility) in Massachusetts (ZIP 02118). If approved, all outpatient medications, prenatal care, and MFM visits would be covered. This is the single highest-leverage action to address the downstream SDOH cascade. Ensure patient has the Medicaid application reference number and a contact to follow up if status is not resolved within 5 business days."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Confidence is moderate rather than high for two reasons: (1) No teach-back documentation is present in the chart for any education topic — it is unknown whether formal medication, DKA, or pregnancy education sessions have been conducted or if verbal information was provided without documented comprehension verification. Education readiness assessments are therefore based on patient capacity indicators (moderate-high health literacy, intact cognition, long-standing T1DM familiarity) rather than documented teach-back outcomes. (2) Several key clinical actions required before discharge (lisinopril/atorvastatin discontinuation, replacement antihypertensive order, insulin access plan, MFM referral) are documented as pending — nursing assessments in those domains cannot be completed until those orders exist. Confidence would increase to high once: teach-back is documented for all critical topics, teratogenic medications are discontinued, new antihypertensive is ordered and patient educated, and insulin access is confirmed."
+    },
+    "pharmacist": {
+      "agent": "pharmacist",
+      "case_id": "CASE-003",
+      "reconciliation_summary": {
+        "total_discharge_medications": 6,
+        "new_at_discharge": [
+          "Insulin aspart (sliding scale — dose adjusted for pregnancy)",
+          "Prenatal vitamins",
+          "Folic acid 4 mg daily"
+        ],
+        "dose_changed": [
+          "Insulin glargine — 18 units QHS (home) → 22 units QHS (discharge, increased for pregnancy insulin resistance)"
+        ],
+        "discontinued_inpatient": [],
+        "home_medications_not_on_list": [
+          "CRITICAL: Lisinopril 10 mg daily — home medication carried forward on active orders, NOT discontinued despite confirmed pregnancy. Contraindicated — must be discontinued before discharge.",
+          "CRITICAL: Atorvastatin 20 mg daily — home medication carried forward on active orders, NOT discontinued despite confirmed pregnancy. Contraindicated — must be discontinued before discharge.",
+          "NOTE: No replacement antihypertensive has been ordered. A pregnancy-safe antihypertensive is required to replace lisinopril — prescribing decision deferred to physician."
+        ]
+      },
+      "drug_interactions": [
+        {
+          "medications": [
+            "Lisinopril",
+            "Pregnancy (confirmed 7 weeks)"
+          ],
+          "severity": "contraindicated",
+          "mechanism": "ACE inhibitors block fetal renin-angiotensin system; critical for normal fetal renal and cardiovascular development. Second and third trimester exposure causes fetal renal tubular dysplasia, oligohydramnios, pulmonary hypoplasia, limb contractures, and neonatal death. First trimester exposure is associated with increased rates of cardiovascular and CNS malformations.",
+          "clinical_implication": "Fetal exposure at any gestational age carries significant teratogenic risk. Currently 7 weeks — immediate discontinuation required. Continued exposure through organogenesis period substantially increases risk of major fetal malformation.",
+          "recommended_action": "Discontinue lisinopril immediately — must not be dispensed at discharge. Physician must prescribe a pregnancy-safe antihypertensive (e.g., labetalol, nifedipine, or methyldopa — prescribing choice belongs to physician/MFM). Do not dispense this medication."
+        },
+        {
+          "medications": [
+            "Atorvastatin",
+            "Pregnancy (confirmed 7 weeks)"
+          ],
+          "severity": "contraindicated",
+          "mechanism": "HMG-CoA reductase inhibition disrupts cholesterol synthesis essential for fetal neural tube closure, adrenal steroidogenesis, and cellular membrane development. Cholesterol is a critical substrate during embryogenesis.",
+          "clinical_implication": "Statins are contraindicated throughout the entire duration of pregnancy. Fetal exposure during first trimester organogenesis carries risk of CNS malformations (VACTERL association reported in case series). No lipid-lowering therapy is indicated during pregnancy — mild-to-moderate hyperlipidemia risk deferred to postpartum.",
+          "recommended_action": "Discontinue atorvastatin immediately — must not be dispensed at discharge. No statin substitution during pregnancy. Hyperlipidemia management to be revisited postpartum."
+        },
+        {
+          "medications": [
+            "Insulin glargine",
+            "Insulin aspart"
+          ],
+          "severity": "minor",
+          "mechanism": "Additive hypoglycemic effect — both are insulin formulations with complementary mechanisms (basal vs. prandial). Expected and therapeutic in a Type 1 DM regimen.",
+          "clinical_implication": "Risk of hypoglycemia if basal dose is too high, carbohydrate intake is reduced (as can occur with first-trimester nausea/vomiting), or physical activity is high (patient is a bicycle courier). Hypoglycemia risk increases in pregnancy due to variable insulin sensitivity and frequent nausea.",
+          "recommended_action": "Patient requires education on hypoglycemia recognition, treatment (15–15 rule), and sick-day rules. Reinforce meal-time dosing consistency. Specifically counsel on hypoglycemia risk during bicycle courier work. No interaction requiring medication change — this is an expected, therapeutic combination."
+        },
+        {
+          "medications": [
+            "Folic acid 4 mg",
+            "Prenatal vitamins"
+          ],
+          "severity": "minor",
+          "mechanism": "Prenatal vitamins typically contain 0.4–1.0 mg folic acid. Concurrent high-dose folic acid 4 mg supplementation creates potential for cumulative folate dose above 4 mg/day depending on prenatal vitamin formulation.",
+          "clinical_implication": "Total daily folate intake may exceed 4–5 mg/day if prenatal vitamin contains ≥0.4 mg folic acid. Upper tolerable intake is generally considered 1 mg from supplements for general population, but high-dose supplementation in diabetes in pregnancy (4 mg) is guideline-supported and evidence-based. Excessive folate is generally low toxicity risk, but this overlap should be verified.",
+          "recommended_action": "Verify folic acid content of the specific prenatal vitamin formulation ordered. If prenatal vitamin contains ≥0.4 mg folic acid, total folate intake will be 4.4 mg or greater. Clinical teams should confirm whether standalone high-dose folic acid should replace the prenatal vitamin folic acid component or be continued as an add-on — decision at prescriber discretion. This is a low-severity concern but warrants documentation."
+        }
+      ],
+      "dose_adjustment_flags": [
+        {
+          "medication": "Insulin glargine",
+          "concern": "other",
+          "detail": "Dose was increased from 18 to 22 units QHS during this admission for pregnancy-related insulin resistance. HbA1c is 11.4% — current glucose 112 mg/dL on this regimen at Day 5. Insulin requirements will continue to change throughout pregnancy, typically increasing significantly by second and third trimesters. Target HbA1c in pregnancy is <6.5% from a current baseline of 11.4% — this will require ongoing aggressive outpatient titration.",
+          "action_required": "Dose is reasonable for discharge but requires very close outpatient follow-up with endocrinology within 2 weeks. Patient must have a clear titration plan and access to her endocrinologist or MFM team for dose adjustment guidance. Glucose monitoring supplies and log must be confirmed at discharge."
+        },
+        {
+          "medication": "Insulin aspart",
+          "concern": "other",
+          "detail": "Sliding scale adjusted for pregnancy. No fixed prandial dosing documented — sliding scale alone may be insufficient for a T1DM patient with an HbA1c of 11.4% who has irregular food access (food insecurity noted). Sliding scale without fixed carbohydrate ratios may lead to under-dosing or over-dosing in the outpatient setting.",
+          "action_required": "Confirm with prescribing physician that a carbohydrate-to-insulin ratio or fixed prandial component is not more appropriate than sliding scale alone for this patient's outpatient management. Diabetes educator consultation recommended before discharge for practical dosing instruction."
+        },
+        {
+          "medication": "Folic acid 4 mg",
+          "concern": "other",
+          "detail": "High-dose folic acid 4 mg daily is appropriate and guideline-concordant for preconception and first-trimester supplementation in women with Type 1 diabetes (per ACOG and ADA). Standard prenatal dose is 0.4–0.8 mg; 4 mg is specifically recommended for diabetes in pregnancy to reduce neural tube defect risk. No renal or hepatic adjustment needed; renal function is normal (Cr 0.8).",
+          "action_required": "No dose adjustment required. Confirm continuation through at least the end of the first trimester; discuss with MFM whether to continue through delivery. Verify no excessive overlap with prenatal vitamin folate content (see drug interactions)."
+        }
+      ],
+      "contraindications": [
+        {
+          "medication": "Lisinopril 10 mg daily",
+          "contraindication": "Pregnancy — confirmed 7 weeks gestation",
+          "reason": "ACE inhibitors are absolutely contraindicated in pregnancy at any trimester. ACOG, FDA, and all major guidelines require immediate discontinuation upon pregnancy confirmation. Associated with fetal renal agenesis, oligohydramnios, fetal renal tubular dysplasia, pulmonary hypoplasia, intrauterine growth restriction, and neonatal death. First-trimester exposure is additionally associated with increased cardiovascular and CNS fetal malformations. This medication is currently on active orders and has NOT been discontinued as of the time of this review.",
+          "priority": "critical",
+          "action_required": "Discontinue lisinopril immediately. Medication must not be included on discharge prescription. Physician must replace with a pregnancy-safe antihypertensive before discharge. Pharmacist to confirm active order cancellation before patient leaves. This is a patient safety stop — discharge should not proceed with this order active."
+        },
+        {
+          "medication": "Atorvastatin 20 mg daily",
+          "contraindication": "Pregnancy — confirmed 7 weeks gestation",
+          "reason": "Statins are contraindicated throughout pregnancy. FDA previously classified as Category X; current labeling requires discontinuation upon pregnancy confirmation. Mechanism involves interference with fetal cholesterol biosynthesis critical for organogenesis. Case reports link statin exposure to VACTERL-type malformations. Hyperlipidemia management in pregnancy is deferred — the mild-to-moderate CV risk from holding a statin during pregnancy does not outweigh fetal teratogenic risk. This medication is currently on active orders and has NOT been discontinued as of the time of this review.",
+          "priority": "critical",
+          "action_required": "Discontinue atorvastatin immediately. Medication must not be included on discharge prescription. No statin substitute during pregnancy. Physician to document plan to reassess and restart lipid-lowering therapy postpartum. Pharmacist to confirm active order cancellation before patient leaves."
+        }
+      ],
+      "adherence_risk": {
+        "overall": "very_high",
+        "factors": [
+          "UNINSURED — no active insurance coverage; Medicaid pending but not yet approved. Primary adherence risk is financial access, not intent.",
+          "Insulin cost barrier: insulin glargine and insulin aspart together estimated at $500–700/month without insurance — patient cannot afford this on gig income.",
+          "Food insecurity: dietary inconsistency directly impacts insulin dosing accuracy; hypoglycemia risk increased when meals are skipped or irregular due to financial constraints.",
+          "New diagnosis of pregnancy combined with severely uncontrolled DM — significant psychological burden, shock, and distress documented. Emotional state may affect self-management capacity in the immediate post-discharge period.",
+          "Social isolation: lives alone, no consistent support person nearby. If hypoglycemia occurs, no one is present to assist.",
+          "Irregular income and schedule as bicycle courier creates variable meal times, variable physical activity levels, and unpredictable insulin needs — sliding scale adherence complicated by lifestyle.",
+          "Sliding scale without fixed prandial component may be confusing and lead to inconsistent dosing in the outpatient setting.",
+          "Four prior ED visits for DKA in 6 months — pattern consistent with recurrent insulin access interruptions, not intentional non-adherence.",
+          "No established outpatient provider: lost PCP with insurance loss. Follow-up requires navigating new providers without an established relationship.",
+          "Newly confirmed pregnancy with HbA1c 11.4% — patient will need to learn significantly more complex self-management for a high-risk pregnancy while managing multiple crises simultaneously.",
+          "TSH 2.1 mIU/L — borderline for pregnancy trimester 1 target (<2.5); if thyroid function deteriorates, may add additional medication burden."
+        ],
+        "pill_burden_count": 4
+      },
+      "access_affordability": [
+        {
+          "medication": "Insulin glargine (Basaglar/Lantus)",
+          "concern": "uninsured",
+          "detail": "Insulin glargine costs approximately $289–389/vial without insurance. Patient requires approximately 1–2 vials/month. Medicaid application submitted 6 weeks ago — status pending, not yet active. Without a bridge, patient will have no access to basal insulin post-discharge. DKA recurrence within days of discharge is a near-certainty without insulin access.",
+          "solutions": [
+            "Eli Lilly Insulin Value Program: caps out-of-pocket insulin cost at $35/month regardless of insurance status — covers Basaglar (glargine biosimilar). Apply at insulinaffordability.com or via pharmacy. Same-day enrollment possible.",
+            "Novo Nordisk Patient Assistance Program (PAP): provides free insulin to uninsured patients meeting income criteria — covers Levemir (detemir) as an alternative basal insulin if switching is clinically acceptable.",
+            "Hospital charity care: request emergency 30-day supply from hospital dispensary under charity care authorization before discharge. Social work to initiate today.",
+            "Expedited Medicaid processing: patient is pregnant and uninsured — most states have presumptive eligibility pathways for pregnant individuals that activate within 24–48 hours of application. Social work to contact Medicaid office urgently regarding pregnancy presumptive eligibility.",
+            "Manufacturer copay cards: Sanofi (Lantus) and Lilly (Basaglar) have $0 copay cards — verify applicability for uninsured individuals specifically."
+          ]
+        },
+        {
+          "medication": "Insulin aspart (NovoLog/Fiasp)",
+          "concern": "uninsured",
+          "detail": "Insulin aspart costs approximately $285–320/vial without insurance. Patient requires approximately 1–2 vials/month. Same access crisis as basal insulin — both must be resolved simultaneously.",
+          "solutions": [
+            "Novo Nordisk Patient Assistance Program: covers NovoLog (aspart) for uninsured patients. Apply through NovoCare at 1-844-668-6463 or novonordisk-us.com/patients.",
+            "Novo Nordisk My$99Insulin program: caps NovoLog cost at $99/month regardless of insurance. Directly accessible through pharmacy.",
+            "Eli Lilly: covers Humalog (lispro) as a rapid-acting alternative — if clinically acceptable switch, consider Lilly Insulin Value Program $35/month for both basal (Basaglar) and bolus (Humalog) together.",
+            "Hospital charity care: 30-day emergency supply alongside basal insulin — social work to bundle both requests.",
+            "ReliOn NPH/Regular (Walmart, $25/vial): available OTC without prescription but requires completely different dosing regimen, timing, and patient education. This is a last resort and should only be initiated with full pharmacist and physician re-education and close outpatient follow-up given the complexity of pregnancy glycemic management.",
+            "Expedited Medicaid presumptive eligibility — see above."
+          ]
+        },
+        {
+          "medication": "Prenatal vitamins",
+          "concern": "high_cost",
+          "detail": "Brand prenatal vitamins can cost $20–50/month. For an uninsured patient with financial hardship, even low-cost items represent a barrier.",
+          "solutions": [
+            "Many prenatal vitamins are available OTC generically for $5–12/month (e.g., store-brand at Target, CVS, Walmart).",
+            "WIC (Women, Infants, and Children) program: patient likely qualifies based on income and pregnancy status — WIC provides prenatal vitamins at no cost. Social work to enroll immediately. WIC enrollment can begin during pregnancy.",
+            "Federally Qualified Health Centers (FQHCs) often provide prenatal vitamins as part of prenatal care at no cost."
+          ]
+        },
+        {
+          "medication": "Folic acid 4 mg",
+          "concern": "formulary",
+          "detail": "High-dose folic acid 4 mg is a prescription-strength formulation. OTC folic acid is typically 0.4–0.8 mg tablets. Prescription 4 mg tablets are inexpensive but require a prescription and pharmacy dispensing.",
+          "solutions": [
+            "GoodRx pricing for folic acid 4 mg: typically $4–10 for a 30-day supply at most pharmacies — very low cost. Confirm patient has a written prescription.",
+            "Folic acid 4 mg can alternatively be achieved with 5 x 0.8 mg OTC tablets daily — physician discretion whether prescription formulation is preferred.",
+            "FQHC community health center pharmacy may dispense at reduced cost or no cost once patient is established as a patient there."
+          ]
+        },
+        {
+          "medication": "Replacement antihypertensive (to replace lisinopril — not yet prescribed)",
+          "concern": "other",
+          "detail": "Once lisinopril is discontinued, a pregnancy-safe antihypertensive will need to be prescribed. Labetalol, methyldopa, and nifedipine are all generic and inexpensive. Access concern is low once insurance is established but should be dispensed at discharge with affordability in mind given uninsured status.",
+          "solutions": [
+            "All three first-line pregnancy antihypertensives (labetalol, methyldopa, nifedipine extended-release) are generic and available for $4–15/month at most pharmacies.",
+            "GoodRx coupons available for all three formulations — typically under $15/month uninsured.",
+            "No prior authorization typically required for generic antihypertensives."
+          ]
+        },
+        {
+          "medication": "Glucose monitoring supplies (glucometer, test strips, lancets)",
+          "concern": "uninsured",
+          "detail": "Not listed on medication orders but critical for insulin-dependent T1DM management in pregnancy. Patient will need multiple daily glucose checks. Test strips cost $30–80/month without insurance. Continuous glucose monitoring (CGM) such as Dexcom G7 is considered standard of care in T1DM pregnancy but costs $300–500/month without coverage.",
+          "solutions": [
+            "Confirm patient has a functioning glucometer and adequate supply of strips before discharge — document what she has at home.",
+            "ReliOn brand test strips (Walmart): compatible glucometer and strips available OTC for approximately $9–18/month — low-cost backup option.",
+            "Dexcom patient assistance program: provides CGM at reduced cost or free for qualifying low-income patients. Given T1DM + pregnancy + HbA1c 11.4%, CGM is strongly indicated — social work or diabetes educator to initiate application.",
+            "Abbott FreeStyle Libre: alternative CGM with manufacturer patient assistance — FreeStyle Promise program.",
+            "Once Medicaid activates, CGM is typically covered for T1DM; ensure CGM is prescribed and ready to begin once coverage activates."
+          ]
+        }
+      ],
+      "antibiotic_stewardship": {
+        "antibiotics_on_list": [],
+        "course_complete_at_discharge": true,
+        "patient_education_needed": null
+      },
+      "flags": [
+        {
+          "flag": "CRITICAL — CONTRAINDICATED MEDICATION ON ACTIVE ORDERS: LISINOPRIL 10 MG. ACE inhibitor in confirmed 7-week pregnancy. Fetal renal agenesis, oligohydramnios, fetal death risk. Order has NOT been discontinued. DISCHARGE MUST NOT PROCEED with this order active.",
+          "priority": "critical",
+          "action": "Pharmacist to alert prescribing physician immediately. Active order must be cancelled. Pregnancy-safe antihypertensive must be prescribed before discharge. Pharmacist to perform final order verification confirming lisinopril is removed from discharge prescription before dispensing anything."
+        },
+        {
+          "flag": "CRITICAL — CONTRAINDICATED MEDICATION ON ACTIVE ORDERS: ATORVASTATIN 20 MG. Statin (Category X equivalent) in confirmed 7-week pregnancy. Teratogenic — organogenesis risk. Order has NOT been discontinued. DISCHARGE MUST NOT PROCEED with this order active.",
+          "priority": "critical",
+          "action": "Pharmacist to alert prescribing physician immediately. Active order must be cancelled. No statin substitute during pregnancy. Pharmacist to perform final order verification confirming atorvastatin is removed from discharge prescription before dispensing anything."
+        },
+        {
+          "flag": "CRITICAL — NO INSULIN COVERAGE POST-DISCHARGE. Patient uninsured. Insulin glargine + aspart estimated $500–700/month. Medicaid pending, not active. DKA recurrence within days of discharge is near-certain without insulin bridge.",
+          "priority": "critical",
+          "action": "Pharmacist to initiate Eli Lilly Insulin Value Program ($35/month) and/or Novo Nordisk My$99Insulin today before discharge. Social work to pursue hospital charity care 30-day supply in parallel. Pregnant patient may qualify for Medicaid presumptive eligibility — social work to escalate today. Do not discharge without confirmed insulin access plan."
+        },
+        {
+          "flag": "HIGH — HbA1c 11.4% in confirmed first-trimester T1DM pregnancy. Significantly elevated risk of major congenital malformations, spontaneous abortion, and fetal complications. Target HbA1c <6.5% in pregnancy — 4.9 percentage points above goal. Requires urgent MFM referral and endocrinology follow-up within 2 weeks.",
+          "priority": "high",
+          "action": "Confirm MFM referral is placed with appointment date before discharge. Confirm endocrinology follow-up scheduled within 2 weeks. Ensure patient understands urgency of both appointments and why HbA1c matters for fetal outcomes. Reinforce glucose monitoring frequency."
+        },
+        {
+          "flag": "HIGH — No replacement antihypertensive prescribed. Lisinopril must be discontinued; a pregnancy-safe antihypertensive is required. Patient's BP has been 122/78 inpatient — monitor for rebound hypertension post-discharge without coverage. Untreated hypertension in pregnancy risks preeclampsia.",
+          "priority": "high",
+          "action": "Physician to prescribe pregnancy-safe antihypertensive (labetalol, methyldopa, or nifedipine ER — prescriber choice in consultation with MFM) before discharge. Pharmacist to verify new order is filled and patient counseled on new medication before leaving."
+        },
+        {
+          "flag": "HIGH — Glucose monitoring supply status unverified. Insulin-dependent T1DM patient with HbA1c 11.4% in pregnancy requires multiple daily glucose checks minimum; CGM strongly preferred. No documentation of glucometer, strips, or CGM availability at home.",
+          "priority": "high",
+          "action": "Confirm patient has glucometer, adequate test strips, and lancets before discharge. Pharmacist or diabetes educator to review monitoring supplies with patient. Initiate CGM patient assistance application (Dexcom or Abbott) given T1DM + pregnancy indication. Do not discharge without confirmed glucose monitoring capability."
+        },
+        {
+          "flag": "MEDIUM — Folic acid 4 mg and prenatal vitamins co-prescribed: verify total daily folate dose given prenatal vitamin folic acid content. Minor concern, low toxicity risk, but should be documented.",
+          "priority": "medium",
+          "action": "Pharmacist to identify specific prenatal vitamin formulation and calculate total daily folate. Document in chart. Flag to prescribing physician if total exceeds intended 4 mg/day meaningfully."
+        },
+        {
+          "flag": "MEDIUM — TSH 2.1 mIU/L is within normal range but above the preferred first-trimester pregnancy target of <2.5 mIU/L. If thyroid function declines, hypothyroidism in pregnancy has independent fetal neurodevelopmental risk. No thyroid medication currently prescribed.",
+          "priority": "medium",
+          "action": "Ensure TSH recheck is on the agenda for first MFM or endocrinology appointment. Patient should be informed that thyroid monitoring is part of her prenatal care. If TSH rises above 2.5–3.0 at recheck, levothyroxine initiation would be warranted — decision for MFM/endocrinology."
+        },
+        {
+          "flag": "MEDIUM — Insulin sliding scale without fixed prandial component may be inadequate and confusing for outpatient T1DM management, particularly given food insecurity and irregular meal timing. Risk of both over- and under-treatment.",
+          "priority": "medium",
+          "action": "Diabetes educator should review prandial dosing instructions with patient before discharge. Confirm patient understands what to do when meals are skipped or reduced (food insecurity reality). Prescribing physician and endocrinology to evaluate whether carbohydrate-ratio-based dosing is more appropriate at first outpatient visit."
+        },
+        {
+          "flag": "LOW — Hypoglycemia risk during bicycle courier work. Patient is physically active (bicycle courier), takes insulin, has food insecurity, and will be returning to work post-discharge. Risk of exercise-induced hypoglycemia while working.",
+          "priority": "low",
+          "action": "Counsel patient on hypoglycemia prevention during physical work: carry fast-acting glucose (juice, glucose tablets), recognize early symptoms, 15-15 rule. Discuss safe practices if hypoglycemia occurs while cycling. Document counseling in chart."
+        }
+      ],
+      "confidence_level": "high",
+      "confidence_note": "High confidence on all contraindication flags (lisinopril and atorvastatin in pregnancy are established absolute contraindications supported by ACOG, FDA, and all major guidelines). High confidence on drug interaction assessments. Renal dose adjustments not required — creatinine 0.8 mg/dL is normal for age/sex and eGFR is estimated to be well above thresholds for any of the medications in question. One area of moderate uncertainty: exact prandial insulin dosing adequacy cannot be fully assessed without carbohydrate intake data and a documented insulin-to-carb ratio; flagged as medium-priority for endocrinology follow-up. Folic acid/prenatal vitamin overlap is a low-confidence concern pending identification of specific prenatal vitamin product."
+    },
+    "msw": {
+      "agent": "msw",
+      "case_id": "CASE-003",
+      "discharge_destination_assessment": {
+        "proposed_destination": "Home — studio apartment, ground floor, ZIP 02118",
+        "viability": "conditional",
+        "conditions": [
+          "Insulin bridge supply secured with confirmed dispensing plan before patient leaves the building — without this, home discharge is functionally unsafe given DKA recurrence risk within days",
+          "Teratogenic medications (lisinopril, atorvastatin) discontinued and replaced by prescribing team — this is a clinical prerequisite but MSW must confirm before discharge is processed",
+          "MFM referral placed with confirmed appointment date within 7 days — not merely a referral sent to a queue",
+          "Patient provided written instructions on how to access medications, who to call for insulin crisis, and what symptoms require immediate ED return",
+          "Transportation plan in place for first MFM/endocrinology appointments — bicycle transport is insufficient for a high-risk prenatal patient in variable weather",
+          "Medicaid expedited pregnancy enrollment initiated with documented follow-up contact given to patient"
+        ],
+        "alternatives": [
+          "Short-term stay at a transitional housing program with health supports if insulin access cannot be secured and housing instability deteriorates — this should be actively explored in parallel, not as a last resort",
+          "Extended inpatient stay of 24–48 hours if insulin bridge cannot be confirmed same-day, to allow social work and pharmacy to complete outreach",
+          "Referral to respite housing or pregnancy-specific shelter program if rent arrearage escalates to eviction risk prior to Medicaid activation"
+        ]
+      },
+      "insurance_coverage": {
+        "current_coverage": "UNINSURED — lost coverage on former partner's employer plan approximately 3 months ago following separation. Medicaid application submitted approximately 6 weeks prior to this admission; status remains pending as of discharge planning.",
+        "gaps_identified": [
+          "No active coverage for outpatient prescriptions — insulin glargine and insulin aspart estimated $600–700/month out-of-pocket, which is not financially viable on gig income",
+          "No coverage for MFM specialist visits, prenatal labs, or ultrasounds",
+          "No coverage for endocrinology follow-up",
+          "No PCP coverage — prior PCP relationship presumably lost with insurance",
+          "No coverage for CGM supplies or insulin pump if applicable — patient's home diabetes management equipment affordability unknown and must be assessed",
+          "Prenatal vitamins and high-dose folic acid out-of-pocket if Medicaid not active",
+          "Medicaid pending status means no eligibility confirmation for post-discharge prescriptions written today"
+        ],
+        "actions_in_progress": [
+          "Medicaid application submitted 6 weeks ago — status pending, no documentation of follow-up contact in chart"
+        ],
+        "actions_needed_before_discharge": [
+          "Contact Massachusetts MassHealth (Medicaid) enrollment center TODAY to check application status — pregnancy may qualify patient for expedited MassHealth enrollment under pregnancy category, which can be activated faster than standard adult Medicaid",
+          "If MassHealth pregnancy category not yet active, submit emergency pregnancy Medicaid application or amendment immediately — document gestational age and high-risk status",
+          "Identify insulin bridge program before discharge: Eli Lilly Insulin Value Program ($35/month cap for glargine), Novo Nordisk Patient Assistance Program (NovoLog/aspart), hospital charity care dispensing for 30-day supply, or manufacturer samples via MFM/endocrinology",
+          "Contact hospital financial assistance/charity care office for emergency 30-day insulin supply as bridge — document income verification for gig worker",
+          "Confirm prenatal vitamin and folic acid access — both available OTC but cost must be confirmed as manageable or covered through WIC",
+          "Enroll in WIC immediately — patient is 7 weeks pregnant and income-eligible given gig employment; WIC provides food vouchers specifically relevant to diabetic dietary needs and covers prenatal vitamins",
+          "Provide patient with written MassHealth enrollment contacts and pregnancy-specific hotline number at discharge"
+        ]
+      },
+      "sdoh_assessment": {
+        "housing": {
+          "status": "unstable",
+          "detail": "Month-to-month studio apartment, 6 weeks behind on rent. No lease security. Patient is a single adult woman now in early pregnancy, with irregular gig income and no active insurance. Eviction risk is real and escalating. A studio apartment is also inadequate for newborn in approximately 32 weeks. Housing instability is a proximate readmission driver — stress, food insecurity, and missed medications correlate directly with housing precarity.",
+          "action": "Contact local community development organization or housing authority for emergency rental assistance programs (e.g., Boston RAFT, ERAP if applicable, local community action agency). Refer to Massachusetts 2-1-1 for emergency housing resources. Assess eligibility for Massachusetts public housing waitlist given pregnancy — pregnancy may confer priority status. Counsel patient that Medicaid activation does not resolve rent arrearage — separate targeted intervention needed. Document housing instability in discharge summary to flag for community health worker follow-up."
+        },
+        "food_security": {
+          "status": "insecure",
+          "detail": "Relies on food bank 2x/month. Cannot consistently afford low-glycemic foods. For a patient with T1DM at HbA1c 11.4% in first-trimester pregnancy, dietary consistency is not a lifestyle preference — it is a clinical safety requirement. Food insecurity directly contributes to glycemic instability and DKA risk. The 4 ED visits in 6 months for DKA are substantially explained by this intersection of food insecurity and insulin access gaps.",
+          "action": "Enroll in WIC before discharge — this is urgent and can be initiated in-hospital or by phone. WIC provides pregnancy-specific food vouchers including dairy, eggs, whole grains, and produce, directly relevant to diabetic dietary management. Provide referral to Greater Boston Food Bank and local food pantry map for ZIP 02118. Request diabetes-specific nutrition counseling referral through MFM or community health center — must account for food budget constraints, not only clinical ideals. Flag for care manager or community health worker to follow up on food access at 2-week check-in."
+        },
+        "transportation": {
+          "status": "barrier",
+          "detail": "No car. Uses bicycle for work and personal transportation. Patient is currently a bicycle courier — bicycle is her livelihood, not merely a transportation method. However, bicycle transport to prenatal MFM appointments, endocrinology, and PCP is not reliably feasible given weather, distance, and the physical demands of high-risk pregnancy progression. Public transit to MFM clinic is available but described as complex route — complex transit navigation is a known appointment non-adherence driver, especially during first trimester nausea/fatigue.",
+          "action": "Apply for Massachusetts Medicaid Non-Emergency Medical Transportation (NEMT) — once MassHealth is active, NEMT provides free transport to medical appointments. This must be activated proactively, not reactively. In the interim before Medicaid activation, identify local volunteer medical transportation programs (e.g., American Cancer Society Road to Recovery model equivalents, local faith-based medical transport). Provide patient with written MBTA route instructions to MFM clinic as backup. Assess ride-share cost barrier and whether any community program provides transportation vouchers for prenatal care. Do not assume patient will manage transportation independently given complexity of appointment schedule ahead."
+        },
+        "medication_affordability": {
+          "status": "critical_barrier",
+          "detail": "Uninsured. Insulin glargine approximately $289–389/vial, insulin aspart approximately $285–320/vial, requiring 1–2 vials/month each. Total insulin cost without coverage estimated $500–700/month against irregular gig income with 6 weeks of rent arrearage. This is not a theoretical financial concern — this patient has had 4 DKA admissions in 6 months, a pattern consistent with insulin rationing under financial strain. Pregnancy increases insulin requirements further. Without a confirmed dispensing solution before discharge, this patient will ration insulin. DKA recurrence in pregnancy carries substantially elevated maternal and fetal risk.",
+          "action": "This is the single highest-priority actionable item before discharge. Exhaust all options in parallel: (1) Eli Lilly Insulin Value Program — glargine (Basaglar) $35/month cap, can be enrolled same day; (2) Novo Nordisk Patient Assistance Program for insulin aspart/NovoLog — requires income documentation, initiate today; (3) Hospital charity care pharmacy — request emergency 30-day supply dispensing, document uninsured status and pregnancy; (4) Sanofi Insulins Valyou Savings Program as additional option for glargine. Document that ReliOn NPH/Regular insulin at Walmart ($25) exists as absolute last resort but requires full regimen re-education and clinical team coordination — do not discharge on this without explicit clinical team involvement and patient education. Confirm actual dispensing, not just program enrollment initiation, before patient leaves."
+        },
+        "social_isolation": {
+          "status": "at_risk",
+          "detail": "Recently separated from partner 3 months ago — partner was also her source of health insurance. Mother (Diane Williams) lives 2 hours away with her own health limitations. Patient is 42, pregnant, newly uninsured, in unstable housing, working gig economy bicycle delivery, and received a life-altering pregnancy diagnosis mid-admission after being admitted in DKA. This is an acute psychosocial stressor cluster. Patient expressed shock and distress on Day 2 when informed of pregnancy. Social isolation risk will likely increase as pregnancy progresses and physical demands of courier work become less feasible.",
+          "action": "Assess patient's emotional status and support needs directly before discharge — this patient received a pregnancy diagnosis in the context of a critical illness admission while uninsured, separated, and housing-insecure. This is not a routine psychosocial stressor. Provide warm referral to pregnancy-specific counseling or peer support (e.g., Healthy Start program, local maternal mental health resource). Connect to community health worker or patient navigator who can maintain consistent outreach contact. Assess whether patient wishes to reconnect mother (Diane) in any capacity — Diane may have limited availability but any support structure is worth mapping. Document baseline emotional status and screen for depression/anxiety at first outpatient visit — perinatal depression screening is standard of care and this patient's risk factors are substantial."
+        }
+      },
+      "caregiver_assessment": {
+        "caregiver_identified": true,
+        "name": "Diane Williams",
+        "relationship": "Mother",
+        "availability": "Limited — lives 2 hours away, has her own health issues. Cannot be present routinely. May be able to assist with major events or crises but cannot serve as a daily support person.",
+        "capacity": "insufficient",
+        "burnout_risk": "not_applicable",
+        "training_needed": [
+          "If Diane is to serve as emergency support, she would need basic DKA recognition training — what symptoms require 911 vs. patient self-management",
+          "Understanding of pregnancy-specific insulin needs and why glycemic control is more urgent now",
+          "Knowledge of what to do if patient is found unresponsive (glucagon administration if available) — assess whether glucagon kit is in the home and affordable",
+          "Note: Caregiver training should not be positioned as a prerequisite for discharge given Diane's distance and limited availability — patient is independent in ADLs and cognitively intact. However, Diane as an informed emergency contact is a meaningful safety enhancement"
+        ]
+      },
+      "community_resources": [
+        {
+          "resource": "Massachusetts WIC Program",
+          "purpose": "Food vouchers for pregnancy — directly relevant to diabetic dietary management. Covers prenatal vitamins. Income-eligible given gig employment. Should be enrolled before or on discharge day.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "MassHealth (Medicaid) Pregnancy Expedited Enrollment",
+          "purpose": "Pregnancy category Medicaid may activate faster than standard adult Medicaid — covers prenatal care, specialist visits, prescriptions, NEMT. Status of pending application must be checked today.",
+          "referral_status": "in_progress"
+        },
+        {
+          "resource": "Eli Lilly Insulin Value Program / Novo Nordisk Patient Assistance",
+          "purpose": "Bridge insulin access at $35/month or no cost pending income verification — critical bridge until Medicaid activates.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Hospital Charity Care / Financial Assistance — 30-day insulin supply",
+          "purpose": "Emergency medication bridge for uninsured patient being discharged with life-sustaining medication need.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Community Health Center (FQHC) — ZIP 02118",
+          "purpose": "Sliding-scale PCP services for uninsured patient. Critical given loss of PCP with insurance. Federally Qualified Health Centers serve patients regardless of ability to pay. Should be the anchor for primary care coordination until Medicaid activates.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Maternal-Fetal Medicine (MFM) Specialist",
+          "purpose": "High-risk pregnancy management — T1DM with HbA1c 11.4% requires MFM, not standard OB. Appointment must be confirmed within 7 days, not merely referred.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Boston RAFT / Emergency Rental Assistance Program",
+          "purpose": "Address 6-week rent arrearage and prevent eviction. Unstable housing is a direct readmission driver.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Greater Boston Food Bank / Local Food Pantry (ZIP 02118)",
+          "purpose": "Supplement food bank access — increase frequency and identify diabetes-friendly food options.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Massachusetts Non-Emergency Medical Transportation (NEMT) via MassHealth",
+          "purpose": "Free transport to medical appointments once Medicaid is active — must be activated proactively given high appointment volume ahead (MFM, endocrinology, PCP, prenatal labs).",
+          "referral_status": "pending"
+        },
+        {
+          "resource": "Healthy Start / Perinatal Peer Support Program",
+          "purpose": "Emotional support for high-risk pregnancy, unexpected diagnosis, social isolation risk. Peer navigation by someone with lived pregnancy experience.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Glucagon Emergency Kit — access and affordability assessment",
+          "purpose": "Patient with T1DM living alone requires glucagon or nasal glucagon (Baqsimi) in the home for severe hypoglycemia emergency. Access must be confirmed — cost is a barrier uninsured. Assess whether GlucaGen/Baqsimi can be provided via charity care or manufacturer program.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "211 Massachusetts — Social Services Navigation Line",
+          "purpose": "Comprehensive social services navigation for housing, food, utilities, and pregnancy support — provide number to patient in writing at discharge.",
+          "referral_status": "needed"
+        }
+      ],
+      "safety_concerns": [
+        {
+          "concern": "Patient living alone with T1DM, history of severe DKA, and high hypoglycemia risk on adjusted insulin regimen — no in-home support person present. Severe hypoglycemia while alone is a life-threatening scenario.",
+          "priority": "high",
+          "action": "Confirm glucagon kit in home and affordability. Provide patient with written hypoglycemia action plan. Ensure at minimum one person (mother Diane, friend, neighbor) has patient's address and a check-in protocol — even a daily text confirmation is a meaningful safety measure. Flag for community health worker outreach within 48–72 hours of discharge."
+        },
+        {
+          "concern": "Insulin rationing risk — uninsured patient with documented pattern of 4 DKA admissions in 6 months consistent with medication cost-driven rationing. Discharging without confirmed insulin access recreates the exact conditions of prior admissions.",
+          "priority": "critical",
+          "action": "Do not confirm discharge until insulin dispensing is physically confirmed — not merely a program application submitted. This is the clearest single modifiable safety risk in this case."
+        },
+        {
+          "concern": "Occupation as bicycle courier — hypoglycemia while cycling is a safety risk to patient and potentially others. Insulin regimen has been adjusted for pregnancy. Risk of hypoglycemia unawareness or delayed recognition while working is real.",
+          "priority": "medium",
+          "action": "Flag for clinical team and diabetes educator to address hypoglycemia safety protocol for work context specifically. From MSW perspective: assess whether work volume and income pressure will cause patient to skip meals or delay insulin — gig income pressure may override clinical instructions. Document and connect to diabetes social support resources."
+        },
+        {
+          "concern": "Domestic safety — recently separated from partner who held her health insurance. No documentation in chart regarding circumstances of separation, safety in current situation, or whether former partner is aware of pregnancy.",
+          "priority": "medium",
+          "action": "Domestic safety not formally assessed in available documentation. MSW should conduct brief IPV screening before discharge using validated tool (e.g., HITS). Patient's situation — recent separation, financial dependence on former partner's insurance, unplanned pregnancy — places her in a demographic where re-contact by former partner around pregnancy news warrants safety awareness. Do not assume safety based on absence of documentation."
+        },
+        {
+          "concern": "Acute psychological distress — patient learned of pregnancy mid-admission after critical illness. Expressed shock and distress on Day 2. No follow-up emotional assessment documented. Perinatal mental health in this context (unplanned pregnancy, high-risk, uninsured, isolated) is a patient safety concern, not only a quality-of-life concern.",
+          "priority": "medium",
+          "action": "Complete psychosocial assessment including mood, coping, and pregnancy intention before discharge. Provide warm handoff to outpatient counseling resource. Assess whether patient has support in processing her options and situation — she is 42, newly pregnant, uninsured, and recently separated. These decisions require support, not just clinical information."
+        },
+        {
+          "concern": "Housing eviction risk within discharge planning window — 6 weeks rent arrearage on month-to-month lease means eviction could be initiated with minimal notice. Homelessness in early high-risk pregnancy with T1DM would be a catastrophic SDOH event.",
+          "priority": "high",
+          "action": "Initiate emergency rental assistance referral today. Provide patient with tenant rights information for Massachusetts (30-day notice minimum). Document housing status in discharge plan so community health worker and MFM social worker are aware at first visit."
+        }
+      ],
+      "systemic_navigation": [
+        {
+          "task": "Check MassHealth application status — 6 weeks pending. Determine if pregnancy expedited category can be applied to accelerate activation. This is the systemic lever that unlocks medication coverage, specialist access, and NEMT simultaneously.",
+          "status": "in_progress",
+          "deadline": "Today — before discharge if possible; document status regardless"
+        },
+        {
+          "task": "Initiate or amend Medicaid application to reflect pregnancy status if not already documented — pregnancy Medicaid (MassHealth Standard for pregnant individuals) has different and potentially faster eligibility pathway",
+          "status": "needed",
+          "deadline": "Today"
+        },
+        {
+          "task": "Insulin bridge: Enroll in Eli Lilly Insulin Value Program for glargine (Basaglar) and Novo Nordisk Patient Assistance for aspart — document enrollment confirmation numbers",
+          "status": "needed",
+          "deadline": "Today — same day as discharge"
+        },
+        {
+          "task": "Hospital charity care application for 30-day emergency insulin supply — backup if manufacturer programs have processing delay",
+          "status": "needed",
+          "deadline": "Today"
+        },
+        {
+          "task": "WIC enrollment — phone application can be initiated today; patient is income-eligible and newly pregnant",
+          "status": "needed",
+          "deadline": "Today or within 48 hours"
+        },
+        {
+          "task": "MFM specialist referral placed with confirmed appointment within 7 days — not a referral sent without scheduling confirmation",
+          "status": "needed",
+          "deadline": "Before discharge"
+        },
+        {
+          "task": "FQHC/Community Health Center referral for PCP — sliding scale, uninsured-serving, ZIP 02118 or adjacent",
+          "status": "needed",
+          "deadline": "Before discharge — provide patient with name, address, and phone number in writing"
+        },
+        {
+          "task": "Emergency rental assistance referral — Boston RAFT or equivalent — to address 6-week arrearage",
+          "status": "needed",
+          "deadline": "This week — initiate before discharge"
+        },
+        {
+          "task": "MassHealth NEMT activation — once Medicaid is active, NEMT enrollment must be proactively initiated for upcoming appointment schedule",
+          "status": "needed",
+          "deadline": "Within 48 hours of Medicaid confirmation"
+        },
+        {
+          "task": "Glucagon kit access — confirm whether patient has glucagon at home; if not, pursue charity care provision or manufacturer program (Lilly Glucagon assistance)",
+          "status": "needed",
+          "deadline": "Before discharge"
+        },
+        {
+          "task": "Domestic safety screening (IPV) — document completion or refusal before discharge",
+          "status": "needed",
+          "deadline": "Before discharge"
+        },
+        {
+          "task": "Confirm teratogenic medication discontinuation (lisinopril, atorvastatin) by prescribing team — MSW role is to verify this has occurred before discharge is processed, as part of multi-disciplinary safety check",
+          "status": "needed",
+          "deadline": "Before discharge — CRITICAL"
+        }
+      ],
+      "flags": [
+        {
+          "flag": "CRITICAL — INSULIN ACCESS NOT CONFIRMED: Patient is uninsured and requires $600–700/month insulin regimen. Discharging without confirmed dispensing plan recreates exact conditions that produced 4 DKA admissions in 6 months. In pregnancy, DKA recurrence carries elevated maternal and fetal mortality risk.",
+          "priority": "critical",
+          "action": "Confirm physical medication dispensing — not program enrollment alone — before discharge is authorized. Escalate to attending and case management if insulin bridge cannot be confirmed same day."
+        },
+        {
+          "flag": "CRITICAL — TERATOGENIC MEDICATIONS STILL ACTIVE (LISINOPRIL, ATORVASTATIN): Both orders documented as active at time of discharge planning. This is a clinical decision but MSW must flag it as a discharge safety barrier and verify resolution before closing discharge plan.",
+          "priority": "critical",
+          "action": "Notify attending and charge nurse of active teratogenic orders. Document in discharge planning notes. Do not process discharge until prescribing team confirms discontinuation."
+        },
+        {
+          "flag": "HIGH — NO MFM OR OB ESTABLISHED: 7-week high-risk pregnancy with HbA1c 11.4%, no prenatal care, no provider. Standard OB is insufficient — MFM specialist required. First trimester is the critical window for fetal organogenesis and glycemic impact.",
+          "priority": "high",
+          "action": "Place MFM referral with confirmed appointment before discharge. Document referral in chart. Provide appointment details to patient in writing."
+        },
+        {
+          "flag": "HIGH — HOUSING INSTABILITY WITH EVICTION RISK: 6 weeks rent arrearage, month-to-month lease, gig income, uninsured, newly pregnant. Eviction in early pregnancy would precipitate a cascade of health and safety crises.",
+          "priority": "high",
+          "action": "Initiate emergency rental assistance referral today. Provide tenant rights information. Flag for community health worker follow-up within one week of discharge."
+        },
+        {
+          "flag": "HIGH — SOCIAL ISOLATION RISK AND UNADDRESSED PSYCHOSOCIAL DISTRESS: Patient received pregnancy diagnosis during critical illness admission while recently separated, uninsured, and housing-unstable. Distress documented Day 2 with no follow-up assessment noted. Perinatal mental health is a patient safety domain.",
+          "priority": "high",
+          "action": "Complete psychosocial assessment before discharge. Provide warm referral to counseling. Assess support network. Document baseline emotional status for outpatient providers."
+        },
+        {
+          "flag": "HIGH — DOMESTIC SAFETY NOT FORMALLY ASSESSED: Circumstances of recent separation not documented. Pregnancy news in context of recent separation warrants IPV screening.",
+          "priority": "high",
+          "action": "Conduct validated IPV screening before discharge. Document result or patient declination."
+        },
+        {
+          "flag": "MEDIUM — FOOD INSECURITY WITH DIRECT GLYCEMIC MANAGEMENT IMPLICATIONS: Cannot consistently afford low-glycemic foods. Food insecurity is a modifiable SDOH driver of glycemic instability and DKA risk in this specific patient.",
+          "priority": "medium",
+          "action": "Enroll in WIC today. Provide food pantry referral. Request diabetes-aware nutrition counseling referral that accounts for food budget constraints."
+        },
+        {
+          "flag": "MEDIUM — TRANSPORTATION BARRIER TO HIGH-VOLUME APPOINTMENT SCHEDULE: Patient faces MFM, endocrinology, PCP, and prenatal lab appointments in coming weeks with no car and complex transit to MFM clinic. Transportation failure equals appointment non-adherence.",
+          "priority": "medium",
+          "action": "Initiate MassHealth NEMT application immediately upon Medicaid activation. Identify interim transport solution for first appointments. Provide written transit directions to MFM clinic."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "SDOH documentation in this case is above average — housing, food security, transportation, and medication affordability are explicitly characterized in the source data, supporting high-confidence SDOH assessment. Confidence is rated moderate rather than high for three reasons: (1) Domestic safety has not been assessed — no documentation of IPV screening, circumstances of separation, or current relationship with former partner; this is a gap that cannot be assumed safe; (2) Patient's emotional state and pregnancy intentions are documented as distressed on Day 2 but no follow-up psychosocial assessment is recorded — emotional safety and coping capacity are underdocumented; (3) Gig income details are not quantified — MSW cannot confirm actual income level for benefit eligibility calculations without income documentation, which affects WIC eligibility confirmation, charity care thresholds, and Medicaid premium calculations. These gaps are themselves clinically meaningful and are flagged accordingly."
+    }
+  }
+}

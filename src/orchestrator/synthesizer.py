@@ -7,6 +7,7 @@ to synthesize their outputs into a final discharge planning package.
 import json
 import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime, timezone
 from pathlib import Path
 
 import anthropic
@@ -18,8 +19,8 @@ logger = logging.getLogger(__name__)
 _PROJECT_ROOT = Path(__file__).parent.parent.parent
 
 # Orchestrator runs on Opus per CLAUDE.md. Update model ID when Opus 4.7 is released.
-ORCHESTRATOR_MODEL = "claude-opus-4-5"
-ORCHESTRATOR_MAX_TOKENS = 8192
+ORCHESTRATOR_MODEL = "claude-opus-4-7"
+ORCHESTRATOR_MAX_TOKENS = 16384
 
 
 def _load_orchestrator_prompt() -> str:
@@ -130,6 +131,13 @@ def synthesize(
 
     text = response.content[0].text
     result = _parse_json_response(text, "orchestrator")
+
+    # Override fields the model cannot reliably self-report
+    result["synthesis_timestamp"] = datetime.now(timezone.utc).isoformat()
+    if "meta" not in result:
+        result["meta"] = {}
+    result["meta"]["model"] = ORCHESTRATOR_MODEL
+    result["meta"]["reasoning_effort"] = "xhigh"
 
     if verbose:
         print("  ✓ Orchestrator synthesis complete.")

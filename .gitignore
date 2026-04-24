@@ -49,3 +49,4 @@ yarn-error.log*
 # Logs (keep .md session/narrative logs; ignore raw line API logs)
 /logs/line/*
 !/logs/line/.gitkeep
+.vercel/

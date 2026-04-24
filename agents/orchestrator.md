@@ -89,6 +89,22 @@ Produce a 15-minute structured agenda for the discharge planning conference. Ord
 
 7. **The meta field must be accurate.** Record which agents provided output, whether any outputs were missing, and your confidence in the synthesis.
 
+8. **Discharge today probability scoring.** Use this rubric to anchor `discharge_today_probability.score_pct`:
+   - Start at 100.
+   - Subtract 25 for each CRITICAL unresolved blocker (floor 0). A physician marking discharge_ready: false counts as one CRITICAL blocker.
+   - Subtract 10 for LACE HIGH, 20 for LACE VERY_HIGH.
+   - Subtract 5 for each HIGH priority unresolved item.
+   - Add back nothing — only resolved blockers can raise the score, and they do so by not being counted.
+   - Floor is 0. Typical "not_ready" case: 5–25%. Typical "conditional" case: 40–65%. Typical "ready" case: 70–95%.
+   - State the exact blockers that drove the score down. Do not invent blockers not supported by the data.
+
+9. **Readmission risk 30d scoring.** Derive from LACE tier:
+   - LOW (0–4): 5–8%
+   - MODERATE (5–9): 12–18%
+   - HIGH (10–12): 22–28%
+   - VERY_HIGH (13+): 33–42%
+   - Adjust ±5% if SDOH barriers or strong support systems are documented in the case.
+
 ---
 
 ## Output Format
@@ -106,6 +122,16 @@ Respond only with valid JSON. No prose before or after the JSON block.
     "total": "integer",
     "tier": "LOW | MODERATE | HIGH | VERY_HIGH",
     "implication": "string — what this score means for the discharge plan"
+  },
+  "discharge_today_probability": {
+    "score_pct": "integer 0–100 — probability this patient can be safely discharged within the next 24 hours",
+    "interpretation": "string — 1–2 sentences explaining the score",
+    "key_blockers": ["string — each item actively preventing safe discharge today"]
+  },
+  "readmission_risk_30d": {
+    "score_pct": "integer 0–100 — estimated 30-day readmission probability derived from LACE tier and clinical picture",
+    "source": "string — e.g. 'LACE 13 (VERY_HIGH)'",
+    "interpretation": "string — 1 sentence"
   },
   "conflicts": [
     {

@@ -1,0 +1,1502 @@
+{
+  "patient_id": "CASE-002",
+  "patient_name": "Robert Jackson",
+  "synthesis_timestamp": "2026-04-23T14:32:00Z",
+  "discharge_readiness": "not_ready",
+  "discharge_readiness_rationale": "Physician agent has marked discharge_ready: false due to unresolved disposition conflict, incomplete goals-of-care conversation, and multiple critical transition elements not yet confirmed; discharge cannot proceed until these are resolved.",
+  "lace_score": {
+    "total": 10,
+    "tier": "HIGH",
+    "implication": "30-day readmission risk approximately 18–22%. Follow-up within 48–72 hours is indicated. Home health should be strongly considered. Given patient is refusing IRF and has only 20 outpatient PT visits available for calendar year 2026, aggressive post-discharge support structures are essential to prevent readmission."
+  },
+  "conflicts": [
+    {
+      "conflict_id": "C1",
+      "summary": "Three-way conflict between clinical recommendation for IRF, patient refusal of any inpatient facility, and inadequate outpatient PT coverage under Medicare Advantage",
+      "positions": [
+        {
+          "holder": "PT Agent / Physician Agent / Clinical Team",
+          "position": "Acute Inpatient Rehabilitation Facility (IRF) is clinically indicated — patient meets all IRF criteria, evidence-based outcomes for MCA stroke at this severity are significantly superior to home PT, and the 20-visit outpatient cap is structurally insufficient for meaningful motor recovery."
+        },
+        {
+          "holder": "Patient (Robert Jackson)",
+          "position": "Refuses any inpatient facility. States: 'I am not going to a nursing home.' Wife supports patient's decision."
+        },
+        {
+          "holder": "Insurance (Medicare Advantage HMO)",
+          "position": "IRF is covered (20 days, qualifying stay met). However, outpatient PT/OT is capped at 20 combined visits for all of calendar year 2026 — insufficient for MCA stroke rehabilitation if home discharge proceeds."
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "Patient accepts IRF after goals-of-care conversation clarifies IRF is not a nursing home and explains functional consequences of refusal",
+          "trade_off": "Optimal clinical outcome; patient must overcome stated objection. Requires time and skilled counseling."
+        },
+        {
+          "option": "Patient maintains refusal; proceed with home discharge with maximum available supports",
+          "trade_off": "Respects patient autonomy but accepts significantly elevated risk of permanent left arm functional deficit, fall-related injury, and 30-day readmission. 20 outpatient visits will be exhausted in 6–7 weeks."
+        },
+        {
+          "option": "Explore home health PT/OT eligibility under Medicare Advantage home health benefit (separate from outpatient cap) to supplement inadequate outpatient coverage",
+          "trade_off": "If patient meets homebound criteria, this could significantly extend available rehabilitation. Eligibility not yet assessed — requires urgent verification."
+        },
+        {
+          "option": "Appeal to Medicare Advantage for visit limit exception based on acute stroke medical necessity",
+          "trade_off": "May unlock additional visits but process takes time and approval is not guaranteed. Should be initiated regardless of other decisions."
+        },
+        {
+          "option": "Short-term SNF with intensive PT/OT as middle-ground between IRF and home",
+          "trade_off": "Lower intensity than IRF but more structure than home. May trigger same 'nursing home' objection from patient. Coverage requires verification."
+        }
+      ],
+      "requires_physician_decision": true,
+      "urgency": "before_discharge"
+    },
+    {
+      "conflict_id": "C2",
+      "summary": "Driving restriction not yet communicated to patient who has history of independent driving",
+      "positions": [
+        {
+          "holder": "Clinical Team / Neurology Guidelines",
+          "position": "Patient must not drive until cleared by neurology — Massachusetts guidance restricts driving post-stroke typically 3–6 months. Left hemiparesis, proprioceptive deficits, and dysmetria create unacceptable risk."
+        },
+        {
+          "holder": "Patient (inferred)",
+          "position": "Former firefighter, active driver prior to admission. No documentation of restriction being communicated or accepted. High risk of non-adherence given prior lifestyle."
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "Explicit driving restriction conversation with patient and wife before discharge, with written documentation",
+          "trade_off": "Essential for safety and legal compliance. May cause patient distress given loss of independence."
+        },
+        {
+          "option": "Defer driving clearance decision to neurology at 2-week follow-up without explicit prohibition at discharge",
+          "trade_off": "Unacceptable — patient may drive in the interim, creating safety and liability risk."
+        }
+      ],
+      "requires_physician_decision": false,
+      "urgency": "before_discharge"
+    },
+    {
+      "conflict_id": "C3",
+      "summary": "Atorvastatin 80 mg + Amlodipine CYP3A4 interaction creates elevated myopathy risk at maximum statin dose",
+      "positions": [
+        {
+          "holder": "Pharmacist Agent",
+          "position": "Amlodipine moderately inhibits CYP3A4, increasing atorvastatin exposure. At 80 mg (maximum dose), myopathy/rhabdomyolysis risk is elevated above baseline. Requires active surveillance."
+        },
+        {
+          "holder": "Clinical Team (prescribing)",
+          "position": "High-intensity statin (80 mg) is guideline-recommended for secondary stroke prevention with LDL 142. Dose reduction would compromise efficacy."
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "Maintain current regimen with active myopathy surveillance — baseline CK, patient education on symptoms, recheck CK and LFTs at 4–6 weeks",
+          "trade_off": "Preserves guideline-adherent secondary prevention while managing interaction risk through monitoring. Acceptable approach."
+        },
+        {
+          "option": "Switch to rosuvastatin (not a CYP3A4 substrate) at equivalent high-intensity dose",
+          "trade_off": "Eliminates interaction but introduces a medication change at discharge; rosuvastatin formulary status unknown."
+        }
+      ],
+      "requires_physician_decision": true,
+      "urgency": "within_1_week"
+    }
+  ],
+  "gaps": [
+    {
+      "gap_id": "G1",
+      "summary": "Prolonged cardiac monitoring for paroxysmal AFib not ordered or documented as planned",
+      "source": "Physician agent identifies that admission ECG showed normal sinus rhythm but no extended cardiac monitoring (30-day event monitor or Holter) is documented. In cryptogenic stroke with PFO, undetected paroxysmal AFib would change management from antiplatelet to anticoagulation.",
+      "action_required": "Order 30-day cardiac event monitor before discharge or confirm neurology/cardiology will arrange at first outpatient visit. Document plan explicitly.",
+      "owner": "Physician / Cardiology",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G2",
+      "summary": "Home health PT/OT eligibility under Medicare Advantage home health benefit not assessed",
+      "source": "MSW agent identifies that homebound criteria eligibility has not been evaluated. Patient ambulates only 50 feet with SPC and is unsteady on uneven surfaces — may meet homebound definition. Home health PT/OT is a separate benefit from outpatient PT and would not count against the 20-visit annual cap.",
+      "action_required": "Contact Medicare Advantage plan immediately to verify home health eligibility criteria. If eligible, place home health orders before discharge to maximize available rehabilitation.",
+      "owner": "MSW / Case Management",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G3",
+      "summary": "Formal standardized balance assessment not documented — fall risk score is unquantified",
+      "source": "PT agent notes that Berg Balance Scale or Tinetti POMA has not been administered. Fall risk is rated MODERATE-HIGH based on clinical impression but lacks standardized baseline score for tracking recovery and substantiating medical necessity in any insurance appeals.",
+      "action_required": "Administer Berg Balance Scale or Tinetti POMA before discharge. Document score. Essential for PT baseline and insurance appeal documentation.",
+      "owner": "PT",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G4",
+      "summary": "Complete OTC and supplement medication history not obtained",
+      "source": "Pharmacist agent notes only lisinopril 10 mg documented as home medication. No assessment of OTC medications (especially NSAIDs, aspirin, fish oil, vitamin E) or herbal supplements that could interact with DAPT.",
+      "action_required": "Complete home medication review including OTC and supplements at discharge counseling. Specifically ask about ibuprofen/naproxen use, fish oil, vitamin E, ginkgo, and any herbal products.",
+      "owner": "Pharmacist / Nurse",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G5",
+      "summary": "Baseline CK and LFTs not documented prior to high-intensity statin initiation",
+      "source": "Pharmacist agent notes atorvastatin 80 mg started for secondary prevention but no baseline CK or hepatic function documented. Given amlodipine-atorvastatin CYP3A4 interaction, baseline values are important for monitoring.",
+      "action_required": "Obtain baseline CK and LFTs before discharge or document plan for outpatient baseline within 1–2 weeks.",
+      "owner": "Physician / Care Coordinator",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G6",
+      "summary": "Domestic safety screening not documented",
+      "source": "MSW agent notes no IPV or elder abuse screening documentation in available data. Absence of documentation is not absence of risk.",
+      "action_required": "Complete universal domestic safety screen per institutional protocol. Document outcome.",
+      "owner": "Nurse / MSW",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G7",
+      "summary": "Stair negotiation and outdoor environment not assessed despite patient's prior active outdoor lifestyle",
+      "source": "PT agent notes stair negotiation was not assessed, and home entry (outdoor steps, driveway, walkway surfaces) is unknown. Patient previously walked 2 miles daily outdoors.",
+      "action_required": "Clarify whether home entry has exterior steps. If yes, stair training required before discharge or barrier must be mitigated. Outdoor surface types should be assessed.",
+      "owner": "PT / OT",
+      "urgency": "before_discharge"
+    }
+  ],
+  "prioritized_actions": [
+    {
+      "rank": 1,
+      "priority": "CRITICAL",
+      "action": "Complete goals-of-care conversation with patient and wife regarding IRF refusal. Document informed refusal with specific language about functional consequences: 20-visit PT cap, left arm recovery trajectory, fall risk, and 18–22% 30-day readmission risk. Clarify IRF is not a nursing home. Keep IRF authorization pathway available if patient reconsiders.",
+      "owner": "Physician / MSW / PT",
+      "urgency": "before discharge",
+      "rationale": "Discharge cannot proceed without documented informed refusal. Current refusal based on 'not a nursing home' may be modifiable with education. Patient autonomy must be respected but requires full information."
+    },
+    {
+      "rank": 2,
+      "priority": "CRITICAL",
+      "action": "Communicate driving restriction explicitly to patient and wife. Document in chart, discharge instructions, and discharge summary. Patient must not drive until cleared by neurology (3–6 months post-stroke per MA guidelines).",
+      "owner": "Physician / Nurse",
+      "urgency": "before discharge",
+      "rationale": "Patient is a former driver with left hemiparesis, proprioceptive deficits, and dysmetria. Driving before clearance creates unacceptable risk to patient and public. Legal and safety imperative."
+    },
+    {
+      "rank": 3,
+      "priority": "CRITICAL",
+      "action": "Complete teach-back with patient AND wife on Clopidogrel stop date (2026-05-06). Provide written calendar reminder. Dispense exactly 21 tablets. Confirm PCP has received explicit stop date notification.",
+      "owner": "Nurse / Pharmacist",
+      "urgency": "before discharge",
+      "rationale": "DAPT course is 21 days per POINT trial protocol. Continuation beyond this date increases bleeding risk without additional benefit. Early discontinuation increases stroke risk. Date must survive discharge transition."
+    },
+    {
+      "rank": 4,
+      "priority": "CRITICAL",
+      "action": "Counsel patient explicitly that NSAIDs (ibuprofen, naproxen, etc.) are absolutely contraindicated during DAPT course. Document in discharge instructions. Acetaminophen is acceptable alternative.",
+      "owner": "Pharmacist / Nurse",
+      "urgency": "before discharge",
+      "rationale": "NSAIDs with concurrent DAPT markedly increase GI and intracranial hemorrhage risk. Patient may use OTC NSAIDs for pain without realizing danger."
+    },
+    {
+      "rank": 5,
+      "priority": "HIGH",
+      "action": "Assess Medicare Advantage home health PT/OT eligibility. Determine if patient meets homebound criteria. If eligible, place home health orders to supplement inadequate 20-visit outpatient cap.",
+      "owner": "MSW / Case Management",
+      "urgency": "before discharge",
+      "rationale": "Home health benefit is separate from outpatient PT and does not count against 20-visit cap. This is potentially the most significant unclaimed resource for rehabilitation adequacy."
+    },
+    {
+      "rank": 6,
+      "priority": "HIGH",
+      "action": "Order 30-day cardiac event monitor for paroxysmal AFib evaluation in cryptogenic stroke workup. If AFib detected, anticoagulation would be indicated over current antiplatelet regimen.",
+      "owner": "Physician / Cardiology / Neurology",
+      "urgency": "before discharge",
+      "rationale": "Current DAPT regimen may be suboptimal if paroxysmal AFib is ultimately identified. PFO presence makes cryptogenic workup essential."
+    },
+    {
+      "rank": 7,
+      "priority": "HIGH",
+      "action": "Confirm DME delivery and installation (grab bars, shower chair, handheld shower attachment) before discharge. Verify equipment is in home, not just ordered.",
+      "owner": "Care Coordinator / PT",
+      "urgency": "before discharge",
+      "rationale": "Patient requires standby assist for bathing with moderate-high fall risk. Bathroom without safety equipment is a fall hazard."
+    },
+    {
+      "rank": 8,
+      "priority": "HIGH",
+      "action": "Complete structured caregiver education with Patricia Jackson: bathing assist technique, fall response protocol, left arm positioning/passive ROM, medication schedule, stroke warning signs (FAST), when to call 911 vs. PCP.",
+      "owner": "Nurse / PT / OT",
+      "urgency": "before discharge",
+      "rationale": "Wife is sole caregiver for patient with moderate functional deficits. Untrained caregiver increases patient fall risk and caregiver injury risk."
+    },
+    {
+      "rank": 9,
+      "priority": "HIGH",
+      "action": "Verify Clopidogrel formulary tier and copay under patient's specific Medicare Advantage HMO plan. If cost barrier identified, explore manufacturer assistance or GoodRx.",
+      "owner": "Pharmacist / MSW",
+      "urgency": "before discharge",
+      "rationale": "Non-adherence to antiplatelet therapy due to cost is a known, preventable cause of early stroke recurrence."
+    },
+    {
+      "rank": 10,
+      "priority": "HIGH",
+      "action": "Obtain repeat BMP (creatinine, potassium, eGFR) before discharge to confirm stable renal function following lisinopril dose doubling. If not obtained before discharge, explicitly order for PCP 1-week visit.",
+      "owner": "Physician",
+      "urgency": "before discharge",
+      "rationale": "Lisinopril doubled from 10 mg to 20 mg. Risk of undetected hyperkalemia or AKI. Metformin safety also depends on eGFR remaining adequate."
+    },
+    {
+      "rank": 11,
+      "priority": "HIGH",
+      "action": "Administer Berg Balance Scale or Tinetti POMA before discharge. Document baseline score.",
+      "owner": "PT",
+      "urgency": "before discharge",
+      "rationale": "Standardized score essential for tracking recovery trajectory and substantiating medical necessity in insurance appeals for additional PT visits."
+    },
+    {
+      "rank": 12,
+      "priority": "HIGH",
+      "action": "Complete stroke warning sign education (FAST/BE-FAST) with patient and wife. Teach-back required. Emphasize: call 911, do not drive to hospital.",
+      "owner": "Nurse",
+      "urgency": "before discharge",
+      "rationale": "Stroke recurrence risk is highest in first 30 days post-stroke. Delayed recognition and delayed care worsen outcomes."
+    },
+    {
+      "rank": 13,
+      "priority": "HIGH",
+      "action": "Confirm outpatient PT/OT referral is placed with in-network provider under Medicare Advantage HMO. Confirm first appointment date is in hand before discharge, not just 'pending scheduling.'",
+      "owner": "Care Coordinator",
+      "urgency": "before discharge",
+      "rationale": "Every day without therapy in the neuroplasticity window increases risk of permanent functional deficit. 'Referral placed' is not sufficient — appointment date required."
+    },
+    {
+      "rank": 14,
+      "priority": "HIGH",
+      "action": "Counsel patient on myopathy warning signs (muscle pain, weakness, dark urine) given atorvastatin 80 mg plus amlodipine CYP3A4 interaction. Obtain baseline CK if not done. Schedule CK and LFT recheck at 4–6 weeks.",
+      "owner": "Pharmacist / Physician",
+      "urgency": "before discharge",
+      "rationale": "Elevated myopathy/rhabdomyolysis risk at maximum statin dose with CYP3A4 inhibitor co-administration. Patient has no prior statin experience — no baseline for symptoms."
+    },
+    {
+      "rank": 15,
+      "priority": "HIGH",
+      "action": "Instruct patient to discard or sequester old Lisinopril 10 mg tablets at home. Dose is now 20 mg. Risk of taking old supply at incorrect dose.",
+      "owner": "Nurse / Pharmacist",
+      "urgency": "before discharge",
+      "rationale": "Medication dose change with old supply at home creates dosing error risk."
+    },
+    {
+      "rank": 16,
+      "priority": "MODERATE",
+      "action": "Complete home medication review including OTC medications and supplements. Specifically ask about NSAIDs, fish oil, vitamin E, ginkgo, and herbal products.",
+      "owner": "Pharmacist / Nurse",
+      "urgency": "before discharge",
+      "rationale": "Unrecognized OTC anticoagulants or NSAIDs interact with DAPT."
+    },
+    {
+      "rank": 17,
+      "priority": "MODERATE",
+      "action": "Confirm PCP appointment within 1 week of discharge with explicit agenda: Clopidogrel stop date review, BMP recheck, medication reconciliation, HbA1c follow-up plan, BP monitoring.",
+      "owner": "Care Coordinator",
+      "urgency": "before discharge",
+      "rationale": "LACE 10 requires follow-up within 48–72 hours to 1 week. Multiple medication changes require early PCP review."
+    },
+    {
+      "rank": 18,
+      "priority": "MODERATE",
+      "action": "Complete domestic safety screening per institutional protocol. Document outcome.",
+      "owner": "Nurse / MSW",
+      "urgency": "before discharge",
+      "rationale": "Universal precaution. Absence of documentation is not absence of risk."
+    },
+    {
+      "rank": 19,
+      "priority": "MODERATE",
+      "action": "Educate patient and wife on post-stroke emotional lability as a neurological symptom. Provide written guidance and stroke support resources (American Stroke Association).",
+      "owner": "Nurse / MSW",
+      "urgency": "before discharge",
+      "rationale": "Mild emotional lability documented. Wife needs to understand this is neurological, not volitional, to prevent relationship strain and misattribution."
+    },
+    {
+      "rank": 20,
+      "priority": "MODERATE",
+      "action": "Flag HbA1c 8.1% for PCP and/or endocrinology at follow-up. Document need for diabetes management optimization.",
+      "owner": "Physician",
+      "urgency": "within 48 hours",
+      "rationale": "Suboptimal glycemic control increases cerebrovascular and microvascular risk. Not a discharge barrier but requires explicit outpatient action plan."
+    },
+    {
+      "rank": 21,
+      "priority": "MODERATE",
+      "action": "Clarify home entry for exterior steps. If present, stair training required before discharge or alternate entry must be identified.",
+      "owner": "PT / OT",
+      "urgency": "before discharge",
+      "rationale": "Patient is unsafe on uneven surfaces. Unassessed exterior steps are a fall hazard on every entry/exit from home."
+    },
+    {
+      "rank": 22,
+      "priority": "MODERATE",
+      "action": "Place caregiver support referral (Family Caregiver Alliance or local equivalent) and stroke survivor peer support referral (American Stroke Association).",
+      "owner": "MSW",
+      "urgency": "within 48 hours",
+      "rationale": "Patricia Jackson has moderate burnout risk as sole full-time caregiver with no IRF buffer. Proactive support reduces caregiver crisis risk."
+    },
+    {
+      "rank": 23,
+      "priority": "LOW",
+      "action": "Assess patient's ability to open medication bottles with left hand grip 3/5. Order easy-open caps if needed. Recommend pill organizer.",
+      "owner": "Nurse / Pharmacist",
+      "urgency": "before discharge",
+      "rationale": "Child-resistant caps may be difficult with left hand limitation. Small barrier but affects daily medication adherence."
+    },
+    {
+      "rank": 24,
+      "priority": "LOW",
+      "action": "Schedule fasting lipid panel recheck at 6–8 weeks post-discharge to assess atorvastatin response. LDL target <70 mg/dL.",
+      "owner": "Physician / Care Coordinator",
+      "urgency": "within 1 week",
+      "rationale": "Atorvastatin started with LDL 142. Need to confirm response to high-intensity statin. Also triglycerides 198 — persistent elevation may require additional intervention."
+    }
+  ],
+  "handoff_packages": {
+    "pcp_summary": "Dear Primary Care Colleague,\n\nRobert Jackson (DOB: 1961-09-03, MRN: MRN-502847) is a 65-year-old male discharged on [DATE] following an 8-day hospitalization for acute right MCA territory ischemic stroke (I63.411).\n\n**Admission Course:** Presented emergently with NIHSS 6, BP 196/108. MRI confirmed right MCA infarct (cortical/subcortical, ~18 mL, no hemorrhagic transformation). TTE revealed EF 58% and small PFO without resting shunt. Carotid Doppler showed no significant stenosis. NIHSS improved to 2 at discharge with residual left arm weakness (grip 3/5) and mild dysmetria. BP now controlled at 138/82 on expanded antihypertensive regimen.\n\n**Discharge Medications:**\n- Aspirin 81 mg PO daily (continue indefinitely)\n- Clopidogrel 75 mg PO daily — **STOP DATE: 2026-05-06** (21-day DAPT per POINT trial, then aspirin monotherapy)\n- Atorvastatin 80 mg PO daily (NEW — high-intensity statin for secondary prevention, LDL 142 at admission)\n- Amlodipine 10 mg PO daily (NEW — for BP control)\n- Lisinopril 20 mg PO daily (INCREASED from 10 mg home dose)\n- Metformin 1000 mg PO BID (held during acute phase, restarted Day 6)\n\n**Key Labs:** Cr 1.0, eGFR 78, K+ 4.3 (2026-04-22). Glucose 138. HbA1c 8.1% — above target, requires optimization. LDL 142, HDL 38, TG 198.\n\n**LACE Score: 10 (HIGH)** — 30-day readmission risk 18–22%. Follow-up within 1 week is critical.\n\n**Active Problems Requiring Follow-Up:**\n1. Clopidogrel stop date 2026-05-06 — please confirm patient discontinues and continues aspirin monotherapy\n2. BMP recheck — lisinopril dose doubled; confirm Cr and K+ stable\n3. HbA1c 8.1% — diabetes management optimization needed\n4. Atorvastatin + amlodipine CYP3A4 interaction — monitor for myopathy; CK/LFTs at 4–6 weeks\n5. PFO identified — cardiology follow-up in 4 weeks for closure discussion\n6. Driving restriction — patient must not drive until cleared by neurology (typically 3–6 months post-stroke in MA)\n7. Outpatient PT/OT limited to 20 visits under Medicare Advantage — patient refused IRF against recommendation\n\n**Unresolved Issues:** 30-day cardiac monitoring for paroxysmal AFib evaluation not yet arranged — please confirm with neurology/cardiology. Home health PT eligibility under separate Medicare benefit should be explored.\n\n**Follow-Up Appointments:** PCP within 1 week (you), Neurology 2 weeks, Cardiology 4 weeks, PT/OT ASAP.\n\nPlease contact [Hospital] at [Phone] with questions. Thank you for ongoing care of this patient.",
+    "home_health_orders": {
+      "visit_frequency": "Skilled nursing visit within 24–48 hours of discharge for medication reconciliation, vital signs, fall risk assessment, and caregiver education reinforcement. If home health PT approved, PT 3–5x/week initially.",
+      "vital_monitoring": "Blood pressure monitoring each visit — target <140/90. Heart rate and rhythm. Weight weekly (assess for fluid retention with amlodipine).",
+      "escalation_thresholds": [
+        "SBP >160 or <100 mmHg — notify PCP same day",
+        "DBP >100 mmHg on two consecutive readings — notify PCP",
+        "New facial droop, arm weakness, speech difficulty — call 911 immediately",
+        "Signs of angioedema (lip/tongue/throat swelling) — call 911",
+        "Unexplained muscle pain/weakness or dark urine (statin myopathy) — notify PCP urgently",
+        "Fall with head impact or loss of consciousness — call 911"
+      ],
+      "medication_monitoring": [
+        "Confirm Clopidogrel is stopped on 2026-05-06 (not before, not after)",
+        "Confirm Aspirin continues after Clopidogrel stops",
+        "Assess for NSAID use — absolutely contraindicated with DAPT",
+        "Confirm Lisinopril 20 mg being taken (not old 10 mg tablets)",
+        "Assess for statin side effects (myalgia, weakness)",
+        "Verify Metformin being taken BID with meals"
+      ],
+      "fall_precautions": "HIGH FALL RISK. Ambulates 50 feet with single-point cane, unsteady on uneven surfaces. Left leg proprioceptive deficits, left arm spasticity emerging. Patient must use SPC for all ambulation. Bathroom grab bars and shower chair should be in place. No unattended outdoor ambulation.",
+      "functional_status_at_discharge": "Left arm grip 3/5, left leg 4/5 with ankle dorsiflexion 4-/5. Ambulates 50 feet with SPC on level surfaces. Requires standby assist for bathing, assist for lower body dressing. Independent feeding, grooming (limited left hand use), toileting. NIHSS 2.",
+      "goals_first_visit": [
+        "Verify all DME in place (grab bars, shower chair, SPC)",
+        "Complete medication reconciliation with visual inspection of all medications in home",
+        "Confirm patient/wife verbalize Clopidogrel stop date and stroke warning signs",
+        "Assess home safety hazards (rugs, bathroom layout, outdoor entry)",
+        "Reinforce fall precautions and driving restriction",
+        "Assess caregiver capacity and early signs of burnout",
+        "Schedule/confirm PT/OT first appointment date"
+      ]
+    },
+    "pharmacy_counseling": {
+      "complete_medication_list": [
+        "Aspirin 81 mg PO daily — continue indefinitely for stroke prevention",
+        "Clopidogrel 75 mg PO daily — STOP on 2026-05-06 (21 days total), then aspirin alone continues",
+        "Atorvastatin 80 mg PO daily — NEW, take at same time each day, indefinite",
+        "Amlodipine 10 mg PO daily — NEW, for blood pressure",
+        "Lisinopril 20 mg PO daily — INCREASED from 10 mg (discard old 10 mg tablets)",
+        "Metformin 1000 mg PO BID — take with breakfast and dinner"
+      ],
+      "interactions_flagged": [
+        "Aspirin + Clopidogrel: Intentional DAPT for 21 days. Increased bleeding risk — patient should report black/tarry stool, unusual bruising, prolonged bleeding, severe headache.",
+        "Amlodipine + Atorvastatin: Amlodipine increases atorvastatin levels (CYP3A4 interaction). At 80 mg atorvastatin, myopathy risk is elevated. Patient must report unexplained muscle pain, weakness, or dark urine immediately.",
+        "NSAID CONTRAINDICATION: Patient must NOT take ibuprofen, naproxen, or any NSAID while on DAPT — dramatically increases GI and intracranial hemorrhage risk. Acetaminophen is safe alternative."
+      ],
+      "new_medications_requiring_counseling": [
+        "Atorvastatin 80 mg — This is a cholesterol-lowering medication to prevent another stroke. Take once daily at the same time. Do NOT stop without talking to your doctor. Report muscle pain, weakness, or dark urine immediately. Avoid grapefruit in large amounts.",
+        "Amlodipine 10 mg — This is a blood pressure medication. Ankle swelling is a common side effect — report if bothersome but not dangerous. Take at the same time daily.",
+        "Aspirin 81 mg — This thins your blood to prevent clots. Continue indefinitely. Take with food if stomach upset occurs.",
+        "Clopidogrel 75 mg — This also thins your blood. **You will take this for exactly 21 days only — your last dose is on May 6, 2026.** After that date, STOP clopidogrel but CONTINUE aspirin. Do not stop early. Do not continue past May 6 unless your doctor tells you to."
+      ],
+      "cost_and_access_issues": [
+        "Clopidogrel copay under Medicare Advantage HMO should be verified — if cost is a barrier, GoodRx or manufacturer discount can reduce 21-day supply to $10–15",
+        "All other medications are generic and low-cost ($4–10/month at most retail pharmacies)",
+        "Dispense exactly 21 tablets of Clopidogrel — not a 30-day supply"
+      ],
+      "adherence_risk_factors": [
+        "4 of 6 medications are new — significant new medication burden",
+        "Clopidogrel has hard stop date that must be tracked",
+        "Twice-daily Metformin dosing adds complexity",
+        "Left hand grip 3/5 may make bottle opening difficult — assess for easy-open caps",
+        "High health literacy and engaged wife are protective factors"
+      ],
+      "counseling_priorities": [
+        "1. Clopidogrel stop date 2026-05-06 — this is the single most important medication counseling point",
+        "2. NSAID avoidance — no ibuprofen, no naproxen, no Aleve, no Advil, no Motrin",
+        "3. Statin myopathy monitoring — atorvastatin 80 mg with amlodipine increases risk",
+        "4. Lisinopril dose change — take 20 mg, discard old 10 mg tablets",
+        "5. Pill organizer recommended — wife can help with weekly setup"
+      ]
+    },
+    "patient_instructions": "**Why You Were in the Hospital**\nYou had a stroke. Part of your brain did not get enough blood, which caused weakness on your left side. You are now stable and ready to continue your recovery at home.\n\n**Your Medications**\nYou are going home with 6 medications. The most important things to know:\n\n1. **Clopidogrel (the small pink pill)** — You will take this for exactly 21 days. **Your last dose is on Tuesday, May 6, 2026.** After that, STOP this pill. Keep taking your aspirin.\n\n2. **Aspirin** — Take this every day for the rest of your life. It helps prevent another stroke.\n\n3. **Atorvastatin** — This lowers your cholesterol. If you get unexplained muscle pain or dark urine, call your doctor right away.\n\n4. **DO NOT take ibuprofen (Advil, Motrin) or naproxen (Aleve).** These pills can cause dangerous bleeding when taken with your blood thinners. Tylenol is safe.\n\n**Danger Signs — Call 911 Immediately**\n- Face drooping on one side\n- Arm weakness (especially new or worse)\n- Trouble speaking or understanding words\n- Sudden severe headache\n- Sudden vision changes\n\n**Do not drive yourself to the hospital. Call 911.**\n\n**Driving**\nYou cannot drive until your neurologist clears you. This is usually 3–6 months after a stroke. Patricia will drive you to all appointments.\n\n**Your Appointments**\n- Primary care doctor: within 1 week\n- Neurologist: 2 weeks\n- Cardiologist: 4 weeks\n- Physical therapy: as soon as possible — call to schedule if you don't have a date\n\n**Questions?** Call your doctor's office or the hospital at [Phone]."
+  },
+  "conference_agenda": [
+    {
+      "order": 1,
+      "time_minutes": 4,
+      "presenting_role": "Physician / MSW",
+      "agenda_item": "IRF refusal and goals-of-care conversation",
+      "key_question": "Has the patient received a full explanation of functional consequences of refusing IRF, and does he maintain his refusal after understanding that IRF is not a nursing home and that 20 outpatient PT visits are insufficient for MCA stroke recovery?"
+    },
+    {
+      "order": 2,
+      "time_minutes": 2,
+      "presenting_role": "MSW / Case Management",
+      "agenda_item": "Home health PT eligibility",
+      "key_question": "Does the patient meet homebound criteria for Medicare Advantage home health PT benefit, which would provide additional rehabilitation visits beyond the 20-visit outpatient cap?"
+    },
+    {
+      "order": 3,
+      "time_minutes": 2,
+      "presenting_role": "PT",
+      "agenda_item": "Discharge functional safety and DME status",
+      "key_question": "Are grab bars, shower chair, and other DME confirmed in the home? Has standardized balance assessment (Berg/Tinetti) been completed? Are home entry exterior steps present and addressed?"
+    },
+    {
+      "order": 4,
+      "time_minutes": 2,
+      "presenting_role": "Nurse",
+      "agenda_item": "Critical patient education completion",
+      "key_question": "Has teach-back been completed for Clopidogrel stop date (2026-05-06), driving restriction, stroke warning signs (FAST), and NSAID avoidance? Has caregiver education been completed with Patricia?"
+    },
+    {
+      "order": 5,
+      "time_minutes": 2,
+      "presenting_role": "Pharmacist",
+      "agenda_item": "Medication safety and access",
+      "key_question": "Has Clopidogrel copay been verified? Has OTC/supplement reconciliation been completed? Has patient been counseled on statin myopathy risk given amlodipine interaction?"
+    },
+    {
+      "order": 6,
+      "time_minutes": 1,
+      "presenting_role": "Physician / Cardiology",
+      "agenda_item": "Cardiac monitoring for paroxysmal AFib",
+      "key_question": "Has 30-day cardiac event monitor been ordered or arranged for outpatient? This is a gap in cryptogenic stroke workup with PFO."
+    },
+    {
+      "order": 7,
+      "time_minutes": 1,
+      "presenting_role": "Physician",
+      "agenda_item": "Labs before discharge",
+      "key_question": "Has repeat BMP been obtained following lisinopril dose doubling? Has baseline CK been obtained for atorvastatin monitoring?"
+    },
+    {
+      "order": 8,
+      "time_minutes": 1,
+      "presenting_role": "Care Coordinator",
+      "agenda_item": "Follow-up appointments confirmed",
+      "key_question": "Are PCP (1 week), Neurology (2 weeks), Cardiology (4 weeks), and PT/OT first appointment dates confirmed in hand — not just 'referred'?"
+    }
+  ],
+  "meta": {
+    "agents_providing_output": [
+      "Physician",
+      "Nurse",
+      "Pharmacist",
+      "MSW",
+      "PT"
+    ],
+    "agents_missing_output": [],
+    "synthesis_confidence": "moderate",
+    "confidence_notes": "Confidence is moderate due to several unresolved elements: (1) Goals-of-care conversation has not yet occurred — discharge readiness depends on its outcome; (2) Home health PT eligibility under Medicare Advantage has not been assessed — this is the single largest opportunity to address the rehabilitation adequacy gap; (3) 30-day cardiac monitoring for paroxysmal AFib is a workup gap identified by physician but not addressed in any agent output as resolved; (4) Baseline CK and LFTs not documented for statin monitoring; (5) Formal standardized balance assessment not completed. All five specialist agents provided comprehensive outputs with appropriate clinical grounding. Conflicts and gaps identified are actionable and must be resolved before discharge can proceed safely.",
+    "model": "claude-sonnet-4-20250514",
+    "reasoning_effort": "xhigh"
+  },
+  "_agent_outputs": {
+    "pt": {
+      "agent": "pt",
+      "case_id": "CASE-002",
+      "functional_mobility": {
+        "ambulation_distance": "50 feet with single-point cane (SPC) on level surfaces; unsteady and unsafe on uneven surfaces. Significant gap from baseline of 2-mile independent daily walks.",
+        "assistive_device": "Single-point cane (SPC) — new this admission; appropriate for current level but may require upgrade to quad cane or hemi-walker if left leg weakness progresses or fatigue worsens.",
+        "gait_quality": "Asymmetric gait pattern with left hemiparetic deviation. Reduced left ankle dorsiflexion (4-/5) creates foot-clearance risk. Left leg proprioception deficits noted on exam contribute to instability. Does not safely navigate uneven terrain.",
+        "stair_negotiation": "not_assessed",
+        "endurance": "Markedly reduced from baseline. 50-foot ambulation distance represents approximately 2.5% of prior daily walking capacity. Cardiovascular deconditioning after 8-day acute admission compounded by neurologic deficits.",
+        "baseline_prior_admission": "Fully independent community ambulator — walked 2 miles daily, no assistive device, no mobility limitations documented."
+      },
+      "fall_risk": {
+        "level": "high",
+        "contributing_factors": [
+          "Left hemiparesis — leg strength 4/5 with ankle dorsiflexion 4-/5 creating foot-drop risk",
+          "Reduced left leg proprioception on formal exam",
+          "Gait asymmetry with compensatory trunk shift",
+          "Emerging left arm spasticity reducing protective extension reflex on left side",
+          "New assistive device (SPC) — patient not yet habituated",
+          "Unsafe on uneven surfaces — poses immediate fall risk in community environment",
+          "Reduced endurance — fatigue-related gait deterioration likely beyond 50 feet",
+          "Obesity (BMI 32.4) — increases fall consequence severity and complicates recovery from near-falls",
+          "NIHSS 2 with residual dysmetria — coordination deficits compound proprioceptive loss",
+          "Mild post-stroke emotional lability — attention and impulsivity risk during ambulation"
+        ],
+        "score": "Documented as MODERATE-HIGH (institution screening tool, specific scale not named in record)",
+        "mitigation_recommendations": [
+          "Formal Tinetti or Berg Balance Scale assessment prior to discharge",
+          "Gait training with emphasis on left foot clearance and proprioceptive re-education",
+          "Supervised ambulation only at home until gait stability improves — wife educated as supervised assistant",
+          "Remove or secure all throw rugs, loose mats, and floor clutter in home",
+          "Install grab bars in bathroom (toilet and shower) prior to discharge",
+          "Shower chair required — standing shower unsafe at current balance level",
+          "Nighttime fall precautions — bedside commode if bathroom transit is >20 feet",
+          "Patient education: do not ambulate without SPC for any distance; no barefoot walking on tile/hardwood",
+          "If home PT proceeds: fall risk reassessment at each visit; functional reach test and TUG at intake"
+        ]
+      },
+      "rehab_recommendation": {
+        "recommended_level": "IRF",
+        "justification": "Robert Jackson meets IRF admission criteria on all clinical dimensions: (1) Right MCA territory ischemic infarct with documented mild left hemiparesis, emerging spasticity, and gait deficits — a condition for which IRF outcomes data are substantially superior to home PT at this functional deficit level; (2) Cognition intact — oriented x4, no aphasia, follows complex commands, NIHSS cognitive subscale normal — he will participate meaningfully in 3+ hours of daily therapy; (3) Motivation and engagement are high; (4) Qualifying 3-day inpatient stay met; (5) Insurance coverage exists (20 days IRF). The functional gap is severe: patient walked 2 miles daily pre-stroke and currently cannot safely ambulate beyond 50 feet, cannot manage uneven surfaces, has left arm strength 3/5 with emerging spasticity, and requires standby assist for bathing and lower-extremity dressing. Without intensive interdisciplinary rehab in the critical early neuroplasticity window (first 30–90 days post-stroke), permanent functional deficit in the left upper extremity is the expected trajectory. The 20-visit outpatient cap represents a clinically inadequate dose for an MCA stroke at this severity — IRF followed by home PT represents the optimal care pathway. Patient refusal of IRF is documented and creates a critical unresolved conflict that must be escalated to the full team.",
+        "patient_meets_irF_criteria": true,
+        "frequency_per_week": "If home PT elected against recommendation: 5 visits per week minimum in weeks 1–3, tapering to 3 per week weeks 4–6 — but 20-visit annual cap makes this impossible to execute within standard of care.",
+        "estimated_duration_weeks": "IRF: 2–3 weeks acute inpatient followed by transition to home PT or outpatient. If home PT only: clinically indicated dose is 8–12 weeks; available dose under current coverage is approximately 4–6 weeks at 3x/week before cap is reached."
+      },
+      "home_environment": {
+        "known_hazards": [
+          "Bathroom safety unknown — grab bars and shower configuration not documented; shower chair not yet in place",
+          "Flooring surface types unknown — throw rugs and transitions between flooring types are high fall-risk for hemiparetic gait",
+          "Bedroom-to-bathroom distance not documented — overnight fall risk if far from toilet",
+          "Outdoor surface access unknown — driveway, walkway, and entry steps not assessed; patient previously active outdoors",
+          "Left-hand grip 3/5 with emerging spasticity — door handles, faucets, and stair railings may require modification"
+        ],
+        "assessment_needed": true,
+        "assessment_type": "Formal home safety evaluation by PT or OT prior to or immediately upon discharge — either in-person home visit or structured phone/video assessment with wife completing environmental checklist. Given fall risk level, in-person home evaluation strongly preferred if home discharge proceeds.",
+        "safe_for_discharge_as_is": "conditional"
+      },
+      "dme_recommendations": [
+        {
+          "item": "Single-point cane (SPC)",
+          "necessity": "required",
+          "status": "in_place"
+        },
+        {
+          "item": "Shower chair with back and armrests",
+          "necessity": "required",
+          "status": "needed"
+        },
+        {
+          "item": "Grab bars — toilet (bilateral if possible) and shower entry",
+          "necessity": "required",
+          "status": "needed"
+        },
+        {
+          "item": "Handheld shower attachment",
+          "necessity": "recommended",
+          "status": "needed"
+        },
+        {
+          "item": "Bedside commode",
+          "necessity": "recommended",
+          "status": "needed"
+        },
+        {
+          "item": "Tub transfer bench (if bathtub rather than roll-in shower)",
+          "necessity": "recommended",
+          "status": "needed"
+        },
+        {
+          "item": "Non-slip bath mat and stair tread strips (if any outdoor steps)",
+          "necessity": "recommended",
+          "status": "needed"
+        },
+        {
+          "item": "Quad cane or hemi-walker",
+          "necessity": "optional",
+          "status": "needed"
+        }
+      ],
+      "insurance_access_conflict": {
+        "conflict_exists": true,
+        "detail": "Medicare Advantage HMO caps PT and OT combined at 20 visits per calendar year. Clinically indicated outpatient PT dose for an MCA stroke at this functional severity is 24–36 visits minimum (8–12 weeks at 3x/week). If patient refuses IRF and proceeds directly home, the entire calendar year 2026 rehabilitation allowance will be exhausted in approximately 6–7 weeks at 3x/week — leaving the patient without covered PT through the end of the critical recovery window. IRF coverage (20 days) is available and would not deplete the outpatient visit limit, but patient is refusing.",
+        "clinical_need": "Minimum 24–36 outpatient PT visits for MCA stroke with left hemiparesis, emerging spasticity, and significant gait and ADL deficits — plus potential OT visits for left upper extremity and ADL retraining, which compete against the same 20-visit pool.",
+        "coverage_limit": "20 visits combined PT + OT for calendar year 2026 under Medicare Advantage HMO plan.",
+        "resolution_options": [
+          "Accept IRF admission (covered, 20 days) — preserves outpatient visit pool for transition phase post-IRF",
+          "Appeal to Medicare Advantage plan for visit limit exception based on medical necessity of stroke rehabilitation — document functional deficits, NIHSS trajectory, and IRF refusal in appeal",
+          "Request formal plan review for home health PT (separate benefit from outpatient PT under Medicare — may not count against 20-visit cap) — verify eligibility if patient is homebound",
+          "Engage hospital social worker to identify if patient qualifies as homebound (currently ambulates <50 feet with assist and cannot safely manage community distances), which would open Medicare Home Health PT benefit as separate from outpatient cap",
+          "If plan denies exception: document in medical record that 20-visit coverage limitation falls below minimum standard of care for this diagnosis, and that patient and family have been counseled on functional risk",
+          "Plan for strategic visit utilization if cap cannot be exceeded: front-load visits in weeks 1–4 for highest-yield neuroplasticity window; teach wife supervised home exercise program (HEP) to extend gains between visits"
+        ]
+      },
+      "flags": [
+        {
+          "flag": "PATIENT REFUSING CLINICALLY INDICATED IRF — HIGH FUNCTIONAL RISK IF DISCHARGED HOME",
+          "priority": "critical",
+          "action": "Escalate to full discharge planning team. Goals-of-care conversation required with patient and wife before discharge. Patient must be specifically counseled that (1) the critical neuroplasticity window for left arm recovery is time-limited, (2) 20 outpatient visits is clinically insufficient for MCA stroke rehabilitation, (3) single-story home is structurally favorable but current functional status creates real fall and injury risk without intensive support. Document patient's informed refusal in medical record. Do not discharge without this conversation being completed and documented."
+        },
+        {
+          "flag": "HOME ENVIRONMENT NOT CLEARED FOR SAFE DISCHARGE — GRAB BARS AND SHOWER EQUIPMENT NOT IN PLACE",
+          "priority": "high",
+          "action": "DME order for shower chair, grab bars, and handheld shower must be placed immediately. Confirm equipment delivery and installation before discharge date. If home PT proceeds, home safety evaluation must occur within 24–48 hours of discharge. Wife should be briefed to supervise all bathroom transfers until PT conducts home visit."
+        },
+        {
+          "flag": "INSURANCE ACCESS CONFLICT — 20-VISIT OUTPATIENT CAP INSUFFICIENT FOR MCA STROKE REHAB",
+          "priority": "high",
+          "action": "Social worker and case manager must determine: (1) Does patient meet homebound criteria for Medicare Home Health PT (separate benefit)? (2) Can plan exception be filed for visit limit? (3) Prepare family for possibility of self-pay PT visits or community stroke rehab program enrollment if cap is exhausted. Document gap between clinical need and coverage in chart."
+        },
+        {
+          "flag": "STAIR NEGOTIATION NOT ASSESSED — OUTDOOR ENVIRONMENT UNKNOWN",
+          "priority": "medium",
+          "action": "Clarify whether home entry has any exterior steps. If yes, stair training required prior to discharge or barrier must be mitigated (ramp, alternate entry). Outdoor surface types (driveway, walkway) should be assessed — patient is unsafe on uneven surfaces currently."
+        },
+        {
+          "flag": "LEFT ARM SPASTICITY EMERGING — TIME-SENSITIVE INTERVENTION WINDOW",
+          "priority": "high",
+          "action": "Emerging spasticity in left arm at day 8 post-stroke signals risk of developing flexor synergy pattern and functional loss if not aggressively addressed in early recovery window. If IRF is refused, OT referral for left upper extremity neuromotor retraining must be initiated simultaneously with PT — and both will compete against the same 20-visit insurance cap. Coordinate PT/OT visit utilization carefully."
+        },
+        {
+          "flag": "FORMAL BALANCE ASSESSMENT NOT DOCUMENTED — FALL RISK SCORE UNQUANTIFIED",
+          "priority": "medium",
+          "action": "Administer Berg Balance Scale or Tinetti POMA prior to discharge. Baseline score is essential for tracking recovery trajectory and substantiating medical necessity for continued PT visits in any appeals process."
+        },
+        {
+          "flag": "DRIVING RESTRICTION — PATIENT IS ACTIVE DRIVER (RETIRED FIREFIGHTER)",
+          "priority": "medium",
+          "action": "PT assessment confirms patient is not safe to drive at current functional status (hemiparesis, proprioceptive deficits, dysmetria). Neurology must formally document driving restriction. If patient insists on driving timeline, formal driving evaluation through certified driver rehabilitation specialist should be recommended post-recovery. Wife currently drives — transportation not an immediate barrier."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Formal PT evaluation notes are not explicitly documented in the record as a separate PT assessment — functional status data is drawn from nursing and physician documentation, ADL assessments, NIHSS scoring, and motor exam findings. The ambulation distance (50 feet with SPC), assistive device, and balance characterization appear to reflect PT or therapy team observations recorded in the chart, but the source is not labeled as a formal PT evaluation note. A formal PT assessment with standardized tools (Berg Balance Scale, TUG, Fugl-Meyer upper extremity) is not documented. Confidence would be upgraded to high with a formal PT evaluation note and standardized balance score. Functional findings are internally consistent across documentation sources and support the clinical picture described."
+    },
+    "physician": {
+      "agent": "physician",
+      "case_id": "CASE-002",
+      "discharge_ready": false,
+      "discharge_hold_reason": "Discharge destination unresolved — goals of care conversation required before disposition can be finalized. Patient refuses clinically recommended IRF; if home discharge proceeds, rehabilitation adequacy, driving restriction counseling, PFO management plan, and DAPT stop-date communication must all be explicitly confirmed and documented. No single finding is independently a hard medical hold, but the combination of unresolved disposition conflict, functional safety risk at home (moderate-high fall risk, left arm motor deficit), and several critical transition elements not yet confirmed constitutes a conditional hold pending care conference completion.",
+      "clinical_summary": "Robert Jackson is a 65-year-old male admitted emergently on 2026-04-15 with an acute right MCA territory ischemic infarct (NIHSS 6 on admission, estimated volume 18 mL), presenting with left hemiparesis in the setting of severely uncontrolled hypertension (196/108 on arrival) and previously unoptimized vascular risk factors including LDL 142, HbA1c 8.1%, and obesity. Hospital course has been favorable: NIHSS has improved from 6 to 2, BP is now controlled at 138/82 on an expanded antihypertensive regimen, dual antiplatelet therapy and high-intensity statin have been initiated per secondary prevention guidelines, and metformin was held during the acute phase and restarted on Day 6. Functionally, patient ambulates 50 feet with a single-point cane, has residual left arm weakness (3/5 grip), and carries a moderate-high fall risk. Workup identified a small PFO without resting shunt and carotid arteries without significant stenosis. A three-way conflict between clinical team recommendation for IRF, patient's firm refusal of any inpatient facility, and a restrictive 20-visit outpatient PT cap under Medicare Advantage HMO represents the primary unresolved discharge barrier.",
+      "acute_issues_resolved": [
+        {
+          "issue": "Acute ischemic stroke — right MCA territory",
+          "status": "improving",
+          "evidence": "NIHSS declined from 6 (admission) to 2 (current). No hemorrhagic transformation on imaging. Neurologically stable per nursing and attending notes. Residual left arm weakness (3/5 grip) and mild dysmetria persist — subacute deficits expected at this stage."
+        },
+        {
+          "issue": "Uncontrolled hypertension",
+          "status": "resolved",
+          "evidence": "BP 138/82 currently, down from 196/108 on admission. New antihypertensive regimen (amlodipine 10 mg added, lisinopril dose doubled to 20 mg) achieving goal. Outpatient monitoring required."
+        },
+        {
+          "issue": "Left hemiparesis — mild, post-stroke",
+          "status": "improving",
+          "evidence": "Left arm grip 3/5, deltoid 4/5; left leg 4/5 hip flexion, 4-/5 ankle dorsiflexion. Ambulating 50 feet with SPC. Mild spasticity emerging in left arm. Not resolved; expected to require ongoing rehabilitation."
+        },
+        {
+          "issue": "Dysphagia screening",
+          "status": "resolved",
+          "evidence": "Bedside swallow evaluation passed. Regular diet, thin liquids — no aspiration precautions required."
+        },
+        {
+          "issue": "Glycemic control — acute phase",
+          "status": "improving",
+          "evidence": "Metformin held during acute phase, restarted Day 6. Current glucose 138 mg/dL (mildly elevated), eGFR 78 adequate for metformin. HbA1c 8.1% — above target, requires outpatient optimization but not an acute inpatient issue."
+        }
+      ],
+      "pending_workup": [
+        {
+          "test": "Repeat lipid panel post-statin initiation",
+          "ordered": false,
+          "result_available": false,
+          "impact_on_discharge": "Atorvastatin 80 mg started on admission; no repeat LDL available to confirm response. Does not block discharge, but outpatient LDL recheck (4–6 weeks post-initiation) must be explicitly ordered at discharge. LDL target <70 mg/dL for secondary prevention."
+        },
+        {
+          "test": "Repeat renal function and potassium post-lisinopril dose doubling",
+          "ordered": false,
+          "result_available": false,
+          "impact_on_discharge": "Lisinopril increased from 10 mg to 20 mg on Day 2. Most recent BMP dated 2026-04-22 (Day 7) shows Cr 1.0 and K+ 4.3 — reassuring but this was obtained shortly after dose change. A confirmatory BMP within the next 24 hours prior to discharge would reduce risk of undetected AKI or hyperkalemia in outpatient setting. Recommend obtaining before discharge."
+        },
+        {
+          "test": "PFO hemodynamic significance — bubble study or repeat TEE",
+          "ordered": false,
+          "result_available": false,
+          "impact_on_discharge": "TTE identified small PFO without resting shunt. Cardiology follow-up for closure discussion is planned. Does not block discharge, but formal evaluation for cryptogenic stroke workup should be tracked. If PFO closure is ultimately indicated, antiplatelet vs. anticoagulation strategy may change."
+        },
+        {
+          "test": "Cardiac monitoring — prolonged rhythm monitoring for paroxysmal AFib",
+          "ordered": false,
+          "result_available": false,
+          "impact_on_discharge": "Admission ECG showed normal sinus rhythm. No data documented regarding extended cardiac monitoring (e.g., 30-day event monitor or Holter) to evaluate for paroxysmal atrial fibrillation as a stroke etiology. In cryptogenic stroke with PFO, AF detection changes management significantly (anticoagulation vs. DAPT). This is a notable workup gap — must be addressed before or at discharge."
+        }
+      ],
+      "medication_flags": [
+        {
+          "medication": "Clopidogrel 75 mg",
+          "flag_type": "other",
+          "detail": "21-day DAPT course per POINT trial protocol with explicit end date of 2026-05-06. High risk of continuation error if stop date is not clearly communicated. Patient, wife, and PCP must all be explicitly informed. Transition to aspirin monotherapy on that date.",
+          "action_required": "Document stop date prominently in discharge summary and AVS. Confirm PCP has received notification with specific stop date. Verify patient and wife verbalize understanding of transition plan."
+        },
+        {
+          "medication": "Atorvastatin 80 mg",
+          "flag_type": "new",
+          "detail": "High-intensity statin newly started for secondary prevention. Patient was not previously on a statin. LDL 142 on admission; target <70 mg/dL for ischemic stroke secondary prevention.",
+          "action_required": "Confirm patient educated on indication and expected duration (indefinite). Schedule LDL recheck at 4–6 weeks post-discharge. Monitor for myopathy symptoms."
+        },
+        {
+          "medication": "Amlodipine 10 mg",
+          "flag_type": "new",
+          "detail": "New antihypertensive added during hospitalization. BP currently well-controlled at 138/82. Patient was not previously on this agent.",
+          "action_required": "Ensure patient and PCP are aware this is a new medication. Outpatient BP monitoring needed. Counsel patient on peripheral edema as a common side effect."
+        },
+        {
+          "medication": "Lisinopril 20 mg",
+          "flag_type": "dose_change",
+          "detail": "Home dose was 10 mg daily; doubled to 20 mg during hospitalization. Most recent Cr 1.0 and K+ 4.3 are reassuring. However, confirmatory labs post-dose-escalation are not yet available at time of analysis.",
+          "action_required": "Obtain repeat BMP (Cr, K+) before discharge or confirm recent result is post-escalation steady-state. PCP to recheck BMP at 1-week follow-up visit."
+        },
+        {
+          "medication": "Metformin 1000 mg BID",
+          "flag_type": "other",
+          "detail": "Held during acute phase for contrast exposure and hemodynamic instability; restarted Day 6. eGFR 78 is adequate for metformin at this dose. HbA1c 8.1% indicates suboptimal chronic glycemic control requiring outpatient optimization.",
+          "action_required": "Confirm eGFR documented as adequate for metformin continuation at discharge. Flag HbA1c 8.1% for PCP or endocrinology follow-up — dose titration or add-on therapy likely needed in outpatient setting."
+        },
+        {
+          "medication": "Aspirin 81 mg",
+          "flag_type": "new",
+          "detail": "Started as part of DAPT on admission. After clopidogrel stops on 2026-05-06, aspirin continues as monotherapy indefinitely for secondary stroke prevention.",
+          "action_required": "Ensure patient understands aspirin is lifelong. Document in AVS and discharge summary."
+        }
+      ],
+      "discharge_diagnosis": {
+        "primary": "Acute ischemic stroke, right middle cerebral artery territory, cortical and subcortical — I63.411",
+        "secondary": [
+          "Left hemiparesis, mild — G81.04",
+          "Hypertension, uncontrolled — I10",
+          "Type 2 diabetes mellitus, without complications — E11.9",
+          "Hyperlipidemia — E78.5",
+          "Obesity, BMI 32.4 — E66.09",
+          "Patent foramen ovale, incidental finding — Q21.10",
+          "Dysphagia, unspecified — R13.10 (consider removing if swallow screen passed and no clinical dysphagia documented)",
+          "Abnormal gait and mobility — R26.89 (captures fall risk and functional deficit for coding completeness)"
+        ],
+        "drg_note": "Primary DRG will likely be 065 (Intracranial Hemorrhage or Cerebral Infarction w/ MCC) or 066 (w/ CC) depending on final comorbidity mapping. Uncontrolled hypertension (I10) and diabetes (E11.9) as secondary diagnoses appropriately capture CC/MCC burden. Confirm with coding team that PFO Q21.10 is documented as incidental and does not imply primary etiology absent full cryptogenic workup. Emerging spasticity (left arm) should be coded if clinician-documented — G80.x series may not apply here but post-stroke spasticity code (likely M62.x or G83.x) should be added if documented in attending notes. LACE score of 10 supports moderate-high readmission risk documentation."
+      },
+      "follow_up_plan": [
+        {
+          "specialty": "Primary Care Physician (PCP)",
+          "timeframe": "Within 1 week of discharge",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Neurology — Stroke",
+          "timeframe": "Within 2 weeks of discharge",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Cardiology",
+          "timeframe": "Within 4 weeks of discharge",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Physical Therapy / Occupational Therapy",
+          "timeframe": "Initiate within 48–72 hours of discharge regardless of destination",
+          "urgency": "critical"
+        },
+        {
+          "specialty": "Endocrinology or PCP for diabetes management optimization",
+          "timeframe": "Within 4–6 weeks",
+          "urgency": "routine"
+        },
+        {
+          "specialty": "Cardiac event monitoring (prolonged Holter or 30-day monitor) — paroxysmal AFib evaluation",
+          "timeframe": "Arrange before or at time of discharge",
+          "urgency": "urgent"
+        }
+      ],
+      "safety_flags": [
+        {
+          "flag": "DRIVING RESTRICTION — patient must not drive until cleared by neurology. State of Massachusetts requires minimum 3–6 months post-stroke restriction. Patient is a car driver (wife also drives). Risk of motor vehicle collision with residual left-side weakness and potential perceptual deficits.",
+          "priority": "high",
+          "action": "Document driving restriction explicitly in discharge instructions and discharge summary. Neurologist to formally evaluate and clear before driving is resumed. Counsel patient and wife verbally and in writing."
+        },
+        {
+          "flag": "FALL RISK — moderate-high. Left leg proprioception deficit, gait asymmetry, ambulating only 50 feet with SPC. Home environment (single-story ranch) is favorable but patient previously walked 2 miles daily — activity mismatch creates risk.",
+          "priority": "high",
+          "action": "Home safety evaluation by OT if patient discharged home. Ensure SPC is fitted correctly. Counsel patient and wife on fall precautions. If going home, PT must begin within 48–72 hours."
+        },
+        {
+          "flag": "REHABILITATION ADEQUACY RISK — patient refusing IRF; 20-visit outpatient PT cap for all of 2026 under Medicare Advantage HMO is likely insufficient for MCA stroke recovery with residual arm weakness. Every day without intensive therapy increases risk of permanent functional deficit.",
+          "priority": "high",
+          "action": "Goals of care conversation must occur before discharge. Document informed refusal if patient declines IRF after full discussion of consequences. Social work and care management must explore whether any plan exceptions or appeals are available for the PT visit cap given acute stroke indication."
+        },
+        {
+          "flag": "CLOPIDOGREL STOP DATE COMMUNICATION FAILURE RISK — 21-day DAPT course ends 2026-05-06. If patient, caregiver, or PCP is not explicitly informed, clopidogrel may be continued inadvertently (bleeding risk) or aspirin may be discontinued (thrombotic risk).",
+          "priority": "high",
+          "action": "Prominent documentation of clopidogrel stop date in all discharge communications: AVS, discharge summary sent to PCP, and patient medication list. Verbal teach-back with patient and wife required."
+        },
+        {
+          "flag": "PROLONGED CARDIAC MONITORING NOT YET ARRANGED — paroxysmal AFib as cryptogenic stroke etiology not excluded. If AFib present, anticoagulation would be preferred over antiplatelet therapy. Current DAPT regimen may be suboptimal if AF is ultimately identified.",
+          "priority": "medium",
+          "action": "Neurology or cardiology to arrange outpatient 30-day cardiac event monitor at or before discharge. Document plan explicitly."
+        },
+        {
+          "flag": "LISINOPRIL DOSE ESCALATION — confirmatory BMP not yet confirmed as post-escalation steady-state. Risk of undetected hyperkalemia or AKI in outpatient interval before PCP follow-up.",
+          "priority": "medium",
+          "action": "Obtain repeat BMP before discharge or confirm Day 7 BMP reflects stable post-escalation values. PCP must recheck BMP at 1-week visit."
+        },
+        {
+          "flag": "HbA1c 8.1% — suboptimal glycemic control in patient with ischemic stroke. Increases long-term cerebrovascular and microvascular risk. Not an acute discharge barrier but requires explicit outpatient action plan.",
+          "priority": "medium",
+          "action": "Document in discharge summary as requiring outpatient diabetes management optimization. Flag for PCP 1-week visit. Consider endocrinology referral if PCP not managing DM intensively."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Confidence is moderate rather than high for two reasons: (1) Prolonged cardiac rhythm monitoring data are absent from the case file — this is a material gap in cryptogenic stroke workup that could change the antiplatelet vs. anticoagulation strategy and is not documented as ordered or planned. (2) The confirmatory BMP following lisinopril dose escalation is not explicitly confirmed as a post-steady-state value. All other clinical domains (vitals, functional status, imaging, labs, medications) are well-documented and support the analysis above."
+    },
+    "nurse": {
+      "agent": "nurse",
+      "case_id": "CASE-002",
+      "education_readiness": {
+        "overall": "conditional",
+        "barriers": [
+          "Clopidogrel 21-day DAPT stop date (2026-05-06) not yet confirmed as understood by patient — critical medication transition with no documented teach-back",
+          "Patient refusing inpatient rehabilitation despite documented clinical recommendation — goals-of-care conversation not yet complete; patient may not fully understand functional consequences of refusal",
+          "No documentation of patient demonstrating understanding of stroke warning sign recurrence (FAST/BE-FAST) and when to call 911 vs. PCP",
+          "Driving restriction not yet documented as taught — high risk of non-adherence given patient's prior independent lifestyle and prior driving history",
+          "Lisinopril dose-doubling not confirmed as understood — patient previously on 10 mg, now 20 mg; renal/potassium monitoring instructions not documented as taught",
+          "HbA1c 8.1% and blood glucose 138 at discharge — DM management optimization plan not documented as communicated to patient"
+        ],
+        "teach_back_topics_required": [
+          "Clopidogrel stop date (2026-05-06): why it stops, what to do after (aspirin monotherapy continues), do NOT stop early and do NOT continue past stop date without physician direction",
+          "Stroke warning signs: FAST/BE-FAST symptoms, call 911 immediately — do not drive self to ED",
+          "BP monitoring at home: target range, what numbers require urgent action",
+          "Driving prohibition post-stroke: no driving until cleared by neurology (typically 3–6 months in Massachusetts)",
+          "New medications (Atorvastatin 80 mg, Amlodipine 10 mg): purpose, common side effects (muscle pain with statin, ankle swelling with amlodipine), when to call PCP",
+          "Lisinopril dose change: now 20 mg (doubled from home dose), monitor for dizziness, swelling of throat/face (angioedema), and follow-up labs for renal function and potassium",
+          "Metformin resumption: restarted after hold — importance of not missing doses, blood sugar monitoring if advised by PCP",
+          "Fall prevention at home: use of single-point cane at all times, bathroom safety, uneven surfaces, when to call for help",
+          "Left arm weakness: realistic recovery expectations, importance of home PT exercises, consequences of insufficient rehabilitation",
+          "PFO follow-up: patient must keep cardiology appointment; significance of incidental finding and planned workup",
+          "Blood glucose targets and signs of hypoglycemia/hyperglycemia given elevated HbA1c at discharge",
+          "When to call PCP vs. call 911 — clear, specific thresholds for each"
+        ]
+      },
+      "medication_administration": {
+        "complexity_rating": "moderate",
+        "specific_concerns": [
+          "DAPT regimen with defined stop date: patient managing two antiplatelet agents with different durations — Aspirin continues indefinitely, Clopidogrel stops 2026-05-06. Confusion between the two is a high-risk error. Recommend patient label or calendar reminder.",
+          "Lisinopril dose doubled from home dose (10 mg → 20 mg): patient may inadvertently take old supply at home dose if old pills remain at home. Counsel to discard or sequester old 10 mg tablets.",
+          "Atorvastatin 80 mg is new — patient has no prior statin experience. No baseline for myopathy symptoms. Must know to report muscle pain promptly.",
+          "Metformin BID dosing was held during admission — patient must understand it has been restarted and resume correct BID schedule at home.",
+          "Six total daily medications at discharge (Aspirin, Clopidogrel, Atorvastatin, Amlodipine, Lisinopril, Metformin x2 daily) — moderate pill burden. Pill organizer recommended given mild left hand limitation.",
+          "Left hand grip 3/5 — assess ability to open child-resistant medication bottles. May require easy-open caps or caregiver assistance.",
+          "Clopidogrel copay under Medicare Advantage — affordability not fully confirmed. Financial barrier could lead to non-adherence on the highest-stakes medication."
+        ],
+        "injection_required": false,
+        "injection_education_complete": "not_applicable"
+      },
+      "vital_sign_thresholds": {
+        "call_pcp_if": [
+          "Systolic BP > 160 mmHg or < 100 mmHg on home monitoring",
+          "Diastolic BP > 100 mmHg on two consecutive readings",
+          "Blood glucose > 250 mg/dL without clear dietary cause, or persistently > 180 mg/dL",
+          "Blood glucose < 70 mg/dL (hypoglycemia on Metformin — less common but possible)",
+          "New or worsening ankle swelling (possible Amlodipine side effect)",
+          "Persistent dizziness or lightheadedness after Lisinopril dose increase",
+          "Muscle pain, weakness, or dark urine (possible statin myopathy — Atorvastatin 80 mg)",
+          "Missed Clopidogrel dose — call PCP for guidance before resuming or skipping",
+          "Any new left-sided weakness, facial droop, or speech change that is mild and resolves — may indicate TIA; call PCP urgently and prepare to go to ED"
+        ],
+        "go_to_ed_if": [
+          "Sudden onset of any stroke symptom: facial droop, arm weakness, speech difficulty, vision change, severe headache, loss of balance — call 911 immediately, do not drive",
+          "Systolic BP ≥ 180 mmHg confirmed on repeat, especially with headache, vision change, or confusion",
+          "SpO2 < 92% if home monitoring available, or new difficulty breathing",
+          "Blood glucose < 54 mg/dL unresponsive to oral intake, or altered consciousness with low glucose",
+          "Chest pain, palpitations, or signs of acute cardiac event",
+          "Swelling of throat, tongue, or lips (angioedema — Lisinopril — call 911)",
+          "Fall with head impact or loss of consciousness",
+          "Sudden worsening of left-sided weakness or new right-sided deficits"
+        ]
+      },
+      "wound_device_care": {
+        "required": false,
+        "items": [
+          "No surgical wounds, drains, or indwelling devices identified in chart.",
+          "Single-point cane (SPC) dispensed this admission — confirm patient has received gait training and knows correct hand (right hand) for SPC use with left hemiparesis.",
+          "Note: mild left arm spasticity emerging — patient and wife should be counseled on positioning and passive range-of-motion exercises to prevent contracture pending outpatient PT."
+        ]
+      },
+      "adl_assessment": {
+        "safe_for_discharge_setting": false,
+        "concerns": [
+          "CRITICAL: Patient currently requires standby assist for bathing — wife is identified caregiver but this depends entirely on Patricia Jackson being consistently available. No backup plan documented if wife is unavailable.",
+          "Dressing lower body requires assist — patient cannot fully dress independently at discharge. Single-story ranch home is appropriate, but bathroom safety equipment (grab bars, shower chair, handheld showerhead) not documented as assessed or ordered.",
+          "Ambulation limited to 50 feet with single-point cane, unsteady on uneven surfaces — home environment safety assessment (scatter rugs, thresholds, outdoor walkway) not documented. Home safety evaluation should be completed before or immediately after discharge.",
+          "Fall risk rated MODERATE-HIGH — reduced left leg proprioception, gait asymmetry. Patient's baseline was walking 2 miles daily; significant gap between current and baseline function increases frustration-driven risk-taking.",
+          "Left hand grip 3/5 — activities requiring bilateral fine motor skill (medication bottles, buttons, cooking) are affected. Patient may underestimate limitations.",
+          "Mild left arm spasticity emerging — without intensive rehab, contracture risk. Patient and caregiver need passive range-of-motion education as bridge to outpatient PT.",
+          "Patient refused IRF against clinical recommendation — if home discharge confirmed, functional safety is contingent on immediate outpatient PT/OT initiation and caregiver reliability."
+        ]
+      },
+      "caregiver": {
+        "identified": true,
+        "name": "Patricia Jackson (wife, age 62, retired)",
+        "availability": "Retired, present at all family meetings, described as committed caregiver. Available full-time. No documented competing caregiving obligations.",
+        "education_status": "partial"
+      },
+      "warning_signs_education": {
+        "topics_covered": [
+          "BP monitoring — patient and wife present for antihypertensive regimen explanation (inferred from vitals trajectory counseling, not explicitly documented as formal teach-back)",
+          "General stroke awareness — patient researched stroke recovery online; baseline knowledge present but formal structured education not documented",
+          "Medication list reviewed with patient (inferred from medication reconciliation process)"
+        ],
+        "topics_pending": [
+          "FAST/BE-FAST stroke recurrence signs — formal teach-back not documented",
+          "Driving prohibition — not documented as explicitly taught; high priority given patient's history",
+          "Clopidogrel stop date and DAPT transition — not confirmed as understood by patient or wife",
+          "Statin myopathy signs — not documented as taught",
+          "Lisinopril angioedema warning — not documented as taught",
+          "Fall prevention and home safety instructions — not documented as taught",
+          "When to call 911 vs. PCP — formal decision framework not documented as taught",
+          "Left arm spasticity management and passive ROM exercises — not documented as taught to wife/caregiver",
+          "Blood glucose monitoring and hypoglycemia management — not documented as taught",
+          "PFO significance and importance of cardiology follow-up — not documented as taught",
+          "Consequences of declining IRF — formal goals-of-care conversation with documented patient understanding not yet completed"
+        ]
+      },
+      "flags": [
+        {
+          "flag": "CLOPIDOGREL DAPT STOP DATE — Patient must stop Clopidogrel on 2026-05-06 and continue Aspirin monotherapy. No documentation this has been taught to patient or communicated to PCP in discharge summary. Missed stop date in either direction (premature discontinuation or continuation) carries stroke or bleeding risk.",
+          "priority": "critical",
+          "action": "Complete teach-back with patient AND wife on Clopidogrel stop date before discharge. Provide written calendar reminder. Confirm PCP appointment within 1 week is scheduled with DAPT stop date prominently flagged in discharge summary and patient education materials."
+        },
+        {
+          "flag": "DRIVING PROHIBITION NOT DOCUMENTED AS TAUGHT — Patient is a retired firefighter with lifelong driving independence. Massachusetts guidance restricts driving post-stroke typically 3–6 months pending neurological clearance. No documentation this restriction has been explicitly communicated.",
+          "priority": "critical",
+          "action": "Explicitly counsel patient and wife on driving restriction before discharge. Document in teaching record. Include in discharge instructions in writing. Flag for neurology follow-up at 2-week appointment for formal clearance evaluation."
+        },
+        {
+          "flag": "IRF REFUSAL — GOALS OF CARE CONVERSATION INCOMPLETE — Patient refusing inpatient rehabilitation against PT and team recommendation. Clinical stakes documented: 20-visit outpatient PT cap for remainder of 2026, significant left arm recovery risk without intensive rehab. Patient-team conversation not yet finalized.",
+          "priority": "critical",
+          "action": "Goals-of-care conversation must occur before discharge with documented informed refusal if patient maintains home preference. Ensure patient and wife understand: (1) difference between IRF and nursing home, (2) 20-visit outpatient PT ceiling for 2026, (3) consequence of insufficient rehab on left arm function, (4) options if functional status worsens at home. Social work and PT should be present. Document in chart."
+        },
+        {
+          "flag": "HOME SAFETY ASSESSMENT NOT DOCUMENTED — Patient ambulates only 50 feet with cane, unsteady on uneven surfaces, MODERATE-HIGH fall risk. No documented home safety evaluation (scatter rugs, bathroom grab bars, shower chair, outdoor surfaces).",
+          "priority": "high",
+          "action": "OT home safety evaluation should be ordered as first outpatient visit. Prior to discharge, provide verbal and written guidance to wife on immediate hazard removal (loose rugs, bathroom grab bars, shower chair). Document in discharge instructions."
+        },
+        {
+          "flag": "CAREGIVER EDUCATION PARTIAL — Patricia Jackson present and engaged but formal structured education on bathing assist, fall prevention, left arm positioning, passive ROM, and medication management not documented as complete.",
+          "priority": "high",
+          "action": "Complete structured caregiver education session with Patricia Jackson before discharge. Include: bathing assist technique, fall response plan, left arm positioning to prevent spasticity/contracture, medication schedule management, and when to call 911 vs. PCP."
+        },
+        {
+          "flag": "LISINOPRIL DOSE DOUBLED — Home dose was 10 mg; discharge dose is 20 mg. Patient may have old 10 mg tablets at home. Risk of under-dosing (taking old supply) or confusion.",
+          "priority": "high",
+          "action": "Explicitly instruct patient to discard or return old 10 mg Lisinopril tablets. Counsel on dose change rationale, monitoring for dizziness/hypotension especially in first week, and angioedema warning. Confirm renal/potassium follow-up labs are ordered at PCP visit."
+        },
+        {
+          "flag": "CLOPIDOGREL AFFORDABILITY — Medicare Advantage copay for Clopidogrel not confirmed as manageable. Non-adherence to antiplatelet therapy due to cost is a known, preventable cause of early stroke recurrence.",
+          "priority": "high",
+          "action": "Pharmacy or social work to verify Clopidogrel cost under patient's Medicare Advantage plan before discharge. If copay is a barrier, explore manufacturer assistance or formulary alternatives in coordination with neurology/PCP."
+        },
+        {
+          "flag": "HBA1C 8.1% — DIABETES MANAGEMENT UNOPTIMIZED — Blood glucose 138 at discharge, HbA1c above target at 8.1%. Hyperglycemia worsens stroke recovery and increases recurrent event risk. No endocrinology referral or intensification plan documented.",
+          "priority": "medium",
+          "action": "Ensure PCP follow-up at 1 week includes explicit DM management review. Flag HbA1c and discharge glucose in PCP communication. If PCP does not have endocrinology support, consider endocrinology referral. Educate patient on importance of glucose control in stroke recovery."
+        },
+        {
+          "flag": "PFO MANAGEMENT — PATIENT EDUCATION GAP — Patent foramen ovale identified incidentally; cardiology follow-up in 4 weeks for closure discussion. Patient may not understand significance or the importance of keeping this appointment.",
+          "priority": "medium",
+          "action": "Educate patient and wife on PFO finding, why it is being followed, and that the cardiology appointment in 4 weeks is not optional. Include in written discharge instructions with appointment details if available."
+        },
+        {
+          "flag": "STATIN MYOPATHY EDUCATION NOT DOCUMENTED — Atorvastatin 80 mg is new and high-intensity. Patient has no prior statin experience and no documented baseline for muscle symptoms. Myopathy risk at high-intensity dose is clinically relevant.",
+          "priority": "medium",
+          "action": "Teach patient to report muscle pain, weakness, or dark urine to PCP promptly. Include in discharge instructions. Ensure PCP communication includes statin initiation date and indication for high-intensity dosing."
+        },
+        {
+          "flag": "EMOTIONAL LABILITY — POST-STROKE AFFECT — Chart documents mild emotional lability, improving. Patient may experience unpredictable emotional responses at home that wife is unprepared to manage.",
+          "priority": "medium",
+          "action": "Counsel wife that post-stroke emotional lability is a neurological symptom, not a psychiatric crisis or volitional behavior. Provide written guidance. Ensure neurology follow-up at 2 weeks includes assessment. Provide stroke support resources (e.g., American Stroke Association) to both patient and wife."
+        },
+        {
+          "flag": "MEDICATION PILL BURDEN WITH LEFT HAND LIMITATION — Left hand grip 3/5; six oral medications daily. Child-resistant caps may be difficult to open. No documented assessment of medication bottle handling.",
+          "priority": "low",
+          "action": "Assess patient's ability to open standard medication bottles before discharge. Order easy-open caps on prescriptions as needed. Recommend pill organizer (weekly, AM/PM) to reduce daily complexity and support wife as backup organizer."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Multiple critical domains — including formal teach-back completion, caregiver structured education, and goals-of-care conversation outcome — are not documented as completed in the chart. Assessments in education_readiness and warning_signs_education reflect what is documented as known to have occurred, not what may have occurred verbally without documentation. Confidence would increase to high if teach-back documentation, formal caregiver education records, and IRF refusal counseling note were available for review. ADL safety assessment is rated with confidence given objective functional status data, but home environment specifics are unverified pending formal home safety evaluation."
+    },
+    "pharmacist": {
+      "agent": "pharmacist",
+      "case_id": "CASE-002",
+      "reconciliation_summary": {
+        "total_discharge_medications": 6,
+        "new_at_discharge": [
+          "Aspirin 81 mg daily",
+          "Clopidogrel 75 mg daily (21-day course, end date 2026-05-06)",
+          "Atorvastatin 80 mg daily",
+          "Amlodipine 10 mg daily"
+        ],
+        "dose_changed": [
+          "Lisinopril — 10 mg daily → 20 mg daily"
+        ],
+        "discontinued_inpatient": [
+          "Metformin held during acute phase (contrast/hemodynamic); restarted Day 6 — not discontinued at discharge"
+        ],
+        "home_medications_not_on_list": [
+          "No additional home medications documented in record. Confirm with patient and wife at discharge counseling whether any OTC medications (NSAIDs, supplements, herbal products) are taken regularly — particularly relevant given DAPT."
+        ]
+      },
+      "drug_interactions": [
+        {
+          "medications": [
+            "Aspirin",
+            "Clopidogrel"
+          ],
+          "severity": "moderate",
+          "mechanism": "Additive inhibition of platelet aggregation via complementary pathways (COX-1 inhibition via aspirin; P2Y12 receptor blockade via clopidogrel). Synergistic antiplatelet effect.",
+          "clinical_implication": "Intentional DAPT for secondary stroke prevention per POINT trial protocol. Significantly increased bleeding risk compared to monotherapy — GI bleed, intracranial hemorrhage. Benefit window is 21 days; after 2026-05-06 risk-benefit favors monotherapy.",
+          "recommended_action": "This combination is intentional and guideline-supported for the defined 21-day course. Reinforce absolute clopidogrel stop date of 2026-05-06 with patient, wife, and PCP in writing. Counsel patient on bleeding warning signs (black/tarry stool, unusual bruising, prolonged bleeding from cuts, severe headache). Avoid NSAIDs and additional antiplatelet agents during DAPT course."
+        },
+        {
+          "medications": [
+            "Clopidogrel",
+            "Atorvastatin"
+          ],
+          "severity": "minor",
+          "mechanism": "Both are CYP3A4 substrates. Atorvastatin may marginally compete for CYP3A4-mediated metabolism of clopidogrel's active metabolite conversion; clinical significance at standard doses is considered low.",
+          "clinical_implication": "Theoretical minor reduction in clopidogrel antiplatelet effect. At standard doses of both agents, clinical impact is not considered significant. Not a reason to alter therapy.",
+          "recommended_action": "No action required. Flag for awareness only. Monitor clinical response."
+        },
+        {
+          "medications": [
+            "Lisinopril",
+            "Metformin"
+          ],
+          "severity": "minor",
+          "mechanism": "ACE inhibitor-induced renal hemodynamic changes can transiently reduce GFR; if eGFR drops, metformin accumulation risk increases.",
+          "clinical_implication": "With recent lisinopril dose doubling, renal function should be re-checked within 1–2 weeks of discharge. If eGFR falls below threshold, metformin dose or safety may need reassessment.",
+          "recommended_action": "Ensure BMP (creatinine/eGFR) is checked at PCP visit within 1 week of discharge. Flag PCP to reassess metformin safety if eGFR declines."
+        },
+        {
+          "medications": [
+            "Aspirin",
+            "Lisinopril"
+          ],
+          "severity": "minor",
+          "mechanism": "High-dose aspirin can attenuate the antihypertensive and renoprotective effects of ACE inhibitors via prostaglandin pathway inhibition. At 81 mg/day, this interaction is considered clinically minimal.",
+          "clinical_implication": "At 81 mg aspirin dose, interaction is not clinically significant. BP currently well controlled at 138/82.",
+          "recommended_action": "No action required at current aspirin dose. Continue BP monitoring at follow-up visits."
+        },
+        {
+          "medications": [
+            "Amlodipine",
+            "Atorvastatin"
+          ],
+          "severity": "moderate",
+          "mechanism": "Amlodipine inhibits CYP3A4, the primary enzyme responsible for atorvastatin metabolism. This can increase atorvastatin plasma concentrations and potentially myopathy risk.",
+          "clinical_implication": "Atorvastatin 80 mg is already the maximum recommended dose and is associated with the highest myopathy risk among statins. Concurrent amlodipine increases exposure further. Prescribing labeling recommends atorvastatin dose not exceed 20 mg when combined with some strong CYP3A4 inhibitors; amlodipine is a weak-to-moderate inhibitor, and 80 mg atorvastatin is used in this combination clinically, but requires active myopathy surveillance.",
+          "recommended_action": "Prescriber should be aware of this interaction. Counsel patient on myopathy/rhabdomyolysis symptoms: unexplained muscle pain, weakness, dark (cola-colored) urine. Obtain baseline CK if not already done. Monitor CK and LFTs within 4–6 weeks of discharge. Do not add additional CYP3A4 inhibitors (azithromycin, diltiazem, verapamil, grapefruit) without reassessment."
+        }
+      ],
+      "dose_adjustment_flags": [
+        {
+          "medication": "Metformin",
+          "concern": "renal",
+          "detail": "Current eGFR 78 mL/min/1.73m² (CKD-EPI, 2026-04-22). Metformin 1000 mg BID is within acceptable range for eGFR ≥60. However, eGFR was drawn prior to lisinopril dose doubling (lisinopril increased Day 2; eGFR drawn Day 7). Post-discharge eGFR may shift. Additionally, patient is a 65-year-old Black male — race-free CKD-EPI equation should be confirmed as the estimation method used. If eGFR falls to 45–59, dose reduction should be considered; if eGFR falls below 30, metformin must be discontinued.",
+          "action_required": "Recheck BMP including creatinine/eGFR at PCP follow-up (1 week). Confirm race-free CKD-EPI equation used for eGFR estimation. PCP to reassess metformin dosing if eGFR declines post-lisinopril up-titration."
+        },
+        {
+          "medication": "Lisinopril",
+          "concern": "renal",
+          "detail": "Dose doubled from 10 mg to 20 mg during hospitalization. Most recent creatinine 1.0 mg/dL, eGFR 78. An acceptable rise in creatinine up to 30% from baseline is expected and tolerable with ACE inhibitor initiation/up-titration. However, this has not yet been rechecked following dose increase. Potassium 4.3 mEq/L currently normal; hyperkalemia risk increases with ACE inhibitor dose escalation, particularly if eGFR declines.",
+          "action_required": "BMP (creatinine, potassium, eGFR) must be rechecked at 1-week PCP visit. If creatinine rises >30% from baseline or potassium exceeds 5.5 mEq/L, prescriber should reassess lisinopril dose."
+        },
+        {
+          "medication": "Atorvastatin",
+          "concern": "age",
+          "detail": "Atorvastatin 80 mg is guideline-recommended high-intensity statin for secondary stroke prevention in a 65-year-old. No dose adjustment needed for age alone. However, given amlodipine co-administration (CYP3A4 interaction, see drug interactions), myopathy risk is elevated above expected baseline for high-intensity statin therapy. Patient is not on any renally or hepatically cleared medications requiring adjustment, but hepatic function has not been documented in available data.",
+          "action_required": "Confirm LFTs at baseline or within 4–6 weeks of statin initiation. Counsel patient on myopathy symptoms. No dose change indicated at this time, but prescriber should be notified of amlodipine-atorvastatin CYP3A4 interaction."
+        }
+      ],
+      "contraindications": [
+        {
+          "medication": "Metformin",
+          "contraindication": "Iodinated contrast exposure during acute admission",
+          "reason": "Metformin was appropriately held during acute admission. Record indicates it was restarted Day 6. Per standard guidance, metformin should be held for 48 hours after iodinated contrast administration and restarted only after renal function is confirmed stable. The restart on Day 6 appears compliant with this protocol given contrast was likely administered at or near admission. eGFR on Day 7 is 78 — acceptable. This is flagged for documentation completeness, not as an active contraindication at discharge.",
+          "priority": "high",
+          "action_required": "Confirm contrast-to-restart interval was ≥48 hours and eGFR was checked prior to Day 6 restart. Document in discharge summary. PCP should recheck eGFR at 1-week visit as follow-up."
+        },
+        {
+          "medication": "NSAIDs (any OTC or prescribed)",
+          "contraindication": "Concurrent DAPT (aspirin + clopidogrel) with active stroke history",
+          "reason": "NSAIDs (ibuprofen, naproxen, etc.) taken concurrently with DAPT markedly increase GI and intracranial hemorrhage risk. Patient is a 65-year-old male post-stroke on dual antiplatelet therapy. Any NSAID use — including OTC — is contraindicated during the DAPT course and should be avoided. Patient must be counseled explicitly.",
+          "priority": "critical",
+          "action_required": "Counsel patient explicitly that ibuprofen (Advil, Motrin), naproxen (Aleve), and all NSAIDs are contraindicated during DAPT course. Acetaminophen is acceptable alternative for pain/fever. Document in discharge instructions. Flag for PCP."
+        }
+      ],
+      "adherence_risk": {
+        "overall": "moderate",
+        "factors": [
+          "New medications: 4 of 6 discharge medications are new — significant new medication burden requiring patient education",
+          "Clopidogrel time-limited course with hard stop date (2026-05-06) — missed stop dates are common and clinically dangerous (continued DAPT beyond 21 days increases bleeding risk without additional benefit)",
+          "Twice-daily metformin dosing adds complexity relative to all other once-daily medications",
+          "Mild left hemiparesis may affect ability to open pill bottles — assess dexterity for medication handling",
+          "Atorvastatin 80 mg is a new medication for a patient with no prior statin experience — myopathy side effects may lead to self-discontinuation without adequate counseling",
+          "Post-stroke emotional lability documented — may affect follow-through on complex medication instructions in early recovery period",
+          "High health literacy is a protective factor — patient researches conditions, asks questions, is engaged",
+          "Wife is present, retired, and committed — strong caregiver support is a major protective factor",
+          "Medicare Advantage coverage in place — most medications expected to be covered, reducing cost-related non-adherence risk"
+        ],
+        "pill_burden_count": 7
+      },
+      "access_affordability": [
+        {
+          "medication": "Clopidogrel 75 mg",
+          "concern": "formulary",
+          "detail": "Medicare Advantage HMO formulary tier for generic clopidogrel varies by plan. Generic clopidogrel is widely available but some Medicare Advantage plans tier it at a cost-sharing level that may create a copay burden for a 21-day supply. Case record notes 'may have copay — verify.'",
+          "solutions": [
+            "Verify formulary tier and copay with patient's specific Medicare Advantage HMO prior to discharge",
+            "If cost barrier identified, GoodRx or manufacturer discount programs for generic clopidogrel can bring cost to $10–15 for 21-day supply at most retail pharmacies",
+            "Ensure 30-day supply is NOT dispensed — patient only needs 21-day supply. Dispense exactly 21 tablets to avoid confusion about stop date and unnecessary cost."
+          ]
+        },
+        {
+          "medication": "Atorvastatin 80 mg",
+          "concern": "formulary",
+          "detail": "Generic atorvastatin 80 mg is widely available and low cost ($4–10/month at most pharmacies). Medicare Advantage formulary coverage for generic statins is near-universal. Cost concern is low.",
+          "solutions": [
+            "Generic atorvastatin available at major retail chains for $4–10/month",
+            "Confirm formulary coverage at discharge — essentially all Medicare Part D plans cover generic atorvastatin",
+            "No prior authorization expected"
+          ]
+        },
+        {
+          "medication": "Amlodipine 10 mg",
+          "concern": "other",
+          "detail": "Generic amlodipine is extremely low cost and on virtually all Medicare formularies. No significant access concern. Flagged only to note it is a new medication requiring dispensing at discharge.",
+          "solutions": [
+            "Generic amlodipine available for $4/month or less at most retail pharmacies",
+            "No prior authorization expected"
+          ]
+        },
+        {
+          "medication": "All discharge medications",
+          "concern": "other",
+          "detail": "Patient's Medicare Advantage HMO is a retired municipal worker plan. Confirm that all 6 discharge medications are covered under the specific plan's Part D formulary. If any require prior authorization (uncommon for this medication list but possible under strict HMO formularies), the process should be initiated before discharge to prevent gaps in therapy.",
+          "solutions": [
+            "Perform formulary check for all 6 medications against patient's specific plan prior to discharge",
+            "Send prescriptions electronically to patient's preferred pharmacy prior to discharge so medications are ready for pickup on discharge day",
+            "Confirm patient has transportation to pharmacy (wife drives — adequate per social history)"
+          ]
+        }
+      ],
+      "antibiotic_stewardship": {
+        "antibiotics_on_list": [],
+        "course_complete_at_discharge": true,
+        "patient_education_needed": null
+      },
+      "flags": [
+        {
+          "flag": "CRITICAL — NSAID CONTRAINDICATION DURING DAPT: Patient must not take any NSAIDs (ibuprofen, naproxen, etc.) while on dual antiplatelet therapy. GI and intracranial hemorrhage risk is significantly elevated. Patient must be explicitly counseled before discharge.",
+          "priority": "critical",
+          "action": "Include explicit NSAID prohibition in discharge instructions. Counsel patient and wife verbally and in writing. Flag for PCP and any prescribing providers. Acetaminophen is acceptable alternative."
+        },
+        {
+          "flag": "CRITICAL — CLOPIDOGREL HARD STOP DATE 2026-05-06: DAPT course is 21 days per POINT trial protocol. Clopidogrel must be discontinued on 2026-05-06. Continuation beyond this date does not provide additional stroke prevention benefit and substantially increases bleeding risk. PCP and patient must both have this date documented.",
+          "priority": "critical",
+          "action": "Document stop date prominently in discharge summary, medication reconciliation list, and patient-facing discharge instructions. Dispense exactly 21 tablets of clopidogrel. PCP follow-up at 1 week should confirm patient understands and plans to stop. Consider calendar reminder or pill count strategy with patient/wife."
+        },
+        {
+          "flag": "HIGH — AMLODIPINE + ATORVASTATIN CYP3A4 INTERACTION: Amlodipine moderately inhibits CYP3A4-mediated atorvastatin metabolism, increasing atorvastatin exposure at an already-maximum 80 mg dose. Myopathy/rhabdomyolysis risk is elevated above baseline for high-intensity statin therapy.",
+          "priority": "high",
+          "action": "Counsel patient on myopathy warning signs (unexplained muscle pain, weakness, dark urine). Prescriber should be notified of interaction. Obtain baseline CK if not done. Recheck CK and LFTs at 4–6 week follow-up. Avoid additional CYP3A4 inhibitors."
+        },
+        {
+          "flag": "HIGH — RENAL FUNCTION RECHECK REQUIRED POST-DISCHARGE: Lisinopril was doubled during admission. eGFR most recently 78 (Day 7) but drawn before full hemodynamic effect of dose change. Metformin safety depends on eGFR remaining ≥45. Risk of hyperkalemia with ACE inhibitor up-titration.",
+          "priority": "high",
+          "action": "BMP (Na, K, Cr, eGFR) must be checked at PCP visit within 1 week of discharge. PCP to reassess both metformin and lisinopril dosing based on results. Flag in PCP communication."
+        },
+        {
+          "flag": "HIGH — METFORMIN HELD FOR CONTRAST: Metformin was appropriately held during acute phase and restarted Day 6. Confirm contrast-to-restart interval ≥48 hours and that eGFR was checked prior to restart. Document in discharge summary.",
+          "priority": "high",
+          "action": "Review inpatient medication administration record to confirm compliant restart timing. Document in discharge summary. PCP to recheck eGFR at 1-week visit."
+        },
+        {
+          "flag": "MEDIUM — HbA1c 8.1%: Diabetes management suboptimal. Metformin monotherapy appears to be current regimen. Post-stroke, optimal glycemic control is important for cerebrovascular risk reduction, but aggressive hypoglycemia must also be avoided (hypoglycemia is stroke mimic and increases injury risk).",
+          "priority": "medium",
+          "action": "Flag for PCP and/or endocrinology at follow-up to reassess diabetes management regimen. Do not adjust diabetes medications at hospital discharge without outpatient follow-up plan in place. Ensure patient is aware of hypoglycemia risk, especially post-stroke."
+        },
+        {
+          "flag": "MEDIUM — PILL BURDEN AND NEW MEDICATION EDUCATION: Patient is being discharged on 6 medications, 4 of which are new. Twice-daily metformin is the only non-once-daily medication. Patient has high health literacy and strong caregiver support, but formal medication counseling at discharge is essential, particularly for clopidogrel stop date, atorvastatin myopathy monitoring, and NSAID avoidance.",
+          "priority": "medium",
+          "action": "Pharmacist-led medication counseling session prior to discharge. Provide written medication list with indications, timing, and stop dates. Use teach-back to confirm understanding. Provide wife with copy of medication list."
+        },
+        {
+          "flag": "MEDIUM — OTC AND SUPPLEMENT RECONCILIATION INCOMPLETE: No home medications were documented as active prior to lisinopril 10 mg (only home medication on record). Patient is a 65-year-old male — confirm whether any OTC medications (especially NSAIDs, aspirin, fish oil, vitamin E, herbal supplements) were being taken prior to admission. These may interact with DAPT.",
+          "priority": "medium",
+          "action": "Perform complete home medication review at discharge counseling including OTC and supplements. Document in discharge summary. Specifically ask about ibuprofen/naproxen use, fish oil, vitamin E, and any herbal blood thinners."
+        },
+        {
+          "flag": "LOW — TRIGLYCERIDES 198 mg/dL: Mildly elevated. High-intensity atorvastatin will provide some triglyceride-lowering benefit. No additional agent indicated at this time. Dietary counseling relevant given obesity (BMI 32.4) and T2DM.",
+          "priority": "low",
+          "action": "Recheck fasting lipid panel at 6–8 week follow-up after atorvastatin initiation. If triglycerides persist above 200 mg/dL despite statin, PCP/cardiology to consider additional intervention at outpatient follow-up."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Confidence is moderate rather than high for the following reasons: (1) Complete home medication list prior to admission is not fully documented — only lisinopril 10 mg is listed as a home medication; unrecognized OTC medications or supplements that interact with DAPT cannot be excluded. (2) Exact eGFR estimation methodology (race-free vs. race-based CKD-EPI) is not confirmed in the record — relevant for a Black male patient where historical race-based equations overestimate eGFR. (3) Baseline CK and hepatic function (LFTs/AST/ALT) are not documented in the available labs, limiting full atorvastatin safety assessment. (4) Timing of contrast administration relative to metformin restart on Day 6 cannot be fully verified from available data alone. All drug interaction and pharmacological data referenced reflects established clinical evidence."
+    },
+    "msw": {
+      "agent": "msw",
+      "case_id": "CASE-002",
+      "discharge_destination_assessment": {
+        "proposed_destination": "Home with wife (Patricia Jackson) — single-story ranch house, 3.2 miles from hospital",
+        "viability": "conditional",
+        "conditions": [
+          "Patient and wife demonstrate full understanding of functional consequences of refusing IRF, documented in chart after goals-of-care conversation",
+          "Outpatient PT/OT referral placed and first appointment confirmed before discharge — not simply 'scheduled,' but appointment date in hand",
+          "Home safety assessment completed or waived by PT/OT with documentation of home environment adequacy for current functional status (fall risk is moderate-high)",
+          "Durable Medical Equipment (DME) confirmed in home prior to discharge: grab bars or tub bench for bathing assist, single-point cane already in possession",
+          "Wife trained in standby assist techniques for bathing and lower body dressing before patient leaves unit",
+          "Clopidogrel stop date (2026-05-06) communicated in writing to patient, wife, and PCP with explicit instructions — not buried in discharge summary",
+          "Driving restriction explicitly communicated and documented: patient must not drive until neurologically cleared (typically 3–6 months post-stroke per MA guidelines)",
+          "PCP appointment confirmed within 1 week of discharge",
+          "Patient and wife verbalize understanding of stroke recurrence warning signs (FAST) and when to call 911"
+        ],
+        "alternatives": [
+          "1st alternative: Acute Inpatient Rehabilitation Facility (IRF) — clinically preferred, insurance-covered (20 days under Medicare Advantage), evidence-based superior outcomes for MCA stroke at this severity. Should remain on the table if patient reconsiders.",
+          "2nd alternative: Short-term skilled nursing facility (SNF) with intensive PT/OT — lower intensity than IRF but more structured than home; may be acceptable middle-ground if patient is unwilling to consider IRF but open to a facility other than a 'nursing home.' Coverage under Medicare Advantage should be verified.",
+          "3rd alternative: Home with home health PT/OT under Medicare Advantage home health benefit — may provide additional visits beyond outpatient cap if homebound criteria are met. Eligibility should be assessed immediately, as current ambulatory status (50 feet with SPC, unsteady on uneven surfaces) may qualify."
+        ]
+      },
+      "insurance_coverage": {
+        "current_coverage": "Medicare Advantage HMO — retired municipal worker plan. Qualifying 3-day inpatient stay met.",
+        "gaps_identified": [
+          "CRITICAL: Outpatient PT/OT capped at 20 combined visits per calendar year 2026. For MCA stroke recovery, this is clinically insufficient — PT literature supports 30–60+ sessions for meaningful motor recovery at this severity. Patient is trading IRF access for an inadequate outpatient benefit.",
+          "If IRF is used, outpatient PT visits still count against the same 20-visit annual cap — no rollover or separate allotment.",
+          "Clopidogrel copay under Medicare Advantage HMO formulary not confirmed — generic availability and tier status must be verified before discharge.",
+          "Home health PT/OT benefit eligibility not assessed — if patient qualifies as 'homebound,' this is a separate benefit from outpatient PT and would not count against the 20-visit cap. This is a potentially significant unclaimed resource.",
+          "PFO cardiology follow-up and possible closure procedure coverage not verified under current plan.",
+          "No documentation of whether endocrinology consultation for HbA1c 8.1% optimization is covered or requires PCP referral under HMO structure."
+        ],
+        "actions_in_progress": [
+          "None documented at time of analysis."
+        ],
+        "actions_needed_before_discharge": [
+          "URGENT: Contact Medicare Advantage plan to verify home health PT/OT benefit — determine if patient meets homebound criteria given current ambulatory limitations. If yes, home health orders should be placed alongside outpatient PT referral to maximize available rehabilitation.",
+          "Verify Clopidogrel formulary tier and estimated copay — if cost is a barrier, identify generic alternatives or manufacturer patient assistance program.",
+          "Verify outpatient PT/OT network — confirm preferred rehabilitation facility is in-network under HMO plan before referral is placed.",
+          "Confirm cardiology follow-up (PFO) and endocrinology/PCP DM management visits are covered under HMO without additional prior authorization.",
+          "If patient reconsiders IRF, confirm IRF facility is in-network and initiate prior authorization immediately — do not delay authorization on the assumption patient will refuse.",
+          "Request insurance case manager assignment from Medicare Advantage plan for ongoing post-discharge coordination given complexity of this case."
+        ]
+      },
+      "sdoh_assessment": {
+        "housing": {
+          "status": "stable",
+          "detail": "Single-story ranch house, owned outright, no stairs. Eliminates a major physical barrier given left leg weakness and gait instability. Home 3.2 miles from hospital. No housing instability concerns.",
+          "action": "Confirm grab bars present in bathroom before discharge. If not present, expedite DME/home modification referral — bathing requires standby assist and fall risk is moderate-high. PT home safety assessment strongly recommended prior to or concurrent with discharge."
+        },
+        "food_security": {
+          "status": "secure",
+          "detail": "Couple cooks at home. No food insecurity reported. Wife is retired and present in the home.",
+          "action": "Assess whether left arm motor deficit will affect patient's ability to participate in meal preparation — this is an ADL and quality-of-life concern, not a food security crisis. OT should address adaptive kitchen strategies in outpatient therapy. No food assistance referral needed at this time."
+        },
+        "transportation": {
+          "status": "adequate",
+          "detail": "Wife drives. Car accessible. 3.2 miles from hospital. Transportation is not a barrier to follow-up appointments.",
+          "action": "IMPORTANT CAVEAT: Patient is a driver (former firefighter who drove regularly). He must NOT drive until cleared by neurology — this is both a safety and legal issue in Massachusetts. Wife must be identified as the designated driver for all medical appointments. Ensure wife understands this responsibility and that she is willing and able to provide it for a potentially extended period (3–6 months). If wife becomes unavailable, transportation plan is fragile — no backup identified."
+        },
+        "medication_affordability": {
+          "status": "at_risk",
+          "detail": "Medicare Advantage covers most medications. Atorvastatin 80mg is generic and low-cost. However: (1) Clopidogrel copay not confirmed — if on a higher formulary tier, cost for a 21-day course could be a barrier to adherence; (2) Patient is now on 5 medications, several of which are new — cumulative copay burden not assessed; (3) Lisinopril dose doubled — confirm formulary covers 20mg dose vs. splitting 10mg tablets.",
+          "action": "Verify Clopidogrel copay before discharge. Provide patient with written medication list including costs. If any medication copay is a barrier, connect to Medicare Extra Help (Low Income Subsidy) eligibility screening — given pension income, eligibility is uncertain but should be assessed. Manufacturer patient assistance for brand medications if generic unavailable."
+        },
+        "social_isolation": {
+          "status": "connected",
+          "detail": "Married, wife retired and present at home. Wife has attended all family meetings and is described as committed. Patient has a clear social support structure. No isolation concerns documented.",
+          "action": "Monitor for post-stroke depression and emotional lability — already noted as mild and improving. Wife should be informed that post-stroke mood changes are common and that support resources exist (stroke support groups, counseling). Connect to local stroke survivor peer support network as a proactive measure, not a crisis response. American Stroke Association has peer mentorship programs."
+        }
+      },
+      "caregiver_assessment": {
+        "caregiver_identified": true,
+        "name": "Patricia Jackson",
+        "relationship": "Wife",
+        "availability": "Retired, full-time availability at home",
+        "capacity": "adequate",
+        "burnout_risk": "moderate",
+        "training_needed": [
+          "Standby assist technique for bathing — patient requires assist, wife must understand weight-bearing support without risking her own injury",
+          "Lower body dressing assist — left leg involvement requires specific technique",
+          "Fall response protocol — what to do if patient falls at home given moderate-high fall risk",
+          "Clopidogrel stop date management — wife should have a written calendar reminder for 2026-05-06 and understand why this date is critical",
+          "Stroke recurrence recognition — FAST symptoms, when to call 911 vs. drive to hospital (answer: always 911)",
+          "Driving restriction enforcement — wife needs to understand she is the sole driver and that patient driving before neurological clearance is unsafe and legally prohibited in MA",
+          "Emotional lability management — strategies for responding to post-stroke affect without personalizing patient's emotional responses",
+          "Blood pressure monitoring at home — given history of severe hypertension on admission, home BP log would be valuable for PCP follow-up. Wife may be the one tracking this."
+        ]
+      },
+      "community_resources": [
+        {
+          "resource": "Outpatient PT/OT — in-network rehabilitation facility",
+          "purpose": "Primary rehabilitation for left hemiparesis, gait training, ADL recovery. Only 20 visits available — referral must be placed immediately and visits must be used strategically with a written home exercise program to extend benefit.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Home Health PT/OT — Medicare Advantage home health benefit",
+          "purpose": "If homebound criteria met, provides additional rehabilitation visits that do NOT count against 20-visit outpatient cap. Should be explored urgently as a means of supplementing inadequate outpatient benefit.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "American Stroke Association — Stroke Support Group / Peer Mentorship",
+          "purpose": "Peer support for post-stroke recovery, emotional adjustment, and caregiver support for Patricia. Addresses both patient's post-stroke emotional lability and wife's moderate burnout risk.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Home health aide / personal care attendant (short-term)",
+          "purpose": "Supplemental in-home support for ADL assist given wife will be primary caregiver. Reduces caregiver burden and fall risk during ADL tasks. Coverage under Medicare Advantage home health benefit should be assessed.",
+          "referral_status": "pending"
+        },
+        {
+          "resource": "DME supplier — grab bars, tub bench, SPC",
+          "purpose": "Home safety modification for moderate-high fall risk. Patient already has SPC; grab bars and tub bench for bathroom safety needed given bathing assist requirement.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Neurology follow-up — stroke clinic",
+          "purpose": "2-week post-discharge follow-up. Neurological clearance for driving, medication management, recovery monitoring.",
+          "referral_status": "referred"
+        },
+        {
+          "resource": "Cardiology follow-up",
+          "purpose": "4-week follow-up for PFO management discussion — closure vs. medical management decision.",
+          "referral_status": "referred"
+        },
+        {
+          "resource": "Primary Care Physician",
+          "purpose": "1-week follow-up. BP management, Metformin continuation, HbA1c optimization, Clopidogrel stop date enforcement (2026-05-06), coordination of all specialist follow-ups.",
+          "referral_status": "referred"
+        },
+        {
+          "resource": "Endocrinology or PCP DM management intensification",
+          "purpose": "HbA1c 8.1% — above target. Diabetes management optimization needed. Referral to endocrinology or structured PCP DM management program.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Medicare Extra Help / Low Income Subsidy screening",
+          "purpose": "Assess eligibility given pension income and new multi-medication regimen. Prevent medication affordability from becoming an adherence barrier.",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Caregiver support resources — Family Caregiver Alliance or local equivalent",
+          "purpose": "Patricia is full-time caregiver for husband post-stroke. Moderate burnout risk given intensity of care needs and patient's refusal of IRF placing full rehabilitation support burden on home setting. Proactive caregiver support referral.",
+          "referral_status": "needed"
+        }
+      ],
+      "safety_concerns": [
+        {
+          "concern": "Driving restriction — patient is a licensed driver (former firefighter) and must not drive until neurologically cleared. No documentation of this restriction being communicated or enforced. If patient drives post-discharge, this is a critical safety and legal risk to patient and public.",
+          "priority": "critical",
+          "action": "Explicit conversation with patient AND wife before discharge. Document in chart that driving restriction was communicated. Provide written copy of restriction. Confirm wife understands she is sole driver. Flag for neurology at 2-week follow-up appointment as item requiring clearance decision."
+        },
+        {
+          "concern": "Moderate-high fall risk at home — patient ambulates 50 feet with SPC, unsteady on uneven surfaces, moderate-high fall risk score, left leg proprioception deficit, mild left arm spasticity. Home environment not formally assessed.",
+          "priority": "high",
+          "action": "PT home safety assessment before or at discharge. DME referral for grab bars and tub bench confirmed placed. Wife trained in fall response protocol. Patient instructed to avoid uneven surfaces, stairs, and outdoor ambulation without supervision until cleared by PT."
+        },
+        {
+          "concern": "Clopidogrel DAPT stop date (2026-05-06) — if patient continues Clopidogrel beyond 21 days without clinical indication, bleeding risk increases. If he stops it early, stroke recurrence risk increases. This date must survive the discharge transition.",
+          "priority": "high",
+          "action": "Written stop date given to patient AND wife. PCP informed with explicit note in discharge summary flagging date. Pharmacy counseling provided. Consider medication blister pack or pill organizer labeled with stop date. PCP appointment at 1 week should include medication reconciliation with explicit Clopidogrel review."
+        },
+        {
+          "concern": "Patient refusing clinically recommended IRF — the refusal itself is not a safety concern, but the downstream consequence (only 20 outpatient PT visits for MCA stroke recovery, left arm motor deficit at 3/5 grip, moderate-high fall risk) significantly elevates permanent functional deficit and readmission risk. LACE score 10, 18–22% 30-day readmission risk.",
+          "priority": "high",
+          "action": "Goals-of-care conversation must be documented with specific language about functional consequence of refusing IRF, not just general 'patient prefers home.' Patient has high health literacy and is engaged — he deserves a clear, non-paternalistic explanation of what 20 outpatient PT visits realistically achieves for MCA stroke recovery at this severity. Patient's autonomy must be respected, but informed refusal requires full information. Social worker should be present at this conversation."
+        },
+        {
+          "concern": "Domestic safety — no IPV or elder abuse screening documentation found in available data.",
+          "priority": "low",
+          "action": "No active concerns identified from available data. Wife described as present, engaged, and supportive at all family meetings. Standard universal precaution screen should be completed per institutional protocol. Document outcome."
+        },
+        {
+          "concern": "Post-stroke emotional lability — mild, improving, but ongoing. Wife is primary caregiver and may not be equipped to distinguish neurological affect from depression or interpersonal distress.",
+          "priority": "medium",
+          "action": "Psychoeducation for patient and wife on post-stroke emotional changes before discharge. Provide referral pathway to social work or behavioral health if symptoms worsen. Flag for neurology at 2-week follow-up."
+        }
+      ],
+      "systemic_navigation": [
+        {
+          "task": "Verify Medicare Advantage home health benefit eligibility — determine if homebound criteria met given current functional status (50 feet ambulation, unsteady on uneven surfaces). If eligible, place home health orders to supplement inadequate outpatient PT cap.",
+          "status": "needed",
+          "deadline": "Before discharge"
+        },
+        {
+          "task": "Verify Clopidogrel formulary tier and copay under current Medicare Advantage HMO plan.",
+          "status": "needed",
+          "deadline": "Before discharge"
+        },
+        {
+          "task": "Confirm in-network status of preferred outpatient PT/OT facility under Medicare Advantage HMO before referral is placed.",
+          "status": "needed",
+          "deadline": "Before discharge"
+        },
+        {
+          "task": "Request Medicare Advantage insurance case manager assignment for post-discharge coordination — given LACE 10, multiple new medications, IRF refusal, and 20-visit PT cap, active case management may unlock additional resources.",
+          "status": "needed",
+          "deadline": "Before discharge"
+        },
+        {
+          "task": "Assess Medicare Extra Help (Part D Low Income Subsidy) eligibility given pension income and expanded medication burden.",
+          "status": "needed",
+          "deadline": "Within 1 week of discharge"
+        },
+        {
+          "task": "Confirm PCP appointment within 1 week — with explicit agenda item: Clopidogrel stop date review, medication reconciliation, BP monitoring plan, HbA1c follow-up referral.",
+          "status": "needed",
+          "deadline": "Before discharge"
+        },
+        {
+          "task": "If patient reconsiders IRF: initiate prior authorization with Medicare Advantage immediately. Do not allow authorization process to be the delay if patient changes his mind.",
+          "status": "needed",
+          "deadline": "Ongoing — keep authorization pathway warm"
+        },
+        {
+          "task": "DME order placed for grab bars and tub bench — confirm delivery scheduled for before or on discharge date.",
+          "status": "needed",
+          "deadline": "Before discharge"
+        }
+      ],
+      "flags": [
+        {
+          "flag": "CRITICAL — Driving restriction not documented as communicated. Patient is licensed driver with left hemiparesis, gait instability, and recent stroke. Must not drive until neurologically cleared. Risk to patient and public.",
+          "priority": "critical",
+          "action": "Driving restriction conversation with patient and wife before discharge. Document in chart. Written copy provided. Flag at neurology 2-week follow-up for clearance decision."
+        },
+        {
+          "flag": "HIGH — Outpatient PT/OT capped at 20 combined visits for calendar year 2026 under Medicare Advantage HMO. For MCA stroke at this severity with left hemiparesis at 3/5 grip, this is clinically insufficient. Patient is trading IRF access for a structurally inadequate outpatient rehabilitation benefit.",
+          "priority": "high",
+          "action": "Urgently assess home health PT/OT eligibility under separate Medicare Advantage home health benefit. If eligible, place home health orders. If not, document the coverage gap explicitly and ensure patient and wife understand the implication for recovery trajectory. This gap must be named clearly, not minimized."
+        },
+        {
+          "flag": "HIGH — Patient refusing IRF despite clinical recommendation, NIHSS improvement but residual left arm deficit at 3/5, moderate-high fall risk, and LACE 10 (18–22% 30-day readmission risk). Informed refusal requires documented goals-of-care conversation with explicit functional consequence framing.",
+          "priority": "high",
+          "action": "Goals-of-care conversation with social worker present. Document that patient understands specific functional risks of refusing IRF, not just general preference for home. Explore whether 'not a nursing home' objection can be addressed by distinguishing IRF from SNF. Keep IRF authorization pathway available."
+        },
+        {
+          "flag": "HIGH — Clopidogrel DAPT stop date 2026-05-06 is a time-sensitive, life-safety medication management issue that must survive the discharge transition. No documentation that PCP has been explicitly informed or that patient has a concrete stop date reminder system.",
+          "priority": "high",
+          "action": "Written stop date to patient and wife. Explicit PCP notification with date flagged. Pharmacy counseling at discharge. PCP 1-week appointment to include medication reconciliation."
+        },
+        {
+          "flag": "MEDIUM — Caregiver burnout risk is moderate. Wife (Patricia, 62, retired) is taking on full-time caregiving for a patient with moderate functional deficits post-stroke, with no IRF buffer, no home health confirmed, and no caregiver support referral in place. Burnout trajectory should be proactively addressed.",
+          "priority": "medium",
+          "action": "Caregiver support referral (Family Caregiver Alliance or local equivalent). Stroke caregiver peer support. Reassess at 2-4 weeks post-discharge."
+        },
+        {
+          "flag": "MEDIUM — Domestic safety screening not documented in available case data. Universal precaution screen should be completed and documented per institutional protocol.",
+          "priority": "medium",
+          "action": "Complete domestic safety screen before discharge. Document outcome."
+        },
+        {
+          "flag": "LOW — Medication affordability status listed as 'managed' but Clopidogrel copay unverified and cumulative copay burden of 5-medication regimen not assessed. At-risk designation warranted pending verification.",
+          "priority": "low",
+          "action": "Verify formulary tier for Clopidogrel. Assess total monthly copay burden. Screen for Medicare Extra Help eligibility."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Social context is reasonably well-documented for a hospital case: living situation, caregiver, insurance type, SDOH flags, and functional status are present. Confidence is moderate rather than high for the following reasons: (1) Medicare Advantage HMO benefit details (home health eligibility, exact copay structure, in-network rehab options) are not fully specified in the source data — these gaps directly affect the discharge plan viability; (2) Domestic safety screening is undocumented — absence of documentation is not absence of risk; (3) Caregiver assessment is based on family meeting attendance and wife's stated commitment, not a structured caregiver capacity or burden assessment; (4) Patient's stated reason for refusing IRF ('not going to a nursing home') has not been fully explored — the depth of this preference and whether it is modifiable with education is unknown. These gaps are actionable, not just informational."
+    }
+  }
+}
