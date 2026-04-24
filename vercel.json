@@ -1,5 +1,4 @@
 {
-  "rootDirectory": "ui",
   "functions": {
     "app/api/synthesize/route.ts": {
       "maxDuration": 300
