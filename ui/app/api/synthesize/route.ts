@@ -83,8 +83,57 @@ const CACHED_OUTPUT_FILES: Record<number, string> = {
 };
 
 export async function POST(req: NextRequest) {
-  const body = (await req.json()) as { caseId: number; fresh?: boolean };
-  const { caseId, fresh = false } = body;
+  const body = (await req.json()) as {
+    caseId?: number;
+    fresh?: boolean;
+    patientData?: Record<string, unknown>;
+  };
+  const { caseId, fresh = false, patientData } = body;
+
+  // ── Path A: custom patient data from intake form ───────────────────────────
+  if (patientData) {
+    const roles = ["physician", "nurse", "pharmacist", "msw", "pt"];
+    const agentResults = await Promise.allSettled(
+      roles.map((role) => runAgent(role, patientData))
+    );
+    const agentOutputs: Record<string, Record<string, unknown>> = {};
+    for (let i = 0; i < roles.length; i++) {
+      const result = agentResults[i];
+      agentOutputs[roles[i]] =
+        result.status === "fulfilled"
+          ? result.value
+          : { error: result.reason?.message ?? "Agent failed" };
+    }
+    const orchSystem = loadPrompt("orchestrator");
+    const orchResponse = await client.messages.create({
+      model: ORCHESTRATOR_MODEL,
+      max_tokens: 16384,
+      system: orchSystem,
+      messages: [{
+        role: "user",
+        content:
+          "Synthesize the following patient case and five specialist agent outputs " +
+          "into a final discharge planning package. " +
+          "Return only valid JSON matching your output schema.\n\n" +
+          `PATIENT CASE:\n${JSON.stringify(patientData, null, 2)}\n\n` +
+          `CLINICAL AGENT OUTPUTS:\n${JSON.stringify(agentOutputs, null, 2)}`,
+      }],
+    });
+    const orchBlock = orchResponse.content[0];
+    const orchText = orchBlock.type === "text" ? orchBlock.text : "";
+    const synthesis = extractJSON(orchText, "orchestrator");
+    synthesis.synthesis_timestamp = new Date().toISOString();
+    if (typeof synthesis.meta === "object" && synthesis.meta !== null) {
+      (synthesis.meta as Record<string, unknown>).model = ORCHESTRATOR_MODEL;
+    }
+    synthesis._agent_outputs = agentOutputs;
+    return NextResponse.json(synthesis);
+  }
+
+  // ── Path B: static demo cases ──────────────────────────────────────────────
+  if (caseId === undefined) {
+    return NextResponse.json({ error: "caseId or patientData required" }, { status: 400 });
+  }
 
   const caseFile = CASE_FILES[caseId];
   if (!caseFile) {
@@ -92,7 +141,6 @@ export async function POST(req: NextRequest) {
   }
 
   // Return pre-computed output unless caller explicitly requests a fresh synthesis.
-  // Fresh synthesis via live API takes 5+ minutes and exceeds Vercel's 300s limit.
   if (!fresh) {
     const cachedFile = CACHED_OUTPUT_FILES[caseId];
     if (cachedFile) {

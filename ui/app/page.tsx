@@ -1,27 +1,26 @@
 import Link from "next/link";
 import { loadAllCases } from "./lib/data";
 import { ReadinessStatus, RiskTier } from "./lib/types";
+import LocalPatients from "./LocalPatients";
 
-function readinessBadge(r: ReadinessStatus) {
-  const map: Record<ReadinessStatus, string> = {
-    ready: "bg-green-100 text-green-800 border-green-200",
-    conditional: "bg-amber-100 text-amber-800 border-amber-200",
-    not_ready: "bg-red-100 text-red-800 border-red-200",
-  };
-  const label: Record<ReadinessStatus, string> = {
-    ready: "READY",
-    conditional: "CONDITIONAL",
-    not_ready: "NOT READY",
-  };
-  return { cls: map[r], label: label[r] };
+function readinessBadgeCls(r: ReadinessStatus) {
+  if (r === "ready")       return "bg-ok-bg text-ok-text border-ok-border";
+  if (r === "conditional") return "bg-warning-bg text-warning-text border-warning-border";
+  return "bg-critical-bg text-critical-text border-critical-border";
 }
 
-function laceTierColor(tier: RiskTier) {
+function readinessLabel(r: ReadinessStatus) {
+  if (r === "ready")       return "READY";
+  if (r === "conditional") return "CONDITIONAL";
+  return "NOT READY";
+}
+
+function laceCls(tier: RiskTier) {
   const map: Record<RiskTier, string> = {
-    LOW: "text-green-600",
-    MODERATE: "text-blue-600",
-    HIGH: "text-amber-600",
-    VERY_HIGH: "text-red-600",
+    LOW:       "text-ok-text",
+    MODERATE:  "text-info-text",
+    HIGH:      "text-warning-text",
+    VERY_HIGH: "text-critical-text",
   };
   return map[tier];
 }
@@ -30,84 +29,117 @@ export default function HomePage() {
   const cases = loadAllCases();
 
   return (
-    <div>
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Discharge Planning Rounds</h1>
-        <p className="text-gray-500 mt-1 text-sm">
-          5 clinical AI agents (Sonnet 4.6) · Orchestrator (Opus 4.5) · 3 synthetic patient cases
+    <div className="max-w-[1200px] mx-auto">
+      {/* Header */}
+      <div className="mb-6">
+        <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary mb-1">
+          ROUNDS.ai · DISCHARGE PLANNING INTELLIGENCE
+        </div>
+        <h1 className="text-2xl font-mono font-semibold text-text-primary">Patient Case List</h1>
+        <p className="text-xs text-text-secondary mt-1">
+          5 clinical AI agents (Sonnet 4.6) · Orchestrator (Opus 4.7) · Multi-agent discharge synthesis
         </p>
       </div>
 
-      <div className="grid gap-4">
+      {/* Action bar */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">
+          EXAMPLE CASES — SYNTHETIC DATA
+        </div>
+        <Link
+          href="/intake"
+          className="flex items-center gap-2 px-4 py-2 bg-accent-bg border border-accent-border text-accent-text font-mono text-xs rounded-sm hover:bg-accent/20 transition-colors"
+        >
+          + New Patient Intake
+        </Link>
+      </div>
+
+      {/* Static example cases */}
+      <div className="space-y-2 mb-8">
         {cases.map(({ id, meta, data }) => {
-          const badge = readinessBadge(data.discharge_readiness);
-          const criticalCount = data.prioritized_actions.filter(
-            (a) => a.priority === "CRITICAL"
-          ).length;
+          const criticalCount = data.prioritized_actions.filter((a) => a.priority === "CRITICAL").length;
+          const risk30d = (data as unknown as Record<string, unknown> & { readmission_risk_30d?: { score_pct?: number } }).readmission_risk_30d;
 
           return (
             <Link href={`/case/${id}`} key={id} className="block group">
-              <div className="bg-white border border-gray-200 rounded-lg p-5 group-hover:border-gray-400 group-hover:shadow-sm transition-all">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className="text-xs text-gray-400 font-mono">{data.patient_id}</span>
-                      <span
-                        className={`text-xs px-2 py-0.5 rounded border font-semibold ${badge.cls}`}
-                      >
-                        {badge.label}
-                      </span>
-                    </div>
-                    <h2 className="text-lg font-semibold text-gray-900">{data.patient_name}</h2>
-                    <p className="text-sm text-gray-500">{meta.diagnosis}</p>
-                    <p className="text-xs text-blue-600 mt-0.5 font-medium">
-                      Teaches: {meta.teaches}
-                    </p>
+              <div className="bg-panel border border-border-subtle hover:border-border-hover rounded-sm transition-colors">
+                <div className="flex items-center gap-4 px-4 py-3 flex-wrap">
+                  {/* ID + Example tag */}
+                  <div className="flex items-center gap-2 flex-shrink-0 w-36">
+                    <span className="font-mono text-2xs text-text-tertiary">{data.patient_id}</span>
+                    <span className="text-2xs font-mono px-1.5 py-0.5 rounded-sm border border-border-subtle text-text-tertiary bg-white/5">
+                      EXAMPLE
+                    </span>
                   </div>
 
-                  {/* LACE */}
-                  <div className="text-right flex-shrink-0">
-                    <div className={`text-3xl font-bold ${laceTierColor(data.lace_score.tier)}`}>
-                      {data.lace_score.total}
+                  {/* Patient name + diagnosis */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-mono text-sm font-semibold text-text-primary">{data.patient_name}</span>
+                      <span className="text-xs text-text-secondary">{meta.diagnosis}</span>
                     </div>
-                    <div className={`text-xs font-semibold ${laceTierColor(data.lace_score.tier)}`}>
-                      LACE · {data.lace_score.tier.replace("_", " ")}
+                    <div className="text-2xs text-text-tertiary mt-0.5">{meta.teaches}</div>
+                  </div>
+
+                  {/* Stats */}
+                  <div className="flex items-center gap-6 flex-shrink-0 flex-wrap">
+                    {risk30d?.score_pct !== undefined && (
+                      <div className="text-right">
+                        <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">30-DAY RISK</div>
+                        <div className={`font-mono text-base font-semibold tabular-nums ${
+                          risk30d.score_pct > 25 ? "text-critical-text" :
+                          risk30d.score_pct > 15 ? "text-warning-text" : "text-ok-text"
+                        }`}>{risk30d.score_pct}%</div>
+                      </div>
+                    )}
+
+                    <div className="text-right">
+                      <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">LACE</div>
+                      <div className={`font-mono text-2xl font-semibold tabular-nums ${laceCls(data.lace_score.tier)}`}>
+                        {data.lace_score.total}
+                      </div>
                     </div>
+
+                    <div className="text-right">
+                      <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">CRITICAL</div>
+                      <div className="font-mono text-2xl font-semibold tabular-nums text-critical-text">{criticalCount}</div>
+                    </div>
+
+                    {/* Readiness pill */}
+                    <span className={`text-2xs font-mono uppercase tracking-widest px-2 py-1 rounded-sm border ${readinessBadgeCls(data.discharge_readiness)}`}>
+                      {readinessLabel(data.discharge_readiness)}
+                    </span>
+
+                    <span className="text-text-tertiary text-xs font-mono group-hover:text-text-secondary transition-colors">→</span>
                   </div>
                 </div>
 
-                {/* Stats row */}
-                <div className="mt-4 flex flex-wrap gap-4 text-sm border-t border-gray-100 pt-3">
-                  <span className="font-semibold text-red-600">
-                    ⚡ {criticalCount} critical action{criticalCount !== 1 ? "s" : ""}
-                  </span>
-                  <span className="text-gray-600">
-                    {data.conflicts.length} conflict{data.conflicts.length !== 1 ? "s" : ""}
-                  </span>
-                  <span className="text-gray-600">
-                    {data.gaps.length} gap{data.gaps.length !== 1 ? "s" : ""}
-                  </span>
-                  <span className="text-gray-400">
-                    {data.prioritized_actions.length} total actions
-                  </span>
+                {/* Rationale preview */}
+                <div className="px-4 pb-2.5 border-t border-border-subtle/50 pt-2">
+                  <p className="text-2xs text-text-tertiary line-clamp-1">{data.discharge_readiness_rationale}</p>
                 </div>
-
-                {/* Readiness rationale preview */}
-                <p className="mt-2 text-xs text-gray-500 line-clamp-2 leading-relaxed">
-                  {data.discharge_readiness_rationale}
-                </p>
               </div>
             </Link>
           );
         })}
       </div>
 
-      <div className="mt-6">
+      {/* User-entered patients from localStorage (client component) */}
+      <LocalPatients />
+
+      {/* Bottom nav */}
+      <div className="mt-6 flex items-center gap-4">
         <Link
           href="/summary"
-          className="inline-block text-sm text-blue-600 hover:text-blue-800 font-medium border border-blue-200 bg-blue-50 px-4 py-2 rounded hover:bg-blue-100 transition-colors"
+          className="text-xs font-mono text-info-text hover:text-white border border-info-border bg-info-bg px-4 py-2 rounded-sm transition-colors"
         >
-          → View 3-case comparison summary
+          → 3-case comparison table
+        </Link>
+        <Link
+          href="/rounds"
+          className="text-xs font-mono text-accent-text hover:text-white border border-accent-border bg-accent-bg px-4 py-2 rounded-sm transition-colors"
+        >
+          → Live rounds demo
         </Link>
       </div>
     </div>
