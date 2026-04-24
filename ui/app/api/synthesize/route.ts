@@ -16,8 +16,9 @@ const ORCHESTRATOR_MODEL = "claude-opus-4-7";
 
 function resolveProjectDir(subfolder: string): string {
   const candidates = [
-    path.join(process.cwd(), subfolder),
-    path.join(process.cwd(), "..", subfolder),
+    path.join(process.cwd(), "data", subfolder), // Vercel: prebuild copies here
+    path.join(process.cwd(), subfolder),          // fallback: cwd = project root
+    path.join(process.cwd(), "..", subfolder),    // local dev: cwd = ui/
   ];
   for (const p of candidates) {
     if (fs.existsSync(p)) return p;

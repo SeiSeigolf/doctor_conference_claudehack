@@ -6,8 +6,9 @@ import { CaseOutput } from "./types";
 // root (Vercel) or the ui/ subdirectory (local `next dev`).
 function resolveProjectDir(subfolder: string): string {
   const candidates = [
-    path.join(process.cwd(), subfolder),       // Vercel: cwd = project root
-    path.join(process.cwd(), "..", subfolder),  // local dev: cwd = ui/
+    path.join(process.cwd(), "data", subfolder), // Vercel: prebuild copies here
+    path.join(process.cwd(), subfolder),          // fallback: cwd = project root
+    path.join(process.cwd(), "..", subfolder),    // local dev: cwd = ui/
   ];
   for (const p of candidates) {
     if (fs.existsSync(p)) return p;
