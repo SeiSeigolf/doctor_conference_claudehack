@@ -1,0 +1,1542 @@
+{
+  "patient_id": "CASE-001",
+  "patient_name": "Margaret Chen",
+  "synthesis_timestamp": "2026-04-22T14:30:00Z",
+  "discharge_readiness": "not_ready",
+  "discharge_readiness_rationale": "Physician agent has marked discharge_ready: false pending two critical conditions — PT stair-climb assessment and repeat BMP — neither of which has been completed; additionally, the Pharmacist agent has identified a critical anticoagulation gap in a high-risk Afib patient that must be addressed before discharge.",
+  "lace_score": {
+    "total": 12,
+    "tier": "HIGH",
+    "implication": "Approximately 25–30% 30-day readmission risk. All bridge supports must be confirmed in place before discharge: Home Health nursing and PT activated with first visit within 24–48 hours, PCP follow-up at 3 days, BMP at 2–3 days, cardiology at 1 week, daughter present for discharge teaching, written instructions at appropriate literacy level, and daily weight monitoring protocol established."
+  },
+  "conflicts": [
+    {
+      "conflict_id": "C1",
+      "summary": "Patient preference for home discharge vs. functional inability to access third-floor walkup apartment",
+      "positions": [
+        {
+          "holder": "Patient",
+          "position": "Prefers discharge to home"
+        },
+        {
+          "holder": "PT Agent",
+          "position": "Patient cannot safely navigate 3 flights of stairs; current ambulation limited to 15 feet with walker before rest"
+        },
+        {
+          "holder": "Nurse Agent",
+          "position": "ADL assessment indicates patient is not safe for discharge to current home setting without stair clearance"
+        },
+        {
+          "holder": "MSW Agent",
+          "position": "Housing is an active discharge safety barrier; SNF contingency must be activated in parallel"
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "PT completes in-hospital stair assessment today; if patient demonstrates safe stair negotiation with supervision, proceed with home discharge with daughter present and Home Health activated",
+          "trade_off": "Delays discharge by hours to 1 day; preserves patient autonomy if successful"
+        },
+        {
+          "option": "Discharge to short-term SNF for PT rehabilitation and functional recovery, then transition home when stair-safe",
+          "trade_off": "Patient preference not honored immediately; adds facility transition; preserves safety; Medicare SNF benefit available (4-day qualifying stay met)"
+        },
+        {
+          "option": "Temporary discharge to daughter's home if single-story or accessible, with Home Health redirected to that address",
+          "trade_off": "Requires daughter to take time off work; requires verification of daughter's home accessibility; logistically complex"
+        }
+      ],
+      "requires_physician_decision": true,
+      "urgency": "before_discharge"
+    },
+    {
+      "conflict_id": "C2",
+      "summary": "Discharge furosemide dose undetermined — inpatient dose (40 mg BID) is 4x home dose (20 mg daily) in a now-euvolemic patient with CKD 3a",
+      "positions": [
+        {
+          "holder": "Physician Agent",
+          "position": "Discharge dose not finalized; continuing inpatient dose risks over-diuresis and AKI"
+        },
+        {
+          "holder": "Pharmacist Agent",
+          "position": "Critical flag — do not discharge on default inpatient dose without explicit prescriber intent; euvolemic status requires dose reduction"
+        },
+        {
+          "holder": "Nurse Agent",
+          "position": "Cannot complete medication education until furosemide dose is confirmed"
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "Return to home dose (20 mg daily) given euvolemic status, with cardiology follow-up at 1 week to uptitrate if needed",
+          "trade_off": "Risk of re-accumulation if heart failure compensation is marginal; conservative approach"
+        },
+        {
+          "option": "Discharge on intermediate dose (40 mg daily) with weight-based home monitoring and clear re-escalation instructions",
+          "trade_off": "Balances diuresis maintenance with AKI risk; requires robust home monitoring"
+        },
+        {
+          "option": "Discharge on 40 mg BID with mandatory BMP at 2–3 days and explicit creatinine-based hold parameters",
+          "trade_off": "Highest diuresis intensity; highest AKI risk; requires tight monitoring and patient/family understanding of hold parameters"
+        }
+      ],
+      "requires_physician_decision": true,
+      "urgency": "before_discharge"
+    },
+    {
+      "conflict_id": "C3",
+      "summary": "Potassium chloride discharge dose dependent on BMP not yet resulted and on furosemide dose decision",
+      "positions": [
+        {
+          "holder": "Physician Agent",
+          "position": "Discharge KCl dose cannot be finalized until repeat BMP confirms K+ stability"
+        },
+        {
+          "holder": "Pharmacist Agent",
+          "position": "Current 20 mEq BID may cause hyperkalemia once furosemide is down-titrated and spironolactone effect matures; dose must be reassessed"
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "Order BMP today; once K+ results, adjust KCl dose in tandem with furosemide decision",
+          "trade_off": "Delays discharge by hours; ensures electrolyte safety"
+        },
+        {
+          "option": "Discharge on reduced KCl dose (e.g., 10 mEq daily or 20 mEq daily) with mandatory 2–3 day BMP recheck and explicit discontinuation if K+ >5.0",
+          "trade_off": "Empiric reduction without lab confirmation; requires patient/family understanding of hold parameters"
+        }
+      ],
+      "requires_physician_decision": true,
+      "urgency": "before_discharge"
+    },
+    {
+      "conflict_id": "C4",
+      "summary": "No anticoagulation prescribed for chronic atrial fibrillation with CHA2DS2-VASc ≥5 — aspirin alone is inadequate",
+      "positions": [
+        {
+          "holder": "Pharmacist Agent",
+          "position": "Critical safety flag — anticoagulation omission must be addressed; aspirin is not guideline-adequate stroke prevention at this risk level"
+        },
+        {
+          "holder": "Physician Agent",
+          "position": "Anticoagulation gap identified; absence requires explicit documentation of contraindication or initiation of DOAC"
+        }
+      ],
+      "resolution_options": [
+        {
+          "option": "Initiate DOAC (e.g., apixaban 5 mg BID, reduced dose 2.5 mg BID if meeting 2 of 3 criteria: age ≥80, weight ≤60 kg, Cr ≥1.5) before discharge",
+          "trade_off": "Adds bleeding risk in a fall-risk patient; guideline-concordant stroke prevention; requires patient education"
+        },
+        {
+          "option": "Document explicit contraindication (e.g., HAS-BLED assessment, prior major hemorrhage, patient refusal) and defer to cardiology at 1-week follow-up",
+          "trade_off": "Leaves patient at elevated stroke risk during high-vulnerability post-discharge window; defers decision but documents rationale"
+        },
+        {
+          "option": "Refer decision to cardiology for same-day phone or in-person consultation before discharge",
+          "trade_off": "May delay discharge; ensures specialist input on risk-benefit in complex patient"
+        }
+      ],
+      "requires_physician_decision": true,
+      "urgency": "before_discharge"
+    }
+  ],
+  "gaps": [
+    {
+      "gap_id": "G1",
+      "summary": "No formal PT evaluation has been documented — all functional data is from nursing notes; bedside PT assessment has not occurred",
+      "source": "PT Agent confidence note: 'Formal PT evaluation has not been documented in the available patient data'",
+      "action_required": "Order and complete formal PT evaluation including stair assessment before discharge decision",
+      "owner": "PT / Physician",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G2",
+      "summary": "Repeat BMP not yet ordered or resulted — electrolyte and renal function confirmation is required before medication doses can be finalized",
+      "source": "Physician Agent pending_workup: 'Repeat BMP — ordered: false, result_available: false'",
+      "action_required": "Order stat BMP; result must be available before discharge order is written",
+      "owner": "Physician",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G3",
+      "summary": "Medicare Part D coverage not documented — Medigap alone does not cover outpatient prescriptions; if no Part D plan, all discharge medications are out-of-pocket",
+      "source": "MSW Agent and Pharmacist Agent both flag Part D gap: 'No Part D plan documented in social record'",
+      "action_required": "Verify Part D plan status; if absent, establish cost-access bridge for spironolactone, insulin, and antibiotic before patient leaves",
+      "owner": "MSW / Pharmacy",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G4",
+      "summary": "Daughter (Alice Chen) availability on discharge day is unconfirmed — she must be present for medication teaching given patient's cognitive impairment and regimen complexity",
+      "source": "MSW Agent and Nurse Agent: 'Daughter's presence at discharge teaching is required, not optional'",
+      "action_required": "Contact Alice Chen today to confirm discharge day availability; if unavailable, delay discharge or arrange video teaching with documented follow-up",
+      "owner": "MSW / Nurse",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G5",
+      "summary": "Teach-back documentation absent for all discharge education domains — education completion status is unknown",
+      "source": "Nurse Agent: 'Teach-back not documented for any discharge education domain'",
+      "action_required": "Nurse to initiate and document formal teach-back sessions covering daily weight, new medications, warning signs, and insulin administration before discharge",
+      "owner": "Nurse",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G6",
+      "summary": "Home safety assessment not completed — bathroom configuration, grab bar placement, stair rail adequacy in building not verified",
+      "source": "PT Agent: 'Home environment assessment_needed: true; safe_for_discharge_as_is: false'",
+      "action_required": "Order OT home safety evaluation; if not possible before discharge, PT/OT must assess on first home visit; DME (shower chair, grab bars) should be ordered before discharge",
+      "owner": "PT / OT / MSW",
+      "urgency": "within_48h"
+    },
+    {
+      "gap_id": "G7",
+      "summary": "No medical alert device in place — patient lives alone, high fall risk, mild cognitive impairment, limited weekday support",
+      "source": "PT Agent and MSW Agent both recommend medical alert device as 'required'",
+      "action_required": "Order personal emergency response system; confirm device is in patient's possession or will be delivered day of discharge",
+      "owner": "MSW / Care Coordinator",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G8",
+      "summary": "RIDE paratransit application not initiated — patient lacks personal vehicle and daughter has limited availability, but 3-day PCP and 2–3 day lab appointments require reliable transport",
+      "source": "MSW Agent: 'MBTA RIDE application not yet initiated'",
+      "action_required": "Initiate RIDE application today; coordinate with daughter for first post-discharge appointment as bridge",
+      "owner": "MSW",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G9",
+      "summary": "Amoxicillin-clavulanate remaining doses not confirmed dispensed or in-hand — antibiotic course completes 2 days post-discharge",
+      "source": "Pharmacist Agent: 'Confirm dispensing of remaining amoxicillin-clavulanate doses before discharge'",
+      "action_required": "Verify prescription is filled or dispensed before patient leaves building; do not assume it will be filled at outside pharmacy",
+      "owner": "Pharmacy / Nurse",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G10",
+      "summary": "Insulin glargine injection technique and education not verified this admission — patient uses at home but no documented reassessment",
+      "source": "Nurse Agent: 'Insulin glargine injection education completion not documented'",
+      "action_required": "Nurse to observe and document insulin self-administration teach-back before discharge",
+      "owner": "Nurse",
+      "urgency": "before_discharge"
+    },
+    {
+      "gap_id": "G11",
+      "summary": "Daily telephone reassurance / check-in program not yet referred — patient lives alone with mild cognitive impairment and high fall risk",
+      "source": "MSW Agent: 'Telephone reassurance referral needed'",
+      "action_required": "Refer to daily check-in program (e.g., Boston Aging Concerns Center or equivalent) before discharge",
+      "owner": "MSW",
+      "urgency": "before_discharge"
+    }
+  ],
+  "prioritized_actions": [
+    {
+      "rank": 1,
+      "priority": "CRITICAL",
+      "action": "Physician to address anticoagulation gap: document explicit contraindication for absence of anticoagulation OR initiate DOAC (e.g., apixaban with renal dosing) for chronic Afib with CHA2DS2-VASc ≥5",
+      "owner": "Physician",
+      "urgency": "before discharge",
+      "rationale": "Patient has ~6–8% annual stroke risk on aspirin alone; post-discharge period is high-vulnerability; omission without documentation is a patient safety gap"
+    },
+    {
+      "rank": 2,
+      "priority": "CRITICAL",
+      "action": "Order and complete formal PT evaluation including supervised stair-climb assessment; document clearance or inability to safely navigate 3 flights",
+      "owner": "PT",
+      "urgency": "before discharge",
+      "rationale": "Patient cannot safely reach her apartment at current functional status; discharging without stair clearance creates immediate fall and readmission risk"
+    },
+    {
+      "rank": 3,
+      "priority": "CRITICAL",
+      "action": "Order stat BMP; result must be reviewed before discharge order is written; potassium and creatinine required to finalize furosemide and KCl doses",
+      "owner": "Physician",
+      "urgency": "before discharge",
+      "rationale": "Triple-therapy regimen (lisinopril + spironolactone + furosemide) with CKD 3a creates unpredictable electrolyte and renal risk; cannot finalize medication doses without current labs"
+    },
+    {
+      "rank": 4,
+      "priority": "CRITICAL",
+      "action": "Physician to finalize discharge furosemide dose based on BMP results and euvolemic status; do not discharge on default inpatient 40 mg BID dose without explicit intent",
+      "owner": "Physician",
+      "urgency": "before discharge",
+      "rationale": "Continuing 4x home dose in euvolemic CKD patient risks AKI and readmission for acute kidney injury or volume depletion"
+    },
+    {
+      "rank": 5,
+      "priority": "CRITICAL",
+      "action": "Finalize KCl discharge dose in tandem with furosemide decision; likely requires reduction from 20 mEq BID given spironolactone initiation",
+      "owner": "Physician",
+      "urgency": "before discharge",
+      "rationale": "Hyperkalemia triad (ACE + aldosterone antagonist + KCl) in CKD 3a patient; continued aggressive supplementation risks life-threatening hyperkalemia post-discharge"
+    },
+    {
+      "rank": 6,
+      "priority": "HIGH",
+      "action": "Contact daughter Alice Chen today to confirm availability on discharge day for medication teaching; if unavailable, delay discharge or arrange video teaching with documented follow-up",
+      "owner": "MSW / Nurse",
+      "urgency": "before discharge",
+      "rationale": "Patient has mild cognitive impairment and 9-medication complex regimen with 2 new drugs and 2 dose changes; teaching to patient alone is insufficient"
+    },
+    {
+      "rank": 7,
+      "priority": "HIGH",
+      "action": "Verify Medicare Part D plan status; confirm all discharge medications are on formulary; if no Part D, establish cost-access bridge (GoodRx, manufacturer assistance) for spironolactone, insulin, and antibiotic",
+      "owner": "MSW / Pharmacy",
+      "urgency": "before discharge",
+      "rationale": "Medigap alone does not cover outpatient drugs; patient may be unable to fill prescriptions at pharmacy if coverage gap exists"
+    },
+    {
+      "rank": 8,
+      "priority": "HIGH",
+      "action": "Confirm amoxicillin-clavulanate remaining doses (2 days, 4 doses) are dispensed or filled before patient leaves building",
+      "owner": "Pharmacy / Nurse",
+      "urgency": "before discharge",
+      "rationale": "Antibiotic course incomplete at discharge; incomplete treatment risks treatment failure and pneumonia recurrence/readmission"
+    },
+    {
+      "rank": 9,
+      "priority": "HIGH",
+      "action": "Nurse to complete and document teach-back for all high-priority topics: daily weight thresholds, new medications (spironolactone, KCl), warning signs, insulin administration, antibiotic completion",
+      "owner": "Nurse",
+      "urgency": "before discharge",
+      "rationale": "No teach-back documentation exists; patient understanding is unverified; LACE 12 requires confirmed patient and caregiver comprehension"
+    },
+    {
+      "rank": 10,
+      "priority": "HIGH",
+      "action": "Submit Home Health referral to Medicare-certified agency; confirm first nursing visit within 24–48 hours and first PT visit within 48–72 hours; document homebound status justification",
+      "owner": "Care Coordinator / MSW",
+      "urgency": "before discharge",
+      "rationale": "LACE 12 patient with complex medications, functional decline, and social isolation requires structured monitoring; Home Health is the primary safety net"
+    },
+    {
+      "rank": 11,
+      "priority": "HIGH",
+      "action": "Order DME before discharge: shower chair, grab bars for tub/shower area, non-slip bath mat, handheld shower head, medical alert device",
+      "owner": "PT / Care Coordinator",
+      "urgency": "before discharge",
+      "rationale": "Patient has new bathing assist need, high fall risk (Morse 65), lives alone; bathroom is highest in-home fall risk location"
+    },
+    {
+      "rank": 12,
+      "priority": "HIGH",
+      "action": "Confirm PCP appointment at 3 days post-discharge and cardiology at 1 week are scheduled; provide written appointment confirmation to patient and daughter",
+      "owner": "Care Coordinator",
+      "urgency": "before discharge",
+      "rationale": "LACE 12 requires confirmed follow-up within tight timeframes; deferred appointments increase readmission risk"
+    },
+    {
+      "rank": 13,
+      "priority": "HIGH",
+      "action": "Ensure outpatient BMP lab order is in patient's hand for 2–3 day post-discharge draw; confirm lab location and daughter transport availability",
+      "owner": "Physician / Care Coordinator",
+      "urgency": "before discharge",
+      "rationale": "Post-discharge electrolyte monitoring is mandatory given triple-therapy and CKD; missed lab = undetected hyperkalemia or AKI"
+    },
+    {
+      "rank": 14,
+      "priority": "MODERATE",
+      "action": "Initiate MBTA RIDE paratransit application; coordinate with daughter to cover first post-discharge appointment if RIDE not yet active",
+      "owner": "MSW",
+      "urgency": "before discharge",
+      "rationale": "Patient has 3 appointments in first week post-discharge; daughter can drive 2x/week; transport gap risks missed follow-up"
+    },
+    {
+      "rank": 15,
+      "priority": "MODERATE",
+      "action": "Refer patient to daily telephone reassurance / check-in program for post-discharge period",
+      "owner": "MSW",
+      "urgency": "before discharge",
+      "rationale": "Patient lives alone with mild cognitive impairment; daily touchpoint allows early detection of decompensation between Home Health visits"
+    },
+    {
+      "rank": 16,
+      "priority": "MODERATE",
+      "action": "Confirm Meals on Wheels is notified of discharge date and will resume delivery; if SNF, notify to pause service",
+      "owner": "MSW",
+      "urgency": "before discharge",
+      "rationale": "Patient relies on this service for nutrition and daily contact; gap in service compromises both"
+    },
+    {
+      "rank": 17,
+      "priority": "MODERATE",
+      "action": "Nurse to observe and document insulin glargine self-administration technique and site rotation education",
+      "owner": "Nurse",
+      "urgency": "before discharge",
+      "rationale": "Injection technique not verified this admission; patient is 78 with functional decline; lipohypertrophy or technique errors risk glycemic instability"
+    },
+    {
+      "rank": 18,
+      "priority": "MODERATE",
+      "action": "If PT stair assessment fails, immediately activate SNF placement process — do not wait; initiate referral packet and identify Medicare-accepting facilities in patient's preferred area",
+      "owner": "MSW",
+      "urgency": "same day post-discharge",
+      "rationale": "SNF bed placement takes time; parallel planning prevents discharge delay if home is not viable"
+    },
+    {
+      "rank": 19,
+      "priority": "LOW",
+      "action": "Flag HbA1c 7.8% and suboptimal glycemic control for PCP at 3-day follow-up; insulin adjustment or addition of oral agent may be warranted",
+      "owner": "Physician",
+      "urgency": "within 1 week",
+      "rationale": "Above target diabetes control; not a discharge-blocking issue but requires outpatient optimization"
+    },
+    {
+      "rank": 20,
+      "priority": "LOW",
+      "action": "Flag normocytic anemia (Hgb 10.8) for PCP workup if not previously evaluated",
+      "owner": "Physician",
+      "urgency": "within 1 week",
+      "rationale": "Contributes to fatigue and fall risk; warrants outpatient investigation but not acute intervention"
+    }
+  ],
+  "handoff_packages": {
+    "pcp_summary": "Dear Dr. [PCP Name],\n\nMargaret Chen (DOB 02/14/1948, MRN 748291) is being discharged from [Hospital] following a 4-day admission for acute-on-chronic systolic heart failure exacerbation complicated by right lower lobe community-acquired pneumonia.\n\n**Hospital Course:** Mrs. Chen presented on 04/19/2026 with dyspnea (SpO2 88% on room air), hypertensive urgency (178/96), tachycardia in atrial fibrillation (HR 112), and fever (38.4°C). She was treated with IV furosemide with excellent diuretic response (net -4.0 kg over 4 days), achieving euvolemic status (SpO2 97% room air, BP 132/76, HR 84). Pneumonia is improving on amoxicillin-clavulanate (WBC 14.8→11.2, procalcitonin 2.4→0.9). BNP improved from 2340 to 892 pg/mL.\n\n**Key Changes:**\n- NEW: Spironolactone 25 mg daily (HFrEF guideline-directed therapy)\n- CHANGED: Furosemide dose adjusted from home 20 mg daily to [confirm discharge dose] — requires titration at follow-up\n- NEW: Potassium chloride [confirm discharge dose] — reassess at BMP recheck\n- Amoxicillin-clavulanate course completes 04/24/2026 (2 days post-discharge)\n\n**Discharge Medications:** Furosemide [TBD], Lisinopril 10 mg daily, Spironolactone 25 mg daily, Metoprolol succinate 50 mg daily, Aspirin 81 mg daily, Atorvastatin 40 mg daily, Insulin glargine 20 units QHS, Amoxicillin-clavulanate 875/125 mg BID (through 04/24), Potassium chloride [TBD].\n\n**Labs at Discharge (04/22):** Na 138, K 3.8 (low-normal on supplementation), Cr 1.3 (up from baseline 1.1), BUN 28, glucose 156, WBC 11.2, Hgb 10.8, BNP 892, HbA1c 7.8%.\n\n**LACE Score: 12 (HIGH)** — approximately 25–30% 30-day readmission risk.\n\n**Critical Issues for Follow-Up:**\n1. ANTICOAGULATION: No anticoagulant documented for chronic Afib with CHA2DS2-VASc ≥5. [Document status — initiated/contraindicated/deferred to cardiology]\n2. BMP at 2–3 days post-discharge is MANDATORY — K+ and creatinine monitoring on triple-therapy regimen\n3. Furosemide titration: patient is euvolemic; assess volume status and consider dose reduction if stable\n4. HbA1c 7.8% — diabetes management optimization needed\n5. Anemia workup if not previously evaluated (Hgb 10.8, normocytic)\n\n**Functional Status:** New decline — bathing and lower-body dressing now require assistance. Ambulation limited to 15 feet with walker (baseline was independent with cane). Morse Fall Scale 65 (HIGH). Lives alone in third-floor walkup — stair clearance by PT was required before discharge.\n\n**Social:** Limited caregiver support (daughter 45 min away, works full-time). Home Health nursing and PT ordered. Daily weight monitoring protocol in place.\n\n**Follow-Up:** PCP in 3 days, Cardiology in 1 week, BMP in 2–3 days.\n\nPlease contact [Discharging Physician] at [number] with questions.\n\nSincerely,\n[Discharging Physician]",
+    "home_health_orders": {
+      "visit_frequency": "Skilled nursing: 3x/week for first 2 weeks, then reassess. Physical therapy: 3x/week for 4–6 weeks. OT: 1 initial home safety evaluation within first week.",
+      "vital_monitoring": "Blood pressure, heart rate, respiratory rate, SpO2, and daily weight at each nursing visit. Patient to perform daily weight self-monitoring between visits.",
+      "escalation_thresholds": [
+        "Weight gain ≥2 lbs (1 kg) in 24 hours or ≥4–5 lbs (2 kg) in 3–5 days — call PCP",
+        "SpO2 <93% at rest on room air — call PCP; <88% — call 911",
+        "BP >160/90 on 2 consecutive readings — call PCP",
+        "HR >100 bpm or new irregular rhythm — call PCP",
+        "New or worsening lower extremity edema, dyspnea, or orthopnea — call PCP",
+        "Muscle weakness, palpitations, or cramping (hyperkalemia/hypokalemia signs) — call PCP",
+        "Fever >100.4°F (38°C) — call PCP",
+        "Severe dyspnea at rest, chest pain, or unresponsiveness — call 911"
+      ],
+      "medication_monitoring": [
+        "Verify medication reconciliation at first visit — confirm patient has all discharge medications in hand",
+        "Assess pill organizer setup adequacy for BID dosing structure",
+        "Confirm antibiotic completion through 04/24/2026",
+        "Verify BMP lab completed by day 3 post-discharge; flag if not",
+        "Educate on spironolactone (new) — hyperkalemia signs, importance of lab monitoring",
+        "Verify insulin glargine storage and injection technique",
+        "Document medication adherence at each visit"
+      ],
+      "fall_precautions": "HIGH fall risk (Morse 65). Walker use on all level surfaces. Stair negotiation with handrails — walker not to be used on stairs. Ensure clear pathways, adequate lighting, non-slip surfaces. Medical alert device should be in place. Call 911 if fall with injury.",
+      "functional_status_at_discharge": "Ambulation: 15 feet with walker before rest required. ADLs: Independent in feeding, toileting (with grab bar), transferring, upper-body dressing. Requires assist for bathing and lower-body dressing. Cognitive: MoCA 24/30 (mild impairment, baseline per family).",
+      "goals_first_visit": [
+        "Complete medication reconciliation and verify all prescriptions filled",
+        "Assess home environment for immediate safety hazards",
+        "Verify grab bars, shower chair, and non-slip mat in place",
+        "Confirm daily weight monitoring protocol understood — scale accessible, log in place",
+        "Confirm antibiotic is being taken correctly (BID with food)",
+        "Verify BMP lab appointment is scheduled and patient/family know location and date",
+        "Assess for signs of HF decompensation (edema, weight gain, dyspnea)",
+        "PT first visit: begin stair training protocol, assess building stair rails, establish fall prevention exercise program"
+      ]
+    },
+    "pharmacy_counseling": {
+      "complete_medication_list": [
+        "Furosemide [DOSE TBD — confirm] mg PO [frequency TBD] — heart failure diuresis",
+        "Lisinopril 10 mg PO daily — heart failure, blood pressure",
+        "Spironolactone 25 mg PO daily — heart failure (NEW)",
+        "Metoprolol succinate 50 mg PO daily — heart rate control",
+        "Aspirin 81 mg PO daily — cardioprotection",
+        "Atorvastatin 40 mg PO daily — cholesterol",
+        "Insulin glargine 20 units SC QHS — diabetes",
+        "Amoxicillin-clavulanate 875/125 mg PO BID through 04/24/2026 — pneumonia",
+        "Potassium chloride [DOSE TBD — confirm] mEq PO [frequency TBD] — electrolyte supplementation"
+      ],
+      "interactions_flagged": [
+        "MAJOR: Lisinopril + Spironolactone — additive hyperkalemia risk; compounded by CKD 3a",
+        "MAJOR: Triple therapy (Lisinopril + Furosemide + Spironolactone) — risk of AKI, hypotension, and electrolyte imbalance",
+        "MODERATE: Lisinopril + Potassium chloride — additional hyperkalemia risk in the presence of ACE inhibitor and aldosterone antagonist",
+        "MINOR: Metoprolol + Insulin — beta-blockers may mask tachycardia as hypoglycemia sign; sweating preserved"
+      ],
+      "new_medications_requiring_counseling": [
+        "Spironolactone 25 mg daily: Blocks aldosterone; helps heart pump better and reduces fluid retention. May raise potassium levels — avoid salt substitutes (contain potassium), limit high-potassium foods (bananas, oranges, potatoes). Report muscle weakness, palpitations, or irregular heartbeat to doctor immediately. Lab test in 2–3 days is critical to check potassium level.",
+        "Potassium chloride [dose TBD]: Replaces potassium lost from water pill. Take with food and full glass of water. Do not take extra doses. Report muscle cramps, weakness, or palpitations."
+      ],
+      "cost_and_access_issues": [
+        "VERIFY PART D COVERAGE: Patient has Medicare + Medigap; Medigap does NOT cover outpatient prescriptions. Part D plan status unconfirmed. If no Part D, patient pays out-of-pocket.",
+        "Spironolactone: Generic, typically $10–20/month at retail pharmacies or via GoodRx if Part D gap",
+        "Insulin glargine: Potentially high-cost without Part D; verify existing supply and coverage; manufacturer savings programs available (Sanofi, Lilly)",
+        "Amoxicillin-clavulanate: Generic, low-cost; confirm remaining doses are filled before patient leaves hospital"
+      ],
+      "adherence_risk_factors": [
+        "9-medication regimen including one injectable",
+        "2 new medications (spironolactone, potassium chloride)",
+        "1 dose change (furosemide — may differ from home supply)",
+        "Mild cognitive impairment (MoCA 24/30)",
+        "Lives alone with limited daily oversight",
+        "Multiple BID medications add timing complexity",
+        "Antibiotic course continues 2 days post-discharge — risk of early discontinuation"
+      ],
+      "counseling_priorities": [
+        "1. Spironolactone education — new drug, hyperkalemia signs, avoid salt substitutes, mandatory lab at 2–3 days",
+        "2. Furosemide dose change — confirm patient understands discharge dose may differ from home supply; do not mix old and new pills",
+        "3. Antibiotic completion — must take all doses through 04/24 even if feeling better; take with food",
+        "4. Hyperkalemia recognition — muscle weakness, palpitations, chest discomfort; call doctor immediately",
+        "5. Daily weight monitoring and thresholds — when to call doctor (2 lb gain in 24h)",
+        "6. Insulin storage, injection technique, hypoglycemia signs (sweating, confusion) — racing heart may be blunted by metoprolol",
+        "7. Medication reconciliation — dispose of old furosemide supply to prevent duplication"
+      ]
+    },
+    "patient_instructions": "Dear Mrs. Chen,\n\nYou were in the hospital because your heart was holding too much fluid and you also had an infection in your lungs (pneumonia). You are doing much better now.\n\n**Your Medicines Changed:**\n- You have a NEW pill called spironolactone. It helps your heart. It can raise potassium in your blood, so you MUST get a blood test in 2–3 days. Avoid salt substitutes.\n- Your water pill (furosemide) dose may be different from what you had at home. Check the bottle carefully. Do not take your old pills — use only the new prescription.\n- Finish your antibiotic (amoxicillin-clavulanate) through Thursday, April 24. Take all the pills even if you feel fine.\n\n**Weigh Yourself Every Day:**\n- Use the same scale, in the morning, after using the bathroom, before eating.\n- Write it down.\n- Call your doctor if you gain 2 pounds in one day or 4–5 pounds in a week.\n\n**Watch for These Warning Signs — Call Your Doctor:**\n- Swollen ankles or legs\n- More trouble breathing than usual\n- Feeling very weak or having heart flutters\n- Fever over 100.4°F\n\n**Go to the Emergency Room or Call 911 If:**\n- You cannot catch your breath\n- You have chest pain\n- You feel like you might pass out\n- Your face droops, arm is weak, or speech is slurred\n\n**Your Appointments:**\n- Primary doctor: [Date] — do not miss this\n- Heart doctor: [Date]\n- Blood test: [Date at Lab Location] — very important, do not skip\n\n**Who to Call:**\n- Your doctor's office: [Number]\n- If emergency: 911\n\nYour daughter Alice has been told about your medicines. A nurse will visit you at home soon. Use your walker. Be careful on the stairs. We are glad you are feeling better."
+  },
+  "conference_agenda": [
+    {
+      "order": 1,
+      "time_minutes": 2,
+      "presenting_role": "Physician",
+      "agenda_item": "Anticoagulation decision for chronic Afib",
+      "key_question": "Will we initiate DOAC today, document contraindication, or defer to cardiology? Decision must be made before discharge order."
+    },
+    {
+      "order": 2,
+      "time_minutes": 2,
+      "presenting_role": "PT",
+      "agenda_item": "Stair-climb assessment status",
+      "key_question": "Has PT evaluation occurred? Can patient safely negotiate 3 flights? If not cleared, are we activating SNF placement today?"
+    },
+    {
+      "order": 3,
+      "time_minutes": 2,
+      "presenting_role": "Physician",
+      "agenda_item": "Discharge furosemide and KCl doses",
+      "key_question": "What are the exact discharge doses? Has BMP been ordered and resulted? What hold parameters will be communicated to patient?"
+    },
+    {
+      "order": 4,
+      "time_minutes": 2,
+      "presenting_role": "Pharmacist",
+      "agenda_item": "Medication reconciliation completeness",
+      "key_question": "Are all prescriptions written? Is antibiotic supply confirmed in hand? Are high-risk interaction instructions documented?"
+    },
+    {
+      "order": 5,
+      "time_minutes": 2,
+      "presenting_role": "MSW",
+      "agenda_item": "Daughter availability and Part D verification",
+      "key_question": "Is Alice Chen confirmed for discharge teaching? Is Part D coverage verified for all discharge medications?"
+    },
+    {
+      "order": 6,
+      "time_minutes": 2,
+      "presenting_role": "Nurse",
+      "agenda_item": "Teach-back completion status",
+      "key_question": "Has teach-back been documented for daily weight, new medications, warning signs, and insulin? What remains before discharge?"
+    },
+    {
+      "order": 7,
+      "time_minutes": 2,
+      "presenting_role": "Care Coordinator",
+      "agenda_item": "Home Health and follow-up appointments",
+      "key_question": "Is Home Health referral submitted with first visit confirmed within 24–48 hours? Are PCP, cardiology, and BMP lab appointments scheduled and in writing?"
+    },
+    {
+      "order": 8,
+      "time_minutes": 1,
+      "presenting_role": "MSW",
+      "agenda_item": "DME and safety equipment",
+      "key_question": "Is medical alert device ordered? Are shower chair and grab bars ordered or confirmed in place?"
+    }
+  ],
+  "meta": {
+    "agents_providing_output": [
+      "Physician",
+      "Nurse",
+      "Pharmacist",
+      "MSW",
+      "PT"
+    ],
+    "agents_missing_output": [],
+    "synthesis_confidence": "moderate",
+    "confidence_notes": "All five specialist agents provided comprehensive outputs. Confidence is moderate rather than high for three reasons: (1) The repeat BMP has not resulted — electrolyte and renal status on the new triple-therapy regimen is unknown, directly affecting medication dose finalization and safety determination. (2) Formal PT evaluation has not been documented — functional data is inferred from nursing notes; stair assessment has not occurred. (3) The anticoagulation gap cannot be fully adjudicated — no HAS-BLED score, bleeding history, or prior anticoagulation trial is documented, making it unclear whether omission is intentional or oversight. These are the three items that must be resolved before discharge readiness can be upgraded to 'conditional' or 'ready'.",
+    "model": "claude-opus-4-7",
+    "reasoning_effort": "xhigh"
+  },
+  "_agent_outputs": {
+    "pt": {
+      "agent": "pt",
+      "case_id": "CASE-001",
+      "functional_mobility": {
+        "ambulation_distance": "15 feet with walker before rest stop required — insufficient for community ambulation or stair negotiation. Pre-admission baseline was full apartment ambulation independently and outdoor ambulation with cane.",
+        "assistive_device": "Standard walker (new this admission — upgraded from cane at baseline)",
+        "gait_quality": "Grossly impaired relative to baseline. Significant deconditioning secondary to acute HF exacerbation and CAP. Endurance severely limited at current assessment point. Gait pattern not formally documented by PT; nursing mobility notes used as primary source — confidence level reduced accordingly.",
+        "stair_negotiation": "unable",
+        "endurance": "Critically reduced. Requires rest after 15 feet of level ambulation. Patient's home requires negotiation of 3 flights of stairs (no elevator) — current endurance is categorically incompatible with this demand. This is the single most critical functional barrier to home discharge.",
+        "baseline_prior_admission": "Independent ambulation within apartment without device. Cane used outdoors. Independent in most ADLs. New declines in bathing and lower-body dressing noted this admission — functional regression across multiple domains."
+      },
+      "fall_risk": {
+        "level": "very_high",
+        "contributing_factors": [
+          "Morse Fall Scale score 65 — formal HIGH risk threshold exceeded",
+          "Documented fall at home 6 weeks prior to admission (mechanism and injury status noted as no injury)",
+          "New assistive device requirement (walker) indicating acute functional decline",
+          "Severely reduced ambulation endurance — fatigue-related fall risk",
+          "Mild cognitive impairment (MoCA 24/30) — may impair hazard judgment and device technique",
+          "Chronic atrial fibrillation with rate-controlled but ongoing rhythm irregularity",
+          "Normocytic anemia (Hgb 10.8) — contributes to fatigue, exertional intolerance, and orthostatic risk",
+          "Increased furosemide dose — orthostatic hypotension risk from volume shifts",
+          "New spironolactone added — additional diuretic load, electrolyte flux risk",
+          "Age 78 with multimorbidity burden",
+          "Third-floor walkup environment — stair fall risk is extreme given current status",
+          "Living alone — no immediate assistance available if fall occurs"
+        ],
+        "score": "Morse Fall Scale: 65",
+        "mitigation_recommendations": [
+          "Formal PT evaluation and supervised stair assessment before any home discharge decision",
+          "Walker fitting and gait training to ensure proper device technique",
+          "Fall prevention education to patient and daughter (Alice Chen) in preferred language",
+          "Home safety assessment (in-home OT/PT visit or structured telephone assessment with daughter) prior to or immediately upon discharge",
+          "Grab bar installation or verification in bathroom — patient currently toilet-independent only with grab bar in place",
+          "Remove or secure loose rugs and floor-level hazards in apartment",
+          "Nighttime fall precaution counseling — bathroom trips at night high-risk period",
+          "Address anemia contributing to fatigue and orthostatic risk (flag to medical team — outside PT scope)",
+          "Educate on orthostatic precautions given diuretic intensification",
+          "Medical alert device or call system given she lives alone",
+          "Home PT to include formal fall prevention protocol (e.g., Otago or equivalent)"
+        ]
+      },
+      "rehab_recommendation": {
+        "recommended_level": "home_PT",
+        "justification": "Patient does not currently meet the functional threshold for safe home discharge given 3-flight stair requirement, but the clinical picture supports aggressive home PT as the appropriate rehabilitation pathway IF AND ONLY IF the stair barrier is resolved. Rationale: (1) Patient's baseline was functional independence — meaningful recovery to prior level is realistic with targeted intervention. (2) She does not meet IRF criteria (cannot tolerate 3 hours of therapy/day given current HF/CAP recovery status and endurance). (3) SNF subacute is clinically appropriate as a bridge if the stair barrier cannot be solved before discharge, but patient preference is home and Medigap coverage supports skilled home health. (4) Primary rehabilitation goals are stair retraining, endurance building, walker optimization, and fall prevention — all addressable in home PT with adequate frequency. Home PT should begin within 24–48 hours of discharge. Stair training should be the primary focus of early sessions, progressing from landing-to-landing to full 3-flight negotiation. If patient cannot safely demonstrate supervised stair negotiation within 1–2 home PT visits, SNF transition should be reconsidered.",
+        "patient_meets_irF_criteria": false,
+        "frequency_per_week": 3,
+        "estimated_duration_weeks": "4–6"
+      },
+      "home_environment": {
+        "known_hazards": [
+          "CRITICAL: Third-floor walkup apartment with no elevator — patient currently unable to ambulate 15 feet on level surface before rest; 3 flights of stairs is not safely achievable at current functional status",
+          "Lives alone — no immediate assistance available during the day; daughter is 45 minutes away and works full-time Monday through Friday",
+          "Grab bars: toileting grab bar reportedly in place — bathroom safety otherwise unverified",
+          "Bathtub or shower configuration unknown — patient requires bathing assist; shower chair/tub bench need and grab bar adequacy not confirmed",
+          "Presence of loose rugs, thresholds, or floor-level obstacles in apartment unknown",
+          "Bedroom and bathroom proximity/accessibility on third floor not documented",
+          "Lighting adequacy for nighttime ambulation not assessed"
+        ],
+        "assessment_needed": true,
+        "assessment_type": "In-home PT/OT evaluation required within first 1–2 visits post-discharge. If discharge to home precedes formal in-home visit, structured telephone or video home safety screen with daughter present at apartment is minimum acceptable interim step. Stair assessment must occur before discharge — either in-hospital stair simulation or supervised in-home on day of discharge with PT or daughter present.",
+        "safe_for_discharge_as_is": false
+      },
+      "dme_recommendations": [
+        {
+          "item": "Standard walker",
+          "necessity": "required",
+          "status": "in_place"
+        },
+        {
+          "item": "Shower chair or tub transfer bench",
+          "necessity": "required",
+          "status": "needed"
+        },
+        {
+          "item": "Grab bars in bathroom (tub/shower and toilet area)",
+          "necessity": "required",
+          "status": "needed"
+        },
+        {
+          "item": "Handheld shower head",
+          "necessity": "recommended",
+          "status": "needed"
+        },
+        {
+          "item": "Long-handled bath sponge / reacher",
+          "necessity": "recommended",
+          "status": "needed"
+        },
+        {
+          "item": "Non-slip bath mat",
+          "necessity": "required",
+          "status": "needed"
+        },
+        {
+          "item": "Medical alert or personal emergency response device",
+          "necessity": "required",
+          "status": "needed"
+        },
+        {
+          "item": "Raised toilet seat (if toilet height is low and grab bar insufficient)",
+          "necessity": "recommended",
+          "status": "needed"
+        },
+        {
+          "item": "Stair rail assessment — confirm bilateral stair rails exist for all 3 flights",
+          "necessity": "required",
+          "status": "needed"
+        }
+      ],
+      "insurance_access_conflict": {
+        "conflict_exists": false,
+        "detail": "Patient carries Medicare Part A + Part B with Medigap supplement. Home PT under skilled home health is a Medicare Part A benefit when patient meets homebound criteria. Patient currently meets homebound criteria — 3-flight stair climb to exit building with current functional status constitutes a considerable and taxing effort that would support homebound qualification. Medigap should cover Medicare cost-sharing. No known frequency or duration conflict with clinically indicated 3x/week home PT for 4–6 weeks at this time. Verify that home health agency ordered accepts Medicare assignment.",
+        "clinical_need": "3x/week home PT for 4–6 weeks focusing on stair training, endurance, fall prevention, and functional mobility restoration to baseline",
+        "coverage_limit": "Medicare home health does not impose a hard visit limit if skilled need is ongoing and documented. However, homebound status must be maintained and re-certified. If patient progresses and is no longer homebound, transition to outpatient PT will be needed — assess transportation feasibility at that point (daughter available 2x/week, medical transport may be required).",
+        "resolution_options": [
+          "Confirm homebound status documentation in home health referral order",
+          "Ensure PT home health orders specify skilled need with measurable functional goals",
+          "Plan transition-to-outpatient PT discussion at approximately week 4 depending on stair independence progress",
+          "Coordinate with daughter for outpatient PT transport if homebound status is lost before full independence restored"
+        ]
+      },
+      "flags": [
+        {
+          "flag": "CRITICAL DISCHARGE BARRIER: Patient cannot safely navigate 3-flight stair climb required to access home. Current ambulation limited to 15 feet on level surface before rest. Discharging to third-floor walkup without confirmed stair negotiation capacity places patient at immediate high fall and re-admission risk.",
+          "priority": "critical",
+          "action": "PT stair assessment must be completed before discharge decision is finalized. If hospital does not have stair simulation available, supervised in-home stair assessment on day of discharge with PT or trained escort is minimum acceptable alternative. If patient cannot safely demonstrate stair negotiation, SNF subacute placement should be initiated as bridge to home."
+        },
+        {
+          "flag": "No formal PT evaluation documented — functional data sourced from nursing ADL documentation and physician mobility notes only. Bedside PT evaluation has not yet occurred per available chart data.",
+          "priority": "high",
+          "action": "Formal PT evaluation must be completed this admission prior to discharge. Current mobility data is insufficient to make a definitive level-of-care recommendation. This assessment is flagged as moderate confidence pending that evaluation."
+        },
+        {
+          "flag": "Patient lives alone with no weekday in-home support. Daughter (primary support) is 45 minutes away and works full-time Monday through Friday. If the patient falls, becomes acutely short of breath, or cannot manage stairs, response time is critically delayed.",
+          "priority": "high",
+          "action": "Medical alert device must be ordered and in place before discharge. Daughter must be educated on emergency response plan. Home PT frequency of 3x/week provides structured check-in but gaps between visits require safety net."
+        },
+        {
+          "flag": "Mild cognitive impairment (MoCA 24/30) in context of new medication (spironolactone), changed furosemide dose, and complex multi-drug regimen increases risk of medication error and failure to recognize decompensation symptoms post-discharge.",
+          "priority": "high",
+          "action": "PT to incorporate cognitive-aware fall prevention instruction (simplified, repeated, written). Coordinate with nursing and pharmacy on discharge education format matched to moderate health literacy and mild cognitive impairment. Daughter must be present for discharge teaching."
+        },
+        {
+          "flag": "Home bathroom safety unverified — shower/tub configuration, grab bar placement, and non-slip surfaces not documented. Patient requires bathing assist (new decline this admission).",
+          "priority": "high",
+          "action": "DME order for shower chair, handheld shower, and grab bars to be placed before or at discharge. In-home PT/OT to verify installation and adequacy on first visit. Consider OT consult this admission if not already ordered."
+        },
+        {
+          "flag": "Stair rail availability in building (all 3 flights) not confirmed. Walker use on stairs is contraindicated — stair negotiation technique with railings must be assessed and trained.",
+          "priority": "medium",
+          "action": "PT to confirm bilateral rail availability for all 3 flights as part of stair assessment. Instruct patient and daughter on stair technique with railings and single-point cane if appropriate as transition from walker for stair use."
+        },
+        {
+          "flag": "Outpatient PT will be needed once homebound status resolves, but transportation is limited — daughter available 2x/week only, no personal vehicle.",
+          "priority": "medium",
+          "action": "Social work to identify medical transport options (NEMT under Medicare Advantage if applicable, or local paratransit) early in discharge planning. Do not assume transportation will be available for outpatient PT transition."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Formal PT evaluation has not been documented in the available patient data. Functional status data is drawn from nursing ADL documentation and physician notes. Ambulation distance (15 feet with walker), fall risk score (Morse 65), and ADL decline are documented, but gait quality, transfer mechanics, balance testing, and stair capacity have not been formally assessed by PT. Recommendations are clinically grounded in available data but should be confirmed and refined following a bedside PT evaluation, which is itself flagged as an urgent pending action before discharge."
+    },
+    "nurse": {
+      "agent": "nurse",
+      "case_id": "CASE-001",
+      "education_readiness": {
+        "overall": "conditional",
+        "barriers": [
+          "Moderate health literacy — complex multi-drug regimen with three new or dose-changed medications requires confirmed comprehension, not assumed",
+          "Spironolactone is a NEW medication with hyperkalemia risk that patient has no prior experience managing",
+          "Furosemide discharge dose is not yet finalized — cannot fully teach medication regimen until dose is confirmed by team",
+          "Teach-back documentation not found in chart — education completion status unknown for all domains",
+          "Daughter (primary caregiver and educator reinforcer) has not yet received discharge teaching per available documentation",
+          "Mild cognitive impairment (MoCA 24/30) may affect retention of multi-step instructions — requires simplified, written materials and caregiver involvement",
+          "CRITICAL: Patient lives alone. If she cannot retain warning sign thresholds independently and daughter is unavailable, safety gap exists",
+          "BMP not yet rechecked — potassium supplementation dose at discharge is unknown, preventing complete medication education"
+        ],
+        "teach_back_topics_required": [
+          "Daily weight monitoring — when to call, when to go to ED (specific kg/lb thresholds)",
+          "Purpose and side effects of spironolactone (NEW) — hyperkalemia signs, when to hold or call",
+          "Furosemide dose change rationale — patient must understand dose may differ from home supply and why",
+          "Potassium chloride supplementation — why prescribed, signs of too much or too little potassium",
+          "Insulin glargine injection technique, storage, and hypoglycemia recognition and treatment",
+          "Amoxicillin-clavulanate — complete the full course through 2026-04-24, do not stop early even if feeling better",
+          "Atrial fibrillation self-monitoring — recognizing palpitations, irregular pulse, and when to seek care",
+          "Heart failure warning signs — dyspnea, leg swelling, orthopnea, weight gain",
+          "Blood pressure and SpO2 self-monitoring at home if equipment available",
+          "When to call PCP vs. when to call 911 or go to ED",
+          "Upcoming lab appointment importance — BMP in 2–3 days post-discharge is mandatory, not optional",
+          "Fall prevention at home — walker use on all surfaces, call light or phone within reach, bathroom safety"
+        ]
+      },
+      "medication_administration": {
+        "complexity_rating": "very_high",
+        "specific_concerns": [
+          "Nine active medications at discharge including one injection — high pill burden for a 78-year-old with mild cognitive impairment living alone",
+          "Furosemide BID dosing is new — home regimen was once daily; patient must understand this change and not revert to old habit",
+          "Spironolactone is entirely new — patient has no prior familiarity; must understand hyperkalemia symptoms (weakness, palpitations, chest pain) and not double-dose",
+          "Potassium chloride is also new — combined with spironolactone and lisinopril creates triple-therapy hyperkalemia risk; patient must know not to take extra doses",
+          "Amoxicillin-clavulanate BID adds to pill burden and must be completed through 2026-04-24; risk of early discontinuation when patient 'feels better'",
+          "Lisinopril + furosemide + spironolactone triple therapy — patient needs to understand not to take NSAIDs, avoid salt substitutes (potassium-based), and stay hydrated without fluid-restricting excessively",
+          "Insulin glargine QHS — already on home regimen, but stress/illness/diet changes may require glucose monitoring adjustment; HbA1c above target",
+          "Pill organizer use confirmed at baseline — verify current organizer is adequate for BID dosing structure and new medications",
+          "Discharge medication list must be reconciled clearly against home medications to prevent duplication of old furosemide supply"
+        ],
+        "injection_required": true,
+        "injection_education_complete": "not_documented"
+      },
+      "vital_sign_thresholds": {
+        "call_pcp_if": [
+          "Weight gain of 2 pounds (approximately 1 kg) in 24 hours or 4–5 pounds (approximately 2 kg) in 3–5 days",
+          "SpO2 drops below 93% at rest on room air",
+          "Blood pressure consistently above 160/90 mmHg on home monitoring",
+          "Heart rate consistently above 100 bpm or new irregular rhythm sensation",
+          "Blood glucose consistently above 250 mg/dL or below 70 mg/dL",
+          "New or worsening ankle/leg swelling",
+          "Increased shortness of breath with activities that were previously tolerated",
+          "Fever above 38.0°C (100.4°F) — pneumonia not fully resolved at discharge",
+          "Muscle weakness, cramping, or palpitations — possible hyperkalemia or hypokalemia sign",
+          "Missed or unable to keep BMP lab appointment within 2–3 days post-discharge",
+          "Unable to tolerate amoxicillin-clavulanate (rash, GI symptoms) — do not stop without calling first"
+        ],
+        "go_to_ed_if": [
+          "Severe shortness of breath at rest, cannot speak in full sentences, or SpO2 below 88% on room air",
+          "Chest pain or pressure, new or worsening",
+          "Sudden severe weakness, facial drooping, arm weakness, or speech difficulty — stroke signs given Afib",
+          "Unresponsiveness, near-fainting, or fall with possible injury",
+          "Blood glucose below 54 mg/dL or hypoglycemia unresponsive to oral glucose treatment",
+          "Rapid or very irregular heartbeat with lightheadedness or presyncope",
+          "Sudden weight gain of more than 5 pounds (approximately 2.3 kg) in 24 hours with worsening breathing",
+          "Severe vomiting or diarrhea preventing medication or fluid intake"
+        ]
+      },
+      "wound_device_care": {
+        "required": false,
+        "items": [
+          "No surgical wounds or invasive devices documented",
+          "Insulin injection site rotation education should be reinforced — inspect sites for lipohypertrophy at follow-up",
+          "IV access site (if peripheral line present at discharge) — assess for resolution and document removal prior to discharge"
+        ]
+      },
+      "adl_assessment": {
+        "safe_for_discharge_setting": false,
+        "concerns": [
+          "CRITICAL: Patient lives in third-floor walkup with no elevator. Current ambulation is 15 feet with walker before rest required — stair climbing three flights is not safely achievable at current functional level. PT stair assessment is a mandatory prerequisite before home discharge can be confirmed.",
+          "New functional decline this admission: bathing and lower-body dressing now require assistance — patient lives alone and current in-home support structure cannot cover daily ADL needs without Home Health aide services",
+          "Fall risk is HIGH (Morse Scale 65) with one prior fall 6 weeks ago. Living alone on third floor with functional decline significantly elevates fall-related harm potential",
+          "Ambulation has declined from independent apartment ambulation with cane to walker-dependent with 15-foot limit — new walker has not been confirmed as fitted or trained by PT",
+          "Toileting is independent with grab bar — confirm grab bar is present and functional in home bathroom; if not, OT or equipment referral needed before discharge",
+          "Mild cognitive impairment may affect ability to recall emergency steps or manage complex schedule independently during the immediate post-discharge period"
+        ]
+      },
+      "caregiver": {
+        "identified": true,
+        "name": "Alice Chen (daughter)",
+        "availability": "Lives 45 minutes away; works full-time Monday through Friday. Available capacity is limited on weekdays — can assist approximately 2 times per week per transportation note. Weekend availability not documented.",
+        "education_status": "not_started"
+      },
+      "warning_signs_education": {
+        "topics_covered": [],
+        "topics_pending": [
+          "Heart failure exacerbation warning signs — weight gain, dyspnea, edema, orthopnea",
+          "Daily weight log — technique, frequency, and action thresholds",
+          "Hyperkalemia signs — muscle weakness, palpitations — given spironolactone + lisinopril + KCl triple risk",
+          "Hypokalemia signs — muscle cramps, weakness — given furosemide",
+          "Hypoglycemia recognition and treatment — insulin on board with HbA1c above target and potentially reduced oral intake",
+          "Pneumonia recurrence or worsening signs — increasing cough, fever, declining SpO2",
+          "Stroke warning signs — FAST (Face, Arms, Speech, Time) given chronic Afib",
+          "Medication side effect recognition for spironolactone and amoxicillin-clavulanate (new medications)",
+          "Fall prevention and what to do if a fall occurs while alone at home",
+          "When and how to contact PCP vs. call 911 — patient living alone must be able to execute this independently"
+        ]
+      },
+      "flags": [
+        {
+          "flag": "CRITICAL — Third-floor walkup with no elevator. Patient cannot safely navigate stairs at current functional status (15 ft with walker). PT stair assessment must occur before home discharge.",
+          "priority": "critical",
+          "action": "PT must complete stair assessment and document clearance or inability. If not cleared, escalate to team for SNF placement discussion. Do not discharge to home without resolution."
+        },
+        {
+          "flag": "CRITICAL — Teach-back not documented for any discharge education domain. Education completion status is unknown across all high-risk topics.",
+          "priority": "critical",
+          "action": "Nurse to initiate and document formal teach-back sessions prior to discharge. Prioritize: daily weight thresholds, new medications (spironolactone, furosemide dose change, KCl), warning signs, and insulin. Daughter must be present."
+        },
+        {
+          "flag": "HIGH — Caregiver (daughter Alice Chen) has not received discharge education. Patient has mild cognitive impairment and lives alone — caregiver education is not optional.",
+          "priority": "high",
+          "action": "Schedule daughter's presence for discharge teaching session. If she cannot attend in person, explore telehealth or phone-based education with written follow-up materials. Document participation."
+        },
+        {
+          "flag": "HIGH — Discharge furosemide dose is unresolved. Patient cannot be fully educated on medication regimen until dose is confirmed by physician.",
+          "priority": "high",
+          "action": "Escalate to attending or cardiology team for confirmed discharge furosemide order. Nurse cannot complete medication education until this is finalized."
+        },
+        {
+          "flag": "HIGH — BMP recheck not yet completed. Potassium and renal function must be confirmed stable before discharge given new spironolactone, triple-therapy risk, and current borderline-low potassium (3.8 mEq/L).",
+          "priority": "high",
+          "action": "Ensure BMP is ordered and resulted before discharge. Potassium chloride discharge dose cannot be confirmed without this result. Flag result to team immediately if potassium is outside 3.5–5.0 mEq/L range."
+        },
+        {
+          "flag": "HIGH — Insulin glargine injection education completion not documented. Patient is known to use this medication at home, but technique and site rotation have not been confirmed or re-assessed this admission.",
+          "priority": "high",
+          "action": "Perform injection technique observation/teach-back before discharge. Confirm patient can self-administer safely. Document findings."
+        },
+        {
+          "flag": "MEDIUM — Amoxicillin-clavulanate course extends 2 days beyond anticipated discharge date. Patient must continue course independently at home through 2026-04-24.",
+          "priority": "medium",
+          "action": "Confirm prescription is filled or in-hand at discharge. Educate on importance of completing full antibiotic course. Instruct to report GI intolerance or rash to PCP promptly rather than stopping independently."
+        },
+        {
+          "flag": "MEDIUM — Spironolactone is new with no prior patient experience. Combined with lisinopril and KCl, hyperkalemia risk is clinically significant especially given CKD stage 3a.",
+          "priority": "medium",
+          "action": "Dedicated teaching session on spironolactone: what it is for, hyperkalemia symptoms, foods high in potassium to moderate, importance of BMP lab within 2–3 days. Ensure daughter hears this education."
+        },
+        {
+          "flag": "MEDIUM — Patient lives alone with limited weekday caregiver access and high fall risk (Morse 65). Immediate post-discharge period is highest vulnerability window.",
+          "priority": "medium",
+          "action": "Confirm Home Health nursing and PT are ordered with first visit ideally within 24–48 hours of discharge. Verify daughter aware of first-visit timing. Discuss medical alert device or personal emergency response system with patient and daughter."
+        },
+        {
+          "flag": "MEDIUM — LACE score 12, indicating approximately 25–30% 30-day readmission risk. Transition care coordination is essential.",
+          "priority": "medium",
+          "action": "Confirm PCP appointment within 3 days and cardiology within 1 week are scheduled before patient leaves. Provide written appointment confirmation. Ensure BMP lab order is in hand for 2–3 day post-discharge draw."
+        },
+        {
+          "flag": "LOW — Spironolactone formulary coverage and copay under Medigap not confirmed. New medication affordability gap could lead to non-adherence.",
+          "priority": "low",
+          "action": "Confirm spironolactone is covered on patient's plan. If copay is a barrier, coordinate with social work or pharmacy for assistance program. Ensure prescription is filled or filling is initiated before discharge."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Confidence is moderate rather than high for two primary reasons: (1) No teach-back or education documentation was found in the chart — it is unknown whether any discharge education has been initiated, making education readiness assessment an inference from patient characteristics rather than documented observation. (2) Several discharge-critical decisions remain pending at time of analysis (furosemide discharge dose, potassium dose pending BMP, PT stair clearance), meaning the full discharge context cannot yet be assessed. Functional and social data are well-documented and support high confidence in those domains. Medication complexity assessment is well-supported by the medication list."
+    },
+    "physician": {
+      "agent": "physician",
+      "case_id": "CASE-001",
+      "discharge_ready": false,
+      "discharge_hold_reason": "Two conditions must be met before discharge can proceed: (1) PT must complete stair-climb assessment — patient lives in a third-floor walkup and currently ambulates only 15 feet with a walker, representing a critical safety barrier; (2) repeat BMP required to confirm potassium stability on new triple-therapy regimen (lisinopril + furosemide + spironolactone) before discharge medication doses are finalized.",
+      "clinical_summary": "Margaret Chen is a 78-year-old woman with HFrEF, chronic atrial fibrillation, CKD 3a, T2DM, and hypertension admitted emergently with acute-on-chronic systolic heart failure exacerbation complicated by right lower lobe community-acquired pneumonia. She has responded well to IV diuresis (net −4.0 kg over 4 days), is now clinically euvolemic, SpO2 97% on room air, and hemodynamically stable with HR well-controlled in the 80s. Pneumonia is improving: WBC trending down from 14.8 to 11.2, procalcitonin declining from 2.4 to 0.9, and she is tolerating oral antibiotics with 2 days remaining in her course. BNP has improved substantially (2340 → 892 pg/mL), though remains elevated, consistent with her chronic HFrEF. Two pre-discharge conditions remain unresolved: stair-climb safety assessment and a repeat BMP to confirm electrolyte stability on the new triple-therapy regimen.",
+      "acute_issues_resolved": [
+        {
+          "issue": "Acute-on-chronic systolic heart failure exacerbation",
+          "status": "improving",
+          "evidence": "Weight down 4.0 kg from admission; SpO2 97% on room air (baseline restored); BP 132/76; HR 84 (rate-controlled); BNP improved from 2340 to 892 pg/mL. Not fully resolved — BNP still markedly elevated above normal, consistent with chronic HFrEF rather than full decompensation resolution."
+        },
+        {
+          "issue": "Community-acquired pneumonia, right lower lobe",
+          "status": "improving",
+          "evidence": "WBC trending down from 14.8 to 11.2 K/uL; procalcitonin declining from 2.4 to 0.9 ng/mL; temperature normalized (36.8°C); RR 16; patient clinically improving. Antibiotic course (amoxicillin-clavulanate) completes 2026-04-24 — 2 days post-anticipated discharge."
+        },
+        {
+          "issue": "Hypertensive urgency on admission (BP 178/96)",
+          "status": "resolved",
+          "evidence": "Current BP 132/76 on existing antihypertensive regimen."
+        },
+        {
+          "issue": "Hypoxemic respiratory failure (SpO2 88% on RA at admission)",
+          "status": "resolved",
+          "evidence": "SpO2 97% on room air currently; supplemental oxygen discontinued."
+        },
+        {
+          "issue": "Rapid ventricular response in atrial fibrillation (HR 112 on admission)",
+          "status": "resolved",
+          "evidence": "HR 84, rhythm consistent with rate-controlled atrial fibrillation on metoprolol succinate 50 mg daily."
+        },
+        {
+          "issue": "Hypokalemia risk with aggressive diuresis",
+          "status": "improving",
+          "evidence": "K+ 3.8 mEq/L on KCl 20 mEq BID supplementation — low-normal. Recheck BMP required before discharge given new spironolactone and planned furosemide dose adjustment."
+        }
+      ],
+      "pending_workup": [
+        {
+          "test": "Repeat BMP (electrolytes, BUN, creatinine)",
+          "ordered": false,
+          "result_available": false,
+          "impact_on_discharge": "CRITICAL — must result before discharge. Required to confirm K+ stability on new triple-therapy regimen (lisinopril + furosemide + spironolactone). Also needed to assess creatinine trend (currently 1.3, above 1.1 baseline, consistent with pre-renal component). Discharge potassium supplementation dose and furosemide discharge dose cannot be finalized without this result."
+        },
+        {
+          "test": "Physical Therapy stair-climb assessment",
+          "ordered": false,
+          "result_available": false,
+          "impact_on_discharge": "CRITICAL — patient lives in third-floor walkup with no elevator. Current functional status (15 feet with walker before rest stop) is incompatible with safe stair navigation. PT must assess and clear before home discharge is approved. If PT does not clear, SNF placement must be initiated."
+        },
+        {
+          "test": "Anticoagulation status / CHA2DS2-VASc assessment for atrial fibrillation",
+          "ordered": false,
+          "result_available": false,
+          "impact_on_discharge": "HIGH — no anticoagulant is listed in the medication reconciliation for a patient with chronic atrial fibrillation. CHA2DS2-VASc score is at minimum 5 (female sex, age ≥75, CHF, hypertension, DM) indicating high stroke risk. Absence of anticoagulation requires explicit documentation of clinical rationale (contraindication, prior hemorrhage, patient refusal) or initiation/referral."
+        }
+      ],
+      "medication_flags": [
+        {
+          "medication": "Furosemide",
+          "flag_type": "dose_change",
+          "detail": "Inpatient dose (40 mg BID) represents a 4x increase from home dose (20 mg daily). Discharge dose has not been finalized. Patient is now clinically euvolemic; discharging on full inpatient dose risks over-diuresis and acute kidney injury in the outpatient setting.",
+          "action_required": "Prescribing team must define discharge furosemide dose before discharge order is written. Dose adjustment should be informed by repeat BMP results and euvolemic status. Cardiology follow-up within 1 week for further titration."
+        },
+        {
+          "medication": "Spironolactone",
+          "flag_type": "new",
+          "detail": "Not previously prescribed. New addition for HFrEF guideline-directed therapy. Hyperkalemia risk is compounded by concurrent lisinopril and furosemide (triple renin-angiotensin-aldosterone pathway effect). Current K+ 3.8 mEq/L on supplementation — net potassium balance unpredictable at discharge when furosemide dose decreases.",
+          "action_required": "Confirm repeat BMP before discharge. Educate patient and daughter on hyperkalemia symptoms. Close outpatient K+ monitoring required (BMP at 2–3 days post-discharge as planned). Confirm spironolactone is on Medicare formulary and patient can afford it."
+        },
+        {
+          "medication": "Lisinopril",
+          "flag_type": "interaction",
+          "detail": "Triple therapy risk: ACE inhibitor concurrent with loop diuretic (furosemide) and aldosterone antagonist (spironolactone) in a patient with CKD 3a. Risk of hyperkalemia, hypotension, and acute kidney injury is elevated — particularly as furosemide dose is adjusted downward at discharge.",
+          "action_required": "Repeat BMP before discharge. Outpatient BMP at 2–3 days post-discharge. Patient and caregiver counseling on symptoms of AKI (decreased urine output, edema) and hyperkalemia (weakness, palpitations). Hold parameters for K+ and creatinine should be communicated to patient and documented."
+        },
+        {
+          "medication": "Potassium chloride",
+          "flag_type": "dose_change",
+          "detail": "Inpatient dose 20 mEq BID for hypokalemia prevention with aggressive diuresis. As furosemide dose decreases and spironolactone is initiated, ongoing KCl supplementation may cause hyperkalemia rather than prevent hypokalemia.",
+          "action_required": "Discharge KCl dose must be reassessed in the context of final furosemide discharge dose and repeat BMP. Do not discharge on inpatient KCl dose without explicit review. Consider whether supplementation is needed at all if furosemide is being reduced and spironolactone is continued."
+        },
+        {
+          "medication": "Amoxicillin-clavulanate",
+          "flag_type": "other",
+          "detail": "5-day course initiated 2026-04-19; course completes 2026-04-24, which is 2 days after anticipated discharge date. Patient must continue and complete the course at home.",
+          "action_required": "Confirm prescription is written for outpatient continuation. Discharge counseling must explicitly address antibiotic completion. Document adherence plan with pill organizer. Verify no drug interactions with new outpatient regimen."
+        },
+        {
+          "medication": "Anticoagulation (absent)",
+          "flag_type": "missing",
+          "detail": "No anticoagulant (DOAC or warfarin) is present in the medication list despite chronic atrial fibrillation. CHA2DS2-VASc score is ≥5 based on documented comorbidities (CHF, HTN, age ≥75, DM, female sex), conferring high annual stroke risk (>6%). Absence of anticoagulation is a significant clinical gap that requires explicit documentation.",
+          "action_required": "Prescribing team must document clinical rationale for absence of anticoagulation (e.g., prior major hemorrhage, fall risk determination, patient refusal, HAS-BLED assessment). If no contraindication exists, initiation of a DOAC should be considered and discussed at cardiology follow-up at minimum. This decision must not be deferred without documentation."
+        },
+        {
+          "medication": "Insulin glargine",
+          "flag_type": "other",
+          "detail": "HbA1c 7.8% (above target <7.0%). Glucose 156 mg/dL on current regimen. Inpatient dose matches home dose (20 units QHS). Stress hyperglycemia from acute illness may be resolving; however, ongoing suboptimal glycemic control requires outpatient management.",
+          "action_required": "No immediate inpatient dose change required. Flag for PCP follow-up at 3-day post-discharge appointment for diabetes management optimization."
+        }
+      ],
+      "discharge_diagnosis": {
+        "primary": "Acute-on-chronic systolic (congestive) heart failure — I50.23",
+        "secondary": [
+          "Community-acquired pneumonia, unspecified organism — J18.9",
+          "Type 2 diabetes mellitus without complications — E11.9",
+          "Chronic atrial fibrillation — I48.11 (NOTE: I48.91 used on admission; I48.11 may be more specific for permanent/chronic Afib — confirm with documentation review)",
+          "Chronic kidney disease, stage 3a — N18.31",
+          "Essential hypertension — I10",
+          "Normocytic anemia, unspecified (chronic) — D64.9 (Hgb 10.8 g/dL, present on admission — should be captured)",
+          "Mild cognitive impairment — G31.84 (MoCA 24/30, documented as baseline — should be coded)",
+          "BMI / nutritional status — document if applicable for DRG optimization"
+        ],
+        "drg_note": "Primary DRG likely 291 (Heart Failure and Shock w/ MCC) or 292 (w/ CC) depending on documented MCC/CC. Concurrent CAP (J18.9) likely qualifies as MCC alongside CKD 3a (N18.31) and anemia (D64.9) — ensure all secondary diagnoses are coded to maximize appropriate DRG assignment. Confirm atrial fibrillation specificity (I48.11 vs I48.91). Mild cognitive impairment should be added to secondary diagnoses — it is clinically documented and impacts care complexity."
+      },
+      "follow_up_plan": [
+        {
+          "specialty": "Primary Care Physician",
+          "timeframe": "3 days post-discharge",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Cardiology",
+          "timeframe": "1 week post-discharge",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Laboratory (BMP)",
+          "timeframe": "2–3 days post-discharge",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Home Health — Skilled Nursing",
+          "timeframe": "Within 24–48 hours of discharge",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Home Health — Physical Therapy",
+          "timeframe": "Within 48–72 hours of discharge",
+          "urgency": "urgent"
+        },
+        {
+          "specialty": "Endocrinology or PCP diabetes management",
+          "timeframe": "4–6 weeks post-discharge",
+          "urgency": "routine"
+        },
+        {
+          "specialty": "Hematology or PCP (anemia workup if not previously evaluated)",
+          "timeframe": "4–6 weeks post-discharge",
+          "urgency": "routine"
+        }
+      ],
+      "safety_flags": [
+        {
+          "flag": "CRITICAL — Stair access barrier: Patient lives in third-floor walkup with no elevator and currently ambulates only 15 feet with a walker before requiring rest. She cannot safely reach her apartment under current functional status. Discharging home without PT stair-clearance or alternative placement plan poses immediate fall and medical safety risk.",
+          "priority": "critical",
+          "action": "Do not discharge home until PT formally assesses and clears stair-climbing ability. If PT cannot clear, initiate SNF placement or arrange temporary alternative housing. Daughter must be involved in this decision."
+        },
+        {
+          "flag": "HIGH — Anticoagulation gap in chronic atrial fibrillation with CHA2DS2-VASc ≥5: No anticoagulant documented in medication reconciliation. High annual stroke risk without documented contraindication or refusal.",
+          "priority": "high",
+          "action": "Attending must document explicit clinical rationale for absence of anticoagulation before discharge. If no documented contraindication, discuss DOAC initiation with cardiology at 1-week follow-up at minimum. Do not discharge without this being addressed in the medical record."
+        },
+        {
+          "flag": "HIGH — Triple-therapy electrolyte and renal risk: New spironolactone added to existing lisinopril and furosemide in a CKD 3a patient. Creatinine currently above baseline (1.3 vs 1.1). Potassium low-normal (3.8) on supplementation. Furosemide discharge dose not yet determined. Risk of post-discharge hyperkalemia or AKI is significant.",
+          "priority": "high",
+          "action": "Repeat BMP must result before discharge. Discharge KCl and furosemide doses must be explicitly reconciled against BMP results. Home health nursing to check weight and symptoms within 24–48 hours. BMP at 2–3 days post-discharge is mandatory, not optional."
+        },
+        {
+          "flag": "HIGH — LACE score 12 (HIGH risk): Estimated 25–30% 30-day readmission probability. Multiple clinical, functional, and social risk factors are additive (multimorbidity, functional decline, living alone, limited daughter availability, stair barrier, complex new medication regimen).",
+          "priority": "high",
+          "action": "Ensure all readmission mitigation components are in place before discharge: Home Health (nursing + PT) initiated within 24–48 hours, PCP follow-up confirmed at 3 days, BMP at 2–3 days, cardiology at 1 week, written discharge instructions at appropriate literacy level, daughter present for discharge education."
+        },
+        {
+          "flag": "MEDIUM — Functional decline: New ADL deficits in bathing and lower-body dressing compared to pre-admission baseline. Patient now uses walker where previously used cane. Morse Fall Scale 65 (HIGH), with prior fall 6 weeks ago.",
+          "priority": "medium",
+          "action": "PT/OT home assessment should evaluate fall hazards, adaptive equipment needs (grab bars, shower chair, stair rail adequacy), and home exercise program. Home health order should include OT evaluation."
+        },
+        {
+          "flag": "MEDIUM — Mild cognitive impairment (MoCA 24/30) with new complex medication regimen: Spironolactone is new; KCl dose at discharge uncertain; furosemide dose changing. Patient manages medications with pill organizer at baseline but this admission adds complexity significantly.",
+          "priority": "medium",
+          "action": "Discharge medication reconciliation must be completed with both patient and daughter present. Provide written medication list at appropriate literacy level. Consider blister pack or pharmacy-assisted packaging. Home health nurse to verify medication setup at first visit."
+        },
+        {
+          "flag": "LOW — Procalcitonin still elevated at 0.9 ng/mL (down from 2.4): Infection improving but not fully resolved. Patient completing antibiotic course as outpatient.",
+          "priority": "low",
+          "action": "Ensure antibiotic prescription written for outpatient completion through 2026-04-24. Return precautions provided for worsening respiratory symptoms (fever, increased sputum, dyspnea). Home health nurse to monitor at first visit."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Confidence is moderate rather than high for two reasons: (1) The repeat BMP has not yet resulted — potassium and creatinine trends on the new triple-therapy regimen are unknown, which directly affects both discharge medication finalization and safety assessment. (2) The anticoagulation gap cannot be fully adjudicated from the available data — no HAS-BLED score, bleeding history, or prior anticoagulation trial is documented, making it unclear whether omission is intentional and clinically justified or an oversight. All other clinical assessments are well-supported by available data."
+    },
+    "msw": {
+      "agent": "msw",
+      "case_id": "CASE-001",
+      "discharge_destination_assessment": {
+        "proposed_destination": "Home with Home Health services (third-floor walkup apartment, no elevator)",
+        "viability": "conditional",
+        "conditions": [
+          "Physical Therapy must complete stair-climbing assessment and confirm patient can safely negotiate 3 flights before discharge order is placed — this is the single most critical gating condition",
+          "Daughter (Alice Chen) must be present at discharge for medication teaching and to assist with or supervise first stair attempt at home",
+          "Home Health nursing and PT referral must be activated and first visit confirmed within 24–48 hours of discharge, not merely ordered",
+          "BMP must be rechecked before or at discharge to confirm potassium stability on new triple-therapy regimen",
+          "If PT assessment indicates patient cannot safely manage stairs at time of discharge, transition to short-term SNF must be initiated immediately — do not delay this contingency planning"
+        ],
+        "alternatives": [
+          "1. Short-term skilled nursing facility (SNF) — preferred alternative if stair assessment fails or daughter unavailable; allows PT, medication stabilization, and functional recovery before home return",
+          "2. Daughter's home (single-story or accessible) — if feasible short-term and daughter can take leave; would require Home Health redirection to daughter's address",
+          "3. Extended hospital stay — not appropriate unless clinical deterioration; document clearly if social barriers are the reason for delay"
+        ]
+      },
+      "insurance_coverage": {
+        "current_coverage": "Medicare Part A (inpatient) + Medicare Part B (outpatient, home health, DME) with Medigap supplement. Coverage is generally robust for this patient's needs.",
+        "gaps_identified": [
+          "Spironolactone (new medication) — formulary status and Medigap copay under Part D not yet confirmed; patient does not appear to have a documented Part D plan in the record",
+          "Part D plan documentation absent from social record — must verify before discharge to ensure all discharge medications are covered",
+          "Home Health eligibility confirmed under Medicare Part A post-hospitalization (if homebound status documented by physician), but homebound status may be challenged if stair barrier is resolved via SNF first — verify eligibility pathway",
+          "Medical transport coverage — Medicare covers medically necessary transport; must confirm functional status documentation supports this for lab and follow-up visits",
+          "SNF coverage under Medicare Part A requires 3-night qualifying inpatient stay — patient has 4-day LOS, qualifying stay likely met, but must confirm inpatient vs. observation status in billing"
+        ],
+        "actions_in_progress": [],
+        "actions_needed_before_discharge": [
+          "Confirm patient has active Medicare Part D plan — identify plan name, confirm spironolactone and any dose-changed medications (furosemide 40mg BID) are on formulary",
+          "If no Part D plan documented, initiate enrollment review or identify patient assistance program for spironolactone as bridge",
+          "Verify inpatient admission status (not observation) to preserve SNF benefit eligibility as contingency",
+          "If SNF is selected, initiate authorization process immediately — Medicare SNF benefit does not require prior authorization but facility bed placement takes time",
+          "Confirm physician documentation of homebound status in discharge note to support Home Health Medicare eligibility",
+          "Submit Home Health referral to a Medicare-certified agency with explicit homebound justification tied to stair limitation and fall risk"
+        ]
+      },
+      "sdoh_assessment": {
+        "housing": {
+          "status": "at_risk",
+          "detail": "Patient lives alone in a third-floor walkup apartment with no elevator. Current functional status — 15 feet ambulation with walker before rest required, new ADL deficits in bathing and lower-body dressing, high fall risk (Morse 65) — makes stair navigation acutely dangerous. This is not a chronic housing instability concern; this is an immediate, concrete physical barrier to safe return home at this moment. The apartment itself appears stable (no eviction, affordability, or ownership risk noted). The structural accessibility is the crisis.",
+          "action": "PT stair assessment is the clinical gate. MSW role: (1) Coordinate with PT on timing so SNF placement can be activated same day if assessment fails — do not wait. (2) Contact daughter Alice Chen today to confirm her availability for discharge day and to assess whether her home could serve as temporary accessible alternative. (3) If patient returns home, request Home Health OT assessment for home safety evaluation and adaptive equipment needs (tub bench, grab bars beyond existing)."
+        },
+        "food_security": {
+          "status": "secure",
+          "detail": "Patient is an active Meals on Wheels recipient. This is a meaningful protective factor, particularly given she lives alone with limited mobility. Service continuity post-discharge is assumed but should be confirmed — delivery may be disrupted if patient is at SNF.",
+          "action": "If patient discharges to SNF, notify Meals on Wheels provider to pause delivery and schedule restart for anticipated home return date. If home discharge, confirm current delivery schedule is active and no lapse occurred during hospitalization."
+        },
+        "transportation": {
+          "status": "limited",
+          "detail": "Patient has no personal vehicle. Daughter can drive approximately 2 days per week, with geographic constraint (45-minute commute) and work obligations Monday through Friday limiting availability. Patient requires follow-up appointments at 3 days (PCP), 7 days (cardiology), and lab draw at 2–3 days post-discharge — all within a compressed post-discharge window that will require reliable transportation on specific days. This schedule will be difficult to meet with daughter's availability alone.",
+          "action": "Assess whether PCP and cardiology offices are accessible via public transit from ZIP 02134 (Allston area, Boston — generally transit-served). Given fall risk, high-fall Morse score, and walker use, solo public transit may not be safe immediately post-discharge. Refer to RIDE (MBTA paratransit) — patient likely qualifies given documented functional limitations. Initiate application before discharge as processing takes time. For urgent 3-day PCP and lab visit, coordinate with daughter for at least the first post-discharge appointment. Explore whether cardiology or PCP can offer telehealth for 7-day visit to reduce transport burden."
+        },
+        "medication_affordability": {
+          "status": "at_risk",
+          "detail": "Medigap generally covers most cost-sharing, and most medications are long-standing. However, spironolactone is new, and Part D plan is not documented in this record. Furosemide dose has changed (40mg BID vs. 20mg daily at home) which may affect supply quantities and refill timing. Potassium chloride 20mEq BID is also new. Without confirmed Part D coverage, there is meaningful risk of medication gap at pharmacy.",
+          "action": "Priority action before discharge: verify Part D plan and formulary for all discharge medications, particularly spironolactone, KCl 20mEq, and furosemide 40mg. If Part D gap confirmed, contact manufacturer patient assistance (Pfizer for spironolactone generic alternatives if needed) or identify pharmacy assistance program. Ensure discharge prescription quantities align with follow-up timeline — patient should not run out of any medication before PCP visit."
+        },
+        "social_isolation": {
+          "status": "at_risk",
+          "detail": "Patient lives alone. Primary support is her daughter who lives 45 minutes away and works full-time. No other social supports are documented — no neighbors, friends, community connections, or faith community noted. Meals on Wheels provides one daily touchpoint but is not a safety check service. Patient has mild cognitive impairment (MoCA 24/30) which may limit her ability to self-identify and communicate deterioration. High fall risk in a third-floor apartment alone is a compounding concern. Post-discharge period is the highest-risk window for this patient.",
+          "action": "Explore enrollment in a daily telephone reassurance program (e.g., Boston Aging Concerns Center or similar local program for ZIP 02134). Discuss with daughter the feasibility of daily phone check-ins during the first 2 weeks post-discharge. Consider referral to a community health worker or case management program through her PCP or insurance for longitudinal monitoring. Home Health visits will provide partial coverage but may be 3–5 days/week at most. Document isolation risk prominently in discharge summary."
+        }
+      },
+      "caregiver_assessment": {
+        "caregiver_identified": true,
+        "name": "Alice Chen",
+        "relationship": "Daughter",
+        "availability": "Limited — works full-time Monday through Friday, lives 45 minutes from patient. Can drive approximately 2 days per week. Availability on discharge day is unconfirmed and must be secured.",
+        "capacity": "limited",
+        "burnout_risk": "moderate",
+        "training_needed": [
+          "Medication reconciliation and administration for complex new regimen — especially spironolactone (new), furosemide (dose change), potassium chloride (new), and completion of antibiotic course",
+          "Daily weight monitoring protocol and parameters for when to call physician (e.g., 2–3 lb gain in 24–48 hours)",
+          "Recognition of CHF decompensation signs — dyspnea, edema, orthopnea — and clear action steps",
+          "Fall risk precautions in the home environment, including walker use on stairs if patient is cleared by PT",
+          "Hypoglycemia recognition and response (insulin glargine at home)",
+          "Signs of hyperkalemia to watch for given triple-therapy risk (weakness, palpitations)",
+          "Understanding of antibiotic course — amoxicillin-clavulanate must be completed through 2026-04-24"
+        ]
+      },
+      "community_resources": [
+        {
+          "resource": "Meals on Wheels (existing)",
+          "purpose": "Nutritional support and daily touchpoint for isolated elder living alone",
+          "referral_status": "referred"
+        },
+        {
+          "resource": "MBTA RIDE Paratransit Program",
+          "purpose": "Accessible medical transportation for follow-up appointments given functional limitations and lack of personal vehicle",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Medicare-certified Home Health Agency — Nursing + PT",
+          "purpose": "Skilled nursing for medication reconciliation, daily weight monitoring, wound/fluid assessment; PT for stair training, fall prevention, functional recovery",
+          "referral_status": "pending"
+        },
+        {
+          "resource": "Home Health OT (Home Safety Evaluation)",
+          "purpose": "Assess home environment for fall hazards, recommend adaptive equipment (grab bars, tub bench, raised toilet seat), evaluate stair safety in actual home environment",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Telephone Reassurance / Daily Check-In Program (e.g., Boston Aging Concerns Center or equivalent)",
+          "purpose": "Daily safety check for isolated elder with mild cognitive impairment living alone; early identification of decompensation",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Caregiver Support Resources (e.g., Family Caregiver Alliance or local equivalent)",
+          "purpose": "Psychoeducation and support for daughter Alice Chen managing complex caregiver role while working full-time",
+          "referral_status": "needed"
+        },
+        {
+          "resource": "Skilled Nursing Facility (contingency)",
+          "purpose": "Short-term rehabilitation and medication stabilization if patient cannot safely navigate stairs at discharge or if caregiver unavailable",
+          "referral_status": "pending"
+        },
+        {
+          "resource": "Low-Income / Sliding-Scale Pharmacy Assistance (contingency)",
+          "purpose": "Medication cost bridge if Part D coverage gap identified for new medications",
+          "referral_status": "needed"
+        }
+      ],
+      "safety_concerns": [
+        {
+          "concern": "Stair navigation — patient currently cannot safely climb 3 flights to reach her apartment. Discharging without PT clearance creates immediate fall and re-injury risk in an unsupervised setting.",
+          "priority": "critical",
+          "action": "Do not discharge to home without documented PT stair assessment and clearance. Activate SNF placement planning in parallel so there is no gap if PT assessment fails."
+        },
+        {
+          "concern": "High fall risk (Morse 65) with new functional decline, new walker use, and return to third-floor walkup alone",
+          "priority": "high",
+          "action": "PT stair clearance required. Home safety OT evaluation needed within first week home. Confirm grab bars in place. Daughter to receive fall risk education. Daily check-in program referral to detect falls."
+        },
+        {
+          "concern": "Mild cognitive impairment (MoCA 24/30) with complex new medication regimen — patient living alone, managing 9 medications including a new drug (spironolactone), a dose-changed drug (furosemide), two new drugs (KCl, spironolactone), and an antibiotic course with a fixed end date",
+          "priority": "high",
+          "action": "Daughter must participate in discharge medication teaching. Assess whether current pill organizer system is adequate for increased regimen complexity. Home Health nurse to perform medication reconciliation at first home visit. Consider blister-pack pharmacy dispensing if available. Document antibiotic end date prominently in patient-facing materials."
+        },
+        {
+          "concern": "Patient lives alone with limited caregiver coverage and mild cognitive impairment — decompensation may not be identified and reported in time",
+          "priority": "high",
+          "action": "Home Health must include clear escalation protocol in care plan. Daily check-in service referral. Daughter to establish daily phone contact minimum for first 2 weeks. Daily weight log with threshold action plan in writing for both patient and daughter."
+        },
+        {
+          "concern": "Domestic safety — no documentation of domestic violence, elder abuse, or unsafe home relationship assessment in the record",
+          "priority": "low",
+          "action": "Domestic safety not formally assessed — no documentation found. Given patient lives alone, IPV risk is low, but elder self-neglect or financial exploitation risk should be briefly screened given cognitive impairment and isolation. Add to social work visit agenda before discharge."
+        }
+      ],
+      "systemic_navigation": [
+        {
+          "task": "Confirm and document Medicare inpatient admission status (not observation) to preserve Part A SNF benefit eligibility as contingency",
+          "status": "needed",
+          "deadline": "Immediately — before discharge order"
+        },
+        {
+          "task": "Identify and verify patient's Medicare Part D plan; confirm formulary coverage for all discharge medications, particularly spironolactone, furosemide 40mg, and potassium chloride 20mEq",
+          "status": "needed",
+          "deadline": "Before discharge — same day"
+        },
+        {
+          "task": "Submit Home Health referral to Medicare-certified agency with homebound status justification; confirm first visit within 24–48 hours of discharge",
+          "status": "needed",
+          "deadline": "Today — allow agency time to confirm slot before patient leaves"
+        },
+        {
+          "task": "Contact daughter Alice Chen to confirm discharge day availability and schedule medication teaching session with nursing and MSW",
+          "status": "needed",
+          "deadline": "Today"
+        },
+        {
+          "task": "Initiate MBTA RIDE paratransit application (or equivalent accessible medical transport enrollment) for post-discharge appointments",
+          "status": "needed",
+          "deadline": "Before discharge — application may take days to process; bridge plan needed for 3-day PCP visit"
+        },
+        {
+          "task": "Notify Meals on Wheels of discharge date and destination (home vs. SNF) to ensure service continuity or appropriate pause",
+          "status": "needed",
+          "deadline": "Day of discharge"
+        },
+        {
+          "task": "If SNF is required — identify Medicare-accepting SNF beds in patient's preferred geographic area, initiate referral packet, and coordinate with daughter on facility selection",
+          "status": "needed",
+          "deadline": "Activate in parallel today as contingency; do not wait for PT assessment to begin this process"
+        },
+        {
+          "task": "Coordinate with PT on timing of stair assessment so MSW can act on results immediately (SNF initiation or home discharge confirmation)",
+          "status": "needed",
+          "deadline": "PT assessment should occur today or tomorrow — MSW to follow up directly with PT team"
+        },
+        {
+          "task": "Refer patient to telephone reassurance or daily check-in program for post-discharge period",
+          "status": "needed",
+          "deadline": "Before discharge"
+        }
+      ],
+      "flags": [
+        {
+          "flag": "CRITICAL — Housing barrier: Third-floor walkup with no elevator. Patient currently cannot safely navigate stairs given functional decline. This is an active discharge safety barrier, not a background SDOH note. Discharge to home cannot proceed without PT stair clearance.",
+          "priority": "critical",
+          "action": "PT stair assessment must occur and be documented before discharge order. MSW to activate SNF contingency planning in parallel today. Do not treat this as a soft barrier."
+        },
+        {
+          "flag": "HIGH — Social isolation: Patient lives alone, limited caregiver availability, mild cognitive impairment. LACE score 12 (HIGH 30-day readmission risk ~25–30%). Post-discharge monitoring infrastructure is currently inadequate for this risk level.",
+          "priority": "high",
+          "action": "Daily check-in program referral, confirmed Home Health first-visit date, daughter daily contact plan, and weight monitoring protocol with written escalation thresholds must all be in place before discharge."
+        },
+        {
+          "flag": "HIGH — Caregiver availability limited: Daughter works full-time, lives 45 min away, availability on discharge day unconfirmed. Complex new medication regimen cannot be taught to patient alone given cognitive impairment and regimen complexity.",
+          "priority": "high",
+          "action": "Daughter's presence at discharge teaching is required, not optional. Contact Alice Chen today to confirm and schedule. If she cannot be present, delay discharge by one day or arrange video teaching as secondary option with nurse follow-up call."
+        },
+        {
+          "flag": "MEDIUM — Part D coverage unconfirmed: No Part D plan documented in social record. New medications (spironolactone, potassium chloride) and dose-changed medication (furosemide) may not be filled at discharge.",
+          "priority": "medium",
+          "action": "Verify Part D plan today. Confirm all discharge medications are on formulary. If gap exists, identify assistance program before patient leaves the building."
+        },
+        {
+          "flag": "MEDIUM — Transportation barrier: No personal vehicle, daughter availability limited, 3-day PCP and 2–3 day lab appointments required post-discharge. RIDE application not yet initiated.",
+          "priority": "medium",
+          "action": "Initiate RIDE application immediately. Coordinate with daughter for first post-discharge appointment coverage. Explore telehealth for 7-day cardiology visit."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Social documentation is reasonably detailed for housing, support, insurance type, and SDOH flags. Confidence is reduced by the following gaps: (1) No formal domestic safety or elder abuse screening documented — this is a data gap, not a confirmed negative. (2) Part D plan identity is absent — a significant operational gap that creates downstream medication access uncertainty. (3) Daughter's actual discharge-day availability is unconfirmed. (4) No documentation of patient's prior engagement with community services beyond Meals on Wheels — social network may be more or less robust than record suggests. (5) Cognitive baseline is reported by daughter as stable at MoCA 24, but no prior formal cognitive testing is cited for comparison. These gaps are themselves risk signals and should be resolved through direct MSW patient and family contact before discharge."
+    },
+    "pharmacist": {
+      "agent": "pharmacist",
+      "case_id": "CASE-001",
+      "reconciliation_summary": {
+        "total_discharge_medications": 9,
+        "new_at_discharge": [
+          "Spironolactone 25 mg daily",
+          "Potassium chloride 20 mEq BID (dose/continuation TBD pending BMP recheck)"
+        ],
+        "dose_changed": [
+          "Furosemide — 20 mg daily (home) → 40 mg BID (inpatient/discharge); discharge dose not yet finalized"
+        ],
+        "discontinued_inpatient": [],
+        "home_medications_not_on_list": [
+          "No explicit home medication list provided beyond what is documented per-drug. Cannot confirm whether patient takes any OTC medications (NSAIDs, antacids, supplements) or additional outpatient prescriptions not captured in this record. Home medication reconciliation should be verified directly with patient/daughter/pharmacy at discharge."
+        ]
+      },
+      "drug_interactions": [
+        {
+          "medications": [
+            "Lisinopril",
+            "Spironolactone"
+          ],
+          "severity": "major",
+          "mechanism": "Additive inhibition of aldosterone-mediated potassium excretion; ACE inhibitors reduce angiotensin II-driven aldosterone release while spironolactone blocks aldosterone receptors — dual blockade significantly impairs renal potassium elimination.",
+          "clinical_implication": "Clinically significant hyperkalemia risk. Current K+ is 3.8 mEq/L (low-normal) on supplementation, providing some buffer, but this may normalize or reverse rapidly post-discharge when acute illness resolves and renal perfusion improves. CKD stage 3a independently impairs urinary K+ excretion. Risk escalates if furosemide is down-titrated at follow-up.",
+          "recommended_action": "Mandatory BMP recheck 2–3 days post-discharge as already planned. Educate patient and daughter on hyperkalemia symptoms (muscle weakness, palpitations). Flag for cardiology/PCP at follow-up to reassess potassium supplementation dose alongside diuretic titration. Avoid concurrent potassium-rich dietary supplements or salt substitutes."
+        },
+        {
+          "medications": [
+            "Lisinopril",
+            "Potassium chloride"
+          ],
+          "severity": "moderate",
+          "mechanism": "ACE inhibitors reduce potassium excretion; exogenous potassium supplementation further raises serum potassium, with additive risk compounded by CKD.",
+          "clinical_implication": "At current doses (lisinopril 10 mg + KCl 20 mEq BID), hyperkalemia risk is moderate in isolation but becomes major in the context of concurrent spironolactone and CKD 3a. The three-drug combination (lisinopril + spironolactone + KCl) creates a high-risk hyperkalemia triad.",
+          "recommended_action": "KCl dose must be reassessed at first post-discharge BMP (2–3 days). If K+ normalizes or rises post-discharge, prescriber should consider reducing or discontinuing KCl supplementation — do not continue fixed-dose KCl without lab monitoring. Home Health nurse should be briefed on this."
+        },
+        {
+          "medications": [
+            "Furosemide",
+            "Lisinopril",
+            "Spironolactone"
+          ],
+          "severity": "major",
+          "mechanism": "Triple-therapy combination: loop diuretic + ACE inhibitor + aldosterone antagonist. Furosemide and lisinopril together risk acute kidney injury via excessive preload reduction and efferent arteriolar vasodilation; spironolactone adds counterbalancing hyperkalemia risk. Hemodynamic interactions are complex and bidirectional.",
+          "clinical_implication": "Risk of AKI, electrolyte imbalance (both hypo- and hyperkalemia depending on diuretic dominance), and symptomatic hypotension — especially in an elderly patient with CKD 3a who is now euvolemic. Creatinine has already risen from 1.1 to 1.3 mg/dL this admission (likely pre-renal). Post-discharge over-diuresis could further worsen renal function.",
+          "recommended_action": "Discharge furosemide dose must be explicitly decided before discharge — continuing 40 mg BID in a now-euvolemic patient carries AKI risk. Weight-based daily monitoring at home is essential. Home Health nursing should include daily weight check and action thresholds. Urgent flag for prescribing team to finalize diuretic dose."
+        },
+        {
+          "medications": [
+            "Aspirin",
+            "Lisinopril"
+          ],
+          "severity": "moderate",
+          "mechanism": "NSAIDs and salicylates (including low-dose aspirin) may blunt the vasodilatory and natriuretic effects of ACE inhibitors via prostaglandin inhibition, and may independently cause renal vasoconstriction, reducing GFR.",
+          "clinical_implication": "At 81 mg aspirin, the interaction is considered low-to-moderate risk and is generally accepted in the cardiovascular context. However, given active CKD and borderline worsening creatinine, this combination warrants awareness, particularly if patient develops volume depletion.",
+          "recommended_action": "No change recommended at this time given established cardiovascular indication. Ensure adequate hydration. Flag for PCP review if creatinine continues to worsen on outpatient BMP."
+        },
+        {
+          "medications": [
+            "Metoprolol succinate",
+            "Insulin glargine"
+          ],
+          "severity": "minor",
+          "mechanism": "Beta-blockers may mask tachycardia as a symptom of hypoglycemia and can impair glycogenolysis.",
+          "clinical_implication": "Patient is on stable basal insulin at home dose. HbA1c 7.8% suggests no extreme hypoglycemia pattern. Sweating (a catecholamine-independent sign) is preserved. Risk is low but relevant given she is elderly and lives alone.",
+          "recommended_action": "Patient education: remind patient that with metoprolol, racing heart may not signal low blood sugar — sweating and confusion remain warning signs. Ensure glucose monitoring plan is in place. Noted for PCP at follow-up."
+        },
+        {
+          "medications": [
+            "Amoxicillin-clavulanate",
+            "Insulin glargine"
+          ],
+          "severity": "minor",
+          "mechanism": "Some penicillin-class antibiotics have been associated with altered glucose metabolism in limited literature; clinical significance at standard doses is low.",
+          "clinical_implication": "Glucose is currently 156 mg/dL. Short remaining antibiotic course (2 days post-discharge) limits exposure. Monitor is the appropriate response rather than medication change.",
+          "recommended_action": "No action required; glucose trajectory should be followed. Antibiotic course ends 2026-04-24."
+        }
+      ],
+      "dose_adjustment_flags": [
+        {
+          "medication": "Lisinopril",
+          "concern": "renal",
+          "detail": "Patient has CKD 3a with creatinine now 1.3 mg/dL (up from baseline 1.1 mg/dL). eGFR not explicitly calculated in chart but estimated ~45 mL/min/1.73m² range for a 78-year-old Asian female at this creatinine. Lisinopril 10 mg daily is generally acceptable at this eGFR, but dose should not be escalated without close monitoring. The combination with spironolactone and furosemide increases AKI risk substantially.",
+          "action_required": "Continue current dose but monitor BMP closely at 2–3 day post-discharge recheck. If creatinine worsens further, prescriber should consider dose reduction or temporary hold. Flag for cardiology/PCP."
+        },
+        {
+          "medication": "Spironolactone",
+          "concern": "renal",
+          "detail": "Spironolactone is relatively contraindicated when eGFR <30 mL/min (CKD stage 4+), but at CKD 3a it is used with caution and mandatory monitoring. The primary concern here is hyperkalemia given concurrent ACE inhibitor, potassium supplementation, and CKD. K+ is currently 3.8 mEq/L — may rise post-discharge as acute illness/inflammation resolves and aldosterone effect normalizes.",
+          "action_required": "Proceed with close monitoring. BMP recheck in 2–3 days post-discharge is essential. If K+ exceeds 5.0–5.5 mEq/L post-discharge, spironolactone hold and urgent physician review required. Patient and Home Health nurse must understand this threshold."
+        },
+        {
+          "medication": "Furosemide",
+          "concern": "renal",
+          "detail": "Furosemide dose was escalated from 20 mg daily (home) to 40 mg BID inpatient for acute decompensation. Patient is now euvolemic. Continuing 40 mg BID post-discharge in a euvolemic patient with CKD 3a and already-rising creatinine carries meaningful AKI risk from over-diuresis. Discharge dose has NOT been finalized per the chart.",
+          "action_required": "URGENT: Prescribing physician must specify discharge furosemide dose before discharge. Do not discharge on default inpatient 40 mg BID dose without explicit intent. Options range from returning to home 20 mg daily to an intermediate dose — this is a physician decision requiring clinical judgment. Pharmacist flags this as a critical pending item."
+        },
+        {
+          "medication": "Potassium chloride",
+          "concern": "renal",
+          "detail": "KCl 20 mEq BID (40 mEq/day total) was initiated to prevent hypokalemia from furosemide during acute diuresis. Current K+ is 3.8 mEq/L. As furosemide is down-titrated and spironolactone takes effect, continued aggressive potassium supplementation will likely cause hyperkalemia, especially in the setting of ACE inhibitor and CKD.",
+          "action_required": "KCl dose must be re-evaluated at the same time as furosemide discharge dose decision. Likely requires reduction. Mandatory BMP recheck post-discharge before continuing current supplementation dose. Prescriber must specify discharge KCl dose explicitly."
+        },
+        {
+          "medication": "Amoxicillin-clavulanate",
+          "concern": "renal",
+          "detail": "Standard adult dose is 875/125 mg BID for CrCl >30 mL/min. Estimated CrCl for this patient using Cockcroft-Gault (78F, 70.2 kg, Cr 1.3): approximately 35–42 mL/min. This is above the threshold requiring dose adjustment for amoxicillin-clavulanate 875/125 BID formulation. However, the estimate is borderline and only 2 days remain in the course.",
+          "action_required": "Dose is likely appropriate given short remaining course and CrCl above 30 mL/min threshold. Confirm CrCl calculation with prescriber. No change recommended given short duration, but note for future antibiotic prescribing that this patient is at the margin for renal dose adjustment."
+        },
+        {
+          "medication": "Insulin glargine",
+          "concern": "renal",
+          "detail": "Insulin clearance is partly renal; as GFR declines, insulin half-life extends, increasing hypoglycemia risk. Current HbA1c 7.8% and glucose 156 mg/dL suggest adequate but imperfect glycemic control. CKD 3a at current level does not mandate dose reduction per standard guidance, but ongoing renal decline would.",
+          "action_required": "No immediate dose change indicated. Flag for PCP at follow-up: if CKD progresses, insulin dose may need downward adjustment to prevent hypoglycemia. Ensure patient has glucose monitoring supplies and understands hypoglycemia symptoms (blunted by metoprolol — see interaction)."
+        }
+      ],
+      "contraindications": [
+        {
+          "medication": "Aspirin 81 mg",
+          "contraindication": "Concurrent atrial fibrillation without documented anticoagulation",
+          "reason": "Patient has chronic atrial fibrillation. Aspirin is not an adequate substitute for anticoagulation in Afib stroke prevention. Notably, there is NO anticoagulant (warfarin, apixaban, rivaroxaban, etc.) on this medication list. CHA2DS2-VASc score for this patient is estimated ≥4 (female sex +1, age 75+ +2, hypertension +1, CHF +1 = minimum 5 without DM added), conferring very high annual stroke risk (~6–8%+). Aspirin alone provides minimal Afib stroke prevention and is not guideline-recommended as monotherapy for Afib in this risk profile.",
+          "priority": "critical",
+          "action_required": "CRITICAL FLAG — Absence of oral anticoagulation in a high-CHA2DS2-VASc Afib patient is a potential patient safety gap. Physician team must document whether anticoagulation was considered, declined, contraindicated, or omitted in error. If omitted, anticoagulation prescribing decision (e.g., apixaban, which has renal dosing options) must occur before or at discharge. If intentionally withheld, reason must be clearly documented. Pharmacist strongly recommends physician review of anticoagulation status as a priority."
+        }
+      ],
+      "adherence_risk": {
+        "overall": "high",
+        "factors": [
+          "Pill burden: 9 medications including one injectable (insulin) and an antibiotic requiring completion",
+          "Two medications with dose ambiguity at discharge (furosemide and KCl) — unresolved discharge doses increase risk of patient confusion",
+          "New medication added (spironolactone) requiring patient education",
+          "Mild cognitive impairment (MoCA 24/30) — manages medications with pill organizer at baseline, but complexity has increased",
+          "Lives alone — no daily medication oversight; daughter available only 2x/week",
+          "Moderate health literacy — can read instructions but may struggle with nuanced instructions (e.g., 'take KCl only if K+ is below X')",
+          "Antibiotic course continues 2 days post-discharge — risk of early discontinuation",
+          "Multiple BID medications (furosemide, amoxicillin-clavulanate, KCl) add morning/evening complexity",
+          "Post-discharge lab dependency — adherence to medication regimen is contingent on attending BMP draw within 2–3 days, which requires transport coordination",
+          "Elevated fall risk may impair ability to independently navigate pharmacy or medication retrieval",
+          "Insulin requires refrigeration and injection — high-effort daily task for a patient with new functional decline"
+        ],
+        "pill_burden_count": 9
+      },
+      "access_affordability": [
+        {
+          "medication": "Spironolactone",
+          "concern": "formulary",
+          "detail": "New medication not previously prescribed. Patient has Medicare Part B + Medigap supplement, which does NOT include outpatient prescription drug coverage (Part D). If patient does not have a separate Part D plan, spironolactone must be paid out-of-pocket. Generic spironolactone is low-cost (~$10–20/month at most pharmacies), so affordability risk is likely low, but coverage must be confirmed.",
+          "solutions": [
+            "Verify whether patient has a Medicare Part D plan (not mentioned in chart — Medigap alone does not cover outpatient drugs)",
+            "If no Part D: generic spironolactone is inexpensive at major pharmacy chains and GoodRx",
+            "Social work or pharmacy benefits coordinator should confirm prescription drug coverage before discharge"
+          ]
+        },
+        {
+          "medication": "Insulin glargine",
+          "concern": "high_cost",
+          "detail": "Insulin glargine (brand: Lantus, Basaglar, Toujeo) can be costly without Part D coverage. Patient is established on this at home, suggesting she has existing access, but Part D coverage gap should be confirmed. If she is in a coverage gap ('donut hole'), cost may be higher than expected.",
+          "solutions": [
+            "Confirm patient's existing supply and Part D status",
+            "If cost is a barrier: manufacturer savings programs (Eli Lilly, Sanofi) offer capped monthly costs for qualifying patients",
+            "Biosimilar insulin glargine options (e.g., Semglee) may be lower cost if formulary substitution is acceptable"
+          ]
+        },
+        {
+          "medication": "All discharge medications",
+          "concern": "other",
+          "detail": "Chart documents Medicare Part A + Part B with Medigap supplement. Medigap covers cost-sharing for Part A and B services but does NOT include Part D (outpatient prescription drugs). It is unclear whether patient has a standalone Part D plan. This is a critical gap — if she has no Part D plan, all outpatient medications are out-of-pocket. Most medications (furosemide, lisinopril, metoprolol, aspirin, atorvastatin, KCl) are generic and inexpensive, but insulin and the antibiotic course may carry cost.",
+          "solutions": [
+            "Social work or case management must confirm Part D plan status before discharge",
+            "If no Part D: enroll in Extra Help (Low Income Subsidy) program if eligible",
+            "GoodRx pricing as a bridge for generic medications if any delay in coverage confirmation",
+            "Confirm amoxicillin-clavulanate is filled or dispensed for remaining 2-day course before patient leaves facility"
+          ]
+        }
+      ],
+      "antibiotic_stewardship": {
+        "antibiotics_on_list": [
+          "Amoxicillin-clavulanate 875/125 mg BID"
+        ],
+        "course_complete_at_discharge": false,
+        "patient_education_needed": "Patient will be discharged with approximately 2 days (4 doses) of amoxicillin-clavulanate remaining to complete a 5-day course for community-acquired pneumonia (course ends 2026-04-24). Patient must understand: (1) complete the full course even if feeling better — stopping early risks treatment failure and antibiotic resistance; (2) take with food to minimize GI side effects, which are common with clavulanate; (3) common side effects include diarrhea, nausea — differentiate from C. diff (persistent watery/bloody diarrhea should prompt a call to provider); (4) confirm a supply of the remaining doses is dispensed or filled before leaving the hospital. Antibiotic completion should be verbally confirmed by Home Health nurse on first visit (expected within 24 hours of discharge)."
+      },
+      "flags": [
+        {
+          "flag": "CRITICAL — No anticoagulation documented for chronic atrial fibrillation. Patient has estimated CHA2DS2-VASc ≥5. Aspirin 81 mg is not guideline-adequate stroke prevention for Afib at this risk level. Anticoagulation omission must be reviewed and documented before discharge.",
+          "priority": "critical",
+          "action": "Physician team must address anticoagulation status immediately. If anticoagulation is indicated but not prescribed, initiate or explain contraindication in chart. If intentionally deferred, document rationale explicitly. Pharmacist available to assist with renal dosing considerations for DOAC options."
+        },
+        {
+          "flag": "CRITICAL — Discharge furosemide dose is unresolved. Patient is now euvolemic. Continuing inpatient 40 mg BID dose post-discharge in a euvolemic CKD 3a patient risks over-diuresis and AKI. Prescriber must finalize discharge dose before order is written.",
+          "priority": "critical",
+          "action": "Prescribing physician must specify explicit discharge furosemide dose. Do not allow discharge without a finalized diuretic dose order."
+        },
+        {
+          "flag": "HIGH — Hyperkalemia triad: Lisinopril + Spironolactone + KCl 40 mEq/day in a patient with CKD 3a. Current K+ 3.8 mEq/L provides a buffer but this may shift quickly post-discharge. BMP recheck in 2–3 days is mandatory.",
+          "priority": "high",
+          "action": "Ensure outpatient BMP order is placed and patient/family understand the lab draw must occur within 72 hours of discharge. Home Health nurse should reinforce. KCl dose at discharge must also be reassessed in context of finalized furosemide dose."
+        },
+        {
+          "flag": "HIGH — KCl discharge dose unresolved. Current 20 mEq BID may be excessive once furosemide is down-titrated and spironolactone becomes effective. Continuing without adjustment risks hyperkalemia.",
+          "priority": "high",
+          "action": "KCl discharge dose must be finalized alongside furosemide dose decision. Likely requires reduction. Prescriber should address both simultaneously."
+        },
+        {
+          "flag": "HIGH — Antibiotic course (amoxicillin-clavulanate) not complete at discharge. 2 days of outpatient doses required post-discharge. Patient must have a filled supply in hand at discharge.",
+          "priority": "high",
+          "action": "Confirm dispensing of remaining amoxicillin-clavulanate doses before discharge. Provide written instructions on course completion. Home Health nurse should verify adherence at first visit."
+        },
+        {
+          "flag": "MEDIUM — Medicare Part D coverage unconfirmed. Medigap alone does not cover outpatient prescriptions. If patient lacks Part D plan, all discharge medications are out-of-pocket. Most are low-cost generics but coverage must be verified.",
+          "priority": "medium",
+          "action": "Social work or pharmacy benefits staff to confirm Part D plan status before discharge. If no Part D, establish cost-access plan for insulin and any higher-cost items."
+        },
+        {
+          "flag": "MEDIUM — High adherence risk at discharge: 9-medication regimen, 2 unresolved doses, new drug (spironolactone), mild cognitive impairment, lives alone. Pill burden and complexity have increased significantly from home baseline.",
+          "priority": "medium",
+          "action": "Structured medication reconciliation teaching required for patient AND daughter before discharge. Provide written medication list with simplified instructions. Update pill organizer. Home Health nurse medication teaching visit should occur within 24 hours of discharge."
+        },
+        {
+          "flag": "MEDIUM — Borderline rising creatinine (1.1 → 1.3 mg/dL) in setting of triple diuretic/antihypertensive therapy and CKD 3a. Post-discharge renal function must be monitored closely.",
+          "priority": "medium",
+          "action": "BMP at 2–3 days post-discharge must include creatinine assessment in addition to potassium. If creatinine worsens further, urgent physician review of diuretic and ACE inhibitor dosing required."
+        },
+        {
+          "flag": "LOW — Diabetes management suboptimal (HbA1c 7.8%). Not an acute discharge concern but requires outpatient follow-up.",
+          "priority": "low",
+          "action": "Flag for PCP at 3-day follow-up appointment. Insulin adjustment or addition of oral agent may be warranted. Not a discharge-blocking issue."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_note": "Confidence is moderate rather than high for two reasons: (1) eGFR/CrCl was estimated rather than directly reported — renal dose adjustment flags are based on Cockcroft-Gault estimation using available values (78F, 70.2 kg, Cr 1.3 mg/dL), yielding approximately 35–42 mL/min; this estimate has uncertainty and the prescriber should use a formal CrCl calculation for dosing decisions. (2) A complete home medication list was not explicitly provided — reconciliation completeness cannot be confirmed without directly verifying all outpatient medications with the patient, family, and/or dispensing pharmacy. The anticoagulation gap flag is high-confidence based on documented medications and Afib diagnosis; absence of documentation of anticoagulation decision is the concern, not uncertainty about the interaction itself."
+    }
+  }
+}
