@@ -17,9 +17,9 @@ function readinessCls(r?: string) {
 }
 
 function readinessLabel(r?: string) {
-  if (r === "ready")       return "READY";
-  if (r === "conditional") return "CONDITIONAL";
-  return "NOT READY";
+  if (r === "ready")       return "退院可";
+  if (r === "conditional") return "条件付き";
+  return "未準備";
 }
 
 export default function LocalPatients() {
@@ -42,13 +42,13 @@ export default function LocalPatients() {
     <div>
       <div className="flex items-center justify-between mb-3">
         <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">
-          ENTERED PATIENTS — {patients.length} record{patients.length !== 1 ? "s" : ""}
+          入力済み患者・{patients.length}件
         </div>
         <button
           onClick={handleClearAll}
           className="text-2xs font-mono text-text-tertiary hover:text-critical-text transition-colors"
         >
-          Clear all
+          すべて削除
         </button>
       </div>
 
@@ -72,20 +72,20 @@ export default function LocalPatients() {
                       {p.id.slice(0, 8).toUpperCase()}
                     </span>
                     <span className="text-2xs font-mono px-1.5 py-0.5 rounded-sm border border-accent-border text-accent-text bg-accent-bg">
-                      NEW
+                      新規
                     </span>
                   </div>
 
                   {/* Name + complaint */}
                   <div className="flex-1 min-w-0">
                     <div className="font-mono text-sm font-semibold text-text-primary">
-                      {p.basic.name || "Unnamed Patient"}
+                      {p.basic.name || "氏名未入力"}
                     </div>
                     <div className="text-2xs text-text-secondary mt-0.5">
                       {p.basic.age && `${p.basic.age}${p.basic.sex ? p.basic.sex : ""} · `}
                       {p.basic.chiefComplaint
                         ? p.basic.chiefComplaint.slice(0, 80)
-                        : "No complaint entered"}
+                        : "主訴未入力"}
                     </div>
                   </div>
 
@@ -121,7 +121,7 @@ export default function LocalPatients() {
                       )}
                       {synth.readmission_risk_30d?.score_pct !== undefined && (
                         <div className="text-right">
-                          <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">30-DAY</div>
+                          <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">30日</div>
                           <div className="font-mono text-base font-semibold tabular-nums text-warning-text">
                             {synth.readmission_risk_30d.score_pct}%
                           </div>
@@ -133,7 +133,7 @@ export default function LocalPatients() {
                     </div>
                   ) : (
                     <span className="text-2xs font-mono text-text-tertiary border border-border-subtle px-2 py-1 rounded-sm">
-                      {completedRoles.length === 0 ? "INTAKE PENDING" : `${completedRoles.length}/5 ROLES · ADD MORE`}
+                      {completedRoles.length === 0 ? "入力待ち" : `${completedRoles.length}/5職種・追加入力`}
                     </span>
                   )}
 
@@ -142,7 +142,7 @@ export default function LocalPatients() {
 
                 <div className="px-4 pb-2 border-t border-border-subtle/50 pt-1.5">
                   <span className="text-2xs text-text-tertiary font-mono">
-                    Entered {new Date(p.createdAt).toLocaleString()}
+                    入力日時 {new Date(p.createdAt).toLocaleString()}
                   </span>
                 </div>
               </div>

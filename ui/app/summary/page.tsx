@@ -13,9 +13,9 @@ function laceColor(tier: RiskTier) {
 }
 
 function readinessPill(r: ReadinessStatus) {
-  if (r === "ready") return <span className="text-green-700 bg-green-100 px-2 py-0.5 rounded text-xs font-semibold">READY</span>;
-  if (r === "conditional") return <span className="text-amber-700 bg-amber-100 px-2 py-0.5 rounded text-xs font-semibold">CONDITIONAL</span>;
-  return <span className="text-red-700 bg-red-100 px-2 py-0.5 rounded text-xs font-semibold">NOT READY</span>;
+  if (r === "ready") return <span className="text-green-700 bg-green-100 px-2 py-0.5 rounded text-xs font-semibold">退院可</span>;
+  if (r === "conditional") return <span className="text-amber-700 bg-amber-100 px-2 py-0.5 rounded text-xs font-semibold">条件付き</span>;
+  return <span className="text-red-700 bg-red-100 px-2 py-0.5 rounded text-xs font-semibold">未準備</span>;
 }
 
 export default function SummaryPage() {
@@ -24,9 +24,9 @@ export default function SummaryPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">3-Case Comparison Summary</h1>
+        <h1 className="text-2xl font-bold text-gray-900">3症例比較サマリー</h1>
         <p className="text-gray-500 text-sm mt-1">
-          Backend validation complete · All 3 cases ran end-to-end
+          バックエンド検証完了・3症例すべてをエンドツーエンドで実行済み
         </p>
       </div>
 
@@ -36,25 +36,25 @@ export default function SummaryPage() {
           <thead>
             <tr className="bg-gray-50 border-b border-gray-200">
               <th className="text-left px-4 py-3 font-semibold text-gray-600 text-xs uppercase tracking-wide">
-                Case
+                症例
               </th>
               <th className="text-left px-4 py-3 font-semibold text-gray-600 text-xs uppercase tracking-wide">
-                Patient
+                患者
               </th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 text-xs uppercase tracking-wide">
                 LACE
               </th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 text-xs uppercase tracking-wide">
-                Readiness
+                退院準備
               </th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 text-xs uppercase tracking-wide">
-                ⚡ Critical
+                ⚡ 重要
               </th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 text-xs uppercase tracking-wide">
-                Conflicts
+                対立点
               </th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 text-xs uppercase tracking-wide">
-                Gaps
+                ギャップ
               </th>
               <th className="px-4 py-3"></th>
             </tr>
@@ -93,7 +93,7 @@ export default function SummaryPage() {
                       href={`/case/${id}`}
                       className="text-xs text-blue-600 hover:underline font-medium"
                     >
-                      Detail →
+                      詳細 →
                     </Link>
                   </td>
                 </tr>
@@ -116,7 +116,7 @@ export default function SummaryPage() {
               </div>
               <div className="space-y-2">
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                  Primary conflicts
+                  主な対立点
                 </p>
                 {data.conflicts.slice(0, 2).map((c) => (
                   <p key={c.conflict_id} className="text-xs text-gray-700 leading-snug">
@@ -126,7 +126,7 @@ export default function SummaryPage() {
               </div>
               <div className="mt-3 space-y-2">
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                  Critical actions
+                  重要アクション
                 </p>
                 {critical.slice(0, 3).map((a) => (
                   <p key={a.rank} className="text-xs text-red-700 leading-snug">
@@ -138,7 +138,7 @@ export default function SummaryPage() {
                 href={`/case/${id}`}
                 className="mt-4 block text-center text-xs font-medium text-blue-600 hover:text-blue-800 border border-blue-200 bg-blue-50 py-1.5 rounded hover:bg-blue-100 transition-colors"
               >
-                View full case →
+                症例全体を見る →
               </Link>
             </div>
           );
@@ -151,21 +151,19 @@ export default function SummaryPage() {
           <span className="text-2xl">🎯</span>
           <div>
             <h2 className="font-bold text-gray-900 text-base mb-1">
-              Demo Recommendation: Lead with Case 3
+              デモ推奨: 症例3から始める
             </h2>
             <p className="text-sm text-gray-700 leading-relaxed">
-              <strong>Sarah Williams (DKA + pregnancy)</strong> is the strongest demo case.
-              The teratogenic drug catch is visceral — the audience understands the stakes without medical
-              background. LACE 13 (VERY HIGH) makes the risk concrete. The SDOH compounding (uninsured,
-              unstable housing, food insecurity, no prenatal care) completes the "why ROUNDS.ai exists" argument.
+              <strong>Sarah Williams（DKA + 妊娠）</strong>は最も強いデモ症例です。
+              催奇形性薬の検出は医療背景がない聞き手にもリスクが伝わりやすく、LACE 13（非常に高い）で危険度も具体化されます。
+              無保険、不安定な住居、食料不安、妊婦健診なしといったSDOH要因も、ROUNDS.aiの価値を説明しやすくしています。
             </p>
             <p className="text-sm text-gray-700 mt-2 leading-relaxed">
-              The gap between "clinically stable" and "NOT READY to discharge" is the clearest
-              demonstration of multi-agent synthesis value in the entire demo.
+              「臨床的には安定」と「退院準備は未完了」の差分が、マルチエージェント統合の価値を最も明確に示します。
             </p>
             <p className="text-xs text-gray-500 mt-3">
-              Pitch order: Case 1 (baseline) → Case 2 (value conflict) → Case 3 (life-saving catch).
-              Pause after the teratogen reveal. Let it land.
+              提示順: 症例1（基本例）→ 症例2（価値観の対立）→ 症例3（重大リスク検出）。
+              催奇形性薬の発見後に少し間を置くと効果的です。
             </p>
           </div>
         </div>
@@ -173,25 +171,25 @@ export default function SummaryPage() {
 
       {/* Backend status */}
       <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-        <h2 className="font-semibold text-gray-800 text-sm mb-3">Backend Status</h2>
+        <h2 className="font-semibold text-gray-800 text-sm mb-3">バックエンド状態</h2>
         <div className="grid gap-2 sm:grid-cols-2 text-xs text-gray-600">
           <div className="flex items-center gap-2">
-            <span className="text-green-500">✓</span> LACE scoring validated (Chen=12, Jackson=10, Williams=13)
+            <span className="text-green-500">✓</span> LACEスコア検証済み（Chen=12, Jackson=10, Williams=13）
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-green-500">✓</span> 5 clinical agents (Sonnet 4.6) parallel execution
+            <span className="text-green-500">✓</span> 5つの臨床エージェント（Sonnet 4.6）を並列実行
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-green-500">✓</span> Orchestrator synthesis (Opus 4.5)
+            <span className="text-green-500">✓</span> 統合役による分析（Opus 4.5）
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-green-500">✓</span> Conflict + gap detection across all 3 cases
+            <span className="text-green-500">✓</span> 3症例すべてで対立点とギャップを検出
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-green-500">✓</span> 4 handoff packages generated per case
+            <span className="text-green-500">✓</span> 各症例で4種類の引き継ぎパッケージを生成
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-green-500">✓</span> Patient instructions at 5th-grade reading level
+            <span className="text-green-500">✓</span> 患者向け説明をわかりやすい表現で生成
           </div>
         </div>
       </div>

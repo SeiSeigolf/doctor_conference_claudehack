@@ -87,9 +87,9 @@ function ConflictCard({ conflict }: { conflict: Conflict }) {
         <p className="text-sm font-medium text-gray-900 leading-snug">{conflict.summary}</p>
       </div>
       <p className="text-xs text-gray-500 mb-3">
-        Urgency: <span className="font-medium">{conflict.urgency}</span>
+        緊急度: <span className="font-medium">{conflict.urgency}</span>
         {conflict.requires_physician_decision && (
-          <span className="ml-2 text-red-600 font-medium">· Physician decision required</span>
+          <span className="ml-2 text-red-600 font-medium">・医師判断が必要</span>
         )}
       </p>
       <div className="space-y-1 mb-3">
@@ -102,7 +102,7 @@ function ConflictCard({ conflict }: { conflict: Conflict }) {
       </div>
       {conflict.resolution_options.length > 0 && (
         <div className="border-t border-gray-100 pt-2 space-y-1">
-          <p className="text-xs font-medium text-gray-500 mb-1">Resolution options:</p>
+          <p className="text-xs font-medium text-gray-500 mb-1">解決案:</p>
           {conflict.resolution_options.map((opt, i) => (
             <div key={i} className="text-xs text-gray-600">
               <span className="font-medium">{opt.option}</span>
@@ -151,8 +151,8 @@ function Collapsible({ title, count, children, defaultOpen = false }: {
             </span>
           )}
         </span>
-        <span className="text-xs text-gray-400 group-open:hidden">▼ expand</span>
-        <span className="text-xs text-gray-400 hidden group-open:inline">▲ collapse</span>
+        <span className="text-xs text-gray-400 group-open:hidden">▼ 展開</span>
+        <span className="text-xs text-gray-400 hidden group-open:inline">▲ 閉じる</span>
       </summary>
       <div className="mt-3 space-y-3">{children}</div>
     </details>
@@ -161,15 +161,15 @@ function Collapsible({ title, count, children, defaultOpen = false }: {
 
 function AgentOutputSection({ agentOutputs }: { agentOutputs: Record<string, Record<string, unknown>> }) {
   const roleLabels: Record<string, string> = {
-    physician: "👨‍⚕️ Physician",
-    nurse: "👩‍⚕️ Nurse",
-    pharmacist: "💊 Pharmacist",
-    msw: "🤝 Social Worker",
-    pt: "🏃 Physical Therapist",
+    physician: "👨‍⚕️ 医師",
+    nurse: "👩‍⚕️ 看護師",
+    pharmacist: "💊 薬剤師",
+    msw: "🤝 MSW",
+    pt: "🏃 理学療法",
   };
 
   return (
-    <Collapsible title="5 Agent Outputs (raw)" count={Object.keys(agentOutputs).length}>
+    <Collapsible title="5エージェント出力（raw）" count={Object.keys(agentOutputs).length}>
       <div className="space-y-3">
         {Object.entries(agentOutputs).map(([role, output]) => (
           <details key={role} className="group/agent">
@@ -199,8 +199,8 @@ function PatientInstructions({ text }: { text: string }) {
     <div>
       {hasPending && (
         <div className="mb-3 text-xs bg-amber-50 border border-amber-200 text-amber-800 px-3 py-2 rounded-lg">
-          ⚠ This document contains <strong>pending medication decisions</strong> (shown in amber).
-          Bracketed items must be resolved before this is given to the patient.
+          ⚠ この文書には<strong>未確定の薬剤判断</strong>が含まれています（黄色で表示）。
+          角括弧の項目は患者へ渡す前に解決してください。
         </div>
       )}
       <div className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap">
@@ -255,13 +255,13 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
               </div>
             </div>
             <div className={`${readinessBg(data.discharge_readiness)} text-white rounded-xl px-4 py-3 text-center min-w-[100px]`}>
-              <div className="text-xs font-semibold uppercase tracking-wide">Discharge</div>
+              <div className="text-xs font-semibold uppercase tracking-wide">退院</div>
               <div className="text-sm font-bold mt-0.5">
                 {data.discharge_readiness === "not_ready"
-                  ? "NOT READY"
+                  ? "未準備"
                   : data.discharge_readiness === "conditional"
-                  ? "CONDITIONAL"
-                  : "READY"}
+                  ? "条件付き"
+                  : "退院可"}
               </div>
             </div>
           </div>
@@ -269,13 +269,13 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
 
         {/* Readiness rationale */}
         <div className="mt-4 bg-red-50 border border-red-100 rounded-lg px-4 py-3 text-sm text-red-900">
-          <span className="font-semibold">Why not ready: </span>
+          <span className="font-semibold">未準備の理由: </span>
           {data.discharge_readiness_rationale}
         </div>
 
         {/* LACE implication */}
         <div className="mt-2 bg-gray-50 border border-gray-100 rounded-lg px-4 py-2 text-xs text-gray-600">
-          <span className="font-semibold">LACE implication: </span>
+          <span className="font-semibold">LACEの示唆: </span>
           {data.lace_score.implication}
         </div>
       </div>
@@ -284,9 +284,9 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
       {criticalActions.length > 0 && (
         <div>
           <SectionHeader
-            title="⚡ Critical Actions — Before Discharge"
+            title="⚡ 退院前の重要アクション"
             count={criticalActions.length}
-            subtitle="Must be resolved before discharge order can be written"
+            subtitle="退院指示前に解決が必要です"
           />
           <div className="space-y-2">
             {criticalActions.map((a) => (
@@ -297,14 +297,14 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
       )}
 
       {/* ── Conflicts ── */}
-      <Collapsible title="Conflicts" count={data.conflicts.length}>
+      <Collapsible title="対立点" count={data.conflicts.length}>
         {data.conflicts.map((c) => (
           <ConflictCard key={c.conflict_id} conflict={c} />
         ))}
       </Collapsible>
 
       {/* ── Gaps ── */}
-      <Collapsible title="Gaps Identified" count={data.gaps.length}>
+      <Collapsible title="特定されたギャップ" count={data.gaps.length}>
         {data.gaps.map((g) => (
           <GapCard key={g.gap_id} gap={g} />
         ))}
@@ -312,7 +312,7 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
 
       {/* ── All Actions (non-critical) ── */}
       {otherActions.length > 0 && (
-        <Collapsible title="Additional Actions" count={otherActions.length}>
+        <Collapsible title="追加アクション" count={otherActions.length}>
           <div className="space-y-2">
             {otherActions.map((a) => (
               <ActionCard key={a.rank} action={a} />
@@ -322,7 +322,7 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
       )}
 
       {/* ── Conference Agenda ── */}
-      <Collapsible title="Conference Agenda (15 min)" defaultOpen>
+      <Collapsible title="カンファレンス議題（15分）" defaultOpen>
         <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
           {data.conference_agenda.map((item, i) => (
             <div
@@ -347,8 +347,8 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
       {/* ── Patient Instructions ── */}
       <div>
         <SectionHeader
-          title="Patient Instructions"
-          subtitle="5th-grade reading level · Give to patient at discharge"
+          title="患者向け説明"
+          subtitle="わかりやすい表現・退院時に患者へ渡す"
         />
         <div className="bg-white border border-green-200 rounded-xl p-5">
           <PatientInstructions text={data.handoff_packages.patient_instructions} />
@@ -356,11 +356,11 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
       </div>
 
       {/* ── Handoff Packages ── */}
-      <Collapsible title="Handoff Packages (PCP / Home Health / Pharmacy)">
+      <Collapsible title="引き継ぎパッケージ（主治医 / 訪問看護 / 薬局）">
         <div className="space-y-4">
           <div>
             <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
-              PCP Summary Letter
+              主治医向けサマリーレター
             </h3>
             <div className="text-sm text-gray-700 bg-white border border-gray-200 rounded-lg p-4 whitespace-pre-wrap leading-relaxed">
               {data.handoff_packages.pcp_summary}
@@ -368,7 +368,7 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
           </div>
           <div>
             <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
-              Home Health Orders
+              訪問看護指示
             </h3>
             <pre className="text-xs text-gray-700 bg-gray-50 border border-gray-200 rounded-lg p-4 overflow-x-auto whitespace-pre-wrap">
               {JSON.stringify(data.handoff_packages.home_health_orders, null, 2)}
@@ -376,7 +376,7 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
           </div>
           <div>
             <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
-              Pharmacy Counseling
+              薬局服薬指導
             </h3>
             <pre className="text-xs text-gray-700 bg-gray-50 border border-gray-200 rounded-lg p-4 overflow-x-auto whitespace-pre-wrap">
               {JSON.stringify(data.handoff_packages.pharmacy_counseling, null, 2)}
@@ -392,13 +392,13 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
 
       {/* ── Meta ── */}
       <div className="text-xs text-gray-400 border-t border-gray-100 pt-4 pb-2 flex flex-wrap gap-4">
-        <span>Model: {data.meta.model}</span>
-        <span>Confidence: {data.meta.synthesis_confidence}</span>
-        <span>Agents: {data.meta.agents_providing_output.join(", ")}</span>
+        <span>モデル: {data.meta.model}</span>
+        <span>信頼度: {data.meta.synthesis_confidence}</span>
+        <span>エージェント: {data.meta.agents_providing_output.join(", ")}</span>
         {data.meta.agents_missing_output.length > 0 && (
-          <span className="text-red-400">Missing: {data.meta.agents_missing_output.join(", ")}</span>
+          <span className="text-red-400">不足: {data.meta.agents_missing_output.join(", ")}</span>
         )}
-        <span>Synthesized: {new Date(data.synthesis_timestamp).toLocaleString()}</span>
+        <span>統合日時: {new Date(data.synthesis_timestamp).toLocaleString()}</span>
       </div>
     </div>
   );

@@ -7,17 +7,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        base: "#0a0a0a",
-        panel: "#111111",
-        card: "#1a1a1a",
+        base: "#f8fafc",
+        panel: "#ffffff",
+        card: "#f1f5f9",
         border: {
-          subtle: "#262626",
-          hover: "#3a3a3a",
+          subtle: "#d7dee8",
+          hover: "#a8b4c4",
         },
         text: {
-          primary: "#f5f5f5",
-          secondary: "#a3a3a3",
-          tertiary: "#525252",
+          primary: "#111827",
+          secondary: "#475569",
+          tertiary: "#7c8798",
         },
         critical: {
           DEFAULT: "#ef4444",
@@ -50,10 +50,10 @@ const config: Config = {
           text: "#60a5fa",
         },
         accent: {
-          DEFAULT: "#a855f7",
-          bg: "rgba(168,85,247,0.10)",
-          border: "rgba(168,85,247,0.50)",
-          text: "#c084fc",
+          DEFAULT: "#2563eb",
+          bg: "rgba(37,99,235,0.10)",
+          border: "rgba(37,99,235,0.45)",
+          text: "#1d4ed8",
         },
       },
       fontFamily: {

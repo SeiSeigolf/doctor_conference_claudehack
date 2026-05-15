@@ -20,8 +20,8 @@ const CASES: CaseMeta[] = [
     id: 1,
     name: "Margaret Chen",
     age: "78F",
-    diagnosis: "CHF exacerbation + Pneumonia",
-    teaches: "Baseline multi-agent coordination",
+    diagnosis: "心不全増悪 + 肺炎",
+    teaches: "マルチエージェント連携の基本例",
     laceHint: 12,
     ehrSource: "MRN-748291 · Cardiology/Step-Down",
   },
@@ -29,8 +29,8 @@ const CASES: CaseMeta[] = [
     id: 2,
     name: "Robert Jackson",
     age: "65M",
-    diagnosis: "Post-stroke, mild hemiparesis",
-    teaches: "Value conflict navigation",
+    diagnosis: "脳卒中後・軽度片麻痺",
+    teaches: "価値観の衝突への対応",
     laceHint: 10,
     ehrSource: "MRN-302847 · Neurology",
   },
@@ -38,19 +38,19 @@ const CASES: CaseMeta[] = [
     id: 3,
     name: "Sarah Williams",
     age: "42F",
-    diagnosis: "DKA + 7wk pregnancy (newly confirmed)",
-    teaches: "Life-saving catch",
+    diagnosis: "DKA + 妊娠7週（新規確認）",
+    teaches: "重大リスクの検出",
     laceHint: 13,
     ehrSource: "MRN-619403 · Medicine/ICU Step-Down",
   },
 ];
 
 const ROLES = [
-  { key: "physician", label: "Physician", icon: "👨‍⚕️" },
-  { key: "nurse", label: "Nurse", icon: "👩‍⚕️" },
-  { key: "pharmacist", label: "Pharmacist", icon: "💊" },
-  { key: "msw", label: "Social Worker", icon: "🤝" },
-  { key: "pt", label: "Physical Therapist", icon: "🏃" },
+  { key: "physician", label: "医師", icon: "👨‍⚕️" },
+  { key: "nurse", label: "看護師", icon: "👩‍⚕️" },
+  { key: "pharmacist", label: "薬剤師", icon: "💊" },
+  { key: "msw", label: "MSW", icon: "🤝" },
+  { key: "pt", label: "理学療法", icon: "🏃" },
 ];
 
 // ── Progress stages ───────────────────────────────────────────────────────────
@@ -93,9 +93,9 @@ function riskBg(pct: number): string {
 }
 
 function readinessLabel(r: string): { label: string; cls: string } {
-  if (r === "ready") return { label: "READY", cls: "bg-green-600" };
-  if (r === "conditional") return { label: "CONDITIONAL", cls: "bg-amber-500" };
-  return { label: "NOT READY", cls: "bg-red-600" };
+  if (r === "ready") return { label: "退院可", cls: "bg-green-600" };
+  if (r === "conditional") return { label: "条件付き", cls: "bg-amber-500" };
+  return { label: "未準備", cls: "bg-red-600" };
 }
 
 function priorityCls(p: string): string {
@@ -190,9 +190,9 @@ export default function RoundsPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Discharge Planning Rounds</h1>
+        <h1 className="text-2xl font-bold text-gray-900">退院調整カンファレンス</h1>
         <p className="text-sm text-gray-500 mt-1">
-          Select a patient · AI agents analyze EHR data · Orchestrator synthesizes discharge decision
+          患者を選択・AIエージェントがEHR情報を分析・統合役が退院判断をまとめます
         </p>
       </div>
 
@@ -234,7 +234,7 @@ export default function RoundsPage() {
           onClick={handleRun}
           className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition-colors shadow-sm"
         >
-          Run Rounds AI — {selectedCase.name}
+          ROUNDS AIを実行 — {selectedCase.name}
         </button>
       )}
 
@@ -242,17 +242,17 @@ export default function RoundsPage() {
       {stage !== "idle" && stage !== "done" && (
         <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-4">
           <p className="text-sm font-semibold text-gray-700">
-            {stage === "connecting" && "🔌 Connecting to hospital EHR..."}
-            {stage === "ehr_pull" && "📋 Pulling patient data from EHR..."}
-            {stage === "agents" && "🧠 5 specialist agents analyzing in parallel..."}
-            {stage === "orchestrator" && "⚡ Orchestrator synthesizing all findings..."}
+            {stage === "connecting" && "🔌 病院EHRに接続中..."}
+            {stage === "ehr_pull" && "📋 EHRから患者データを取得中..."}
+            {stage === "agents" && "🧠 5つの専門エージェントが並列分析中..."}
+            {stage === "orchestrator" && "⚡ 統合役が所見をまとめています..."}
           </p>
 
           {/* EHR steps */}
           <div className="space-y-1 text-xs text-gray-500">
             <div className={`flex items-center gap-2 ${stage !== "connecting" ? "text-green-600" : "text-gray-400"}`}>
               {stage !== "connecting" ? "✓" : <Spinner />}
-              EHR connection established
+              EHR接続を確立
             </div>
             <div className={`flex items-center gap-2 ${
               stage === "ehr_pull" ? "text-gray-400" :
@@ -260,7 +260,7 @@ export default function RoundsPage() {
             }`}>
               {stage === "agents" || stage === "orchestrator" ? "✓" :
                stage === "ehr_pull" ? <Spinner /> : "·"}
-              Patient data pulled · {selectedCase?.ehrSource}
+              患者データ取得済み · {selectedCase?.ehrSource}
             </div>
           </div>
 
@@ -287,7 +287,7 @@ export default function RoundsPage() {
           {stage === "orchestrator" && (
             <div className="flex items-center gap-2 text-sm text-blue-700 bg-blue-50 rounded-lg px-3 py-2">
               <Spinner />
-              Orchestrator (Opus 4.5) synthesizing conflicts, gaps, discharge probability...
+              統合役（Opus 4.5）が対立点、ギャップ、退院可能性を統合中...
             </div>
           )}
         </div>
@@ -297,7 +297,7 @@ export default function RoundsPage() {
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-800 rounded-xl px-4 py-3 text-sm">
           ⚠ {error}
-          <button onClick={() => { setStage("idle"); setError(null); }} className="ml-3 underline">Retry</button>
+          <button onClick={() => { setStage("idle"); setError(null); }} className="ml-3 underline">再試行</button>
         </div>
       )}
 
@@ -341,7 +341,7 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
               {readiness.label}
             </span>
             <button onClick={onReset} className="text-xs text-gray-400 hover:text-gray-600 border border-gray-200 px-2 py-1 rounded">
-              ← New patient
+              ← 別の患者
             </button>
           </div>
         </div>
@@ -351,12 +351,12 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
           {/* Discharge today */}
           <div className={`p-5 border ${probBg(todayProb.score_pct ?? 0)}`}>
             <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
-              Discharge Today
+              本日退院
             </div>
             <div className={`text-5xl font-bold leading-none ${probColor(todayProb.score_pct ?? 0)}`}>
               {todayProb.score_pct ?? "—"}%
             </div>
-            <ProbabilityBar pct={todayProb.score_pct ?? 0} label="Can discharge today" />
+            <ProbabilityBar pct={todayProb.score_pct ?? 0} label="本日退院可" />
             <p className="text-xs text-gray-600 mt-2 leading-relaxed">
               {todayProb.interpretation}
             </p>
@@ -376,7 +376,7 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
           {/* 30-day readmission risk */}
           <div className={`p-5 border ${riskBg(risk30d.score_pct ?? 0)}`}>
             <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
-              30-Day Readmission Risk
+              30日再入院リスク
             </div>
             <div className={`text-5xl font-bold leading-none ${
               (risk30d.score_pct ?? 0) <= 15 ? "text-green-700" :
@@ -388,7 +388,7 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
             <div className="text-xs text-gray-500 mt-1">
               {risk30d.source} · LACE {lace.total} [{lace.tier?.replace("_", " ")}]
             </div>
-            <ProbabilityBar pct={risk30d.score_pct ?? 0} label="30-day readmission" />
+            <ProbabilityBar pct={risk30d.score_pct ?? 0} label="30日再入院" />
             <p className="text-xs text-gray-600 mt-2 leading-relaxed">
               {risk30d.interpretation}
             </p>
@@ -398,7 +398,7 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
         {/* Rationale */}
         <div className="px-5 py-3 bg-red-50 border-t border-red-100">
           <p className="text-xs text-red-900 leading-relaxed">
-            <span className="font-semibold">Rationale: </span>
+            <span className="font-semibold">根拠: </span>
             {result.discharge_readiness_rationale}
           </p>
         </div>
@@ -408,7 +408,7 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
       {criticalActions.length > 0 && (
         <div>
           <h2 className="text-sm font-semibold text-gray-800 mb-2 flex items-center gap-2">
-            ⚡ Critical Actions — Before Discharge
+            ⚡ 退院前の重要アクション
             <span className="text-xs font-normal text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
               {criticalActions.length}
             </span>
@@ -439,13 +439,13 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
       <details className="group">
         <summary className="flex items-center justify-between cursor-pointer py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200">
           <span className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            Conflicts
+            対立点
             <span className="text-xs font-normal text-gray-500 bg-white border border-gray-200 px-2 py-0.5 rounded-full">
               {(result.conflicts ?? []).length}
             </span>
           </span>
-          <span className="text-xs text-gray-400 group-open:hidden">▼ expand</span>
-          <span className="text-xs text-gray-400 hidden group-open:inline">▲ collapse</span>
+          <span className="text-xs text-gray-400 group-open:hidden">▼ 展開</span>
+          <span className="text-xs text-gray-400 hidden group-open:inline">▲ 閉じる</span>
         </summary>
         <div className="mt-3 space-y-3">
           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
@@ -475,13 +475,13 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
       <details className="group">
         <summary className="flex items-center justify-between cursor-pointer py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200">
           <span className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            Gaps Identified
+            特定されたギャップ
             <span className="text-xs font-normal text-gray-500 bg-white border border-gray-200 px-2 py-0.5 rounded-full">
               {(result.gaps ?? []).length}
             </span>
           </span>
-          <span className="text-xs text-gray-400 group-open:hidden">▼ expand</span>
-          <span className="text-xs text-gray-400 hidden group-open:inline">▲ collapse</span>
+          <span className="text-xs text-gray-400 group-open:hidden">▼ 展開</span>
+          <span className="text-xs text-gray-400 hidden group-open:inline">▲ 閉じる</span>
         </summary>
         <div className="mt-3 space-y-2">
           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
@@ -507,9 +507,9 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
       {/* ── Conference agenda ── */}
       <details className="group" open>
         <summary className="flex items-center justify-between cursor-pointer py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200">
-          <span className="text-sm font-semibold text-gray-700">Conference Agenda (15 min)</span>
-          <span className="text-xs text-gray-400 group-open:hidden">▼ expand</span>
-          <span className="text-xs text-gray-400 hidden group-open:inline">▲ collapse</span>
+          <span className="text-sm font-semibold text-gray-700">カンファレンス議題（15分）</span>
+          <span className="text-xs text-gray-400 group-open:hidden">▼ 展開</span>
+          <span className="text-xs text-gray-400 hidden group-open:inline">▲ 閉じる</span>
         </summary>
         <div className="mt-3 bg-white border border-gray-200 rounded-lg overflow-hidden">
           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
@@ -534,13 +534,13 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
         <details className="group">
           <summary className="flex items-center justify-between cursor-pointer py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200">
             <span className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-              Additional Actions
+              追加アクション
               <span className="text-xs font-normal text-gray-500 bg-white border border-gray-200 px-2 py-0.5 rounded-full">
                 {otherActions.length}
               </span>
             </span>
-            <span className="text-xs text-gray-400 group-open:hidden">▼ expand</span>
-            <span className="text-xs text-gray-400 hidden group-open:inline">▲ collapse</span>
+            <span className="text-xs text-gray-400 group-open:hidden">▼ 展開</span>
+            <span className="text-xs text-gray-400 hidden group-open:inline">▲ 閉じる</span>
           </summary>
           <div className="mt-3 space-y-2">
             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
@@ -566,7 +566,7 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
 
       {/* ── Patient instructions ── */}
       <div>
-        <h2 className="text-sm font-semibold text-gray-700 mb-2">Patient Instructions (5th-grade reading level)</h2>
+        <h2 className="text-sm font-semibold text-gray-700 mb-2">患者向け説明（わかりやすい表現）</h2>
         <div className="bg-white border border-green-200 rounded-xl p-5">
           <PatientInstructionsText text={result.handoff_packages?.patient_instructions ?? ""} />
         </div>
@@ -574,12 +574,12 @@ function Results({ result, caseMeta, onReset }: { result: any; caseMeta: CaseMet
 
       {/* ── Meta ── */}
       <div className="text-xs text-gray-400 border-t border-gray-100 pt-3 flex flex-wrap gap-3">
-        <span>Model: {result.meta?.model}</span>
-        <span>Confidence: {result.meta?.synthesis_confidence}</span>
-        <span>Agents: {(result.meta?.agents_providing_output ?? []).join(", ")}</span>
-        <span>Synthesized: {result.synthesis_timestamp ? new Date(result.synthesis_timestamp).toLocaleString() : "—"}</span>
+        <span>モデル: {result.meta?.model}</span>
+        <span>信頼度: {result.meta?.synthesis_confidence}</span>
+        <span>エージェント: {(result.meta?.agents_providing_output ?? []).join(", ")}</span>
+        <span>統合日時: {result.synthesis_timestamp ? new Date(result.synthesis_timestamp).toLocaleString() : "—"}</span>
         <Link href={`/case/${result.patient_id?.replace("CASE-00", "")}`} className="text-blue-400 hover:underline">
-          View static reference output →
+          静的な参照結果を見る →
         </Link>
       </div>
     </div>
@@ -593,7 +593,7 @@ function PatientInstructionsText({ text }: { text: string }) {
     <div>
       {hasPending && (
         <div className="mb-3 text-xs bg-amber-50 border border-amber-200 text-amber-800 px-3 py-2 rounded-lg">
-          ⚠ Contains <strong>pending medication decisions</strong> (highlighted). Resolve before giving to patient.
+          ⚠ <strong>未確定の薬剤判断</strong>が含まれています（強調表示）。患者へ渡す前に解決してください。
         </div>
       )}
       <p className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap">

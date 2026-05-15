@@ -10,9 +10,9 @@ function readinessBadgeCls(r: ReadinessStatus) {
 }
 
 function readinessLabel(r: ReadinessStatus) {
-  if (r === "ready")       return "READY";
-  if (r === "conditional") return "CONDITIONAL";
-  return "NOT READY";
+  if (r === "ready")       return "退院可";
+  if (r === "conditional") return "条件付き";
+  return "未準備";
 }
 
 function laceCls(tier: RiskTier) {
@@ -33,33 +33,33 @@ export default function HomePage() {
       {/* Header */}
       <div className="mb-6">
         <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary mb-1">
-          ROUNDS.ai · DISCHARGE PLANNING INTELLIGENCE
+          ROUNDS.ai・退院調整支援
         </div>
-        <h1 className="text-2xl font-mono font-semibold text-text-primary">Patient Case List</h1>
+        <h1 className="text-2xl font-mono font-semibold text-text-primary">患者症例一覧</h1>
         <p className="text-xs text-text-secondary mt-1">
-          5 clinical AI agents (Sonnet 4.6) · Orchestrator (Opus 4.7) · Multi-agent discharge synthesis
+          5つの臨床AIエージェント（Sonnet 4.6）・統合役（Opus 4.7）・退院方針の統合分析
         </p>
       </div>
 
       {/* Action bar */}
       <div className="flex items-center justify-between mb-4">
         <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">
-          EXAMPLE CASES — SYNTHETIC DATA
+          サンプル症例・合成データ
         </div>
         <Link
           href="/intake"
           className="flex items-center gap-2 px-4 py-2 bg-accent-bg border border-accent-border text-accent-text font-mono text-xs rounded-sm hover:bg-accent/20 transition-colors"
         >
-          + New Patient Intake
+          + 新規患者入力
         </Link>
       </div>
 
       {/* Epic-style patient list table */}
       <div className="bg-panel border border-border-subtle rounded-sm overflow-hidden mb-8">
         {/* Column headers */}
-        <div className="grid grid-cols-[1fr_80px_100px_60px_60px_80px_120px_28px] gap-x-4 px-4 py-2 border-b border-[#1e3a5f] bg-[#0d1b2a]">
-          {["Patient / Diagnosis", "Location", "Admission", "LOS", "LACE", "30-Day", "Status", ""].map((h) => (
-            <span key={h} className="text-2xs font-mono uppercase tracking-widest text-[#4a6b8a]">{h}</span>
+        <div className="grid grid-cols-[1fr_80px_100px_60px_60px_80px_120px_28px] gap-x-4 px-4 py-2 border-b border-border-subtle bg-card">
+          {["患者 / 診断", "場所", "入院日", "日数", "LACE", "30日", "状態", ""].map((h) => (
+            <span key={h} className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">{h}</span>
           ))}
         </div>
 
@@ -69,17 +69,17 @@ export default function HomePage() {
 
           return (
             <Link href={`/case/${id}`} key={id} className="block group">
-              <div className="grid grid-cols-[1fr_80px_100px_60px_60px_80px_120px_28px] gap-x-4 px-4 py-3 border-b border-border-subtle/50 last:border-0 hover:bg-[#0d1b2a] transition-colors items-center">
+              <div className="grid grid-cols-[1fr_80px_100px_60px_60px_80px_120px_28px] gap-x-4 px-4 py-3 border-b border-border-subtle/50 last:border-0 hover:bg-card transition-colors items-center">
                 {/* Patient name + diagnosis */}
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-sm font-semibold text-text-primary truncate">{data.patient_name}</span>
                     <span className="text-2xs font-mono px-1.5 py-0.5 rounded border border-border-subtle text-text-tertiary bg-white/5 flex-shrink-0">
-                      EXAMPLE
+                      例
                     </span>
                     {criticalCount > 0 && (
                       <span className="text-2xs font-mono px-1.5 py-0.5 rounded border border-critical-border text-critical-text bg-critical-bg flex-shrink-0">
-                        {criticalCount} CRIT
+                        重大 {criticalCount}
                       </span>
                     )}
                   </div>
@@ -127,15 +127,15 @@ export default function HomePage() {
       <div className="mt-6 flex items-center gap-4">
         <Link
           href="/summary"
-          className="text-xs font-mono text-info-text hover:text-white border border-info-border bg-info-bg px-4 py-2 rounded-sm transition-colors"
+          className="text-xs font-mono text-info-text hover:text-info-text border border-info-border bg-info-bg px-4 py-2 rounded-sm transition-colors"
         >
-          → 3-case comparison table
+          → 3症例の比較表
         </Link>
         <Link
           href="/rounds"
-          className="text-xs font-mono text-accent-text hover:text-white border border-accent-border bg-accent-bg px-4 py-2 rounded-sm transition-colors"
+          className="text-xs font-mono text-accent-text hover:text-accent-text border border-accent-border bg-accent-bg px-4 py-2 rounded-sm transition-colors"
         >
-          → Live rounds demo
+          → ライブ回診デモ
         </Link>
       </div>
     </div>

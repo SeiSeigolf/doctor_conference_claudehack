@@ -12,10 +12,10 @@ export interface AgentCardProps {
 }
 
 const STATUS_CONFIG: Record<AgentStatus, { pill: string; label: string }> = {
-  QUEUED:    { pill: "text-text-tertiary border-border-subtle bg-white/5",   label: "QUEUED" },
-  ANALYZING: { pill: "text-info-text border-info-border bg-info-bg",         label: "ANALYZING" },
-  COMPLETE:  { pill: "text-ok-text border-ok-border bg-ok-bg",               label: "COMPLETE" },
-  ERROR:     { pill: "text-critical-text border-critical-border bg-critical-bg", label: "ERROR" },
+  QUEUED:    { pill: "text-text-tertiary border-border-subtle bg-white/5",   label: "待機中" },
+  ANALYZING: { pill: "text-info-text border-info-border bg-info-bg",         label: "分析中" },
+  COMPLETE:  { pill: "text-ok-text border-ok-border bg-ok-bg",               label: "完了" },
+  ERROR:     { pill: "text-critical-text border-critical-border bg-critical-bg", label: "エラー" },
 };
 
 const ROLE_ABBREV: Record<string, string> = {
@@ -125,7 +125,7 @@ export function AgentCard({
       {/* Orchestrator analyzing state */}
       {isOrchestrator && status === "ANALYZING" && (
         <p className="mt-2 text-2xs text-accent-text border-t border-accent-border/30 pt-2">
-          Synthesizing conflicts · gaps · risk · handoffs…
+          対立点・ギャップ・リスク・引き継ぎを統合中…
         </p>
       )}
     </div>

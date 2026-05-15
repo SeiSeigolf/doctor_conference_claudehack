@@ -12,10 +12,10 @@ function readinessCls(r?: string) {
 }
 
 function readinessLabel(r?: string) {
-  if (r === "ready") return "READY FOR DISCHARGE";
-  if (r === "conditional") return "CONDITIONAL DISCHARGE";
-  if (r) return "HOLD — NOT READY";
-  return "PENDING ASSESSMENT";
+  if (r === "ready") return "退院可";
+  if (r === "conditional") return "条件付き退院";
+  if (r) return "保留・未準備";
+  return "評価待ち";
 }
 
 interface PatientBannerProps {
@@ -30,48 +30,48 @@ export function PatientBanner({ patient, synth }: PatientBannerProps) {
   const readiness = synth?.discharge_readiness as string | undefined;
   const lace = synth?.lace_score as AnyRecord | undefined;
   const allergies =
-    (patient.pharmacist as AnyRecord | null)?.allergies as string | undefined || "NKA";
+    (patient.pharmacist as AnyRecord | null)?.allergies as string | undefined || "既知なし";
 
   return (
-    <div className="sticky top-0 z-20 border-b-2 border-[#1e56a0] bg-[#0a1628]">
+    <div className="sticky top-0 z-20 border-b-2 border-accent-border bg-white">
       {/* Primary banner row */}
       <div className="flex items-center gap-5 px-4 py-2 flex-wrap">
         {/* Name + MRN */}
         <div className="flex items-center gap-2 flex-shrink-0">
-          <span className="font-mono font-bold text-base text-white">
-            {basic.name || "Unknown Patient"}
+          <span className="font-mono font-bold text-base text-text-primary">
+            {basic.name || "患者名未入力"}
           </span>
-          <span className="font-mono text-2xs px-1.5 py-0.5 bg-[#1e3a5f] text-[#5b9bd5] rounded">
+          <span className="font-mono text-2xs px-1.5 py-0.5 bg-accent-bg text-accent-text rounded">
             {mrn}
           </span>
         </div>
 
         {/* Demographics */}
-        <div className="flex items-center divide-x divide-[#1e3a5f] text-2xs font-mono text-[#7bafd4]">
+        <div className="flex items-center divide-x divide-border-subtle text-2xs font-mono text-text-secondary">
           <span className="pr-3">
-            {basic.age ? `${basic.age}yo` : "—"}{" "}
-            {basic.sex === "F" ? "Female" : basic.sex === "M" ? "Male" : basic.sex}
+            {basic.age ? `${basic.age}歳` : "—"}{" "}
+            {basic.sex === "F" ? "女性" : basic.sex === "M" ? "男性" : basic.sex}
           </span>
-          <span className="px-3">Adm {basic.admissionDate || "—"}</span>
-          <span className="px-3">LOS {basic.losDays || "—"}d</span>
-          <span className="px-3">{basic.unit || "Unit TBD"}</span>
+          <span className="px-3">入院 {basic.admissionDate || "—"}</span>
+          <span className="px-3">入院日数 {basic.losDays || "—"}日</span>
+          <span className="px-3">{basic.unit || "病棟未定"}</span>
           <span className="px-3">{basic.admissionType}</span>
         </div>
 
         {/* Allergies — Epic highlights this prominently */}
         <div className="flex items-center gap-1 flex-shrink-0">
-          <span className="text-2xs font-mono text-[#ff6b6b] font-bold tracking-widest">ALLG</span>
-          <span className="text-2xs font-mono text-[#ffa0a0]">{allergies}</span>
+          <span className="text-2xs font-mono text-critical-text font-bold tracking-widest">アレルギー</span>
+          <span className="text-2xs font-mono text-critical-text">{allergies}</span>
         </div>
 
         {/* LACE */}
         {lace?.total !== undefined && (
-          <div className="flex items-center gap-1 px-2 py-0.5 border border-[#1e3a5f] rounded flex-shrink-0">
-            <span className="text-2xs font-mono text-[#7bafd4]">LACE</span>
+          <div className="flex items-center gap-1 px-2 py-0.5 border border-border-subtle rounded flex-shrink-0">
+            <span className="text-2xs font-mono text-text-secondary">LACE</span>
             <span className="font-mono font-bold text-warning-text tabular-nums">
               {lace.total as number}
             </span>
-            <span className="text-2xs font-mono text-[#7bafd4]">
+            <span className="text-2xs font-mono text-text-secondary">
               {String(lace.tier ?? "").replace("_", " ")}
             </span>
           </div>
@@ -84,15 +84,15 @@ export function PatientBanner({ patient, synth }: PatientBannerProps) {
 
         {/* Care team completion */}
         <div className="ml-auto flex items-center gap-1 flex-shrink-0">
-          <span className="text-2xs font-mono text-[#4a6b8a] mr-1">Team:</span>
+          <span className="text-2xs font-mono text-text-tertiary mr-1">チーム:</span>
           {ROLE_KEYS.map((role) => (
             <span
               key={role}
-              title={`${role} — ${completedRoles.includes(role) ? "documented" : "pending"}`}
+              title={`${role} — ${completedRoles.includes(role) ? "記録済み" : "未入力"}`}
               className={`text-2xs font-mono px-1.5 py-0.5 rounded border ${
                 completedRoles.includes(role)
                   ? "border-ok-border text-ok-text bg-ok-bg"
-                  : "border-[#1e3a5f] text-[#4a6b8a]"
+                  : "border-border-subtle text-text-tertiary"
               }`}
             >
               {ROLE_ABBREV[role]}
@@ -103,11 +103,11 @@ export function PatientBanner({ patient, synth }: PatientBannerProps) {
 
       {/* Chief complaint sub-bar */}
       {basic.chiefComplaint && (
-        <div className="px-4 py-1 bg-[#060f1a] border-t border-[#1e3a5f] flex items-center gap-2">
+        <div className="px-4 py-1 bg-card border-t border-border-subtle flex items-center gap-2">
           <span className="text-2xs font-mono text-[#4a6b8a] uppercase tracking-widest flex-shrink-0">
-            Chief Complaint
+            主訴
           </span>
-          <span className="text-2xs font-mono text-[#a8c4e0]">{basic.chiefComplaint}</span>
+          <span className="text-2xs font-mono text-text-secondary">{basic.chiefComplaint}</span>
         </div>
       )}
     </div>

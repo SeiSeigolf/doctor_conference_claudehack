@@ -15,23 +15,23 @@ type SectionId =
   | "discharge" | "handoff";
 
 const CHART_SECTIONS: { id: SectionId; label: string; abbrev: string }[] = [
-  { id: "overview",    label: "Chart Overview",   abbrev: "OVR" },
-  { id: "problems",    label: "Problem List",      abbrev: "Dx"  },
-  { id: "medications", label: "Medications",       abbrev: "Rx"  },
-  { id: "vitals",      label: "Labs & Vitals",     abbrev: "LAB" },
-  { id: "nursing",     label: "Nursing",           abbrev: "RN"  },
-  { id: "pharmacy",    label: "Pharmacy",          abbrev: "RPh" },
-  { id: "socialwork",  label: "Social Work",       abbrev: "MSW" },
-  { id: "pt",          label: "PT / OT",           abbrev: "PT"  },
-  { id: "discharge",   label: "Discharge Plan",    abbrev: "DC"  },
-  { id: "handoff",     label: "Handoff Packages",  abbrev: "HO"  },
+  { id: "overview",    label: "カルテ概要",       abbrev: "概" },
+  { id: "problems",    label: "問題リスト",       abbrev: "診" },
+  { id: "medications", label: "薬剤",             abbrev: "薬" },
+  { id: "vitals",      label: "検査・バイタル",   abbrev: "検" },
+  { id: "nursing",     label: "看護",             abbrev: "看" },
+  { id: "pharmacy",    label: "薬剤部",           abbrev: "薬" },
+  { id: "socialwork",  label: "ソーシャルワーク", abbrev: "SW" },
+  { id: "pt",          label: "PT / OT",          abbrev: "PT" },
+  { id: "discharge",   label: "退院計画",         abbrev: "退" },
+  { id: "handoff",     label: "引き継ぎ",         abbrev: "引" },
 ];
 
 function SectionHeader({ title, count }: { title: string; count?: number }) {
   return (
     <div className="flex items-center gap-3 mb-5 pb-2 border-b border-[#1e3a5f]">
       <div className="h-4 w-1 bg-[#1e56a0] rounded-full flex-shrink-0" />
-      <h2 className="font-mono font-bold text-sm text-white uppercase tracking-wide">{title}</h2>
+      <h2 className="font-mono font-bold text-sm text-text-primary uppercase tracking-wide">{title}</h2>
       {count !== undefined && (
         <span className="text-2xs font-mono text-[#4a6b8a]">({count})</span>
       )}
@@ -47,7 +47,7 @@ function DataRow({ label, value }: { label: string; value?: string | boolean | n
         {label}
       </span>
       <span className="text-xs font-mono text-text-primary">
-        {typeof value === "boolean" ? (value ? "Yes" : "No") : value}
+        {typeof value === "boolean" ? (value ? "はい" : "いいえ") : value}
       </span>
     </div>
   );
@@ -56,9 +56,9 @@ function DataRow({ label, value }: { label: string; value?: string | boolean | n
 function PendingSection({ id }: { id: string }) {
   return (
     <p className="text-sm font-mono text-text-tertiary">
-      Assessment not yet entered.{" "}
+      評価はまだ入力されていません。{" "}
       <Link href={`/intake/${id}`} className="text-[#5b9bd5] hover:underline">
-        Add now →
+        今すぐ入力 →
       </Link>
     </p>
   );
@@ -81,7 +81,7 @@ export default function PatientDetailPage() {
   if (!loaded) {
     return (
       <div className="py-20 text-center">
-        <span className="text-2xs font-mono text-text-tertiary animate-pulse">LOADING CHART…</span>
+        <span className="text-2xs font-mono text-text-tertiary animate-pulse">カルテを読み込み中…</span>
       </div>
     );
   }
@@ -90,13 +90,13 @@ export default function PatientDetailPage() {
     return (
       <div className="max-w-2xl mx-auto py-16 text-center space-y-3">
         <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary">
-          PATIENT NOT FOUND
+          患者が見つかりません
         </div>
         <p className="text-sm text-text-secondary">
-          No record found. It may have been cleared from browser storage.
+          レコードが見つかりません。ブラウザ保存データが削除された可能性があります。
         </p>
         <Link href="/" className="text-[#5b9bd5] text-sm font-mono hover:underline">
-          ← Return to patient list
+          ← 患者一覧へ戻る
         </Link>
       </div>
     );
@@ -109,21 +109,21 @@ export default function PatientDetailPage() {
       <div className="-mx-6 -mt-6">
         <PatientBanner patient={patient} synth={null} />
         <div className="max-w-2xl mx-auto py-8 px-6 space-y-5">
-          <div className="bg-[#0d1b2a] border border-[#1e3a5f] rounded p-5">
-            <div className="text-2xs font-mono uppercase tracking-widest text-[#4a6b8a] mb-1">
-              CHART STATUS
+          <div className="bg-card border border-border-subtle rounded p-5">
+            <div className="text-2xs font-mono uppercase tracking-widest text-text-tertiary mb-1">
+              カルテ状態
             </div>
-            <p className="text-sm font-mono text-[#a8c4e0]">
-              AI synthesis not yet run.{" "}
-              {completedRoles.length} of 5 roles have entered data.
+            <p className="text-sm font-mono text-text-secondary">
+              AI統合分析はまだ実行されていません。{" "}
+              5職種中{completedRoles.length}職種が入力済みです。
             </p>
           </div>
 
           <div className="bg-panel border border-border-subtle rounded overflow-hidden">
-            <div className="px-4 py-2.5 border-b border-[#1e3a5f] bg-[#0d1b2a] flex items-center gap-2">
-              <div className="h-3 w-0.5 bg-[#1e56a0] rounded-full" />
-              <span className="text-2xs font-mono uppercase tracking-widest text-[#7bafd4]">
-                CARE TEAM DOCUMENTATION
+            <div className="px-4 py-2.5 border-b border-border-subtle bg-card flex items-center gap-2">
+              <div className="h-3 w-0.5 bg-accent rounded-full" />
+              <span className="text-2xs font-mono uppercase tracking-widest text-accent-text">
+                ケアチーム記録
               </span>
             </div>
             {ROLE_KEYS.map((role) => {
@@ -148,13 +148,13 @@ export default function PatientDetailPage() {
                   </span>
                   {done ? (
                     <span className="text-2xs font-mono text-ok-text">
-                      Documented{" "}
+                      記録済み{" "}
                       {roleData?.savedAt
                         ? new Date(roleData.savedAt as string).toLocaleTimeString()
                         : ""}
                     </span>
                   ) : (
-                    <span className="text-2xs font-mono text-text-tertiary">Pending</span>
+                    <span className="text-2xs font-mono text-text-tertiary">未入力</span>
                   )}
                 </div>
               );
@@ -167,14 +167,14 @@ export default function PatientDetailPage() {
               className="flex-1 text-center py-2.5 bg-[#1e3a5f] border border-[#1e56a0] text-[#5b9bd5] font-mono text-sm rounded hover:bg-[#1e56a0]/30 transition-colors"
             >
               {completedRoles.length === 0
-                ? "Begin Documentation →"
-                : `Continue Intake (${completedRoles.length}/5) →`}
+                ? "記録を開始 →"
+                : `入力を続ける（${completedRoles.length}/5）→`}
             </Link>
             <Link
               href="/"
               className="px-4 py-2.5 border border-border-subtle text-text-secondary font-mono text-sm rounded hover:border-border-hover transition-colors"
             >
-              ← List
+              ← 一覧
             </Link>
           </div>
         </div>
@@ -206,10 +206,10 @@ export default function PatientDetailPage() {
 
       <div className="flex" style={{ minHeight: "calc(100vh - 110px)" }}>
         {/* ── Epic-style left sidebar ── */}
-        <aside className="w-48 bg-[#070d14] border-r border-[#1e3a5f] flex-shrink-0 overflow-y-auto">
+        <aside className="w-48 bg-white border-r border-border-subtle flex-shrink-0 overflow-y-auto">
           <div className="py-2">
             <div className="px-3 pt-3 pb-2 text-2xs font-mono uppercase tracking-widest text-[#4a6b8a]">
-              Chart Activities
+              カルテメニュー
             </div>
             {CHART_SECTIONS.map((s) => {
               const isActive = section === s.id;
@@ -220,22 +220,22 @@ export default function PatientDetailPage() {
                   onClick={() => setSection(s.id)}
                   className={`w-full text-left px-3 py-2 flex items-center gap-2 transition-colors border-l-2 ${
                     isActive
-                      ? "bg-[#1e3a5f] text-white border-[#1e56a0]"
-                      : "text-[#7bafd4] hover:bg-[#0d1b2a] border-transparent"
+                      ? "bg-accent-bg text-accent-text border-accent"
+                      : "text-text-secondary hover:bg-card border-transparent"
                   }`}
                 >
                   <span
                     className={`text-2xs font-mono w-8 flex-shrink-0 ${
                       hasData
-                        ? isActive ? "text-white" : "text-[#5b9bd5]"
-                        : "text-[#2a4a6a]"
+                        ? isActive ? "text-accent-text" : "text-info-text"
+                        : "text-text-tertiary"
                     }`}
                   >
                     {s.abbrev}
                   </span>
                   <span className="text-xs font-mono flex-1">{s.label}</span>
                   {hasData && !isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#1e56a0] flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
                   )}
                 </button>
               );
@@ -249,7 +249,7 @@ export default function PatientDetailPage() {
           {/* OVERVIEW */}
           {section === "overview" && (
             <div className="space-y-5 max-w-3xl">
-              <SectionHeader title="Chart Overview" />
+              <SectionHeader title="カルテ概要" />
 
               {/* Key metric cards */}
               {(() => {
@@ -258,17 +258,17 @@ export default function PatientDetailPage() {
                 const risk = (d!.readmission_risk_30d as AnyRecord)?.score_pct;
                 const cards = [
                   {
-                    label: "Discharge Status",
-                    value: readiness === "ready" ? "READY" : readiness === "conditional" ? "CONDITIONAL" : "NOT READY",
+                    label: "退院状態",
+                    value: readiness === "ready" ? "退院可" : readiness === "conditional" ? "条件付き" : "未準備",
                     cls: readiness === "ready" ? "text-ok-text" : readiness === "conditional" ? "text-warning-text" : "text-critical-text",
                   },
-                  { label: "LACE Score", value: laceTotal !== undefined ? String(laceTotal) : "—", cls: "text-warning-text" },
-                  { label: "30-Day Readmission Risk", value: risk !== undefined ? `${String(risk)}%` : "—", cls: "text-warning-text" },
+                  { label: "LACEスコア", value: laceTotal !== undefined ? String(laceTotal) : "—", cls: "text-warning-text" },
+                  { label: "30日再入院リスク", value: risk !== undefined ? `${String(risk)}%` : "—", cls: "text-warning-text" },
                 ];
                 return (
                   <div className="grid grid-cols-3 gap-3">
                     {cards.map((card) => (
-                      <div key={card.label} className="bg-[#0d1b2a] border border-[#1e3a5f] rounded p-4">
+                      <div key={card.label} className="bg-card border border-border-subtle rounded p-4">
                         <div className="text-2xs font-mono text-[#4a6b8a] uppercase tracking-widest mb-1">{card.label}</div>
                         <div className={`font-mono font-bold text-2xl tabular-nums ${card.cls}`}>{card.value}</div>
                       </div>
@@ -279,9 +279,9 @@ export default function PatientDetailPage() {
 
               {/* Rationale */}
               {!!d!.discharge_readiness_rationale && (
-                <div className="bg-[#0d1b2a] border border-[#1e3a5f] rounded p-4">
+                <div className="bg-card border border-border-subtle rounded p-4">
                   <div className="text-2xs font-mono uppercase tracking-widest text-[#4a6b8a] mb-2">
-                    Discharge Readiness Rationale
+                    退院準備状況の根拠
                   </div>
                   <p className="text-sm font-mono text-[#a8c4e0] leading-relaxed">
                     {String(d!.discharge_readiness_rationale)}
@@ -293,14 +293,14 @@ export default function PatientDetailPage() {
               {criticalActions.length > 0 && (
                 <div>
                   <div className="text-2xs font-mono uppercase tracking-widest text-critical-text mb-2">
-                    Critical Actions Required ({criticalActions.length})
+                    必要な重要アクション（{criticalActions.length}件）
                   </div>
                   <div className="border border-critical-border/40 rounded overflow-hidden">
                     {criticalActions.map((a, i) => (
                       <FindingRow
                         key={i}
                         severity="critical"
-                        label="CRITICAL"
+                        label="重要"
                         description={a.action as string}
                         source={a.owner as string}
                       />
@@ -317,7 +317,7 @@ export default function PatientDetailPage() {
                     onClick={() => setSection(s.id)}
                     className={`text-left px-3 py-2 rounded border flex items-center gap-2 transition-colors ${
                       sectionsWithData.has(s.id)
-                        ? "border-[#1e3a5f] bg-[#0d1b2a] hover:bg-[#1e3a5f]/40 text-[#7bafd4]"
+                        ? "border-border-subtle bg-card hover:bg-accent-bg text-accent-text"
                         : "border-border-subtle/30 text-text-tertiary"
                     }`}
                   >
@@ -335,12 +335,12 @@ export default function PatientDetailPage() {
           {/* PROBLEM LIST */}
           {section === "problems" && (
             <div className="space-y-4 max-w-3xl">
-              <SectionHeader title="Problem List" />
+              <SectionHeader title="問題リスト" />
               {ph ? (
                 <>
                   <div className="bg-panel border border-border-subtle rounded overflow-hidden">
-                    <div className="px-4 py-2 bg-[#0d1b2a] border-b border-[#1e3a5f] flex items-center gap-2">
-                      <span className="text-2xs font-mono text-[#5b9bd5] uppercase">Primary Dx</span>
+                    <div className="px-4 py-2 bg-card border-b border-border-subtle flex items-center gap-2">
+                      <span className="text-2xs font-mono text-[#5b9bd5] uppercase">主診断</span>
                     </div>
                     <div className="px-4 py-3">
                       <span className="font-mono text-sm text-text-primary font-semibold">
@@ -351,8 +351,8 @@ export default function PatientDetailPage() {
 
                   {(ph.secondaryDx as string[])?.filter(Boolean).length > 0 && (
                     <div className="bg-panel border border-border-subtle rounded overflow-hidden">
-                      <div className="px-4 py-2 bg-[#0d1b2a] border-b border-[#1e3a5f]">
-                        <span className="text-2xs font-mono text-[#5b9bd5] uppercase">Secondary Diagnoses</span>
+                      <div className="px-4 py-2 bg-card border-b border-border-subtle">
+                        <span className="text-2xs font-mono text-[#5b9bd5] uppercase">副診断</span>
                       </div>
                       <div className="divide-y divide-border-subtle/50">
                         {(ph.secondaryDx as string[]).filter(Boolean).map((dx, i) => (
@@ -365,17 +365,17 @@ export default function PatientDetailPage() {
                     </div>
                   )}
 
-                  <DataRow label="Comorbidities" value={ph.comorbidities as string} />
+                  <DataRow label="併存疾患" value={ph.comorbidities as string} />
                   {ph.clinicalSummary && (
                     <div className="bg-panel border border-border-subtle rounded p-4">
-                      <div className="text-2xs font-mono text-[#4a6b8a] uppercase mb-2">Clinical Summary</div>
+                      <div className="text-2xs font-mono text-[#4a6b8a] uppercase mb-2">臨床サマリー</div>
                       <p className="text-sm font-mono text-text-primary leading-relaxed whitespace-pre-wrap">
                         {ph.clinicalSummary as string}
                       </p>
                     </div>
                   )}
-                  <DataRow label="Follow-up Plan" value={ph.followUpPlan as string} />
-                  <DataRow label="Safety Flags" value={ph.safetyFlags as string} />
+                  <DataRow label="フォローアップ計画" value={ph.followUpPlan as string} />
+                  <DataRow label="安全上の注意" value={ph.safetyFlags as string} />
                 </>
               ) : <PendingSection id={id} />}
             </div>
@@ -384,11 +384,11 @@ export default function PatientDetailPage() {
           {/* MEDICATIONS */}
           {section === "medications" && (
             <div className="space-y-4 max-w-3xl">
-              <SectionHeader title="Medications" />
+              <SectionHeader title="薬剤" />
               {ph ? (
                 <>
                   <div className="bg-panel border border-border-subtle rounded p-4">
-                    <div className="text-2xs font-mono text-[#4a6b8a] uppercase mb-2">Current Medication List</div>
+                    <div className="text-2xs font-mono text-[#4a6b8a] uppercase mb-2">現在の処方一覧</div>
                     <p className="text-sm font-mono text-text-primary whitespace-pre-wrap leading-relaxed">
                       {ph.medications as string || "—"}
                     </p>
@@ -399,7 +399,7 @@ export default function PatientDetailPage() {
                       <div className="grid grid-cols-2 gap-3">
                         <div className="bg-panel border border-border-subtle rounded p-4">
                           <div className="text-2xs font-mono text-[#4a6b8a] uppercase mb-2">
-                            Reconciliation
+                            薬剤照合
                           </div>
                           <span
                             className={`text-2xs font-mono px-2 py-0.5 rounded border ${
@@ -408,12 +408,12 @@ export default function PatientDetailPage() {
                                 : "border-warning-border text-warning-text bg-warning-bg"
                             }`}
                           >
-                            {rx.reconciliationDone ? "COMPLETE" : "PENDING"}
+                            {rx.reconciliationDone ? "完了" : "未完了"}
                           </span>
                         </div>
                         <div className="bg-panel border border-border-subtle rounded p-4">
                           <div className="text-2xs font-mono text-[#4a6b8a] uppercase mb-2">
-                            Patient Counseling
+                            服薬指導
                           </div>
                           <span
                             className={`text-2xs font-mono px-2 py-0.5 rounded border ${
@@ -422,7 +422,7 @@ export default function PatientDetailPage() {
                                 : "border-warning-border text-warning-text bg-warning-bg"
                             }`}
                           >
-                            {rx.counselingDone ? "DONE" : "PENDING"}
+                            {rx.counselingDone ? "完了" : "未完了"}
                           </span>
                         </div>
                       </div>
@@ -430,7 +430,7 @@ export default function PatientDetailPage() {
                       {rx.highRiskMeds && (
                         <div className="bg-critical-bg border border-critical-border rounded p-4">
                           <div className="text-2xs font-mono text-critical-text uppercase mb-1">
-                            High-Risk Medications
+                            高リスク薬
                           </div>
                           <p className="text-sm font-mono text-text-primary">{rx.highRiskMeds as string}</p>
                         </div>
@@ -438,16 +438,16 @@ export default function PatientDetailPage() {
                       {rx.drugInteractions && (
                         <div className="bg-warning-bg border border-warning-border rounded p-4">
                           <div className="text-2xs font-mono text-warning-text uppercase mb-1">
-                            Drug Interactions
+                            薬物相互作用
                           </div>
                           <p className="text-sm font-mono text-text-primary">{rx.drugInteractions as string}</p>
                         </div>
                       )}
-                      <DataRow label="Meds to Discontinue" value={rx.medsToStop as string} />
-                      <DataRow label="New Meds at Discharge" value={rx.newMeds as string} />
-                      <DataRow label="Allergies / ADRs" value={rx.allergies as string} />
-                      <DataRow label="Insurance Coverage" value={rx.insuranceCoverage as string} />
-                      <DataRow label="Patient Understanding" value={rx.patientUnderstanding as string} />
+                      <DataRow label="中止予定薬" value={rx.medsToStop as string} />
+                      <DataRow label="退院時新規薬" value={rx.newMeds as string} />
+                      <DataRow label="アレルギー / ADR" value={rx.allergies as string} />
+                      <DataRow label="保険カバー" value={rx.insuranceCoverage as string} />
+                      <DataRow label="患者理解度" value={rx.patientUnderstanding as string} />
                     </>
                   )}
                 </>
@@ -458,17 +458,17 @@ export default function PatientDetailPage() {
           {/* LABS & VITALS */}
           {section === "vitals" && (
             <div className="space-y-4 max-w-3xl">
-              <SectionHeader title="Labs & Vitals" />
+              <SectionHeader title="検査・バイタル" />
               {ph ? (
                 <>
                   <div className="bg-panel border border-border-subtle rounded overflow-hidden">
-                    <div className="px-4 py-2 bg-[#0d1b2a] border-b border-[#1e3a5f]">
-                      <span className="text-2xs font-mono text-[#5b9bd5] uppercase">Current Vitals</span>
+                    <div className="px-4 py-2 bg-card border-b border-border-subtle">
+                      <span className="text-2xs font-mono text-[#5b9bd5] uppercase">現在のバイタル</span>
                     </div>
                     <div className="grid grid-cols-3 divide-x divide-border-subtle">
                       {[
-                        { label: "Blood Pressure", value: ph.currentBp as string, unit: "mmHg" },
-                        { label: "Heart Rate", value: ph.currentHr as string, unit: "bpm" },
+                        { label: "血圧", value: ph.currentBp as string, unit: "mmHg" },
+                        { label: "心拍数", value: ph.currentHr as string, unit: "bpm" },
                         { label: "SpO₂", value: ph.currentSpo2 as string, unit: "%" },
                       ].map(({ label, value, unit }) => (
                         <div key={label} className="px-4 py-4 text-center">
@@ -486,7 +486,7 @@ export default function PatientDetailPage() {
 
                   {ph.keyLabs && (
                     <div className="bg-panel border border-border-subtle rounded p-4">
-                      <div className="text-2xs font-mono text-[#4a6b8a] uppercase mb-2">Key Labs</div>
+                      <div className="text-2xs font-mono text-[#4a6b8a] uppercase mb-2">主要検査値</div>
                       <p className="text-sm font-mono text-text-primary whitespace-pre-wrap leading-relaxed">
                         {ph.keyLabs as string}
                       </p>
@@ -500,28 +500,28 @@ export default function PatientDetailPage() {
           {/* NURSING */}
           {section === "nursing" && (
             <div className="space-y-1 max-w-3xl">
-              <SectionHeader title="Nursing Assessment" />
+              <SectionHeader title="看護評価" />
               {rn ? (
                 <>
-                  <DataRow label="Education Readiness" value={rn.educationReadiness as string} />
-                  <DataRow label="Education Barriers" value={rn.educationBarriers as string} />
-                  <DataRow label="Medication Complexity" value={rn.medicationComplexity as string} />
-                  <DataRow label="Injection Required" value={rn.injectionRequired as boolean} />
-                  <DataRow label="Injection Ed. Done" value={rn.injectionEducationDone as boolean} />
-                  <DataRow label="ADL Status" value={rn.adlStatus as string} />
-                  <DataRow label="ADL Concerns" value={rn.adlConcerns as string} />
-                  <DataRow label="Caregiver Identified" value={rn.caregiverIdentified as boolean} />
+                  <DataRow label="教育準備状況" value={rn.educationReadiness as string} />
+                  <DataRow label="教育上の障壁" value={rn.educationBarriers as string} />
+                  <DataRow label="服薬の複雑さ" value={rn.medicationComplexity as string} />
+                  <DataRow label="注射必要" value={rn.injectionRequired as boolean} />
+                  <DataRow label="注射指導完了" value={rn.injectionEducationDone as boolean} />
+                  <DataRow label="ADL状況" value={rn.adlStatus as string} />
+                  <DataRow label="ADL上の懸念" value={rn.adlConcerns as string} />
+                  <DataRow label="介護者確認済み" value={rn.caregiverIdentified as boolean} />
                   {rn.caregiverIdentified && (
                     <>
-                      <DataRow label="Caregiver Name" value={rn.caregiverName as string} />
-                      <DataRow label="Caregiver Availability" value={rn.caregiverAvailability as string} />
+                      <DataRow label="介護者名" value={rn.caregiverName as string} />
+                      <DataRow label="介護者対応可能時間" value={rn.caregiverAvailability as string} />
                     </>
                   )}
-                  <DataRow label="Wound Care Needs" value={rn.woundCareNeeds as string} />
-                  <DataRow label="Warning Signs Educated" value={rn.warningSignsEducated as string} />
+                  <DataRow label="創傷ケア必要性" value={rn.woundCareNeeds as string} />
+                  <DataRow label="注意徴候の説明" value={rn.warningSignsEducated as string} />
                   {rn.concerns && (
                     <div className="bg-warning-bg border border-warning-border rounded p-3 mt-3">
-                      <div className="text-2xs font-mono text-warning-text uppercase mb-1">Nursing Concerns</div>
+                      <div className="text-2xs font-mono text-warning-text uppercase mb-1">看護上の懸念</div>
                       <p className="text-sm font-mono text-text-primary">{rn.concerns as string}</p>
                     </div>
                   )}
@@ -533,21 +533,21 @@ export default function PatientDetailPage() {
           {/* PHARMACY */}
           {section === "pharmacy" && (
             <div className="space-y-1 max-w-3xl">
-              <SectionHeader title="Pharmacy Assessment" />
+              <SectionHeader title="薬剤評価" />
               {rx ? (
                 <>
-                  <DataRow label="Reconciliation Done" value={rx.reconciliationDone as boolean} />
-                  <DataRow label="High-Risk Meds" value={rx.highRiskMeds as string} />
-                  <DataRow label="Drug Interactions" value={rx.drugInteractions as string} />
-                  <DataRow label="Meds to Discontinue" value={rx.medsToStop as string} />
-                  <DataRow label="New Meds at Discharge" value={rx.newMeds as string} />
-                  <DataRow label="Allergies / ADRs" value={rx.allergies as string} />
-                  <DataRow label="Insurance Coverage" value={rx.insuranceCoverage as string} />
-                  <DataRow label="Patient Understanding" value={rx.patientUnderstanding as string} />
-                  <DataRow label="Counseling Done" value={rx.counselingDone as boolean} />
+                  <DataRow label="薬剤照合完了" value={rx.reconciliationDone as boolean} />
+                  <DataRow label="高リスク薬" value={rx.highRiskMeds as string} />
+                  <DataRow label="薬物相互作用" value={rx.drugInteractions as string} />
+                  <DataRow label="中止予定薬" value={rx.medsToStop as string} />
+                  <DataRow label="退院時新規薬" value={rx.newMeds as string} />
+                  <DataRow label="アレルギー / ADR" value={rx.allergies as string} />
+                  <DataRow label="保険カバー" value={rx.insuranceCoverage as string} />
+                  <DataRow label="患者理解度" value={rx.patientUnderstanding as string} />
+                  <DataRow label="服薬指導完了" value={rx.counselingDone as boolean} />
                   {rx.concerns && (
                     <div className="bg-warning-bg border border-warning-border rounded p-3 mt-3">
-                      <div className="text-2xs font-mono text-warning-text uppercase mb-1">Pharmacy Concerns</div>
+                      <div className="text-2xs font-mono text-warning-text uppercase mb-1">薬剤部門の懸念</div>
                       <p className="text-sm font-mono text-text-primary">{rx.concerns as string}</p>
                     </div>
                   )}
@@ -559,26 +559,26 @@ export default function PatientDetailPage() {
           {/* SOCIAL WORK */}
           {section === "socialwork" && (
             <div className="space-y-1 max-w-3xl">
-              <SectionHeader title="Social Work Assessment" />
+              <SectionHeader title="ソーシャルワーク評価" />
               {sw ? (
                 <>
-                  <DataRow label="Living Situation" value={sw.livingSituation as string} />
-                  <DataRow label="Insurance" value={sw.insurance as string} />
-                  <DataRow label="Support System" value={sw.supportSystem as string} />
-                  <DataRow label="Transportation" value={sw.transportationAccess as boolean} />
-                  <DataRow label="Transportation Notes" value={sw.transportationNotes as string} />
-                  <DataRow label="Housing Stability" value={sw.housingStability as string} />
-                  <DataRow label="Food Security" value={sw.foodSecurity as string} />
-                  <DataRow label="Financial Concerns" value={sw.financialConcerns as string} />
-                  <DataRow label="Mental Health" value={sw.mentalHealthConcerns as string} />
-                  <DataRow label="Substance Use" value={sw.substanceUse as string} />
-                  <DataRow label="Resources Arranged" value={sw.resourcesArranged as string} />
-                  <DataRow label="Home Health Needed" value={sw.homeHealthNeeded as boolean} />
-                  <DataRow label="Follow-up Arranged" value={sw.followUpArranged as boolean} />
-                  <DataRow label="Follow-up Details" value={sw.followUpDetails as string} />
+                  <DataRow label="居住状況" value={sw.livingSituation as string} />
+                  <DataRow label="保険" value={sw.insurance as string} />
+                  <DataRow label="支援体制" value={sw.supportSystem as string} />
+                  <DataRow label="交通手段" value={sw.transportationAccess as boolean} />
+                  <DataRow label="交通手段メモ" value={sw.transportationNotes as string} />
+                  <DataRow label="住居の安定性" value={sw.housingStability as string} />
+                  <DataRow label="食料確保" value={sw.foodSecurity as string} />
+                  <DataRow label="経済的懸念" value={sw.financialConcerns as string} />
+                  <DataRow label="メンタルヘルス" value={sw.mentalHealthConcerns as string} />
+                  <DataRow label="物質使用" value={sw.substanceUse as string} />
+                  <DataRow label="手配済み資源" value={sw.resourcesArranged as string} />
+                  <DataRow label="訪問看護必要" value={sw.homeHealthNeeded as boolean} />
+                  <DataRow label="フォローアップ手配済み" value={sw.followUpArranged as boolean} />
+                  <DataRow label="フォローアップ詳細" value={sw.followUpDetails as string} />
                   {sw.concerns && (
                     <div className="bg-warning-bg border border-warning-border rounded p-3 mt-3">
-                      <div className="text-2xs font-mono text-warning-text uppercase mb-1">Social Work Concerns</div>
+                      <div className="text-2xs font-mono text-warning-text uppercase mb-1">MSWの懸念</div>
                       <p className="text-sm font-mono text-text-primary">{sw.concerns as string}</p>
                     </div>
                   )}
@@ -590,22 +590,22 @@ export default function PatientDetailPage() {
           {/* PT / OT */}
           {section === "pt" && (
             <div className="space-y-1 max-w-3xl">
-              <SectionHeader title="Physical Therapy Assessment" />
+              <SectionHeader title="理学療法評価" />
               {ptData ? (
                 <>
-                  <DataRow label="Prior Functional Status" value={ptData.priorFunctionalStatus as string} />
-                  <DataRow label="Ambulation" value={ptData.ambulation as string} />
-                  <DataRow label="Transfer Status" value={ptData.transferStatus as string} />
-                  <DataRow label="Fall Risk" value={ptData.fallRisk as string} />
-                  <DataRow label="Balance Impaired" value={ptData.balanceImpaired as boolean} />
-                  <DataRow label="Stairs at Home" value={ptData.stairsAtHome as boolean} />
-                  <DataRow label="Can Manage Stairs" value={ptData.canManageStairs as boolean} />
-                  <DataRow label="Equipment Needs" value={ptData.equipmentNeeds as string} />
-                  <DataRow label="PT Referral" value={ptData.ptReferral as string} />
-                  <DataRow label="Rehab Facility Needed" value={ptData.rehabNeeded as boolean} />
+                  <DataRow label="入院前機能" value={ptData.priorFunctionalStatus as string} />
+                  <DataRow label="歩行" value={ptData.ambulation as string} />
+                  <DataRow label="移乗状況" value={ptData.transferStatus as string} />
+                  <DataRow label="転倒リスク" value={ptData.fallRisk as string} />
+                  <DataRow label="バランス障害" value={ptData.balanceImpaired as boolean} />
+                  <DataRow label="自宅階段" value={ptData.stairsAtHome as boolean} />
+                  <DataRow label="階段対応可能" value={ptData.canManageStairs as boolean} />
+                  <DataRow label="必要な福祉用具" value={ptData.equipmentNeeds as string} />
+                  <DataRow label="PT紹介" value={ptData.ptReferral as string} />
+                  <DataRow label="リハビリ施設必要" value={ptData.rehabNeeded as boolean} />
                   {ptData.concerns && (
                     <div className="bg-warning-bg border border-warning-border rounded p-3 mt-3">
-                      <div className="text-2xs font-mono text-warning-text uppercase mb-1">PT Concerns</div>
+                      <div className="text-2xs font-mono text-warning-text uppercase mb-1">PTの懸念</div>
                       <p className="text-sm font-mono text-text-primary">{ptData.concerns as string}</p>
                     </div>
                   )}
@@ -617,19 +617,19 @@ export default function PatientDetailPage() {
           {/* DISCHARGE PLAN */}
           {section === "discharge" && (
             <div className="space-y-5 max-w-3xl">
-              <SectionHeader title="Discharge Planning" count={allActions.length} />
+              <SectionHeader title="退院計画" count={allActions.length} />
 
               {((d!.conflicts ?? []) as AnyRecord[]).length > 0 && (
                 <div>
                   <div className="text-2xs font-mono uppercase tracking-widest text-warning-text mb-2">
-                    Clinical Conflicts
+                    臨床上の対立点
                   </div>
                   <div className="border border-border-subtle rounded overflow-hidden">
                     {((d!.conflicts ?? []) as AnyRecord[]).map((c, i) => (
                       <FindingRow
                         key={i}
                         severity="warning"
-                        label="CONFLICT"
+                        label="対立"
                         description={c.summary as string}
                         source={(c.positions as AnyRecord[])?.map((p) => p.holder).join(" · ")}
                       />
@@ -641,14 +641,14 @@ export default function PatientDetailPage() {
               {((d!.gaps ?? []) as AnyRecord[]).length > 0 && (
                 <div>
                   <div className="text-2xs font-mono uppercase tracking-widest text-[#5b9bd5] mb-2">
-                    Documentation Gaps
+                    記録ギャップ
                   </div>
                   <div className="border border-border-subtle rounded overflow-hidden">
                     {((d!.gaps ?? []) as AnyRecord[]).map((g, i) => (
                       <FindingRow
                         key={i}
                         severity="moderate"
-                        label="GAP"
+                        label="ギャップ"
                         description={g.summary as string}
                         source={g.owner as string}
                       />
@@ -660,7 +660,7 @@ export default function PatientDetailPage() {
               {allActions.length > 0 && (
                 <div>
                   <div className="text-2xs font-mono uppercase tracking-widest text-[#4a6b8a] mb-2">
-                    Prioritized Action Items
+                    優先アクション項目
                   </div>
                   <div className="border border-border-subtle rounded overflow-hidden">
                     {allActions.map((a, i) => (
@@ -678,7 +678,7 @@ export default function PatientDetailPage() {
 
               {!!ph?.followUpPlan && (
                 <div className="bg-panel border border-border-subtle rounded p-4">
-                  <div className="text-2xs font-mono text-[#4a6b8a] uppercase mb-2">Follow-up Plan</div>
+                  <div className="text-2xs font-mono text-[#4a6b8a] uppercase mb-2">フォローアップ計画</div>
                   <p className="text-sm font-mono text-text-primary leading-relaxed">
                     {String(ph.followUpPlan)}
                   </p>
@@ -690,14 +690,14 @@ export default function PatientDetailPage() {
           {/* HANDOFF PACKAGES */}
           {section === "handoff" && (
             <div className="space-y-5 max-w-3xl">
-              <SectionHeader title="Handoff Packages" />
+              <SectionHeader title="引き継ぎパッケージ" />
 
               {(d!.conference_agenda as AnyRecord[])?.length > 0 && (
                 <div className="bg-panel border border-border-subtle rounded overflow-hidden">
-                  <div className="px-4 py-2.5 border-b border-[#1e3a5f] bg-[#0d1b2a] flex items-center gap-2">
+                  <div className="px-4 py-2.5 border-b border-border-subtle bg-card flex items-center gap-2">
                     <div className="h-3 w-0.5 bg-[#1e56a0] rounded-full" />
                     <span className="text-2xs font-mono uppercase text-[#7bafd4]">
-                      Conference Agenda
+                      カンファレンス議題
                     </span>
                   </div>
                   {(d!.conference_agenda as AnyRecord[]).map((item, i) => (
@@ -727,7 +727,7 @@ export default function PatientDetailPage() {
               {!!(d!.handoff_packages as AnyRecord | undefined)?.patient_instructions && (
                 <div className="bg-panel border border-border-subtle rounded p-4">
                   <div className="text-2xs font-mono uppercase text-[#4a6b8a] mb-3">
-                    Patient Discharge Instructions
+                    患者向け退院説明
                   </div>
                   <p className="text-sm font-mono text-text-primary leading-relaxed whitespace-pre-wrap">
                     {String((d!.handoff_packages as AnyRecord).patient_instructions)}
@@ -736,10 +736,10 @@ export default function PatientDetailPage() {
               )}
 
               <div className="flex flex-wrap gap-4 text-2xs font-mono text-[#4a6b8a] pt-2 border-t border-border-subtle">
-                <span>Model: {(d!.meta as AnyRecord | undefined)?.model as string ?? "claude-opus-4-7"}</span>
-                <span>Confidence: {(d!.meta as AnyRecord | undefined)?.synthesis_confidence as string}</span>
+                <span>モデル: {(d!.meta as AnyRecord | undefined)?.model as string ?? "claude-opus-4-7"}</span>
+                <span>信頼度: {(d!.meta as AnyRecord | undefined)?.synthesis_confidence as string}</span>
                 <span>
-                  Synthesized:{" "}
+                  統合日時:{" "}
                   {d!.synthesis_timestamp
                     ? new Date(d!.synthesis_timestamp as string).toLocaleString()
                     : "—"}
@@ -751,13 +751,13 @@ export default function PatientDetailPage() {
           {/* Bottom nav */}
           <div className="flex gap-4 mt-10 pt-4 border-t border-border-subtle">
             <Link href="/" className="text-[#5b9bd5] font-mono text-xs hover:underline">
-              ← Patient List
+              ← 患者一覧
             </Link>
             <Link href={`/intake/${id}`} className="text-[#5b9bd5] font-mono text-xs hover:underline">
-              Edit Chart →
+              カルテ編集 →
             </Link>
             <Link href="/intake" className="text-[#5b9bd5] font-mono text-xs hover:underline">
-              + New Patient
+              + 新規患者
             </Link>
           </div>
         </main>
